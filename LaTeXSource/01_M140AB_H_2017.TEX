@@ -1,0 +1,2198 @@
+%
+% Revised: 10/23//2017 %% Encoding Western ASCII
+%
+
+
+                  \chapter{The Riemann Integral}
+                  \label{ChaptH}
+
+       \underline{Quotes for Chapter~\Ref{ChaptH}}:
+
+\V
+
+\begin{quotation}
+{\footnotesize
+        (1) Leibniz's `Whole difference equal to sum of the partial differences.....'
+\V
+
+        (2) `It is frequently claimed that Lebesgue integration is as easy to teach as Riemann integration.
+    This is probably true, but I have yet to be convinced that it is as easy to learn.'
+
+        T. Korner, `A Companion to Analysis'
+
+}%EndFootNoteSize
+\end{quotation}
+
+
+% Related comment: Even mathematicians whose native language is `Lebesgue integral' need to be able to speak `Riemann integral' to engineers, numerical analysts, etc. Likewise, knowing the LUB Property does not relieve one of knowing `Decimals'.
+
+\VV
+
+        \section{{\bf The Riemann Integral}}
+        \label{SectH20}\IndB{ZZ Sections}{\Ref{SectH20} The Riemann Integral}
+
+\V
+
+        {\bf Introduction} One of the most important concepts in elementary calculus is that of the definite integral
+    ${\displaystyle \int_{a}^{b} f}$ of a bounded function $f$ over an interval~$[a,b]$.
+    Cauchy gave an analytical treatment of this quantity in [CAUCHY~1823] as the basis for his proof of Theorem~\Ref{ThmE45.125B}, the Antiderivative Theorem;
+    indeed, he stressed the need for such a theorem in the opening of that book. In contrast with Lebesgue's proof of the Antiderivative Theorem given in 
+    Chapter~\Ref{ChaptE}, however, Cauchy's approach does not involve approximating $f$ by functions known to possess antiderivatives on $[a,b]$.
+
+        Later developments in analysis made it important to extend Cauchy's concept of the definite integral
+    to one which can apply to discontinuous functions which may not have antiderivatives.
+    To be useful, such extensions needed to maintain the major properties enjoyed by the concept in Cauchy's context of continuous functions.
+    It turns out that for such an extension the expression ${\displaystyle \int_{a}^{b} f}$
+    does not make sense for every bounded function $f$ on an interval $[a,b]$. Thus before computing the value of such an integral,
+    one must first determine whether the expression even makes sense under the given extension;
+    that is, whether $f$ is `integrable' over $[a,b]$ under this extension. The first major extension
+    of Cauchy's formulation of the definite integral is due to Riemann; see [RIEMANN~1854].
+    Several other extensions of the definite integral concept appeared over the following decades,
+    and it has become customary to refer to Riemann's extension as the `Riemann integral'.
+
+
+        In {\ThisText} we follow an approach to the Riemann integral, due to Darboux, which simplifies Riemann's original treatment; see [DARBOUX~1875].
+    This approach can be based on the following question:
+
+\VA
+
+        \h `What features should any reasonable concept of ${\displaystyle \int_{a}^{b} f}$ include?'
+
+\VA
+
+        Certainly one would want any such concept to include the basic rules of ordinary integral calculus. These include:
+
+\V
+        \underline{Rule 1} Suppose $f$ is integrable on $[a,b]$. If $m$ and $M$ satisfy $m\,\,{\leq}\,\,f(x)\,\,{\leq}\,\,M$ for all $x$ in $[a,b]$,
+    then  ${\displaystyle m\,(b-a)\,\,{\leq}\,\,\int_{a}^{b} f\,\,{\leq}\,\,M\,(b-a)}$.
+    In particular, these should hold if $m \,=\, {\inf}\,\{f(x): x{\in}[a,b]\}$ and $M \,=\, {\sup}\,\{f(x): x{\in}[a,b]\}$.
+    Of course since $b-a\,>\,0$, the left-hand inequality holds automatically if $m \,=\, -{\infty}$;
+    likewise, the right-hand inequality holds automatically if $M \,=\, +{\infty}$ since $b-a\,>\,0$.
+    Hence this rule is of significance primarily when $m$ and $M$ can be chosen to be finite;
+    that is, when $f$ is bounded on $[a,b]$. We assume such boundedness throughout this discussion; unbounded functions are considered later.
+
+\VA
+
+        \underline{Rule 2} Suppose again that (bounded) $f$ is integrable on $[a,b]$.
+    If $a\,<\,c\,<\,b$, then $f$ should be integrable over each of the subintervals $[a,c]$ and $[c,b]$.
+    Furthermore, one should have ${\displaystyle \int_{a}^{b} f \,=\, \int_{a}^{c} f + \int_{c}^{b} f}$.
+
+\V
+
+        \subsection{\small{{\bf Remark}}}
+        \label{RemrkH20.15}
+
+\V
+
+        Repeated use of these two rules forms the basis for Darboux's approach to the definite integral.
+    For example, repeated use of the first portion of Rule~2 would imply that if $f$ is integrable on $[a,b]$,
+    and if ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$ is any partition of $[a,b]$,
+    then $f$ is integrable on each subinterval $[x_{j-1},x_{j}]$ of this partition, $1\,\,{\leq}\,\,j\,\,{\leq}\,\,n$.
+    Furthermore, Rule~1 would then imply that if for each $j \,=\, 1,2,\,{\ldots}\,n$
+    one sets $m_{j} \,=\, {\inf}\,\{f(x):x{\in}[x_{j-1},x_{j}]\}$ and $M_{j} \,=\, {\sup}\,\{f(x): x{\in}[x_{j-1},x_{j}]\}$, then one has
+        \begin{displaymath}
+        m_{j}\,(x_{j}-x_{j-1})\,\,{\leq}\,\,\int_{x_{j-1}}^{x_{j}} f\,\,{\leq}\,\,M_{j}\,(x_{j}-x_{j-1}) \mbox{ for each $j=1,2,\,{\ldots}\,n$}.
+        \end{displaymath}
+    Summing over the preceding inequalities and using the second portion of Rule~2 then implies that
+        \begin{displaymath}
+        \sum_{j=1}^{n} m_{j}\,(x_{j}-x_{j-1})
+    \,\,{\leq}\,\,
+        \int_{a}^{b} f
+    \,\,{\leq}\,\,
+        \sum_{j=1}^{n} M_{j}\,(x_{j}-x_{j-1}). %\\\\\
+        \end{displaymath}
+
+        The simple proof is left as an exercise. % EXERCISE
+
+\VV
+
+\begin{quotation}
+{\footnotesize \underline{\Note}\IndB{\notes}{on Fourier series and the Riemann integral} (on Fourier series and the Riemann integral)
+STILL TO BE WRITTEN
+}%EndFootNoteSize
+\end{quotation}
+%##
+
+\VV
+
+        The next definition assigns names to the quantities which appear in the preceding Remark.
+
+\V
+
+        \subsection{\small{{\bf Definition}}}
+        \label{DefH20.20}
+
+\V
+
+        Let $f:[a,b] \,{\rightarrow}\, {\RR}$ be a function which is bounded on a closed interval~$[a,b]$;
+    continuity of $f$ is not assumed here, nor is it assumed that $[a,b]$ is the full domain of $f$.
+ 
+        For a partition ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$ of $[a,b]$,
+    let $m_{j} \,=\, {\inf}\,\{f(x): x{\in}[x_{j-1}, x_{j}]\}$ and let $M_{j} \,=\, {\sup}\,\{f(x): x{\in}[x_{j-1}, x_{j}]\}$.
+    For convenience write ${\Delta}x_{j} \,=\, x_{j}-x_{j-1}$ for each index~$j$.
+    The number $L(f;{\cal P}) \,=\, \sum_{j=1}^{n} m_{j}\,{\Delta}x_{j}$ is called the
+    {\bf lower Darboux sum}\IndB{Darboux, Gaston (1842-1917)}{lower, upper Darboux sums}
+    associated with the function $f$ and the partition ${\cal P}$; similarly, the number
+    $U(f;{\cal P}) \,=\, \sum_{j=1}^{n} M_{j}\,{\Delta}x_{j}$ is the corresponding {\bf upper Darboux sum}.
+    The quantity ${\Delta}(f;{\cal P}) \,=\, U(f;{\cal P})-L(f;{\cal P})$ is the corresponding
+    {\bf Darboux difference}\IndB{Darboux, Gaston (1842-1917)}{Darboux difference} associated with the function $f$ and the partition~${\cal P}$.
+
+\V
+
+        \underline{Remarks}\,(1) The notations $m_{j}$, $M_{j}$ and ${\Delta}x_{j}$ are ambiguous, in that they assume that the context makes clear
+    which function $f$ and partition ${\cal P}$ is under consideration. Normally this ambiguity causes no problems.
+
+\V
+
+        (2)\, If $f$ is continuous on $[a,b]$, then $m_{j}$ and $M_{j}$ are the minimum and maximum values of $f$ on the subinterval $[x_{j-1},x_{j}]$,
+    so the notation $L(f;{\cal P})$ and $U(f;{\cal P})$ agrees with that used in Section~\Ref{SectE45}.
+
+\VV
+
+        The conclusions of Remark~\Ref{RemrkH20.15} above can now be written to say that
+    any reasonable definition of ${\displaystyle \int_{a}^{b} f}$ should satisfy the inequalities
+        \begin{displaymath}
+        L(f;{\cal P})\,\,{\leq}\,\,\int_{a}^{b} f\,\,{\leq}\,\,U(f;{\cal P})
+        \end{displaymath}
+    for every partition ${\cal P}$ of $[a,b]$. In particular, $\int_{a}^{b} f$ should be an upper bound for the set of all numbers of the form
+    $L(f;{\cal P})$ and a lower bound for the set of numbers of the form $U(f;{\cal P})$.
+    Thus one ought to have
+        \begin{displaymath}
+        {\sup}_{{\Pi}[a,b]}\,\{L(f;{\cal P})\}\,\,{\leq}\,\,\int_{a}^{b} f\,\,{\leq}\,\,{\inf}_{{\Pi}[a,b]}\,\{U(f;{\cal P})\},
+        \end{displaymath}
+    where the sup and inf are both taken over the set ${\Pi}([a,b])$ of all partitions ${\cal P}$ of~$[a,b]$.
+    The next result outline properties of these quantities.
+
+\VV
+
+        \subsection{\small{{\bf Lemma}}}
+        \label{LemmaH20.33}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is bounded on the interval~$[a,b]$.
+
+\V
+
+        (a) If ${\cal P}$ is any partition of $[a,b]$, then $L(f;{\cal P})\,\,{\leq}\,\,U(f;{\cal P})$.
+    Furthermore one has ${\Delta}(f;{\cal P})\,\,{\geq}\,\,0$, with equality if, and only if, $f$ is constant on~$[a,b]$.
+
+\V
+
+        (b) Suppose that ${\cal P}$ and ${\cal Q}$ are partitions of $[a,b]$ such that ${\cal Q}$ is a refinement of ${\cal P}$; that is, ${\cal P} \,{\subseteq}\, {\cal Q}$. Then
+        \begin{displaymath}
+        L(f;{\cal P})\,\,{\leq}\,\,L(f;{\cal Q})\,\,{\leq}\,\,U(f;{\cal Q})\,\,{\leq}\,\,U(f;{\cal P}).
+        \end{displaymath}
+
+\V
+
+        (c) If ${\cal Q}$ and ${\cal R}$ are partitions of $[a,b]$, then $L(f;{\cal Q})\,\,{\leq}\,\,U(f;{\cal R})$.
+    In particular, one has
+        \begin{displaymath}
+        L(f;{\cal Q})\,\,{\leq}\,\,{\sup}_{{\Pi}[a,b]}\,\{L(f;{\cal P})\}
+        \,\,{\leq}\,\,{\inf}_{{\Pi}[a,b]}\,\{U(f;{\cal P})\}
+        \,\,{\leq}\,\,U(f;{\cal R})
+        \end{displaymath}
+    for every pair of partitions ${\cal Q}$ and ${\cal R}$ of~$[a,b]$.
+
+
+\V
+
+        (d) Let $c$ be a number such that $a\,<\,c\,<\,b$. Then a partition ${\cal P}$ of $[a,b]$ contains the point $c$ if, and only if,
+    there are partitions ${\cal Q}$ and ${\cal R}$ of the intervals $[a,c]$ and $[c,b]$, respectively, such that ${\cal P} \,=\, {\cal Q}\,{\cup}\,{\cal R}$.
+    Furthermore, when this situation holds one has $L(f;{\cal P}) \,=\, L(f;{\cal Q}) + L(f;{\cal R})$ and
+    $U(f;{\cal P}) \,=\, U(f;{\cal Q}) + U(f;{\cal R})$.
+
+
+\V
+
+        {\bf Proof} (a) This statement follows directly from the observation that if $S$ is any nonempty set of real numbers, then ${\inf}\,S\,\,{\leq}\,\,{\sup}\,S$, with equality if, and only if, $S$ is a singleton set.
+
+\V
+
+        (b) Let ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$ be any partition of~$[a,b]$.
+    Suppose first that ${\cal Q}$ is obtained from ${\cal P}$ by adjoining a single new point $q$ to the finite set~${\cal P}$.
+    To be precise, suppose that $x_{k-1}\,<\,q\,<\,x_{k}$ for some index~$k$. Then one has
+        \begin{displaymath}
+        L(f;{\cal P}) \,=\, m_{1}\,{\Delta}x_{1} + \,{\ldots}\, + m_{k-1}\,{\Delta}x_{k-1} + m_{k}\,{\Delta}x_{k} + m_{k+1}\,{\Delta}x_{k+1} + \,{\ldots}\, + m_{n}\,{\Delta}x_{n}.
+        \end{displaymath}
+    In contrast, the sum expressing $L(f;{\cal Q})$ consists of exactly the same terms,
+    except that the single term $m_{k}\,{\Delta}x_{k} \,=\, m_{k}\,(x_{k}-x_{k-1})$ is replaced by two terms $m_{k}'\,(q-x_{k-1}) + m_{k}''\,(x_{k}-q)$,
+    where $m_{k}' \,=\, {\inf}\,\{f(x): x_{k-1}\,\,{\leq}\,\,x\,\,{\leq}\,\,q\}$ and $m_{k}'' \,=\, {\inf}\,\{f(x): q\,\,{\leq}\,\,x\,\,{\leq}\,\,x_{k}\}$.
+    It is clear from properties of the infimum that $m_{k}\,\,{\leq}\,\,m_{k}'$ and $m_{k}\,\,{\leq}\,\,m_{k}''$, and thus
+        \begin{displaymath}
+        m_{k}\,{\Delta}x_{k} \,=\, m_{k}\,(x_{k}-x_{k-1})
+     \,=\, 
+        m_{k}\,((q-x_{k-1}) + (x_{k}-q))\,\,{\leq}\,\,
+        m_{k}'\,(q-x_{k-1}) + m_{k}''\,(x_{k}-q).
+        \end{displaymath}
+    In other words, to obtain $L(f;{\cal Q})$ one replaces the term $m_{k}\,{\Delta}x_{k}$ in the sum for $L(f;{\cal P})$
+    by the sum $m_{k}'\,(p-x_{k-1}) + m_{k}''\,(x_{k}-p)$, which is either bigger than or at worst equal to the first term. The equation $L(f;{\cal P})\,\,{\leq}\,\,L(f;{\cal Q})$ follows in this special case.
+    To get the general case, in which ${\cal Q}$ is obtained from ${\cal P}$ by adjoining any finite number of new elements,
+    simply repeat the preceding argument and use mathematical induction. A similar argument shows that $U(f;{\cal Q})\,\,{\leq}\,\,U(f;{\cal P})$.
+    Finally, by Part~(a) the inequality $L(f;{\cal Q})\,\,{\leq}\,\,U(f;{\cal Q})$ is true.
+
+\V
+
+
+        (c) Let ${\cal Q} \,=\, {\cal P}\,{\cup}\,{\cal R}$, so that ${\cal Q}$ is a refinement of both ${\cal P}$ and ${\cal R}$. Then by Part~(b) one has
+        \begin{displaymath}
+        L(f;{\cal P})\,\,{\leq}\,\,L(f;{\cal Q})\,\,{\leq}\,\,U(f;{\cal Q})\,\,{\leq}\,\,U(f;{\cal R})
+        \end{displaymath}
+        The desired results then follow from the transitivity property of order and the definitions of `sup' and `inf'.
+
+\V
+
+        (d) The simple proof is left as an exercise. % EXERCISE
+
+\V
+
+        The preceding results suggest the following.
+
+\V
+
+        \subsection{\small{{\bf Definition}}}
+        \label{DefH20.25}
+
+
+\V
+
+        Let $f$ be a function bounded on an interval $[a,b]$.
+
+\V
+
+        A number $B$ is said to be a {\bf Darboux number for $\Bfm{f}$ on $\Bfm{[a,b]}$}\IndB{Darboux, Gaston (1842-1917)}{Darboux number for $f$ on $[a,b]$}
+    provided $L(f;{\cal P})\,\,{\leq}\,\,B\,\,{\leq}\,\,U(f;{\cal P})$ for every partition ${\cal P}$ of~$[a,b]$.
+
+\V
+
+        {\bf Remark}\, The preceding discussion can now be reformulated to say that in any reasonable definition of $\int_{a}^{b} f$,
+    this number must be a Darboux number of $f$ on~$[a,b]$. Furthermore, Part~(c) of the preceding result implies that such Darboux numbers do exist; 
+    namely ${\sup}_{{\Pi}[a,b]}\,\{L(f;{\cal P})\}$ and ${\inf}_{{\Pi}[a,b]}\,\{U(f;{\cal P})\}$,
+    together with any number between these values. Darboux now focusses on the case in which there is only one such number,
+    hence only one reasonable choice for $\int_{a}^{b} f$.
+
+\V
+
+        \subsection{\small{{\bf Definition}}}
+        \label{DefH20.25A}
+
+\V
+
+        Let $f$ be a function bounded on an interval $[a,b]$.
+
+\V
+
+        One says that $f$ is {\bf integrable on $\Bfm{[a,b]}$ in the sense of Darboux}\IndB{integrals}{integrable in the sense of Darboux}\IndB{Darboux, Gaston (1842-1917)}{integrable in the sense of Darboux}
+    provided that there exists precisely one Darboux number $B$ for $f$ on~$[a,b]$.
+    If this is the case, then one writes ${\displaystyle B \,=\, \int_{a}^{b} f}$, and one calls the expression
+    ${\displaystyle \int_{a}^{b}} f$ the {\bf Riemann integral\IndB{integrals}{Riemann integral} of $\Bfm{f}$ over $\Bfm{[a,b]}$}.
+    In this context the function $f$ is called the {\bf integrand} and the numbers $a$ and $b$ are called the {\bf limits of integration}.
+
+\V
+
+        {\bf Remarks} (1) It is common to use the classical `variables' notation for functions and write something like ${\displaystyle \int_{a}^{b} f(x)\,dx}$
+    in place of the simpler expression ${\displaystyle \int_{a}^{b} f}$. The role of the quantity $x$ here is the as the {\bf variable of integration}.
+    The letter $x$ can be replaced by any letter that is not already in mathematical use here.
+
+\V
+
+        (2) The `Darboux lower sum' and `Darboux upper sum' terminology is standard in analysis;
+    in contrast, the `Darboux difference' and `Darboux number' terminology, while convenient, is not.
+
+\V
+
+        (3) In calculus texts the quantity ${\displaystyle \int_{a}^{b} f(x)\,dx}$
+    described above is normally introduced following an earlier approach of Riemann; see below.
+    Riemann's approach to this quantity is technically more complicated than that of Darboux,
+    but it avoids the use of the concepts of suprema and infima, concepts which are considered too difficult for elementary calculus.
+    Since the two approaches lead to precisely the same set of integrable functions and the same values for their integrals,
+    and Riemann's approach is earlier than that of Darboux, it is customary to assign the name
+    `Riemann integral' to this quantity, regardless of which approach is taken, but to distinguish between `Darboux integrable' and `Riemann integrable'
+    to indicate which approach one follows in obtaining the Riemann integral.
+However, there are exceptions:
+    some authors refer to the `Darboux integral' instead.
+
+\VV
+
+        For some purposes one needs a somewhat more general formulation of `Darboux number'.
+
+\V
+
+        \subsection{\small{{\bf Lemma}}}
+        \label{LemmaH20.34}
+
+\V
+
+        Let ${\cal R}$ be a particular (fixed) partition of~$[a,b]$. Then a necessary and sufficient condition
+    for a number $B$ to be a Darboux number for a function $f$ bounded on $[a,b]$ is that
+        \begin{displaymath}
+        L(f;{\cal Q})\,\,{\leq}\,\,B\,\,{\leq}\,\,U(f;{\cal Q}) \mbox{ for every refinement ${\cal Q}$ of~${\cal R}$}.
+        \end{displaymath}
+
+\V
+
+        {\bf Proof}
+
+\V
+
+        The necessity of the given condition is obvious. To show its sufficiency,
+    suppose that $B$ satisfies the given condition, and let ${\cal P}$ be any partition of~$[a,b]$.
+    As in the proof of Part~(c) above, let ${\cal Q} \,=\, {\cal P}\,{\cup}\,{\cal R}$, so that ${\cal Q}$ is a refinement of~${\cal R}$.
+    Then the hypothesis here says that $L(f;{\cal Q})\,\,{\leq}\,\,B\,\,{\leq}\,\,U(f;{\cal Q})$,
+    so that by Part~(c) again one has
+        \begin{displaymath}
+        L(f;{\cal P})\,\,{\leq}\,\,L(f;{\cal Q})\,\,{\leq}\,\,B\,\,{\leq}\,\,U(f;{\cal Q})\,\,{\leq}\,\,U(f;{\cal R})
+        \end{displaymath}
+    for every partition~${\cal P}$ of $[a,b]$. The claimed sufficiency now follows.
+
+\VV
+
+        \subsection{\small{{\bf Examples}}}
+        \label{ExampH20.30}
+
+\V
+        In the following examples, the word `integrable' means `integrable in the sense of Darboux'.
+
+\V
+
+        (1) If $f:I \,{\rightarrow}\, {\RR}$ is continuous on an open interval $I$, then, by Part~(b) of Theorem~\Ref{TheoremE45.130}, for every pair of numbers $a$ and $b$ in $I$ such that $a\,<\,b$,
+    the function $f$ is integrable on $[a,b]$. Furthermore, ${\displaystyle \int_{a}^{b} f \,=\, F(b)-F(a)}$, where $F$ is any antiderivative of $f$ on~$I$.
+
+\V
+
+        (2) If $f:[a,b] \,{\rightarrow}\, {\RR}$ is monotonic up on $[a,b]$, then $f$ is integrable on $[a,b]$.
+    This is trivially true by Part~(1) if $f(a) \,=\, f(b)$, since in this case $f$ is constant, hence continuous, on~$[a,b]$.
+
+        Now assume that $f(a)\,<\,f(b)$. Suppose, in contradiction, that $f$ is {\em not} integrable on~$[a,b]$. Then there exist Darboux numbers
+    $B_{1}$ and $B_{2}$ for $f$ on~$[a,b]$ with $B_{1}\,<\,B_{2}$, such that
+        \begin{displaymath}
+        L(f;{\cal P})\,\,{\leq}\,\,B_{1}\,<\,B_{2}\,\,{\leq}\,\,U(f;{\cal P}) \mbox{ for every partition ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$ of $[a,b]$}.
+        \end{displaymath}
+    Using the notation from Part~(1) of Definition~\Ref{DefH20.20}, together with the hypothesis that $f$ is monotonic up, one gets
+        \begin{displaymath}
+        L(f;{\cal P}) \,=\, \sum_{j=1}^{n} f(x_{j-1})\,{\Delta}x_{j}\,\,{\leq}\,\,B_{1}\,<\,B_{2}\,\,{\leq}\,\,\sum_{j=1}^{n} f(x_{j})\,{\Delta}x_{j} \,=\, U(f;{\cal P}).
+        \end{displaymath}
+    It follows that
+        \begin{displaymath}
+        0\,<\,B_{2}-B_{1}\,\,{\leq}\,\,\sum_{j=1}^{n} \left(f(x_{j})-f(x_{j-1})\right)\,{\Delta}x_{j}
+    \,\,{\leq}\,\,
+    \left(\sum_{j=1}^{n} (f(x_{j})-f(x_{j-1}))\right)\,||{\cal P}||
+     \,=\, (f(b)-f(a))\,||{\cal P}||
+        \end{displaymath}
+    for {\em every} partition ${\cal P}$ of $[a,b]$. Now chose ${\cal P}$ so that $||{\cal P}||\,<\,(B_{2}-B_{1})/(f(b)-f(a))$ to get the contradiction.
+
+        Clearly the conclusion, that $f$ is integrable, remains true if one assumes instead that $f$ is monotonic {\em down} on $[a,b]$.
+
+\V
+
+        (3) Let $f:[0,1] \,{\rightarrow}\, {\RR}$ be the restriction to $[0,1]$ of the Dirichlet function,
+    so that for $x$ in $[0,1]$ one has $f(x) \,=\, 0$ if $x$ is irrational while $f(x) \,=\, 1$ if $x$ is rational.
+    Then clearly $L(f;{\cal P}) \,=\, 0$ and $U(f;{\cal P}) \,=\, 1$ for every partition ${\cal P}$ of~$[0,1]$.
+    In particular, $f$ is {\em not} integrable on~$[0,1]$. Indeed, if $B$ is any of the infinitely many numbers in the closed interval $[0,1]$, then $B$ is a Darboux number for $f$ on~[0,1].
+
+\V
+
+        (4) Let $f:[0,1] \,{\rightarrow}\, {\RR}$ be the restriction to $[0,1]$ of the Thomae function;
+    that is, for $x$ in $[0,1]$ one has $f(x) \,=\, 0$ if $x$ is irrational, or if $x \,=\, 0$;
+    while if $x\,>\,0$ is rational and of the form $x \,=\, p/q$, with $p, q$ being natural numbers having no common factors bigger than~$1$, then $f(x) \,=\, 1/q$.
+    It is clear that if ${\cal P}$ is any partition of $[0,1]$, then $L(f;{\cal P}) \,=\, 0$ (since every subinterval of $[0,1]$ includes irrational points),
+    and that $U(f;{\cal P})\,\,{\leq}\,\,1$ (since $1/q\,\,{\leq}\,\,1$ for each $q$ in~${\NN}$). In particular, $0$ is a Darboux number for $f$ on~$[0,1]$.
+    To see that $0 $ is the only such Darboux number, suppose that $B$ satisfies $0\,<\,B\,\,{\leq}\,\,1$, and let $n$ be any natural number such that $1/n\,<\,B/3$.
+    If $x$ in $[0,1]$ satisfies $f(x)\,\,{\geq}\,\,B$, so that $f(x)\,\,{\geq}\,\,B/3\,>\,1/n$, then $x$ can be written in the form $p/q$,
+    as described above, with $1\,\,{\leq}\,\,p\,\,{\leq}\,\,q\,<\,n$.
+    Clearly there are at most $n^{2}$ such values of~$x$. Now let ${\cal P}$ be the partition of $[0,1]$ into $n^{3}$ subintervals of equal length $1/n^{3}$.
+    At most $2\,n^{2}$ of these subintervals contain $x$ such that $f(x)\,>\,1/n$. (The factor $2$ reflects the fact that such $x$ might be an endpoint of two contiguous subintervals.)
+    The sum of the terms in the expression for $U(f;{\cal P})$ from those subintervals then is strictly bounded above by $2\,n^{2}/n^{3} \,=\, 2/n$.
+    The sum of the remaining terms appearing in $U(f;{\cal P})$ is clearly bounded above by $1/n$, so that $U(f;{\cal P})\,<\,3/n\,<\,B$, so that $B$ is not a Darboux number for $f$ on~$[0,1]$.
+
+\V
+
+        {\bf Remark}\, The last example shows that $f$ being Riemann integrable on $[a,b]$ implies nothing about $f$ having an antiderivative on~$[a,b]$.
+    Indeed, the Intermediate-Value Theorem for Derivatives implies that the Thomae function has an antiderivative on {\em no} subinterval of~$[0,1]$.
+
+\VV
+
+        \subsection{\small{{\bf Corollary}}}
+        \label{CorH20.35A}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is bounded on the interval~$[a,b]$ and that ${\cal R}$ is a fixed partition of~$[a,b]$.
+    Let $L_{(f;{\cal R})} \,=\, \{L(f; {\cal P}): \mbox{${\cal P}$ is a refinement of ${\cal R}$}\}$,
+    and let $U_{(f;{\cal R})} \,=\, \{U(f; {\cal Q}): \mbox{ ${\cal Q}$ is a refinement of ${\cal R}$}\}$. Then:
+
+\V
+
+        (a) The sets $L_{(f;{\cal R})}$ and $U_{(f;{\cal R})}$ are nonempty bounded subsets of ${\RR}$, and one has ${\sup}\,L_{(f;{\cal R})}\,\,{\leq}\,\,{\inf}\,U_{(f;{\cal R})}$.
+    Furthermore, a number $B$ is a Darboux number for $f$ on $[a,b]$ if, and only if, ${\sup}\,L_{(f;{\cal R})}\,\,{\leq}\,\,B\,\,{\leq}\,\,{\inf}\,U_{(f;{\cal R})}$.
+
+\V
+
+        (b) The function $f$ is integrable on $[a,b]$ in the sense of Darboux if, and only if, ${\sup}\,L_{(f;{\cal R})} \,=\, {\inf}\,U_{(f;{\cal R})}$.
+    If this equality holds, then the common value of these two expressions equals ${\displaystyle \int_{a}^{b} f}$.
+
+\V
+
+        {\bf Proof}\, (a) The fact that $L_{(f;{\cal R})}$ and $U_{(f;{\cal R})}$ are nonempty sets of numbers follows from the fact that
+    there exists at least one partition of the given interval~$[a,b]$ which is a refinement of~${\cal R}$; for example, ${\cal R}$ itself.
+    It then follows from Part~(b) of the preceding theorem that the set $L_{(f;{\cal R})}$ is bounded below and the set $U_{(f;{\cal R})}$ is bounded above,
+    namely by the numbers $L(f;{\cal R})$ and $U(f;{\cal R})$, respectively. Furthermore, it follows from Part~(d) of the preceding theorem that if $x{\in}L_{(f;{\cal R})}$ and $y{\in}U_{(f;{\cal R})}$,
+    then $x\,\,{\leq}\,\,y$; in particular, $X$ is bounded and $Y$ is bounded below. It now follows from Part~(d) of Theorem~\Ref{ThmB30.08K} that ${\sup}\,L_{(f;{\cal R})}\,\,{\leq}\,\,{\inf}\,U_{(f;{\cal R})}$, as claimed.
+    It also follows that if $B$ is any number such that  ${\sup}\,L_{(f;{\cal R})}\,\,{\leq}\,\,B\,\,{\leq}\,\,{\inf}\,U_{(f;{\cal R})}$, then $B$ has the desired property.
+
+\V
+
+        (b) From the proof of the preceding part of this theorem it is clear that if ${\sup}\,L_{(f;{\cal R})}\,<\,{\inf}\,U_{(f;{\cal R})}$,
+    then there are infinitely many values of $B$ such that $L(f;{\cal P})\,\,{\leq}\,\,B\,\,{\leq}\,\,U(f;{\cal P})$
+    for every refinement ${\cal P}$ of~${\cal R}$, in which case $f$ is {\em not} integrable on $[a,b]$ in the sense of Darboux.
+    In contrast, it likewise follows that if ${\sup}\,L_{(f;{\cal R})} \,=\, {\inf}\,U_{(f;{\cal R})}$, then there is precisely one value of $B$ for which
+    $L(f;{\cal P})\,\,{\leq}\,\,B\,\,{\leq}\,\,U(f;{\cal P})$ for every such partition; namely the common value of ${\sup}\,L_{(f;{\cal R})}$ and ${\inf}\,U_{(f;{\cal R})}$. The desired result now follows. \Q
+
+\V
+
+        \subsection{\small{{\bf Remarks}}}
+        \label{RemrkH20.35A}
+
+\V
+
+\hspace*{\parindent}(1) It follows from Part~(a) of the preceding corollary that the numbers ${\sup}\,L_{(f;{\cal R})}$
+    and ${\inf}\,U_{(f;{\cal R})}$ described there do not depend on the choice of the fixed partition ${\cal R}$ of $[a,b]$.
+    In particular, suppose that one chooses ${\cal R}$ to be the `trivial' partition $\{a,b\}$ of $[a,b]$, so that $L_{(f;{\cal R})} \,=\, L_{(f;\{a,b\})}$ and $U_{(f;{\cal R})} \,=\, U_{(f;\{a,b\})}$.
+    Then the set of partitions ${\cal P}$ referred to in the corollary is simply set of {\em all} partitions of~$[a,b]$.
+
+\V
+
+     (2) There are several popular notations for the quantities ${\sup}\,L_{(f;{\cal R})}$ and ${\inf}\,U_{(f;{\cal R})}$ considered above, for example:
+
+\VA
+
+        \h (i)\,\, ${\sup}\,L_{(f;{\cal R})} \,=\, \underline{I}(f;[a,b])$; ${\inf}\,U_{(f;{\cal R})} \,=\, \overline{I}(f;[a,b])$.
+
+\VA
+
+        \h (ii)\, ${\sup}\,L_{(f;{\cal R})} \,=\, \underline{\int}_{a}^{b} f$; ${\inf}\,U_{(f;{\cal R})} \,=\, \overline{\int}_{a}^{b}\,f$.
+
+\VA
+
+        Because of the notations in~(ii), many texts refer to ${\sup}\,L_{(f;{\cal R})}$ as the {\bf lower Darboux integral of $f$ on $[a,b]$},
+    and to ${\inf}\,L_{(f;{\cal R})}$ as the {\bf upper Darboux integral of $f$ on $[a,b]$}.\IndB{Darboux, Gaston (1842-1917)}{lower, upper Darboux integrals}
+    In {\ThisText} we avoid the use of such specialized notations and terminology, but the reader needs to know that it does appear elsewhere.
+
+\VV
+
+
+        There are several alternate ways to characterize the property of a function being integrable on an interval.
+    In the following theorem and its proof, the word `integrable' means `integrable in the sense of Darboux'.
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH20.40}
+
+\V
+
+        Let $f:[a,b] \,{\rightarrow}\, {\RR}$ be a function which is bounded on the interval $[a,b]$. Then the following statements are equivalent:
+
+\V
+
+        \underline{Statement (i)}\,\,\,The function $f$ is integrable in the sense of Darboux on $[a,b]$;
+    that is, $f$ has exactly one Darboux number for~$[a,b]$.
+
+\V
+
+        \underline{Statement (ii)}\,\, For every ${\varepsilon}\,>\,0$ there exists a partition
+    ${\cal R}$ of $[a,b]$ such that ${\Delta}(f;{\cal R})\,<\,{\varepsilon}$, where, as usual,
+    ${\Delta}(f;{\cal R})$ is the (nonnegative) Darboux difference $U(f;{\cal R}) - L(f;{\cal R})$ associated with the partition~${\cal R}$.
+
+\V
+
+
+        \underline{Statement (iii)} For every ${\varepsilon}\,>\,0$ there exists ${\delta}\,>\,0$ such that if ${\cal R}$ is any partition of $[a,b]$ for which $||{\cal R}||\,<\,{\delta}$, then 
+        \begin{displaymath}
+        {\Delta}(f;{\cal R})\,<\,{\varepsilon}.
+        \end{displaymath}
+
+
+\V
+
+        \underline{Statement (iv)}\, There exists a number $B$ with the following property: for every ${\varepsilon}\,>\,0$
+    there exists ${\delta}\,>\,0$ such that if ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$
+    is any partition of $[a,b]$ for which $||{\cal P}||\,<\,{\delta}$, then for any ordered list ${\zeta} \,=\, (z_{1}, z_{2},\,{\ldots}\,z_{n})$
+    of numbers with $x_{j-1}\,\,{\leq}\,\,z_{j}\,\,{\leq}\,\,x_{j}$ for each $j$ one has
+        \begin{displaymath}
+        \left|B - \sum_{j=1}^{n} f(z_{j}){\Delta}x_{j}\right|\,<\,{\varepsilon}.
+        \end{displaymath}
+
+
+
+\V%\\\\
+
+        {\bf Proof}\, The fact that Statement (i) implies Statement~(ii) is a simple consequence of Part~(b) of Corollary~\Ref{CorH20.35A}.
+    Indeed, suppose that $f$ is integrable on $[a,b]$, so that by that corollary one has ${\sup}\,L_{(f;\{a,b\})} \,=\, {\inf}\,U_{(f;\{a,b\})}$.
+    Let $B$ be the common value of these quantities. It then follows easily from the Approximation Property for infima and suprema that for every ${\varepsilon}\,>\,0$
+    there exist partitions ${\cal P}$ and ${\cal Q}$ of $[a,b]$ such that
+        \begin{displaymath}
+        L(f;{\cal P})\,>\,B-\frac{{\varepsilon}}{2} \mbox{ and } U(f;{\cal Q})\,<\,B+\frac{{\varepsilon}}{2}.
+        \end{displaymath}
+    Now let ${\cal R} \,=\, {\cal P} \,{\cup}\, {\cal Q}$. The desired inequality follows from Part~(b) of Lemma~\Ref{LemmaH20.33}.
+
+       As for the converse, namely that Statement~(ii) implies Statement~(i), recall that for every partition ${\cal R}$ of $[a,b]$ one has
+                \begin{displaymath}
+        L(f;{\cal R})\,\,{\leq}\,\,{\sup}\,L_{(f;\{a,b\})}\,\,{\leq}\,\,{\inf}\,U_{(f;\{a,b\})}\,\,{\leq}\,\,U(f;{\cal R})
+        \end{displaymath}
+    If Statement~(ii) holds, then for every ${\varepsilon}\,>\,0$ there exists ${\cal R}$ such that
+        \begin{displaymath}
+        0\,\,{\leq}\,\,U_{(f;\{a,b\})} - L_{(f;\{a,b\})}\,\,{\leq}\,\,U(f;{\cal R})-L(f;{\cal R})\,<\,{\varepsilon},
+        \end{displaymath}
+    which implies that $U_{(f;\{a,b\})} \,=\, L_{(f;\{a,b\})}$, and thus, by Part~(b) of Corollary~\Ref{CorH20.35A}, $f$ is integrable on~$[a,b]$.
+
+\VA
+
+        To see that Statement (ii) implies Statement (iii), let ${\cal R} \,=\, \{a \,=\, y_{0}\,<\,y_{1}\,<\,\,{\ldots}\,\,<\,y_{N-1}\,<\,y_{N} \,=\, b\}$
+    be a partition of $[a,b]$ such that ${\Delta}(f;{\cal R})\,<\,{\varepsilon}/2$; such ${\cal R}$ exists by the hypothesis that Statement~(ii) holds.
+    Let ${\delta}_{1}$ be the minimum of the lengths of the $N$ subintervals of $[a,b]$ determined by the partition~${\cal R}$; this is (probably) {\em not} the ${\delta}$ referred to in Statement~(iii).
+    To set up the search for the true ${\delta}$, let ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$ be any partition of $[a,b]$ such that $||{\cal P}||\,<\,{\delta}_{1}$, and let ${\cal Q} \,=\, {\cal P}\,{\cup}\,{\cal R}$;
+    note that ${\cal Q}$ is a refinement of ${\cal R}$, so that ${\Delta}(f;{\cal Q})\,<\,{\varepsilon}/2$ as well.
+    Because $0\,<\,x_{j}-x_{j-1}\,<\,{\delta}_{0}$ for each~$j$, it is clear that for each $j$ either the subinterval $[x_{j-1},x_{j}]$ of the partition ${\cal P}$ is also a subinterval of ${\cal Q}$,
+    or there exists exactly one index $k$ such that $x_{j-1}\,<\,y_{k}\,<\,x_{j}$; in that case $[x_{j-1},x_{j]}$ is the union of exactly two subintervals for ${\cal Q}$,
+    namely $[x_{j-1}, y_{k}]$ and $[y_{k},x_{j}]$. It follows that one can write ${\Delta}(f;{\cal P}) \,=\, {\Delta}(f;{\cal Q}) + S$,
+    where $S$ is the sum of at most $N-1$ terms, each of the form $(M_{j}-m_{j})\,(x_{j}-x_{j-1}) - \left((M_{k}'-m_{k}')\,(y_{k}-x_{j-1}) + (M_{k}''-m_{k}'')\,(x_{j}-y_{k})\right)$.
+    In this last expression, as usual $m_{j} \,=\, {\inf}\,\{f(x): x_{j-1}\,\,{\leq}\,\,x\,\,{\leq}\,\,x_{j}\}$, and $M_{j} \,=\, {\sup}\,\{f(x): x_{j-1}\,\,{\leq}\,\,x\,\,{\leq}\,\,x_{j}\}$;
+    likewise, $m_{k}', M_{k}'$ and $m_{k}'', M_{k}''$ are the analogous quantities on $[x_{j-1},y_{k}]$ and $[y_{k},x_{j}]$, respectively.
+    Let $L \,=\, {\sup}\,\{f(x): a\,\,{\leq}\,\,x\,\,{\leq}\,\,b\} - {\inf}\,\{f(x): a\,\,{\leq}\,\,x\,\,{\leq}\,\,b\}$,
+    Then each term forming the sum $S$ above has magnitude no bigger than $3\,L\,||{\cal P}||$. Since $S$ has at most $N-1$ such terms, it follows that certainly $|S|\,\,{\leq}\,\,3\,(N-1)\,L\,||{\cal P}||\,\,{\leq}\,\,3\,N\,(L+1)\,||{\cal P}||$.
+    Now let $d_{2} \,=\, {\varepsilon}/(6\,N\,(L+1))$, and let ${\delta} \,=\, \min\{{\delta}_{1}, {\delta}_{2}\}$.
+    Then $||{\cal P}||\,<\,{\delta}$ implies that $|S|\,<\,{\varepsilon}/3$, and thus
+        \begin{displaymath}
+        {\Delta}(f;{\cal P}) \,=\, {\Delta}(f;{\cal Q}) + S\,\,{\leq}\,\,{\Delta}(f;{\cal Q}) + |S|
+        \,<\, \frac{{\varepsilon}}{2} + \frac{{\varepsilon}}{2} \,=\, {\varepsilon},
+        \end{displaymath}
+    as required. (The use of $N$ and $L+1$ the weaker estimate for $|S|$, instead of the more accurate $L$ and $N-1$,
+    is to avoid the possible division-by-zero problem in defining ${\delta}_{2}$.)
+
+        The proof that Statement~(iii) implies Statement~(ii) is obvious.
+
+\VA
+
+        Next, suppose that Statement~(iii) holds, and thus, as has been shown, Statements~(i) and~(ii) also hold, so that $f$ is integrable on~$[a,b]$. Let ${\displaystyle B \,=\, \int_{a}^{b} f}$.
+    Then for every ${\varepsilon}\,>\,0$ there exists ${\delta}\,>\,0$ such that $0\,\,{\leq}\,\,U(f;{\cal P}) - L(f;{\cal P})\,<\,{\varepsilon}$ for any partition
+    ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$ for which $||{\cal P}||\,<\,{\delta}$.
+    Note that, by definition of `integral', one has $L(;f{\cal P})\,\,{\leq}\,\,B\,\,{\leq}\,\,U(f;{\cal P})$.
+   Furthermore, if ${\zeta} \,=\, (z_{1}, z_{2},\,{\ldots}\,z_{n})$ is as in Statement~(iv), then it is clear that 
+        \begin{displaymath}
+        L(f;{\cal P})\,\,{\leq}\,\,\sum_{j=1}^{n} f(z_{j}){\Delta}x_{j}\,\,{\leq}\,\,U(f;{\cal P})
+        \end{displaymath}
+    It follows that
+        \begin{displaymath}
+        \left|B - \left(\sum_{j=1}^{n} f(z_{j}){\Delta}x_{j}\right)\right|
+    \,\,{\leq}\,
+        \,U(f;{\cal P})-L(f;{\cal P})\,<\,{\varepsilon},
+        \end{displaymath}
+    as required.
+
+        As for the converse, suppose that $f$ is {\em not} integrable on~$[a,b]$. Then ${\sup}\,L_{(f;\{a,b\})}\,<\,{\inf}\,U_{(f;\{a,b\})}$,
+    so there must exist Darboux numbers $B_{1}$ and $B_{2}$ for $f$ on $[a,b]$ such that ${\sup}\,L_{(f;\{a,b\})}\,<\,B_{1}\,<\,B_{2}\,<\,{\inf}\,U_{(f;\{a,b\})}$.
+    Let ${\varepsilon}_{0} \,=\, B_{2}-B_{1}\,>\,0$. It is a simple exercise to show, using the Approximation Property for infima and suprema,
+    that if ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$ is any partition of~$[a,b]$,
+    then there exist ordered lists ${\zeta} \,=\, (z_{1}, z_{2},\,{\ldots}\,z_{n})$ and ${\tau} \,=\, (t_{1}, t_{2},\,{\ldots}\,t_{n})$,
+    satisfying $x_{j-1}\,\,{\leq}\,\,z_{j}, t_{j}\,\,{\leq}\,\,x_{j}$ for each $j \,=\, 1,2,\,{\ldots}\,n$, such that
+        \begin{displaymath}
+        \sum_{j=1}^{n} f(z_{j})\,{\Delta}x_{j}\,\,{\leq}\,\,B_{1}\,<\,B_{2}\,\,{\leq}\,\,\sum_{j=1}^{n} f(t_{j})\,{\Delta}x_{j}.
+        \end{displaymath}
+    This implies that ${\displaystyle \left|\left(\sum_{j=1}^{n} f(t_{j})\,{\Delta}x_{j}\right) - \left(\sum_{j=1}^{n} f(z_{j})\,{\Delta}x_{j}\right)\right|\,\,{\geq}\,\,B_{2}-B_{1} \,=\, {\varepsilon}_{0}}$.
+    Since this holds for {\em every} partition of~$[a,b]$, it follows that Statement~(iv) cannot hold. %EXERCISES
+
+\V
+
+        {\bf Remarks} (1) The description of integrability given by Statement (iv) in the preceding theorem is Riemann's original formulation of the concept;
+    for that reason in {\ThisText} we say that a function which satisfies this statement is {\bf integrable in the sense of Riemann}\IndB{integrals}{integrable in the sense of Riemann};
+    or, more briefly, it is {\bf Riemann integrable}.
+
+\V
+
+        (2) It is easy to see that if Statement (iv) holds for $f$ on~$[a,b]$, then the number $B$ mentioned there equals ${\displaystyle \int_{a}^{b} f}$; in particular, $B$ is unique.
+    In particular, Darboux's approach yields exactly the same class of integrable functions as does Riemann's, and exactly the same value for the integral.
+    The usual custom in analysis texts -- including {\ThisText} -- is to refer to the final product by the name `Riemann integral'\IndB{Riemann, Bernhard (1826-1866)}{Riemann integral}, even when the tools used in its analysis are based on the approach of~Darboux.
+
+\V
+
+        (3) Statements (ii) and (iii) in the preceding theorem are analogs of the Cauchy Criterion for the convergence of sequences of numbers.
+    More precisely, they can be used to prove the existence of a certain number $B$ without requiring in advance a particular candidate for this number.
+
+\V
+
+        (4) There are several other approaches to integration which are more general than that of Riemann/Darboux and lead to different classes of `integrable' funnctions.
+    These approaches are associated with names such as Lebesgue, Stieltjes and Henstock, and are not studied here. %% BUT MAYBE ELSEWHERE IN THE TEXT?
+
+\VV
+
+%\\\\
+
+
+        \section{{\bf Basic Properties of the Riemann Integral}}
+        \label{SectH25}\IndB{ZZ Sections}{\Ref{SectH25} Basic Properties of the Riemann Integral}
+
+\V
+
+        This section considers some of the basic properties of the Riemann integral. The following lemma forms the connecting link with the preceding section.
+
+\V
+
+        \subsection{\small{{\bf Lemma}}}
+        \label{LemmaH25.10}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is a bounded function on $[a,b]$, and that $a\,<\,c\,<\,b$.
+    Then a number $B$ is a Darboux number for $f$ on $[a,b]$ if, and only if, there exist Darboux numbers $C$ and $D$ for $f$ on $[a,c]$ and $[c,b]$, 
+    repectively, such that $B \,=\, C+D$.
+
+\V
+
+        {\bf Proof}\, Suppose first that $C$ and $D$ are Darboux numbers for $f$ on $[a,c]$ and $[c,b]$, respectively.
+    Then by Part~(b) of Corollary~\Ref{CorH20.35A} one has
+        \begin{displaymath}
+        {\sup}\,L_{(f;{\cal Q})}\,\,{\leq}\,\,C\,\,{\leq}\,\,{\inf}\,U_{(f;{\cal Q})}
+        \end{displaymath}
+    and
+        \begin{displaymath}
+        {\sup}\,L_{(f;{\cal R})}\,\,{\leq}\,\,C\,\,{\leq}\,\,{\inf}\,U_{(f;{\cal R})},
+        \end{displaymath}
+    where ${\cal Q}$ and ${\cal R}$ are partitions of $[a,c]$ and $[c,b]$, respectively.
+    By Part~(e) of Lemma~\Ref{LemmaH20.33}, to determine the Darboux numbers for $f$ on $[a,b]$ it suffices to restrict attention to partitions ${\cal P}$ of $[a,b]$ such that $c{\in}{\cal P}$;
+    that is, to refinements ${\cal P}$ of the special partition ${\cal P}_{0} \,=\, \{a,c,b\}$. For such ${\cal P}$ one can write ${\cal P} \,=\, {\cal Q}\,{\cup}\,{\cal R}$,
+    where ${\cal Q} \,=\, {\cal P}\,{\cap}\,[a,c]$ is a partition of $[a,c]$ and ${\cal R} \,=\, {\cal P}\,{\cap}\,[c,b]$ is a partition of~$[c,b]$.
+    By Part~(c) of Lemma~\Ref{LemmaH20.33} one has
+        \begin{displaymath}
+        L(f;{\cal P}) \,=\, L(f;{\cal Q}) + L(f;{\cal R})\,\,{\leq}\,\,C+D
+    \,\,{\leq}\,\,
+        U(f;{\cal Q}) + U(f;{\cal R}) \,=\, U(f;{\cal P}).
+        \end{displaymath}
+    It follows that $B \,=\, C+D$ is a Darboux number for $f$ on $[a,b]$, as claimed.
+
+        As for the converse, let ${\cal Q}$ and ${\cal R}$ be partitions of $[a,c]$ and $[c,b]$, 
+    respectively,
+    and let ${\cal P} \,=\, {\cal Q}\,{\cup}\,{\cal R}$ be the corresponding partition of $[a,b]$ containing~$c$.
+    It is easy to see that if ${\cal P}_{0} \,=\, \{a,c,b\}$ as above, while ${\cal Q}_{0} \,=\, \{a,c\}$ and ${\cal R}_{0} \,=\, \{c,b\}$ are the corresponding trivial partitions of $[a,c]$ and $[c,b]$, 
+    respectively, then
+        \begin{displaymath}
+        {\sup}\,L_{(f;{\cal P}_{0})}
+         \,=\, 
+        {\sup}\,L_{(f;{\cal Q}_{0})}
+    +
+        {\sup}\,L_{(f;{\cal R}_{0})}.
+        \end{displaymath}
+    Likewise, one has
+        \begin{displaymath}
+        {\inf}\,U_{(f;{\cal P}_{0})}
+         \,=\, 
+        {\inf}\,U_{(f;{\cal Q}_{0})}
+    +
+        {\inf}\,U_{(f;{\cal R}_{0})}.
+        \end{displaymath}
+    In other words, if $B_{1}$ is the lowest Darboux number for $f$ on $[a,b]$, then one has
+    $B_{1} \,=\, C_{1} + D_{1}$, where $C_{1}$ and $D_{1}$ are the lowest Darboux numbers for $f$ on $[a,c]$ and $[c,b]$, respectively.
+    The analogous equation $B_{2} \,=\, C_{2} + D_{2}$ holds for the corresponding highest Darboux numbers.
+    Finally, note that if $B$ is any Darboux number for $f$ on $[a,b]$, then one can write
+        \begin{displaymath}
+        B \,=\, t\,B_{1} + (1-t)\,B_{2} \mbox{ for some number $t$ in $[0,1]$}.
+        \end{displaymath}
+    One then gets $B \,=\, C+D$ where
+        \begin{displaymath}
+        C \,=\, t\,C_{1} + (1-t)\,C_{2}
+    \mbox{ and }
+        D \,=\, t\,D_{1} + (1-t)\,D_{2}
+        \end{displaymath}
+    are the desired Darboux numbers of $f$ on $[a,c]$ and $[c,b]$, respectively.
+
+\VV
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH25.20}
+
+\V
+
+\hspace*{\parindent}(a) Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ can be expressed in the form $f \,=\, A{\cdot}g$ for some constant~$A$, where $g:[a,b] \,{\rightarrow}\, {\RR}$ is integrable on~$[a,b]$.
+    Then $f$ is also integrable on~$[a,b]$, and one has
+        \begin{displaymath}
+        \int_{a}^{b} f \,=\, A{\cdot}\int_{a}^{b} g.
+        \end{displaymath}
+\V
+
+        (b) Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ can be expressed in the form $f \,=\, f_{1} + f_{2}$,
+    where the functions $f_{1}:[a,b] \,{\rightarrow}\, {\RR}$ and $f_{2}:[a,b] \,{\rightarrow}\, {\RR}$ are both integrable on $[a,b]$. Then the function $f$ is also integrable on~$[a,b]$, and one has
+        \begin{displaymath}
+        \int_{a}^{b} f \,=\, \left(\int_{a}^{b} f_{1}\right) + \left(\int_{a}^{b} f_{2}\right).
+        \end{displaymath}
+    More generally, suppose that $f$ can be expressed on $[a,b]$ in the form
+        \begin{displaymath}
+        f \,=\, A_{1}{\cdot}g_{1} + \,{\ldots}\, + A_{n}{\cdot}g_{n},
+        \end{displaymath}
+    where $A_{1}$, \,{\ldots}\,$A_{n}$ are real constants and $g_{1}$,\,{\ldots}\,$g_{n}$ are integrable on~$[a,b]$.
+    Then $f$ is also integrable on $[a,b]$, and one has
+        \begin{displaymath}
+        \int_{a}^{b} f = A_{1}\,\int_{a}^{b} g_{1} + \,{\ldots}\, + \int_{a}^{b} g_{n}.
+        \end{displaymath}
+
+\V
+
+        (c) Let $c$ be any number such that $a\,<\,c\,<\,b$. Then $f:[a,b] \,{\rightarrow}\, {\RR}$ is integrable on $[a,b]$ if, and only if, it is integrable on each of the intervals $[a,c]$ and~$[c,b]$.
+    Furthermore, if this happens, then one has
+
+        \begin{displaymath}
+        \int_{a}^{b} f \,=\, \left(\int_{a}^{c} f\right) + \left(\int_{c}^{b} f\right).
+        \end{displaymath}
+
+\V
+
+        (d) Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ satisfies the condition that
+    $f(x) \,=\, h(x)$ for all but finitely many values of $x$ in~$[a,b]$,
+    where $h:[a,b] \,{\rightarrow}\, {\RR}$ is integrable on~$[a,b]$. Then $f$ is also integrable on $[a,b]$, and one has ${\displaystyle \int_{a}^{b} f \,=\, \int_{a}^{b} h}$.
+
+\V
+
+
+        {\bf Proof}\, (a) The simple proof breaks into the separate cases $A\,>\,0$, $A\,<\,0$ and $A \,=\, 0$, and is left as an exercise. %EXERCISE
+
+\V
+
+        (b) For convenience, set ${\displaystyle B_{1} \,=\, \int_{a}^{b} f_{1}}$ and ${\displaystyle B_{2} \,=\, \int_{a}^{b} f_{2}}$.
+    Then by the definition of `integral', the numbers $B_{1}$ and $B_{2}$ are the only ones which satisfy
+        \begin{displaymath}
+        L(f_{1};{\cal P})\,\,{\leq}\,\,B_{1}\,\,{\leq}\,\,U(f_{1};{\cal P})
+        \mbox{ and }
+        L(f_{2};{\cal Q})\,\,{\leq}\,\,B_{2}\,\,{\leq}\,\,U(f_{2};{\cal Q})
+        \mbox{ for all partitions ${\cal P}$ and ${\cal Q}$ of $[a,b]$}.
+        \end{displaymath}
+    By summing these inequalities one gets, for ${\cal R} \,=\, {\cal P}\,{\cup}\,{\cal Q}$,
+    that if $B$ is any Darboux number for $f$, then
+        \begin{displaymath}
+        L(f_{1};{\cal P}) + L(f_{2};{\cal Q})\,\,{\leq}\,\,L(f_{1};{\cal R}) + L(f_{2};{\cal R}) \,=\, L(f_{3};{\cal R})
+    \,\,{\leq}\,\,
+        \end{displaymath}
+        \begin{displaymath}
+        B\,\,{\leq}\,\,
+        U(f;{\cal R})\,\,{\leq}\,\,U(f_{1};{\cal R}) + U(f_{2};{\cal R})
+        \,\,{\leq}\,\,
+        U(f_{1}; {\cal P}) + U(f_{2};{\cal Q}).
+        \end{displaymath}
+    In particular, one has
+        \begin{displaymath}
+        L(f_{1};{\cal P}) + L(f_{2};{\cal Q})\,\,{\leq}\,\,B \mbox{ for all partitions ${\cal P}$ and ${\cal Q}$ of $[a,b]$}.
+        \end{displaymath}
+    Keeping ${\cal P}$ fixed for the moment, take the supremum over ${\cal Q}$ and use the fact that
+    $B_{2}$ is the supremum of the numbers of the form $L(f_{2};{\cal Q})$ to get
+        \begin{displaymath}
+        L(f_{1};{\cal P}) + B_{2}\,\,{\leq}\,\,B \mbox{ for every partition ${\cal P}$ of $[a,b]$};
+        \end{displaymath}
+    that is,
+        \begin{displaymath}
+        L(f_{1};{\cal P})\,\,{\leq}\,\,B - B_{2} \mbox{ for every partition ${\cal P}$ of $[a,b]$}.
+        \end{displaymath}
+    In a similar manner one gets
+        \begin{displaymath}
+        B-B_{2}\,\,{\leq}\,\, U(f_{1};{\cal P})\mbox{ for every partition ${\cal P}$ of $[a,b]$}.
+        \end{displaymath}
+    These facts, when combined with the fact that $B_{1}$ is the unique Darboux number for $f_{1}$ on $[a,b]$, implies that $B-B_{2} \,=\, B_{1}$.
+    In other words, there is precisely one Darboux number for $f \,=\, f_{1}+f_{2}$ on $[a,b]$, namely $B \,=\, B_{1}+B_{2}$. The desired result follows.
+
+        The corresponding statement about the function $f \,=\, A_{1}{\cdot}g_{1} + \,{\ldots}\,A_{n}{\cdot}g_{n}$ follows easily using mathematical induction on~$n$.
+
+\V
+
+        (c) This follows easily from the preceding lemma. % EXERCISE?
+
+\V
+
+        (d) The simple proof is left as an exercise. %EXERCISE \Q
+
+\VV
+
+        The next result also uses the integrability of given functions to prove the integrability of a function $f:[a,b] \,{\rightarrow}\, {\RR}$ formed from them.
+    In contrast with the preceding theorem, however, it does not provide the precise value of ${\displaystyle \int_{a}^{b} f}$ from the values of the other integrals.
+
+\VV%\\\\
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH25.30}
+
+\V
+
+\hspace*{\parindent}(a) Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ can  be expressed as a product $f \,=\, f_{1}{\cdot}f_{2}$,
+    where $f_{1}:[a,b] \,{\rightarrow}\, {\RR}$ and $f_{2};[a,] \,{\rightarrow}\, {\RR}$ are integrable on~$[a,b]$. Then $f$ is also integrable on~$[a,b]$.
+
+        More generally, if $f$ can  be expressed as the product $f \,=\, f_{1}{\cdot}f_{2}{\cdot}\,{\ldots}\,{\cdot}f_{k}$
+    of finitely many functions which are integrable on~$[a,b]$, then $f$ is also integrable on~$[a,b]$.
+
+\V
+
+        (b) Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ can be expressed as a quotient $f \,=\, f_{1}/f_{2}$,
+    where $f_{1}:[a,b] \,{\rightarrow}\, {\RR}$ and $f_{2}:[a,b] \,{\rightarrow}\, {\RR}$ are integrable on $[a,b]$.
+    Suppose further that there exists a constant $c\,>\,0$ such that $|f_{2}(x)|\,\,{\geq}\,\,c$ for all $x$ in~$[a,b]$. Then $f$ is also integrable on~$[a,b]$.
+
+\V
+
+        (c) Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ can be expressed in the form $f \,=\, |g|$ for some function $g:[a,b] \,{\rightarrow}\, {\RR}$ such that $g$ is integrable on~$[a,b]$.
+    Then $f$ is also integrable on~$[a,b]$.
+
+\V
+
+
+        {\bf Proof}\, We shall give direct proofs of these results later, based on an important theoretical characterization of integrability to be developed in the next section.
+    Direct simple proofs are also outlined in the exercises at the end of this chapter. \Q %% EXERCISES      
+
+\V
+
+        {\bf Remarks} (1) The usual phrasing of Part~(a) of the preceding theorem is this:
+
+\VA
+
+        \h `The product of finitely many functions that are integrable on $[a,b]$ is also integrable on~$[a,]$.'
+
+\VA
+
+\noindent Similar comments about the usual phrasings of Part~(b) of this theorem and Parts~(a) and~(b) of Theorem~\Ref{ThmH25.20}.
+
+        In real-life mathematics, however, one does not normally start with a pair of functions $f_{1}$ and $f_{2}$ and then form their product $f \,=\, f_{1}{\cdot}f_{2}$ (or their sum or quotient).
+    Instead, one starts with a function $f$ of interest and seeks out a way to express it in terms of simpler functions using operations such as addition,
+    multiplication, division and so on. The phrasings of such results in {\ThisText} attempt to reflect that more realistic usage.
+
+\V
+
+        (2) The converses of various parts of Theorems~\Ref{ThmH25.20} and~\Ref{ThemH25.30} are not true.
+    For example, if $f:[a,b] \,{\rightarrow}\, {\RR}$ is already known to be integrable on $[a,b]$, then knowing that $f \,=\, f_{1}+f_{2}$
+    or $f \,=\, f_{1}{\cdot}f_{2}$ or $f \,=\, f_{1}/f_{2}$ on $[a,b]$ does {\em not} imply that $f_{1}$ and $f_{2}$ are also integrable on~$[a,b]$.
+    Likewise, knowing that $|f|$ is integrable on $[a,b]$ does not imply that $f$ is integrable on~$[a,b]$.
+    It is a simple exercise to find appropriate counterexamples. %% EXERCISES
+
+\VV
+
+        There are simple inequalities associated with the Riemann integral which are important for both practical and theoretical discussions.
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH25.40}
+
+\V
+
+        Suppose that $f$ and $g$ are Riemann integrable on the interval $[a,b]$, and that $f(x)\,\,{\leq}\,\,g(x)$ for all $x$ in~$[a,b]$. Then
+        \begin{displaymath}
+        \int_{a}^{b} f\,\,{\leq}\,\,\int_{a}^{b} g.
+        \end{displaymath}
+    Furthermore, if in addition both $f$ and $g$ are continuous on~$[a,b]$, then one gets the case of equality in the preceding inequality if, and only if, $f(x) \,=\, g(x)$ for all $x$ in~$[a,b]$.
+
+\V
+
+        {\bf Proof}\,Define $h:[a,b] \,{\rightarrow}\, {\RR}$ by the rule $h(x) \,=\, g(x)-f(x)$ for all $x$ in~$[a,b]$.
+    By Parts~(a) and~(b) of Theorem~\Ref{ThmH25.20} it follows that $h$ is also integrable on $[a,b]$ and that ${\displaystyle \int_{a}^{b} h \,=\, \int_{a}^{b} g - \int_{a}^{b} f}$.
+    It is clear from the `inequality' hypothesis on $f$ and $g$  that $h(x)\,\,{\geq}\,\,0$ for every $x$ in~$[a,b]$, which implies that $L(h;{\cal P})\,\,{\geq}\,\,0$ for every partition ${\cal P}$ of~$[a,b]$.
+    Since ${\displaystyle \int_{a}^{b}} h$ is the supremum of Darboux sums of the form $L(h'{\cal P})$, it follows that $\int_{a}^{b} h\,\,{\geq}\,\,0$,
+    which in turn implies that ${\displaystyle \int_{a}^{b} g\,>\,\int_{a}^{b}f}$, as required. The statement about `equality' when $f$ and $g$ are continuous on~$[a,b]$ is left as an exercise. \Q %%EXERCISE
+
+
+
+%----------------B
+%\StartSkip{
+
+\V
+
+
+\V
+
+        \section{More on Antiderivatives and the Riemann Integral}
+                \label{SectH40}\IndB{ZZ Sections}{\Ref{SectH40} More on Antiderivatives and the Riemann Integral}
+
+\V
+
+        There are important relations between the Riemann integral and the concept of antiderivatives. This was illustrated in Example~\Ref{ExampH20.30},
+    where it was it was pointed out that if $f:[a,b] \,{\rightarrow}\, {\RR}$ is continuous on~$[a,b]$, and $F$ is any antiderivative of $f$ on~$[a,]$,
+    then $f$ is Riemann integrable on~$[a,b]$ and ${\displaystyle \int_{a}^{b} f \,=\, F(b)-F(a)}$. In this section we explore these relations more completely.
+
+        The first step is to introduce a slight extension of the integral notation. More precisely, up to now the expression ${\displaystyle \int_{a}^{b} f}$ assumes that $[a,b]$ is an interval in~${\RR}$;
+    in particular, it requires that the number at the bottom of the integral sign be strictly smaller than the one at the top.
+    However, even in elementary calculus one finds it useful to allow $a \,=\, b$ or $a\,>\,b$ in such expressions.
+    The motivation for the standard choice for this extension is the observation that the right side of the preceding equation {\em does} make sense independent of the relation between $a$ and~$b$.
+    More precisely, one has
+        \begin{displaymath}
+        F(a) - F(b) \,=\, -(F(b) - F(a)) \mbox{ and } F(c) - F(c)\,=\,0 \mbox{ for every number $c$ in~$[a,b]$}.
+        \end{displaymath}
+    Thus it makes sense to extend the meaning of the integral as follows: If $f$ is integrable on an interval $[a,b]$, then
+        \begin{displaymath}
+        \int_{b}^{a} f \,=\, -\left(\int_{a}^{b} f\right) \mbox{ and } \int{c}^{c} f\,=\,0 \mbox{ for every $c$ in $[a,b]$}.
+        \end{displaymath}
+    In {\ThisText} we refer to this as the {\bf extended integral notation}IndB{integrals}{extended integral notation}.
+
+\V
+
+        Using this extended notation, one can reformulate Part~(c) of Theorem~\Ref{ThmH25.20} as follows:
+
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH40.15}
+
+        Suppose that $f:I \,{\rightarrow}\, {\RR}$ is Riemann integrable on a closed bounded interval~$I$.
+    Then for each triple of numbers $a$, $b$ and $c$ in the interval $I$, regardless of the relative order of these numbers, one has
+        \begin{displaymath}
+        \int_{a}^{b} f \,=\, \int_{a}^{c} f + \int_{c}^{b};
+    \mbox{ equivalently, }
+        \int_{a}^{c} f +  + \int_{b}^{a} f \,=\, 0.
+        \end{displaymath}
+
+        The simple proof is left as an exercise. % EXERCISE
+
+\VV
+
+        {\bf Example} Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is continuous, and that $u,v:J \,{\rightarrow}\, [a,b]$ are differentiable functions on an open interval $J$ with values in~$[a,b]$.
+    Define $G:J \,{\rightarrow}\, {\RR}$ by the rule
+        \begin{displaymath}
+        G(t) \,=\, \int_{u(t)}^{v(t)} f \mbox{ for all $t$ in $J$};
+        \end{displaymath}
+    in light of the extended integral notation, this makes sense no matter the relative order of the numbers $u(t)$ and~$v(t)$.
+     It is easy to see that $G$ is differentiable on $J$, and
+        \begin{displaymath}
+        G'(t) \,=\, f(v(t)){\cdot}v'(t) - f(u(t)){\cdot}u'(t) \mbox{ for all $t$ in $J$}.
+        \end{displaymath}
+    Indeed, the continuity hypothesis implies that $f$ has an antiderivative $F$ on $[a,b]$, and the Cauchy Fundamental Theorem of Calculus implies that
+        \begin{displaymath}
+        G(t) \,=\, F(v(t)) - F(u(t)).
+        \end{displaymath}
+    The desired result follows from the Chain Rule for Derivatives.
+
+
+\VV
+
+        The proof of Cauchy's Antiderivative Theorem given in the preceding chapter differs from Cauchy's original proof.
+    The next result carries out his approach in a slightly more general manner.
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}%\\\\
+        \label{ThmH40.20}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is Riemann integrable on an interval~$[a,b]$.
+    Let $c$ be any number in $[a,b]$, and define a new function $F:[a,b] \,{\rightarrow}\, {\RR}$ by the rule
+        \begin{displaymath}
+        F(x) \,=\, \int_{c}^{x} f \mbox{ for each $x$ in $[a,b]$};
+        \end{displaymath}
+    note that once again the extended integral notation is in use. Then:
+
+\V
+
+        (a) The function $F$ is continuous on $[a,b]$.
+
+\V
+
+        (b) If $x_{0}$ is a point of $[a,b]$ at which $f$ is continuous, then $F$ is differentiable at $x_{0}$. and $F'(x_{0}) \,=\, f(x_{0})$.
+    (If $x_{0}$ is one of the endpoints $a$ or $b$, then the appropriate one-sided notions of continuity and differentiability are understood to apply.)
+
+
+\V
+
+        {\bf Proof}%\\\
+
+\V
+
+        Note that if $x_{1}$ and $x_{2}$ are in $[a,b]$ with $x_{1}\,\,{\leq}\,\,x_{2}$, then one has
+        \begin{displaymath}
+        F(x_{2}) - F(x_{1}) \,=\, \int_{a}^{x_{2}} f - \int_{a}^{x_{1}} f \,=\, \int_{a}^{x_{2}} + \int_{x_{1}}^{a} f
+    \,=\, \int_{x_{1}}^{x_{2}} f;
+        \end{displaymath}
+    see Remark~\Ref{RemrkH30.35}.
+    If $M$ is an upper bound for $|f|$ on $[a,b]$, it then follows that
+        \begin{displaymath}
+        |F(x_{2}) - F(x_{1})|\,\,{\leq}\,\,M\left({\alpha}(x_{2})-{\alpha}(x_{1})\right).
+        \end{displaymath}
+    Parts (a) and (b) now follow easily.
+
+     To get a more precise estimate, suppose that $a\,<\,x_{1}\,<\,x_{2}\,<\,b$, and let
+    $m(x_{2}) \,=\, {\inf}\,\{f(x): x_{1}\,\,{\leq}\,\,x\,\,{\leq}\,\,x_{2}\}$ 
+    and
+    $M(x_{2}) \,=\, {\sup}\,\{f(x): x_{1}\,\,{\leq}\,\,x\,\,{\leq}\,\,x_{2}\}$.
+    Then one has
+        \begin{displaymath}
+        m(x_{2})({\alpha}(x_{2}) - {\alpha}(x_{1}))\,\,{\leq}\,\,F(x_{2}) - F(x_{1})\,\,{\leq}\,\,M(x_{2})({\alpha}(x_{2})-{\alpha}(x_{1})).
+        \end{displaymath}
+    Divide all the terms in this inequality by the positive number $x_{2}-x_{1}$ to get
+        \begin{displaymath}
+        m(x_{2})\left(\frac{{\alpha}(x_{2}) - {\alpha}(x_{1})}{x_{2}-x_{1}}\right)
+    \,\,{\leq}\,\,
+        \frac{F(x_{2}) - F(x_{1})}{x_{2} - x_{1}} \,\,{\leq}\,\,
+        M(x_{2})\left(\frac{{\alpha}(x_{2}) - {\alpha}(x_{1})}{x_{2} - x_{1}}\right)
+        \end{displaymath}
+    The hypothesis that $f$ is continuous at $x_{1}$, which implies that $\lim_{x_{2} \,{\rightarrow}\, x_{1}} m(x_{2}) \,=\,
+    \lim_{x_{2} \,{\rightarrow}\, x_{1}} M(x_{2}) \,=\, f(x_{1})$, combined with the hypothesis that ${\alpha}$ is differentiable at $x_{1}$,
+    implies (by the `Squeeze Theorem') that
+        \begin{displaymath}
+        \lim_{x_{2}{\searrow}x_{1}} \frac{F(x_{2}) - F(x_{1})}{x_{2}-x_{1}} \,=\, f(x_{1}){\alpha}'(x_{1}).
+        \end{displaymath}
+    A similar argument shows that the left-hand derivative of $F$ at $x_{1}$ exists and equals $f(x_{1}){\alpha}'(x_{1})$.
+    The desired result follows.
+
+ 
+
+\V
+
+         \subsection{\small{{\bf Corollary}}}
+        \label{CorH40.30}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is Riemann integrable on $[a,b]$.
+    Let $F:[a,b] \,{\rightarrow}\, {\RR}$ be defined by $F(x) \,=\, \int_{a}^{x} f(t)\,dt$ for each $x$ in $[a,b]$.
+    Then $F$ is continuous on $[a,b]$, and if $f$ is continuous at $x$, then $F'(x)$ exists and one has $F'(x) \,=\, f(x)$.
+
+\V
+
+        {\bf Proof} This follows immediately from the previous theorem in the case ${\alpha}(x) \,=\, x$ for all~$x$.
+
+\V
+
+        \underline{Remark} When $f$ is continuous on $[a,b]$, the preceding corollary reduces essentially to Theorem~\Ref{ThmE45.125B},
+    `Cauchy's Antiderivative Theorem'.
+
+\V
+\V
+
+        In the preceding one uses the definite integral to construct an antiderivative of a continuous function.
+    The next result reverses the relationship between antiderivatives and integrals.
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH40.40}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is Riemann integrable on $[a,b]$, and suppose that there exists continuous $F:[a,b] \,{\rightarrow}\, {\RR}$ such that $F'(x) \,=\, f(x)$ for all $x$ in $[a,b]$.
+    Then ${\displaystyle \int_{a}^{b} f(x)\,dx \,=\, F(b) - F(a)}$.
+
+\V
+
+        {\bf Proof} Let ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{k} \,=\, b\}$ be a partition of $[a,b]$,
+    and consider the telescoping sum
+        \begin{displaymath}
+        F(b) - F(a) \,=\, \sum_{j=1}^{k} \left(F(x_{j}) - F(x_{j-1})\right).
+        \end{displaymath}
+    By the Mean-Value Theorem, for each $j$ there exists $t_{j}$ in $(x_{j-1},x_{j})$ such that
+        \begin{displaymath}
+        F(x_{j}) - F(x_{j-1}) \,=\, F'(t_{j}){\Delta}x_{j} \,=\, f(t_{j}){\Delta}x_{j}.
+        \end{displaymath}
+     It follows that $F(b) - F(a)$ equals the Riemann sum $\sum_{j=1}^{k} f(t_{j}){\Delta}x_{j}$, and thus one has
+        \begin{displaymath}
+        L({\cal P},f)\,\,{\leq}\,\,F(b) - F(a)\,\,{\leq}\,\,U({\cal P},f).
+        \end{displaymath}
+    However, by hypothesis $f$ is Riemann integrable on $[a,b]$, so there exists only one number $A$ such that
+    $L({\cal P},f)\,\,{\leq}\,\,A\,\,{\leq}\,\,U({\cal P},f)$, namely $A \,=\, \int_{a}^{b} f(x)\,dx$. The desired result now follows.
+
+\V
+\V
+
+        {\bf Remark} Some authors refer to Theorem~\Ref{ThmH40.20} (or Corollary~\Ref{CorH40.30}) as the `First Fundamental Theorem of Calculus',
+    and to Theorem~\Ref{ThmH40.40} as the `Second Fundamental Theorem of Calculus'.
+    Other authors number these results in the opposite way. And yet other authors combine the two as individual parts of a single `Fundamental Theorem'.
+    In {\ThisText} we shall refer to each as `The Fundamental Theorem of Calculus',
+    and let the context make it clear to the reader which version is being used, or simply give the number of the theorem.
+
+\V
+
+        \subsection{\small{{\bf Corollary}}}
+        \label{CorH40.50}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is continuous and ${\alpha}:[a,b] \,{\rightarrow}\, {\RR}$ is monotonic up.
+    Assume further that ${\alpha}'$ is defined and Riemann integrable on $[a,b]$.
+    Then
+        \begin{equation}
+        \label{EqnH.30}
+        \int_{a}^{b} f\,d{\alpha} \,=\, \int_{a}^{b} f(x){\alpha}'(x)\,dx.
+        \end{equation}
+
+
+\V
+
+        {\bf Proof} Since, by hypothesis, $f$ is continuous on $[a,b]$ and ${\alpha}'{\in}{\cal R}_{[a,b]}$,
+    it follows from Theorem~\Ref{ThmH20.120} that $f{\in}{\cal R}_{[a,b]}({\alpha})$,
+    and from Theorem~\Ref{ThmH30.20} that $f{\cdot}{\alpha}'{\in}{\cal R}_{[a,b]}$.
+    Furthermore, it follows from Theorem~\Ref{ThmH40.20} that the function $F:[a,b] \,{\rightarrow}\, {\RR}$ given by the rule
+    ${\displaystyle F(x) \,=\, \int_{a}^{x} f\,d{\alpha}}$ is continuous on $[a,b]$ and differentiable on $(a,b)$, and that $F'(x) \,=\, f(x){\alpha}'(x)$.
+    Then Theorem~\Ref{ThmH40.40} allows one to conclude that $F(b) - F(a) \,=\, {\displaystyle \int_{a}^{b} f(x){\alpha}'(x)\,dx}$.
+    The desired result now follows by noting that ${\displaystyle F(b)-F(a) \,=\, \int_{a}^{b} f\,d{\alpha}}$.
+    
+\V
+
+        {\bf Remark} With a little more work one can prove the following more general result.
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH40.60}
+
+\V
+
+                Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is in ${\cal R}_{[a,b]}({\alpha})$ and ${\alpha}:[a,b] \,{\rightarrow}\, {\RR}$ is monotonic up.
+    Assume further that ${\alpha}'$ is defined and Riemann integrable on $[a,b]$. Then $f{\alpha}'$ is Riemann integrable on $[a,b]$, and Equation~\Ref{EqnH.30} holds.
+
+\V
+
+        See Page~131 of Rudin's `Principles of Mathematical Analysis' (3rd edition) for a proof.
+
+\V
+\V
+
+    
+        \subsection{\small{{\bf Remark}}}
+        \label{RemrkH40.70}
+
+\V
+
+        The left side of Equation~\Ref{EqnH.30} involves the Riemann-Stieltjes integral ${\displaystyle \int_{a}^{b}f\,d{\alpha}}$,
+    in which the integrator ${\alpha}$ is assumed to be monotonic up on $[a,b]$. This restriction on ${\alpha}$ was imposed by the initial motivation of the integral in terms of weighted averages;
+    but it also facilitated the technical development of the theory. For instance,
+    the Darboux approach makes repeated use of the fact that ${\Delta}{\alpha}_{j}\,\,{\geq}\,\,0$.
+
+        The restriction of ${\alpha}$ to be monotonic up implies that the factor ${\alpha}'$,
+    which appears in the Riemann integral ${\displaystyle \int_{a}^{b} f(x){\alpha}'(x)\,dx}$ on the right side of Equation~\Ref{EqnH.30},
+    must be nonnegative. However, the integral itself makes perfectly good sense even if ${\alpha}'$ changes sign in the interval $[a,b]$.
+    This suggests that it might be useful to extend the concept of the Riemann-Stieltjes integral to allow
+    integrators ${\alpha}$ which are not of fixed monotonicity throughout the interval $[a,b]$.
+    Such extensions have been developed -- indeed, it appears that even Stieltjes allowed such extentions.
+    An excellent source for such an extended treatement of the Riemann-Stieltjes integral can be found in Apostol's `Mathematical Analysis (2nd edition)'.
+    Instead of defining integrabilty in terms of Riemann's Condition, which uses the hypothesis that ${\Delta}{\alpha}_{j}\,\,{\geq}\,\,0$,
+    Apostol uses the Riemann sum approach; see Theorem~\Ref{ThmH20.100}.
+    This approach allows quite general integrators. However, one soon restricts to the case in which ${\alpha}$ is of bounded variation on $[a,b]$,
+    since in this case the basic theorem, that every continuous function on $[a,b]$ is in ${\cal R}_{[a,b]}({\alpha})$, remains valid.
+
+\V
+\V
+
+
+                \section{{\bf Miscellaneous Results on the Riemann Integral}}
+                \label{SectH50}\IndB{ZZ Sections}{\Ref{SectH50} Miscellaneous Results on the Riemann Integral}
+
+\V
+
+        There are numerous results for the Riemann integral which are worth singling out.
+
+\V
+\V
+
+        \subsection{\small{{\bf Theorem} (Integration-by-Parts)}}
+        \label{ThmH50.20}
+
+\V
+
+        Suppose that $f$ and $g$ are differentiable on $[a,b]$ and that their derivatives are Riemann integrable on $[a,b]$.
+    Then $fg'$ and $f'g$ are both integrable on $[a,b]$, and one has
+        \begin{equation}
+        \label{EqnH.40}
+        \int_{a}^{b} f(x)g'(x)\,dx \,=\, f(b)g(b) - f(a)g(a) - \int_{a}^{b} f'(x)g(x)\,dx.
+        \end{equation}
+
+\V
+
+        {\bf Proof} Since $f$ and $g$ are differentiable on $[a,b]$, they are certainly continuous, hence Riemann integrable, on $[a,b]$;
+    and since, by hypothesis, $f'$  and $g'$ are Riemann integrable on $[a,b]$, it follows that the products $f'g$ and $fg'$ are also in ${\cal R}_{[a,b]}$, and thus so is their sum $f'g+fg'$.
+    However, by the Product Rule for Derivatives, this last function is the derivative on $[a,b]$ of the function $H \,=\, fg$.
+    Now Theorem~\Ref{ThmH40.40} implies that
+        \begin{displaymath}
+        H(b) - H(a) \,=\, \int_{a}^{b} f'(x)g(x)\,dx + \int_{a}^{b} f(x)g'(x)\,dx
+        \end{displaymath}
+    Transpose the term ${\displaystyle \int_{a}^{b} f'(x)g(x)\,dx}$ in this last equation, and note that $H(b)-H(a) \,=\, f(b)g(b) - f(a)g(a)$, to get the desired Equation~\Ref{EqnH.40}.
+
+%Other topics
+
+\V
+\V
+
+        \subsection{\small{{\bf Theorem} (First Mean-Value Theorem for Riemann Integrals)}}
+        \label{ThmH50.30}
+
+\V
+
+        (a) Suppose that $f{\in}{\cal R}_{[a,b]}$, and let $m^{{\ast}} \,=\, {\inf}\,\{f(x): x{\in}[a,b]\}$ and $M^{{\ast}} \,=\, {\sup}\,\{f(x): x{\in}[a,b]\}$.
+    Suppose that $g:[a,b] \,{\rightarrow}\, {\RR}$ is a nonnegative Riemann integrable function on $[a,b]$.
+    Then there exists a number ${\mu}$, with $m^{{\ast}}\,\,{\leq}\,\,{\mu}\,\,{\leq}\,\,M^{{\ast}}$,
+    such that
+        \begin{displaymath}
+        \int_{a}^{b} f(x)g(x)\,dx \,=\, {\mu}\int_{a}^{b} g(x)\,dx
+        \end{displaymath}
+    If, in addition, $f$ is continuous on $[a,b]$, then ${\mu}$ can be chosen to be of the form $f(c)$ for some $c$ in $[a,b]$.
+
+\V
+
+
+        (b) If the function $f$ in Part~(a) is continuous on $[a,b]$, and if $g(x) \,=\, 1$ for all $x$ in $[a,b]$, 
+    then one has ${\displaystyle \frac{1}{b-a}\int_{a}^{b} f(x)\,dx \,=\, f(c)}$ for some number $c$ in $[a,b]$.
+
+\V
+
+        {\bf Proof} (a) Because $g$ is nonnegative, it is clear that $m^{{\ast}}g(x)\,\,{\leq}\,\,f(x)g(x)\,\,{\leq}\,\,M^{{\ast}}g(x)$ for all $x$ in $[a,b]$.
+    Then from Part~(c) of Theorem~\Ref{ThmH30.20} one sees that
+        \begin{displaymath}
+        m^{{\ast}}\int_{a}^{b} g(x)\,dx\,\,{\leq}\,\,\int_{a}^{b} f(x)g(x)\,dx\,\,{\leq}\,\, M^{{\ast}}\int_{a}^{b} g(x)\,dx.
+        \end{displaymath}
+    If the integral ${\displaystyle \int_{a}^{b} g(x)\,dx}$, which appears on either end of this string of inequalities, equals~$0$, then clearly one also has ${\displaystyle \int_{a}^{b} f(x)g(x)\,dx \,=\, 0}$, so ${\mu}$ can be any number such that $m^{{\ast}}\,\,{\leq}\,\,{\mu}\,\,{\leq}\,\,M^{{\ast}}$.
+    If, instead, that integral is {\em not} zero, then choose ${\mu}$ by the rule
+        \begin{displaymath}
+        {\mu} \,=\, \frac{{\displaystyle \int_{a}^{b} f(x)g(x)\,dx}}{{\displaystyle \int_{a}^{b} g(x)\,dx}}.
+        \end{displaymath}
+    It is clear that $m^{{\ast}}\,\,{\leq}\,\,{\mu}\,\,{\leq}\,\,M^{{\ast}}$.
+
+        If $f$ is also continuous on $[a,b]$, then the Intermediate-Value Theorem for Continuous Functions implies that ${\mu} \,=\, f(c)$ for some $c$ in $[a,b]$.
+
+\V
+
+        (b) This follows easily from Part~(a).
+
+\V
+\V
+
+
+        \subsection{\small{{\bf Theorem} (Second Mean-Value Theorem for Riemann Integrals)}}
+        \label{ThmH50.40}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is a monotonic-up function that is differentiable on $[a,b]$ and for which $f'{\in}{\cal R}_{[a,b]}$, and that $g$ is continuous on $[a,b]$.
+    Then there exists $c$ in $[a,b]$ such that
+        \begin{displaymath}
+        \int_{a}^{b} f(x)g(x)\,dx \,=\, f(a)\int_{a}^{c} g(x)\,dx + f(b)\int_{c}^{b} g(x)\,dx
+        \end{displaymath}
+
+\V
+
+        {\bf Proof} Define $G:[a,b] \,{\rightarrow}\, {\RR}$ by the rule $G(x) \,=\, {\displaystyle \int_{a}^{x} g(t)\,dt}$.
+    Note that $G$ is differentiable because of the hypothesis that $g$ is continuous, and of course $G' \,=\, g$ is Riemann integrable on $[a,b]$.
+    Then Theorem~\Ref{ThmH50.20}, `Integration-by-Parts', can be apllied to the functions $f$ and $G$ to yield
+        \begin{displaymath}
+        \int_{a}^{b} f(x)g(x)\,dx \,=\, \int_{a}^{b} f(x)G'(x)\,dx \,=\, 
+        \left(f(b)G(b) - f(a)G(a)\right) - \int_{a}^{b} G(x)f'(x)\,dx \h ({\ast})
+        \end{displaymath}
+    Now apply Part~(a) of the preceding theorem, with $G$ and $f'$ here playing the roles of $f$ and $g$, respectively, in that earlier theorem.
+    Then, since $G$ is certainly continuous on $[a,b]$, one gets
+        \begin{displaymath}
+        \int_{a}^{b} G(x)f'(x)\,dx \,=\, G(c)\int_{a}^{b} f'(x)\,dx \,=\, G(c)(f(b)-f(a)) \,=\, \left(\int_{a}^{c} g(x)\,dx\right)(f(b)-f(a))
+        \end{displaymath}
+    for some $c$ in $[a,b]$. Combine this last result with Equation~$({\ast})$ to get
+        \begin{displaymath}
+        \int_{a}^{b} f(x)g(x)\,dx\,=\, 
+        \left(f(b)G(b) - f(a)G(a)\right) - G(c)(f(b)-f(a)) \h ({\ast}{\ast})
+        \end{displaymath}
+    By the definition of $G$ one has $G(a) \,=\, 0$, $G(b) \,=\, {\displaystyle \int_{a}^{b} g(x)\,dx}$, and ${\displaystyle G(c) \,=\, \int_{a}^{c} g(x)\,dx}$.
+    After doing the obvious simplification, including noting that
+        \begin{displaymath}
+         f(b)G(b) - f(b)G(b) \,=\, f(b)\left(\int_{a}^{b} g(x)\,dx - \int_{a}^{c} g(x)\,dx\right) \,=\, f(b)\int_{c}^{b} g(x)\,dx,
+        \end{displaymath}
+    the desired result follows.
+
+\V
+\V
+
+        \subsection{\small{{\bf Theorem} (Change-of-Variables Theorem for Riemann Integrals)}}
+        \label{ThmH50.50}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is continuous on an interval $[a,b]$,
+    and that $g:[c,d] \,{\rightarrow}\, {\RR}$ has continuous first derivative on an interval $[c,d]$.
+    Suppose further that $a\,\,{\leq}\,\,g(t)\,\,{\leq}\,\,b$ for all $t$ in $[c,d]$.
+    Then
+        \begin{equation}
+        \label{EqnH.50}
+        \int_{g(c)}^{g(d)} f(x)\,dx \,=\, \int_{c}^{d} f((g(t)))g'(t)\,dt
+        \end{equation}
+
+\V
+
+        {\bf Proof} Let $F$ be an antiderivative of $f$ on $[a,b]$; such $F$ exists because $f$ is continuous.
+    Likewise, let $H \,=\, F{\circ}g:[c,d] \,{\rightarrow}\, {\RR}$; the composition makes sense because $g$ maps $[c,d]$ to a subset of $[a,b]$.
+    Then $H$ is the composition of differentiable functions, so the Chain Rule can be used to say that $H$ is differentiable on $[c,d]$, and that $H'(t) \,=\, F'(g(t)){\cdot}g'(t) \,=\, f(g(t)){\cdot}g'(t)$ for all $t$ in $[c,d]$.
+    Since $f$, $g$ and $g'$ are all continuous, the function $H' \,=\, (f{\circ}g){\cdot}g'$ is certainly continuous on $[c,d]$.
+    It now follows from Theorem~\Ref{ThmH40.40} -- applied to $(f{\circ}g){\cdot}g'$ that
+        \begin{displaymath}
+        \int_{c}^{d} (f{\circ}g){\cdot}g' \,=\, H(d) - H(c) \,=\, F(g(d)) - F(g(c)).
+        \end{displaymath}
+    However, since $f$ is continuous on $[a,b]$, one can use Theorem~\Ref{ThmH40.40} again, but this time on $f$, to say that
+        \begin{displaymath}
+        \int_{u}^{v} f(x)\,dx \,=\, F(u) - F(v) \mbox{ for all $u$, $v$ in $[a,b]$}.
+        \end{displaymath}
+    In particular, one has $F(g(d)) - F(g(c)) \,=\, {\displaystyle \int_{g(c)}^{g(d)} f(x)\,dx}$.
+    The desired result now follows.
+
+\V
+
+        {\bf Remarks}
+
+\V
+
+        (1) Some analysis texts impose the requirement that the function $g$ be strictly increasing on $[a,d]$, so that $g$ is a bijection of $[c,d]$ onto $[a,b]$.
+    Clearly this restriction is not needed; however, it does make the name `change of variables' seem more appropriate.
+
+\V
+
+        (2) Note that there is no restriction that $g(c)\,<\,g(d)$. Indeed, we even allow the possibility that $g(c) \,=\, g(d)$.
+    If this occurs, Equation~\Ref{EqnH.50} takes the particularly simple form
+        \begin{displaymath}
+        \int_{g(c)}^{g(c)} f(x)\,dx \,=\, \int_{c}^{d} f((g(t)))g'(t)\,dt; 
+        \end{displaymath}
+    that is,
+        \begin{displaymath}
+        \int_{c}^{d} f((g(t)))g'(t)\,dt \,=\, 0.
+        \end{displaymath}
+    Note that this holds independently of the choice of function~$f$.
+    For instance, suppose that $f(x) \,=\, e^{-x^{2}}$ and $g(t) \,=\, {\sin}\,t$ for $0\,\,{\leq}\,\,t\,\,{\leq}\,\,2{\pi}$.
+    Then, when read backwards, Equation~\Ref{EqnH.50} takes the form
+        \begin{displaymath}
+        \int_{0}^{2{\pi}} e^{-{\sin}^{2}\,t}\,{\cos}\,t\,dt \,=\, \int_{0}^{0} e^{-x^{2}}\,dx.
+        \end{displaymath}
+    One cannot write down an antiderivative for the integrand $f(x) \,=\, e^{-x^{2}}$ which appears on the right side of this last equation,
+    but one can still see that the value of the integral on the right -- and thus the value of the integral on the left -- must equal~$0$.
+
+\V
+\V
+
+%}%\EndSkip
+%----------------------B
+
+\VV
+
+
+        \section{{\bf Existence Theorems for the Riemann Integral}}
+        \label{SectH27}\IndB{ZZ Sections}{\Ref{SectH27} Existence Theorems for the Riemann Integral}
+
+\V
+
+
+        In his original treatment of the integral, Riemann carries out a more detailed analysis of the quantity ${\Delta}(f;{\cal P})$ in Statement~(iii); see [RIEMANN~$1854]$.
+    Several decades later Henri Lebesgue greatly improved this analysis; see [LEBESGUE~$1901$]. The approach followed here,
+    however, focuses on a somewhat simpler approach arising from the work of Camille Jordan; see [JORDAN~????]. The next definition clarifies the ideas involved.
+
+\V
+
+        \subsection{\small{{\bf Definition}}}
+        \label{DefH20.45A}
+
+\V
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ be a function such that $f$ bounded on the (nonempty) set~$X$.
+    Then the {\bf oscillation of $\Bfm{f}$ over the set $\Bfm{X}$}\IndB{functions}{oscillation over a set} is the number ${\Omega}(f;X)$ given by the formula
+        \begin{displaymath}
+        {\Omega}\,(f;X) \,=\, {\sup}\,\{|f(x_{2})-f(x_{1})|: x_{1},x_{2}{\in}X\}.
+        \end{displaymath}
+    As usual, the `function diagram' notation $f:X \,{\rightarrow}\, {\RR}$ allows the possibility that the full domain of $f$ includes points outside the set~$X$.
+
+\V
+
+        \subsection{\small{{\bf Remarks}}}
+        \label{RemrkH20.50}
+
+\V
+
+        (1) Some authors define ${\Omega}(f;X)$ by the formula
+        \begin{displaymath}
+        {\Omega}\,(f;X) \,=\, {\sup}\,\{f(x_{2})-f(x_{1}): x_{1},x_{2}{\in}X\};
+        \end{displaymath}
+    that is, they omit absolute-value signs found in the definition above. Likewise, some authors define this expression by
+        \begin{displaymath}
+        {\Omega}\,(f;X) \,=\, {\sup}\,\{f(x): x{\in}X\} - {\inf}\,\{f(x): x{\in}X\}.
+        \end{displaymath}
+    It is a simple exercise to show that these definitions all yield the same value for ${\Omega}(f;X)$. In {\ThisText} we freely use all these variations.
+    It is also easy to show that if $Y$ is a nonempty subset of $X$, then $0\,\,{\leq}\,\,{\Omega}(f;Y)\,\,{\leq}\,\,{\Omega}(f;X)$. %% EXERCISES
+
+\V
+
+        (2) It is clear that the quantities $m_{j}$ and $M_{j}$ that appear in Definition~\Ref{DefH20.20} are related by the rule
+        \begin{displaymath}
+        M_{j} - m_{j} \,=\, {\Omega}\,(f;[x_{j-1},x_{j}]).
+        \end{displaymath} 
+
+\V
+
+        (3) The symbol ${\Omega}$ is the upper-case version of the Greek letter `omega'; the lower-case version of this letter is~${\omega}$.
+    This Greek letter corresponds closely to the English letter `O'; in the present context it is used to remind one of the first letter of the word `oscillation'.
+
+\VV
+
+        There is a close relationship between the concept of `oscillation over a set' and `continuity'. For simplicity, we consider here only sets which are closed intervals.
+
+        Thus, suppose, as usual, that $f:[a,b] \,{\rightarrow}\, {\RR}$ is bounded on~$[a,b]$, and let $c$ be a point of~$[a,b]$.
+    It follows easily from Theorem~\Ref{ThmC30.20} that a necessary and sufficient condition for $f$ to \underline{not} be continuous at $c$ is this:
+
+\VA
+
+        \h `There exists a sequence $(x_{1},x_{2},\,{\ldots}\,x_{n},\,{\ldots}\,)$ in $[a,b]$, converging to~$c$,
+    such that the corresponding sequence $(f(x_{1}),f(x_{2}),\,{\ldots}\,f(x_{n}),\,{\ldots}\,)$ of values converges to some number $L \,\,{\neq}\,\, f(c)$.'
+    (The possibility $L \,=\,  \,{\pm}\, {\infty}$ is excluded by the boundedness hypothesis on~$f$.)
+
+\VA
+
+    Of course if $c$ equals one of the endpoints $a$ or $b$, then `continuity' in the present context means the appropriate one-sided continuity.
+
+\V
+
+        It follows that a reasonable indicator of the degree to which $f$ fails to be continuous at $c$ is the width of the set $S_{(f;c)}$
+    consisting of all numbers $L$ which can be expressed as such a limit. Note that this set is bounded, because the function $f$~is, and it is nonempty, because it contains the number~$f(c)$.
+    A commonly used measure of the size of $S_{(f;c)}$ is the number ${\omega}_{f}(c) \,=\, {\sup}\,S_{(f;c)} - {\inf}\,S_{(f;c)}$, called the {\bf oscillation of $\Bfm{f}$ at~$c$};\IndB{continuity}{oscillation at a point}
+    this is often abbreviated to ${\omega}(c)$ if the function $f:[a,b] \,{\rightarrow}\, {\RR}$ is understood from the context.
+
+        It is clear that for each $c$ in $[a,b]$ one has ${\omega}(c)\,\,{\geq}\,\,0$, and that ${\omega}(c) \,=\, 0$ if, and only if, $f$ is continuous at~$c$.
+    Otherwise stated, the set $D_{(f;[a,b])}$ of all the discontinuities of $f$ in $[a,b]$ is precisely the set of $c$ such that ${\omega}(c)\,>\,0$.
+    For each $k$ in ${\NN}$ let $D_{k}$ denote the set of points $c$ in $[a,b]$ such that ${\omega}(c)\,\,{\geq}\,\,1/k$.
+
+\V
+
+        \subsection{\small{{\bf Definition}}}
+        \label{DefH20.55}
+
+\V
+
+        Let $S$ be a subset of a closed interval $[a,b]$ in ${\RR}$. One says that $S$ is a {\bf null set in the sense of Jordan},
+    or, briefly, the set $S$ is {\bf Jordan null}, provided that the following condition holds:\IndB{null sets}{Jordan-null sets}
+
+
+        \h For every ${\varepsilon}\,>\,0$ there exists a partition ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$
+    of $[a,b]$ such that the sum ${\Sigma}(S;{\cal P})\,<\,{\varepsilon}$, where ${\Sigma}(S;{\cal P})$ denotes the sum of the lengths of those subintervals
+    $[x_{j-1},x_{j}]$ of ${\cal P}$ having nonempty intersection with $S$. If $S \,=\, {\emptyset}$, this sum is defined to equal~$0$.
+
+\VA
+
+        \subsection{\small{{\bf Remark}}}
+        \label{RemrkH20.55A}
+
+\V
+
+\hspace*{\parindent} The specific choice of interval $[a,b]$ containing a nonempty set $S$ as a subset does not affect whether $S$ is Jordan~null.
+    In particular, there is no loss in generality by assuming that $a\,<\,{\inf}\,S$ and $b\,>\,{\sup}\,S$. In what follows it is often convenient to make that assumption.
+        
+\V
+
+        \subsection{\small{{\bf Lemma}}}
+        \label{LemmaH20.55B}
+
+\V
+
+        In this Lemma $[a,b]$ is an interval in~${\RR}$.
+
+\V
+
+        (a) Suppose that $S$ is a subset of $[a,b]$.
+
+\VA
+
+      \h  (i)\,\, If ${\cal P}$ and ${\cal Q}$ are partitions of $[a,b]$ such that 
+${\cal Q}$ is a refinement of~${\cal P}$, then ${\Sigma}(S;{\cal Q})\,\,{\leq}\,\,{\Sigma}(S;{\cal P})$.
+
+\VA
+
+      \h  (ii)\, If $T$ is also a subset of $[a,b]$, then ${\Sigma}(S\,{\cup}\,T;{\cal R})\,\,{\leq}\,\,{\Sigma}(S;{\cal R}) + {\Sigma}(T;{\cal R})$ for every partition ${\cal R}$ of~$[a,b]$.
+
+\VA
+
+       \h (iii) If $T$ is a subset of $[a,b]$ such that $S \,{\subseteq}\, T$, then ${\Sigma}(S;{\cal R})\,\,{\leq}\,\,{\Sigma}(T;{\cal R})$ for every partition ${\cal R}$ of $[a,b]$.
+
+\V
+
+
+        (b) Assume now that $S$ is a nonempty subset of $[a,b]$ such that $a\,<\,{\inf}\,S$ and $b\,>\,{\sup}\,S$, as in Remark~\Ref{RemrkH20.55A} above.
+
+\VA
+
+
+    \h (i)\, Let ${\cal Q}$ be any partition of~$[a,b]$. Then there exists a partition~${\cal P} \,=\, \{a \,=\, x_{0}\,<\,\,{\ldots}\,\,<\,x_{n} \,=\, b\}$,
+    satisfying ${\Sigma}(S;{\cal P}) \,=\, {\Sigma}(S;{\cal Q})$, such that if a subinterval $[x_{k-1},x_{k}]$ of ${\cal P}$ has nonempty intersection with~$S$,
+    then each subinterval of ${\cal P}$ adjacent to $[x_{k-1},x_{k}]$ is disjoint from~$S$. In particular,
+    for such ${\cal P}$ none of the partition points $x_{j}$, $j \,=\, 0,1,\,{\ldots}\,n$ is in~$S$.
+
+\VA
+
+        \h (ii) Let $U \,=\, (J_{1}, J_{2},\,{\ldots}\,J_{N})$ be any finite ordered list of open subintervals of $[a,b]$ such that $S \,{\subseteq}\, {\bigcup}_{i=1}^{N} J_{i}$;
+    that is, the intervals in the list $U$ form an open cover of~$S$. Write $J_{i} \,=\, (c_{i},d_{i})$ for each $i \,=\, 1,2,\,{\ldots}\,N$.
+    Let ${\cal P} \,=\, \{a, c_{1}, d_{1},\,{\ldots}\,c_{N}, d_{N}, b\}$ be the partition of $[a,b]$ formed from the endpoints of these open intervals, together with the numbers $a$ and~$b$.
+    (There is no assumption that these endpoints are in any particular order or even that they are distinct; recall that a partition of ${\cal P}$ is simply a finite subset of ${\cal P}$ containing both $a$ and~$b$.)
+    Then
+        \begin{displaymath}
+        {\Sigma}(S;{\cal P})\,\,{\leq}\,\,\sum_{i=1}^{N} (d_{i}-c_{i}).
+        \end{displaymath}
+
+\V
+
+        {\bf Remark}\, The conclusions are obviously true if $S \,=\, {\emptyset}$.
+
+\V
+
+        {\bf Proof}\, (a) The simple proof is left as an exercise. %EXERCISE
+
+\V
+
+        (b) (i)\,Among all the partitions ${\cal R}$ for which ${\Sigma}(S;{\cal R}) \,=\, {\Sigma}(S;{\cal Q})$,
+    there is at least one for which the number of subintervals of $[a,b]$ determined by ${\cal R}$ is a minimum.
+    Choose ${\cal P}$ to be such a partition. Suppose that there exists an index $k$ such that the adjacent subintervals $[x_{k-1},x_{k}]$ and $[x_{k},x_{k+1}]$ both contain points of~$S$;
+    note that this implies that $1\,\,{\leq}\,\,k\,\,{\leq}\,\,n-1$. Then the sum forming the quantity ${\Sigma}(S;{\cal P})$ includes the summands $(x_{k}-x_{k-1})$ and $(x_{k+1}-x_{k})$,
+    which together add up to $x_{k+1}-x_{k-1}$. Now let ${\cal T}$ be the partition of $[a,b]$ obtained by removing the number $x_{k}$ from the set~${\cal P}$.
+    Then ${\Sigma}(S;{\cal T}) \,=\, {\Sigma}(S;{\cal P}) \,=\, {\Sigma}(S;{\cal Q})$, but the partition ${\cal T}$
+    has one fewer subintervals than the partition~${\cal P}$, contradicting the definition of~${\cal P}$.
+    That is, ${\cal P}$ has the desired `non-adjacency' property. In particular, if $1\,\,{\leq}\,\,k\,\,{\leq}\,\,n-1$, then $x_{k}$, which belongs to adjacent subintervals,
+    cannot be an element of~$S$. The fact that $a \,=\, x_{0}$ and $b \,=\, x_{n}$ also cannot be in $S$ follows from the hypothesis that $a\,<\,{\inf}\,S$ and $b\,>\,{\sup}\,S$.
+
+\VA
+
+        (ii) The proof here is by mathematical induction on the number $N$.
+
+        \underline{Initial Step}\,Suppose that $N \,=\, 1$, so that $S \,{\subseteq}\, (c_{1},d_{1})$. Let ${\cal P} \,=\,\{a\,\,{\leq}\,\,c_{1}\,<\,d_{1}\,\,{\leq}\,\,b\}$ be the corresponding partition of $[a,b]$.
+    Then $[c_{1},d_{1}]$ is a subinterval of the partition ${\cal P}$ such that $S \,{\subseteq}\, (c_{1},d_{1}) \,{\subseteq}\, [c_{1},d_{1}]$,
+    so that clearly ${\Sigma}(S;{\cal P}) \,=\, (d_{1}-c_{1})$, and thus ${\Sigma}(S;{\cal P})\,\,{\leq}\,\,(d_{1}-c_{1})$, as required.
+
+        \underline{Induction Step}\, Suppose that the claim is true for $N \,=\, k$. To see that it remains true when $N \,=\, k+1$, let $S$ be a subset of $[a,b]$,
+    let $U \,=\, (J_{1}, J_{2},\,{\ldots}\,J_{k+1})$ be an ordered list of intervals $J_{i} \,=\, [c_{i},d_{i}]$ in $[a,b]$ which form an open cover of~$S$.
+    Let $V \,=\, (J_{1},\,{\ldots}\,J_{k})$ be the sublist of $U$ formed from the first $k$ terms in~$U$, and let $T_{1} \,=\, {\bigcup}_{i=1}^{k} (S\,{\cap}\,J_{i})$;
+    clearly the intervals in the list $V$ form an open cover of~$T_{1}$. Let ${\cal Q}$ be the partition of $[a,b]$ formed, as above, from the endpoints of the intervals $J_{i}$, $1\,\,{\leq}\,\,i\,\,{\leq}\,\,k$.
+    It follows from the induction hypothesis that
+        \begin{displaymath}
+        {\Sigma}(T_{1};{\cal Q})\,\,{\leq}\,\,\sum_{i=1}^{k} (d_{i}-c_{i}).
+        \end{displaymath}
+    Similarly, let $T_{2} \,=\, S\,{\setminus}\,T_{1}$. It is clear that for each $i \,=\, 1,2,\,{\ldots}\,k$ one has
+    $T_{2}\,{\cap}\,J_{i} \,=\, {\emptyset}$, and thus $T_{2} \,{\subseteq}\, (c_{k},d_{k})$. Let ${\cal R} \,=\, \{a,c_{k+1}, d_{k+1},b\}$.
+    It then follows from the truth of the given result in the case $N \,=\, 1$ that
+        \begin{displaymath}
+        {\Sigma}(T_{2},{\cal R})\,\,{\leq}\,\,(d_{k+1},c_{k+1}).
+        \end{displaymath}
+    Finally, let ${\cal P} \,=\, {\cal Q}\,{\cup}\,{\cal R}$. Then it follows from Part~(a) of Lemma~\Ref{LemmaH20.55B}, together with the equation $S \,=\, T_{1}\,{\cup}\,T_{2}$, that
+        \begin{displaymath}
+        {\Sigma}(S;{\cal P})\,\,{\leq}\,\,{\Sigma}(T_{1};{\cal P}) + {\Sigma}(T_{2};{\cal P})
+    \,\,{\leq}\,\,
+        {\Sigma}(T_{1}; {\cal Q}) + {\Sigma}(T_{2};{\cal R})
+    \,\,{\leq}\,\,
+        \left(\sum_{i=1}^{k} (d_{i}-c_{i})\right) + (d_{k+1}-c_{k+1}).
+        \end{displaymath}
+    The desired result now follows. \Q
+
+\V
+
+        \subsection{\small{{\bf Corollary}}}
+        \label{CorH20.55BC}
+
+\V
+
+\hspace*{\parindent}(a)   Every subset of a Jordan-null set is also Jordan null.
+
+\V
+
+        (b) A necessary and sufficient condition for a bounded subset $S$ of ${\RR}$ to be Jordan null is that its closure $\overline{S}$ in ${\RR}$ be Jordan null.
+
+\V
+
+        (c) Let $S$ be a nonempty subset of an interval $[a,b]$. The condition for $S$ to be Jordan null can be weakened slightly to the following:
+    For every ${\varepsilon}\,>\,0$ there exists a partition ${\cal P}$ of $[a,b]$ and a Jordan-null subset $T$ of $S$, which may depend on~${\cal P}$,
+    such that ${\Sigma}(S\,{\setminus}\,T;{\cal P})\,<\,{\varepsilon}$.
+
+\V
+
+        (d) Let $S$ be a nonempty subset of an interval $[a,b]$. Then a necessary and sufficient condition for $S$ to be Jordan null is that
+    for every ${\varepsilon}\,>\,0$ there exists a finite open cover $U \,=\, \{J_{1}, J_{2},\,{\ldots}\,J_{N}\}$,
+    formed from open intervals $J_{i} \,=\, (c_{i},d_{i})$, $i \,=\, 1,2,\,{\ldots}\,N$, such that $\sum_{i=1}^{N} (d_{i}-c_{i})\,<\,{\varepsilon}$.
+
+
+\V
+        {\bf Proof}\,(a) The simple proof is left as an exercise. %EXERCISE
+
+\V
+
+         (b) It is clear from Part (a) that if the closure $\overline{S}$ is a Jordan null set, then so is~$S$ itself.
+        Now suppose, conversely, that $S$ is Jordan null. Without loss of generality assume that $S$ is a subset of an interval $[a.b]$ such that $a\,<\, {\inf}\,S$ and $b\,>\,{\sup}\,S$. Let ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$ be a partition of $[a,b]$,
+    and let $K$ be the set of indices $k$ for which $S\,{\cap}\,[x_{k-1}, x_{k}]  \,\,{\neq}\,\,  {\emptyset}$.
+    Assume that ${\cal P}$ is chosen, as in Part~(b) of the preceding lemma, so that if $k{\in}K$, then each subinterval of ${\cal P}$ adjacent to the subinterval $[x_{k-1},x_{k}]$ is disjoint from~$S$.
+    One certainly has
+        \begin{displaymath}
+        S \,=\, \,{\bigcup}_{k{\in}K} \left(S\,{\cap}\,[x_{k-1},x_{k}]\right),
+        \end{displaymath}
+    which, because each interval $[x_{k-1},x_{k}]$ is closed in~${\RR}$, implies that
+        \begin{displaymath}
+        \overline{S} \,=\, \,{\bigcup}_{k{\in}K} \left(\overline{S}\,{\cap}\,[x_{k-1},x_{k}]\right).
+        \end{displaymath}
+    Unfortunately, the latter equation does {\em not} imply that $K$ is also the set of all indices $k$ such that $\overline{S}\,{\cap}\,[x_{k-1},x_{k}] \,\,{\neq}\,\, {\emptyset}$.
+    Indeed, it is possible that $\overline{S}\,{\cap}\,[x_{k-1},x_{k}]$ includes one or both of the endpoints $x_{k-1}$ or $x_{k}$,
+    and thus that an adjacent interval {\em does} include points of~$\overline{S}$. The simple solution is to modify the partition ${\cal P}$ by widening, slightly,
+    the intervals of the form $[x_{k-1},x_{k}]$ with $k{\in}K$, thus simultaneously narrowing the other subintervals.
+    For example, let ${\delta}\,>\,0$ be small enough that if $k{\in}K$ and $1\,<\,k\,<\,n$, then
+        \begin{displaymath}
+        \frac{x_{k-2}+x_{k-1}}{2}\,<\,x_{k-1} - {\delta}
+        \mbox{ and }
+        x_{k} + {\delta}\,<\,\frac{x_{k+1}+x_{k}}{2}.
+        \end{displaymath}
+    Similarly, let ${\delta}$ also be small enough so that if $k \,=\, 1$ is in $K$, then $x_{1} + {\delta}\,<\,(x_{1}+x_{2})/2$,
+    while if $k \,=\, n$ is in~$K$, then $x_{n-1}-{\delta}\,>\,(x_{n-2} + x_{n-1})/2$. For each $k{\in}K$ replace $x_{k}$ by $x_{k}+{\delta}$ and $x_{k-1}$ by $x_{k-1}-{\delta}$,
+    as appropriate, in ${\cal P}$, and leave the other partition points of ${\cal P}$ unchanged, to obtain a new partition
+    ${\cal Q} \,=\, \{a \,=\, y_{0}\,<\,y_{1}\,<\,\,{\ldots}\,y_{n-1}\,<\,y_{n} \,=\, b\}$ of $[a,b]$.
+    With this partition, the original set $K$ is now the set of indices for which $\overline{S}\,{\cap}\,[y_{k-1},y_{k}] \,\,{\neq}\,\, {\emptyset}$,
+    and the adjacent subintervals for ${\cal Q}$ do not intersect~$\overline{S}$. Since $K$ has at most $n$ elements,
+    and for each $k$ in $K$ there are at most two extensions of length ${\delta}$, it follows that
+        \begin{displaymath}
+        {\Sigma}(\overline{S};{\cal Q}) \,=\, \sum_{k{\in}K} (y_{k}-y_{k-1})
+    \,\,{\leq}\,\,
+        2\,n\,{\delta} + {\Sigma}(S;{\cal P}).
+        \end{displaymath}
+    Finally, let ${\varepsilon}\,>\,0$ be given, let ${\cal P}$ be chosen so that in addition one has ${\Sigma}(S;{\cal P})\,<\,{\varepsilon}/2$,
+    and choose ${\delta}\,>\,0$ small enough as above and also small enough that ${\delta}\,<\,{\varepsilon}/(4\,n)$.
+    It follows that ${\Sigma}(\overline{S};{\cal P})\,<\,{\varepsilon}$, and thus $\overline{S}$ is a Jordan null set, as claimed.
+
+\V
+
+
+        (c) Let ${\varepsilon}\,>\,0$ be given, and let ${\cal P}$ and $T$ be chosen so that ${\Sigma}(S\,{\setminus}\,T;{\cal P})\,<\,{\varepsilon}/2$ and $T$ is Jordan~null.
+    Let ${\cal Q}$ be a partition of $[a,b]$ such that ${\Sigma}(T;{\cal Q})\,<\,{\varepsilon}/2$, and let ${\cal R} \,=\, {\cal P}\,{\cup}\,{\cal Q}$.
+    Then, since $S \,=\, (S\,{\setminus}\,T)\,{\cup}\,T$, and ${\cal R}$ is a refinement of both ${\cal P}$ and~${\cal Q}$, it follows from Part~(a) of Lemma~\Ref{LemmaH20.55B} that
+        \begin{displaymath}
+        {\Sigma}(S;{\cal R})\,\,{\leq}\,\,{\Sigma}(S\,{\setminus}\,T;{\cal R}) + {\Sigma}(T;{\cal R})
+    \,\,{\leq}\,\,
+        {\Sigma}(S\,{\setminus}\,T;{\cal P}) + {\Sigma}(T;{\cal Q})\,<\,\frac{{\varepsilon}}{2} + \frac{{\varepsilon}}{2} \,=\, {\varepsilon}.
+        \end{displaymath}
+
+\V
+
+        (d)\,This follows directly from Part~(b) of Lemma~\Ref{LemmaH20.55B} above.
+
+\V
+
+        \subsection{\small{{\bf Examples}}}
+        \label{ExampH20.55C}
+
+\V
+
+\hspace*{\parindent}(1) It is easy to show that every finite subset of ${\RR}$ is Jordan null.
+
+\V
+
+        (2) Suppose that $S$ and $T$ are Jordan null sets in~${\RR}$. Then $W \,=\, SS\,{\cup}\,T$ is also a Jordan null set.
+    Indeed, since (by definition) $S$ and $T$ are bounded subsets of~${\RR}$, it follows that so is $W$. Let $[a,b]$ be any interval such that $W \,{\subseteq}\, [a,b]$,
+    so that $S$ and $T$ are also subsets of~$[a,b]$. (Recall that, by Remark~\Ref{RemrkH20.55A}~(2), the choice of the particular interval $[a,b]$does not matter here.)
+    Let ${\varepsilon}\,>\,0$ be given, and let ${\cal P}$ and ${\cal Q}$ be partitions of $[a,b]$ such that ${\Sigma}(S;{\cal P})\,<\,{\varepsilon}/2$ and ${\Sigma}(T;{\cal Q})\,<\,{\varepsilon}/2$.
+    Let ${\cal R} \,=\, {\cal P}\,{\cup}\,{\cal Q}$, so that ${\cal R}$ is a refinement of both ${\cal P}$ and~${\cal Q}$. Then, by Remark~\Ref{RemrkH20.55A}~(1), one has
+        \begin{displaymath}
+        {\Sigma}(W;{\cal R})\,\,{\leq}\,\,{\Sigma}(S;{\cal R}) + {\Sigma}(T;{\cal R})
+    \,\,{\leq}\,\,
+        {\Sigma}(S;{\cal P}) + {\Sigma}(T;{\cal Q})
+    \,<\,
+        \frac{{\varepsilon}}{2} + \frac{{\varepsilon}}{2} \,=\, {\varepsilon}.
+        \end{displaymath}
+    The desired result follows.
+
+        By repeatedly applying this result, it is easy to see that the union of finitely many Jordan null sets is also Jordan null.
+
+\V
+
+        (3) Let $S$ be the set of rational numbers in the unit interval $[0,1]$. It is clear that if ${\cal P}$ is any  partition of $[0,1]$,
+    then {\em every} subinterval of ${\cal P}$ has nonempty intersection with~$S$, so that ${\Sigma}(S;{\cal P}) \,=\, 1$. In particular, $S$ is {\em not} Jordan null.
+    Of course, this set $S$ is countable, and thus is the union of countably many Jordan null sets, namely, singleton sets.
+
+\V
+
+        (4) Consider, instead, the set $S \,=\, \{1,1/2,1/3,\,{\ldots}\,1/n,\,{\ldots}\,\}$ consisting of all the reciprocals of natural numbers.
+    This set is also the union of countably many Jordan-null sets, but here it is an easy exercise to show that $S$ {\em is} Jordan null. %EXERCISE Convergent sequence is J-null
+
+\V
+
+        (5) It is an interesting exercise to show that the Cantor Middle-Thirds set, although uncountable, {\em is} Jordan null. % EXERCISE
+    
+\VV
+
+    The preceding examples illustrate the complexity of the relation between `Jordan null' and `countable unions'. The next result clarifies this relation somewhat.
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH20.50A}
+
+\V
+
+        Suppose that $S$ is a bounded subset of ${\RR}$ which can be expressed as the union of a countable family of Jordan-null sets.
+    If, in addition, $S$ is a closed subset of ${\RR}$, then $S$ is also Jordan null.
+
+\V
+
+        {\bf Proof} Without loss of generality, assume that $S \,\,{\neq}\,\, {\emptyset}$ and that $a$ and $b$ are numbers such that $a\,<\,{\inf}\,S$ and $b\,>\,{\sup}\,S$.
+    Then, by hypothesis, there is a sequence $X_{1}$, $X_{2}$,\,{\ldots}\,$X_{n}$,\,{\ldots}\, of Jordan-null subsets of $[a,b]$ such that $S \,=\, {\bigcup}_{j=1}^{{\infty}} X_{j}$,
+    and it follows from Part~(b) of Lemma~\Ref{LemmaH20.55B} that for each index $j$ there exists a partition
+    ${\cal P}_{j}$ of $[a,b]$ such that for which no partition point of ${\cal P}_{j}$ is in the set~$X_{j}$; denote the $k$-th subinterval of ${\cal P}_{j}$ by $[c_{jk},d_{jk}]$.
+    For each index $j$ let $K_{j}$ denote the set of numbers $k$ such that the $k$-th subinterval of the partition ${\cal P}_{j}$ has nonempty intersection with~$X_{j}$,
+    and let $V_{j} \,=\, {\bigcup}_{k{\in}K_{j}}\,(c_{jk},d_{jk})$ be the union of the interiors of such subintervals of~${\cal P}_{j}$.
+    Then $X_{j} \,{\subseteq}\, V_{j}$, since $X_{j}$ has no partition points of ${\cal P}_{j}$, and ${\Sigma}(X_{j};{\cal P}_{j}) \,=\, \sum_{k{\in}K_{j}}\,(d_{jk}-c_{jk})\,<\,{\varepsilon}/2^{j}$.
+    Since $S \,=\, {\bigcup}_{j \,=\, 1}^{{\infty}} X_{j} \,{\subseteq}\, {\bigcup}_{j \,=\, 1}^{{\infty}} V_{j}$, it follows that the open sets $V_{j}$, $j \,=\, 1,2,\,{\ldots}\,$ form an open cover of~$S$.
+    Since, by hypothesis, $S$ is closed and bounded in~${\RR}$, it follows from the Heine-Borel Theorem that there is a finite subcollection $V_{j_{1}}, V_{j_{2}},\,{\ldots}\,V_{j_{m}}$,
+    with $j_{1}\,<\,j_{2}\,<\,\,{\ldots}\,\,<\,j_{m}$, of these open sets which also covers~$S$. To simplify the notation, let $N \,=\, j_{m}$.
+    Then the collection of sets $V_{j}, 1\,\,{\leq}\,\,j\,\,{\leq}\,\,N$, is also a finite open cover of $S$,
+    as is the collection of open intervals of the form $(c_{jk},d_{jk})$, with $k{\in}K_{j}$ and $1\,\,{\leq}\,\,j\,\,{\leq}\,\,N$.
+    The sum of the lengths of these open intervals satisfies the conditions
+        \begin{displaymath}
+        \sum_{j=1}^{N} \sum_{k{\in}K_{j}} (d_{jk}-c_{jk}) \,=\, \sum_{j=1}^{N} {\Sigma}(X_{j};{\cal P}_{j})
+    \,<\,
+    \sum_{j=1}^{N} \frac{{\varepsilon}}{2^{j}}\,<\,{\varepsilon}.
+        \end{displaymath}
+    Since ${\varepsilon}$ can be any positive number, it follows from Part~(b) of Lemma~\Ref{LemmaH20.55B} that $S$ is Jordan null, as claimed. \Q
+
+\V
+        \subsection{\small{{\bf Example}}}
+        \label{ExampH20.50B}
+
+\V
+
+\hspace*{\parindent} The subset $S \,=\, [a,b]$ cannot be expressed as the countable union of Jordan-null subsets of~$[a,b]$. Indeed, since $S$ is a closed subset of $[a,b]$,
+    if it could be so expressed, then it would itself be Jordan null, contraary to what has already been proved.
+
+
+\VV
+
+        The preceding theorem can be used to provide an important characterization of Riemann integrabilty.
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH20.60}
+
+\V
+
+        Suppose that $g:[c,d]\,{\rightarrow}\,{\RR}$ is a bounded function on the interval $[c,d]$, and let $D$ denote the set of discontinuities of $g$ on~$[c,d]$;
+    at the endpoints $c$ and $d$ use the appropriate `one-sided' notion of continuity. Then a necessary and sufficient condition for $g$ to be Riemann integrable on $[c,d]$
+    is that $D$ can be expressed as the union of a countable family of Jordan-null sets.
+
+\V
+
+        {\bf Proof}\,To simplify the discussion, let $a$ and $b$ be numbers so that $a\,<\,c$ and $b\,>\,d$, so that $a\,<\,{\inf}\,D$ and $b\,>\,{\sup}\,D$.
+    Define $f:[a,b] \,{\rightarrow}\, {\RR}$ by the rule
+        \begin{displaymath}
+        f(x) \,=\, \left\{
+        \begin{array}{cl}
+        0 & \mbox{if $a\,\,{\leq}\,\,x\,<\,c$} \\
+        g(x) & \mbox{if $c\,\,{\leq}\,\,x\,\,{\leq}\,\,d$} \\
+        0 & \mbox{if $d\,<\,x\,\,{\leq}\,\,b$}
+        \end{array}
+        \right.
+        \end{displaymath}
+    Denote the set of discontinuities of $f$ on $[a,b]$ by $S$, again using the appropriate notion of one-sided continuity at the endpoints $a$ and~$b$.
+    Note that $S$ consists of the points of $D$, possibly augmented by one or both of the endpoints $c$ and~$d$.
+    It is clear from Examples~\Ref{ExampH20.55C}~(2) and~(3) that $D$ can be expressed as the union
+    of a countable family of Jordan-null sets if, and only if, the same property holds for~$S$.
+    Likewise, it is clear from Parts~(b) and~(d) of Theorem~\Ref{ThmH20.38} that $g$ is integrable on $[c,d]$ if, and only if, $f$ is integrable on~$[a,b]$.
+    Thus, it suffices to consider the integrability of $f$ on~$[a,b]$, for which the set $S$ of discontinuities
+    satisfies the simplifying condition $a\,<\,{\inf}\,S$ and $b\,>\,{\sup}\,S$.
+
+        Suppose first that $f$ is integrable on~$[a,b]$. For each natural number $q$ let $S_{q}$ denote the set of points $x$ in $[a,b]$ such that ${\omega}_{f}(x)\,\,{\geq}\,\,1/q$.
+    For such $q$ let ${\varepsilon}\,>\,0$ be given, and let ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n} \,=\, b\}$
+    be any partition of $[a,b]$ such that ${\Delta}(f;{\cal P})\,<\,{\varepsilon}\,q$. Let $T \,=\, {\cal P}$.
+    Clearly if $x{\in}S_{q}\,{\setminus}\,T$, then $x_{k-1}\,<\,x\,<\,x_{k}$ for exactly one index~$k$.
+    It follows that for such $x$ one has $1/q\,\,{\leq}\,\,{\omega}_{f}(x)\,\,{\leq}\,\,M_{k}-m_{k}$, and thus $(x_{k}-x_{k-1})\,\,{\leq}\,\,(M_{k}-m_{k})\,(x_{k}-x_{k-1})\,q$.
+    Let $K$ be the set of indices $k$ such that $(S_{q}\,{\setminus}\,T)\,{\cap}\,[x_{k-1},x_{k}] \,\,{\neq}\,\, {\emptyset}$. Then one has
+        \begin{displaymath}
+        {\Sigma}(S_{q}\,{\setminus}\,T;{\cal P})
+     \,=\, 
+        \sum_{k{\in}K} (x_{k}-x_{k-1})
+    \,\,{\leq}\,\,
+        \sum_{k{\in}K} (M_{k} - m_{k})\,(x_{k}-x_{k-1})\,q
+    \,\,{\leq}\,\,
+        \sum_{j=1}^{n} (M_{j} - m_{j})\,(x_{j}-x_{j-1})\,q
+    \,<\,
+        \frac{{\varepsilon}}{q}\,q \,=\, {\varepsilon}.
+        \end{displaymath}
+    It now follows from Part~(c) of Corollary~\Ref{CorH20.55BC} that $S_{q}$ is Jordan null. Clearly $S$ is the union of the countable family of Jordan null sets of the form $S_{q}$ with $q$ in~${\NN}$.
+
+        Conversely, suppose that the stated condition holds, and let $Y_{1}$, $Y_{2}$,\,{\ldots}\,$Y_{n}$,\,{\ldots}\, be a sequence of Jordan-null sets whose union is~$S$.
+    For each $q$ in ${\NN}$ let $S_{q}$ be as above. It is easy to see that $S_{q}$ is a closed and bounded subset of~${\RR}$. % EXERCISE
+    Since $S_{q}$ is the union of the Jordan null sets of the form $X_{j} \,=\, Y_{j}\,{\cap}\,S_{q}$ for $j$ in~${\NN}$,
+    it follows from Theorem~\Ref{ThmH20.50} that, for each $q$, $S_{q}$ is also Jordan null. Theorem??? (REFERENCE???)
+    then implies that $f$ is integrable on~$[a,b]$, hence $g$ is integrable on~$[c,d]$, as claimed. \Q
+
+\VV
+
+        The preceding result illustrates the importance of a set being expressible as the countable union of Jordan-null subsets of~${\RR}$.
+    This property is equivalent to a related concept due to Lebesgue.
+
+\V
+
+                \subsection{\small{{\bf Definition}}}
+                \label{DefH20.70}
+\V
+
+        A subset $S$ of ${\RR}$ is said to be {\bf of Lebesgue measure zero}, or, more briefly, {\bf Lebesgue null},\IndB{Lebesgue}{of Lebesgue measure zero; Lebesgue null},
+    provided it can be expressed as the union of countably many Jordan null subsets of~${\RR}$.
+
+\V
+
+        {\bf Remarks} (1) In contrast with the definition of `Jordan null', the definition `Lebesgue null' does not restrict $S$ to be a {\em bounded} subset of~${\RR}$.
+    This makes sense because every subset $S$ of ${\RR}$ can be expressed as a countable union of bounded sets; for example, the sets of the form $S\,{\cap}\,[k,k+1]$ with $k$ in~${\ZZ}$.
+
+\V
+
+        (2) Lebesgue's original formulation of a set being of (Lebesgue) measure zero is slightly different. The equivalence of his definition and the one given here is outlined in an exercise. % EXERCISE
+
+\VV
+
+        With this new terminology, one can now phrase Theorem~\Ref{ThmH20.60} in the following more standard form:
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH20.75A}
+
+\V
+
+        Suppose that $g:[c,d]\,{\rightarrow}\,{\RR}$ is bounded on the interval $[c,d]$, and let $D$ denote the set of discontinuities of $g$ on~$[c,d]$;
+    at the endpoints $c$ and $d$ use the appropriate `one-sided' notion of continuity. Then a necessary and sufficient condition for $g$ to be Riemann integrable on $[c,d]$
+    is that $D$ be a set of Lebesgue measure~zero.
+
+\VV
+
+        The significance of the preceding result is that it shows that the (Riemann) integrability of a bounded function on an interval depends only on the set $D$ of discontinuitiesof that function,
+    and not the detailed nature of those discontinuities at individual points of~$D$. The next result illustrates the power of this formulation.
+
+\VV
+
+        It is convenient for future reference to point out the following simple facts about sets which are Lebesgue~null. The simple proofs are left as exercises. %% EXERCISES
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmH20.75AB}
+
+\V
+
+\hspace*{\parindent}(a) Every Jordan-null set is Lebesgue null. In particular, every finite sybset of ${\RR}$ is Lebesgue null.
+
+\V
+
+        (b) Every subset of a Lebesgue-null set is Lebesgue null.
+
+\V
+
+        (c) The union of a countable family of Lebesgue-null sets is Lebesgue null. (Recall that the analogous statement with `Lebesgue' replaced by `Jordan' is not true.)
+    In particular, every countable subset of ${\RR}$ is Lebesgue null.
+
+\V
+
+        (d) If $S$ contains an interval as a subset, then $S$ is {\em not} Lebesgue null.
+
+\VV
+
+        In Examples~\Ref{ExampH20.30}, Theorem~\Ref{ThmH25.20} and Theorem~\Ref{ThmH25.30} we determine the integrability, or nonintegrability, in several particular cases.
+    Each case requires a separate argument based on the specific nature of the function at hand.
+ The following result shows how Theorem~\Ref{ThmH20.75A} allows a unified treatment of such cases.
+
+\VV
+
+
+        \subsection{\small{{\bf Examples}}}
+        \label{ExampH20.75B}
+
+\V%
+
+\hspace*{\parindent}(1) If $f:[a,b] \,{\rightarrow}\, {\RR}$ is continuous on~$[a,b]$, then it is Riemann integrable on~$[a,b]$.
+    Indeed, in this case the set $D$ of discontinuities of $f$ is the empty set, which is a finite set.
+
+\V
+
+        (2) The Dirichlet function is {\em not} Riemann integrable on any interval~$[a,b]$, since the corresponding set of discontinuities is $[a,b]$ itself, which is not Lebesgue null.
+
+\V
+
+        (3) If $f:[a,b] \,{\rightarrow}\, {\RR}$ is bounded on~$[a,b]$ and the set of discontinuities of $f$ in~$[a,b]$ is countable, then $f$ is Riemann integrable on~$[a,b]$.
+
+        \underline{Special Cases}\,The set of discontinuities of the Thomae function in the interval $[0,1]$ is a subset of the rationals, hence is countable.
+    Likewise, the set of discontinuities of a function $f:[a,b] \,{\rightarrow}\, {\RR}$ that is monotonic on $[a,b]$ is countable.
+    Since both functions are clearly bounded, it follows that both are Riemann intergable.
+
+\V
+
+        (4) Suppoose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is bounded on $[a,b]$ and that $c$ is a number such that $a\,<\,c\,<\,b$.
+    Then $f$ is Riemann integrable on $[a,b]$ if, and only if, it is Riemann integrable on each of the subintervals $[a,c]$ and~$[c,b]$.
+    Indeed, let $D$ be the  set of discontinuities of $f$ on~$[a,b]$. Likewise, let $D_{1}$ and $D_{2}$ be the corresponding sets for $[a,c]$ and $[c,b]$,
+    respectively, but using the appropriate one-sided limits at~$c$. It is clear that either $D \,=\, D_{1}\,{\cup}\,D_{2}$ or $D \,=\, D_{1}\,{\cup}\,D_{2}\,{\cup}\,\{c\}$.
+    In either case, it follows from Theorem~\Ref{ThmH20.75AB} that $D$ is Lebesgue null if, and only if, both of the sets $D_{1}$ and $D_{2}$ are Lebesgue null.
+
+\V
+
+        (5) Suppose that $f_{1}$ and $f_{2}$ are both Riemann integrable on~$[a,b]$. Let $D_{1}$ be the set of discontinuities of $f_{1}$ in~$[a,b]$, and let $D_{2}$ be the corresponding set for $f_{2}$.
+    Then the set $D$ of discontinuities in $[a,b]$ of the function $f \,=\, f_{1} + f_{2}$ is a subset of the finite union $D_{1}\,{\cup}\,D_{2}$ of Lebesgue-null sets, and thus is itself Lebesgue null.
+    Since $f_{1}$ and $f_{2}$ must be bounded on~$[a,b]$, so is their sum~$f$. Thus $f$ is also Riemann integrable on~$[a,b]$.
+
+    A similar argument shows that the product $g \,=\, f_{1}{\cdot}f_{2}$ of the Riemann integrable functions $f_{1}$ and $f_{2}$ is Riemann integrable on~$[a,b]$, then $g$ is Riemann integrable on~$[a,b]$.
+    Likewise, if there is a constant $c\,>\,0$ such that $|f_{2}(x)|\,\,{\geq}\,\,c$ for all $x$ in~$[a,b]$, then the quotient $h \,=\, f_{1}/f_{2}$ is bounded on $[a,b]$,
+    and its set of discontinuities is a subset of the Lebesgue-null set $D_{1}\,{\cup}\,D_{2}$, so that $h$ is also Riemann integrable on~$[a,b]$.
+
+\V
+
+        {\bf Remark} In Part~(b) of Theorem~\Ref{ThmH25.20} we prove not only that the sum $f \,=\, f_{1} + f_{2}$ of two Riemann integrable functions is integrable,
+    but also the formula ${\displaystyle \int_{a}^{b} f \,=\, \int_{a}^{b} f_{1} + \int_{a}^{b} f_{2}}$. The proof of that formula can be simplified if one already has proved,
+    as above, that $f$ is integrable on~$[a,b]$. Indeed, from the integrability of $f_{1}$ and $f_{2}$ one has
+        \begin{displaymath}
+        L(f_{1};{\cal P})\,\,{\leq}\,\,\int_{a}^{b} f_{1}\,\,{\leq}\,\,U(f_{1};{\cal P})
+    \mbox{ and }
+        L(f_{2};{\cal P})\,\,{\leq}\,\,\int_{a}^{b} f_{2}\,\,{\leq}\,\,U(f_{2};{\cal P})
+        \end{displaymath}
+    for every partition ${\cal P}$ of $[a,b]$. It then follows from the standard properties of Darboux sums that for each such partition ${\cal P}$ one has
+        \begin{displaymath}
+        L(f_{1}+f_{2};{\cal P})
+    \,\,{\leq}\,\,
+        L(f_{1}; {\cal P}) + L(f_{2};{\cal P})
+    \,\,{\leq}\,\,
+        \left(\int_{a}^{b} f_{1}\right) + \left(\int_{a}^{b} f_{2}\right)
+    \,\,{\leq}\,\,
+        U(f_{1};{\cal P}) + U(f_{2}; {\cal P})
+    \,\,{\leq}\,\,
+        U(f_{1}+ f_{2};{\cal P}).
+        \end{displaymath}
+    In particular, one has
+        \begin{displaymath}
+        L(f;{\cal P})
+    \,\,{\leq}\,\,
+        \left(\int_{a}^{b} f_{1}\right) + \left(\int_{a}^{b} f_{2}\right)
+    \,\,{\leq}\,\,
+        U(f;{\cal P}).
+        \end{displaymath}
+    for every such partition~${\cal P}$.
+   However, since $f$ is already proved to be integrable on~$[a,b]$, it follows that there is only one number which lies between $L(f;{\cal P})$ and $U(f;{\cal P})$
+    for each such partition~${\cal P}$, namely ${\displaystyle \int_{a}^{b} f}$. The desired equation now follows.
+
+\VV
+
+        The following consequnce of Theorem~\Ref{ThmH20.75A} makes it easy to prove the Riemann integrability of a wide class of functions.
+
+\V
+
+        \subsection{\small{{\bf Corollary}}}
+        \label{CorH20.75C}
+
+\V
+    Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is Riemann integrable on~$[a,b$.
+    Suppose further that $H:X \,{\rightarrow}\, {\RR}$ is a function which is defined on a subset $X$ of ${\RR}$ containing all numbers of the form $h(x)$ with $x$ in~$[a,b]$.
+    If $H$ is continuous and bounded on~$X$, then the composition $g \,=\, H{\circ}f:[a,b] \,{\rightarrow}\, {\RR}$ is also Riemann integrable on~$[a,b]$.
+
+\V
+
+        {\bf Proof}\, The hypotheses certainly imply that the expression $(F{\circ}g)(x)$ is defined for every $x$ in~$[a,b]$.
+    In addition, Theorem~\Ref{ThmD20.70} implies that $g$ is continuous at each $x$ in $[a,b]$ at which $f$ is continous,
+    hence the set $S$ of discontinuities of $g$ in $[a,b]$ is a subset of the set $D$ of discontinuities of $f$ in~$[a,b]$.
+    It follows easily that $S$ is a set of Lebesgue measure zero, and thus $h$ is Riemann integrable on~$[c,d]$, as claimed.
+
+\VV
+
+        {\bf Example} It was proved in Theorem~\Ref{ThmH25.30} that if $f:[a,b] \,{\rightarrow}\, {\RR}$ is Riemann integrable on~$[a,b]$,
+    then so is the function~$|f|$. This fact also follows from the preceding corollary by choosing $H$  in that result to be the absolute-value function.
+
+
+\VV
+
+%----------------------C
+\StartSkip{
+
+        So far all the integrals we have studied have been defined on closed {\em bounded} intervals in ${\RR}$;
+    likewise, all the functions have been {\em bounded} functions.
+    The next definition allows one to extend the concept of `definite integral' to integrals of unbounded functions and to integrals over unbounded intervals.
+
+\V
+
+        \subsection{\small{{\bf Definition} (Improper Riemann Integrals)}}
+        \label{DefH50.60}
+
+\V
+
+       (a) Let $b$ be either a real number or the symbol $+{\infty}$, and let $f:[c,b) \,{\rightarrow}\, {\RR}$ be a function on the half-open interval $[c,b)$, where $c$ is a real number such that $c\,<\,b$.
+    Assume that $f{\in}{\cal R}_{[c,d]}$ for every real number $d$ such that $c\,<\,d\,<\,b$.
+
+        Suppose that the limit ${\displaystyle \lim_{x{\nearrow}b} \int_{c}^{b} f}$ exists and equals~$L$;
+    the quantity $L$ can be either a (finite) number or one of the symbols $+{\infty}$ or $-{\infty}$.
+    Then one says that the {\bf improper (Riemann) integral ${\displaystyle \int_{c}^{b} f(x)\,dx}$ exists and equals $L$}.
+    If $L$ is finite, one says that the integral ${\displaystyle \int_{c}^{b} f(x)\,dx}$ is convergent.
+    If, instead, the limit diverges to $L$, where $L \,=\, +{\infty}$ or $L \,=\, -{\infty}$,
+    then one says that the integral ${\displaystyle \int_{c}^{b} f(x)\,dx}$ {\bf diverges to $L$}.
+
+\V
+
+        (b) In like manner, let $a$ be either a real number or the symbol $-{\infty}$,
+    and let $f:(a,c] \,{\rightarrow}\, {\RR}$ be a function on the half-open interval $(a,c]$, where $c$ is a real number such that $c\,>\,b$.
+    Assume that $f{\in}{\cal R}_{[c,d]}$ for every real number $d$ such that $a\,<\,c\,<\,d$.
+    Then the improper integral ${\displaystyle \int_{a}^{c} f(x)\,dx}$ is defined in much the same way as in Part~(a).
+
+\V
+
+        (c) Suppose that $f$ is defined on an open interval $(a,b)$, where $-{\infty}\,\,{\leq}\,\,a\,<\,b\,\,{\leq}\,\,+{\infty}$.
+    Assume that $f{\in}{\cal R}_{[c,d]}$ for every closed bounded subinterval $[c,d]$ of $(a,b)$.
+    Let $p$ be any point of $(a,b)$.
+    If the improper integrals ${\displaystyle \int_{a}^{p} f(x)\,dx}$ and ${\displaystyle \int_{p}^{b}}$ both exist,
+    and it is {\em not} the case that one of these integrals equals $+{\infty}$ while the other equals $-{\infty}$,
+    then one defines the improper integral ${\displaystyle \int_{a}^{b} f(x)\,d{\alpha}}$ by the rule
+        \begin{displaymath}
+        \int_{a}^{b} f(x)\,dx \,=\, \int_{a}^{p} f(x)\,dx + \int_{p}^{b} f(x)\,dx.
+        \end{displaymath}
+    It is convenient to refer to such an integral as a {\bf doubly improper integral}.
+
+\V
+
+        \subsection{\small{{\bf Remarks}}}
+        \label{RemrkH50.70}
+
+\V
+
+\hspace*{\parindent}(1) It is easy to show that in Part~(c) the choice of the point $p$ is irrelevant.
+
+\V
+
+        (2) If a function $f:I \,{\rightarrow}\, {\RR}$ has the property that $f{\in}{\cal R}_{[c,d]}$ for all closed bounded subintervals of an interval~$I$,
+    one says that $f$ is {\bf locally Riemann integrable on $I$}.
+
+\V
+
+        (3) It follows from Part~(e) of Theorem~\Ref{ThmH30.20} that if $f$ is locally integrable on an interval $I$, then so is~$|f|$.
+    (Of course the converse is {\em not} true.)
+
+
+\V
+\V
+
+        \subsection{\small{{\bf Examples}}}
+        \label{DefH50.80}
+
+\V
+
+\hspace*{\parindent}(1) Let $p$ be a positive number, and suppose that $f:(0,+{\infty}) \,{\rightarrow}\, {\RR}$ is given by the rule $f(x) \,=\, 1/x^{p}$.
+    Then $f$ is continuous on $(0,+{\infty})$, and one has
+        \begin{displaymath}
+        D^{-1}_{1} f(x) \,=\, \left\{
+        \begin{array}{cl}
+        {\displaystyle \frac{1}{p-1} - \frac{1}{(p-1)x^{p-1}}} & \mbox{if $p\,>\,1$}   \\
+                                                               & \\
+            {\ln}\,x                           & \mbox{if $p \,=\, 1$} \\
+                                               &                       \\
+        {\displaystyle \frac{x^{1-p}-1}{1-p}}                 & \mbox{if $0\,<\,p\,<\,1$}
+        \end{array}
+                                        \right.
+        \end{displaymath}
+    It follows easily that
+        \begin{displaymath}
+        \lim_{x{\nearrow}+{\infty}} D^{-1}_{1} f(x) \,=\, \left\{
+        \begin{array}{cl}
+        {\displaystyle \frac{1}{p-1}} & \mbox{if $p\,>\,1$} \\
+                                      &                     \\
+            +{\infty}                 & \mbox{if $0\,<\,p\,\,{\leq}\,\,1$}
+        \end{array}
+                                    \right.
+        \end{displaymath}
+    Likewise,
+        \begin{displaymath}
+        \lim_{x{\searrow}0} D^{-1}_{1} f(x) \,=\, \left\{
+        \begin{array}{cl}
+        -{\infty} & \mbox{if $p\,\,{\leq}\,\,1$} \\
+                                      &                     \\
+            -\frac{1}{1-p}                 & \mbox{if $0\,<\,p\,<\,1$}
+        \end{array}
+                                    \right.
+        \end{displaymath}
+    It follows that ${\displaystyle \int_{1}^{{\infty}} \frac{dx}{x^{p}}}$ is convergent if $p\,>\,1$ and diverges to $+{\infty}$ when $0\,<\,p\,\,{\leq}\,\,1$.
+    Likewise, ${\displaystyle \int_{0}^{1} \frac{dx}{x^{p}}}$ is divergent to  $+{\infty}$ when $p\,\,{\geq}\,\,1$ and convergent $0\,<\,p\,<\,1$.
+
+        It also follows that for all $p\,>\,0$ the doubly improper integral ${\displaystyle \int_{0}^{+{\infty}} \frac{dx}{x^{p}}}$ diverges to~$+{\infty}$.
+
+\V
+
+        (2) It is easy to see that the improper integral ${\displaystyle \int_{0}^{{\infty}} e^{-x}\,dx}$ exists and equals~$1$.
+    Indeed, one computes that if $d\,>\,0$ then ${\displaystyle \int_{0}^{d} e^{-x}\,dx \,=\, \left.-e^{-x}\right|_{0}^{d} \,=\, 1-e^{-d}}$,
+    so ${\displaystyle \lim_{d{\nearrow}+{\infty}} \int_{0}^{d} e^{-x}\,dx \,=\, 1}$.
+
+        Similarly, by using Integration-by-Parts and Mathematical Induction, it is easy to show that for each $n$ in ${\NN}$ one has ${\displaystyle \int_{0}^{{\infty}} x^{n}e^{-x}\,dx \,=\, n!}$.
+
+\V
+
+        (3) The improper integral ${\displaystyle \int_{0}^{{\infty}} {\cos}\,x\,dx}$ clearly does not exist, since ${\displaystyle \int_{0}^{d} {\cos}\,x}\,dx  \,=\, {\sin}\,d$, and $\lim_{d \,{\rightarrow}\, {\infty}} {\sin}\,d$ does not exist.
+
+\V
+
+        (4) Suppose that $f:(a,b) \,{\rightarrow}\, {\RR}$ is locally Rieman integrable on $(a,b)$.
+    Assume that $f(x)\,\,{\geq}\,\,0$ for all $x$ in $(a,b)$.
+    Then the improper integral ${\displaystyle \int_{a}^{b} f(x)\,dx}$ exists: its value is either a positive number or~$+{\infty}$.
+
+\V
+\V
+
+
+        \subsection{\small{{\bf Theorem}} (The Comparison Test)}
+        \label{ThmH50.90}
+
+\V
+
+        Suppose that $f$ and $g$ are locally integrable functions on an interval $(a,b)$ such that $0\,\,{\leq}\,\,f(x)\,\,{\leq}\,\,g(x)$ for all $x$ in $(a,b)$.
+
+\V
+
+        (a) If ${\displaystyle \int_{a}^{b} g(x)\,dx}\,<\,+{\infty}$, then one has ${\displaystyle 0\,\,{\leq}\,\,\int_{a}^{b} f(x)\,dx\,\,{\leq}\,\,\int_{a}^{b}g(x)\,<\,+{\infty}}$.
+
+\V
+
+        (b) If ${\displaystyle \int_{a}^{b} f(x)\,dx \,=\, +{\infty}}$, then ${\displaystyle \int_{a}^{b} g(x) \,=\, +{\infty}}$.
+
+\V
+
+        The simple proof is left as an exercise.
+
+\V
+
+        \subsection{\small{{\bf Corollary}}}
+        \label{CorH50.100}
+
+\V
+
+        Let $a$, $b$ be such that $-{\infty}\,\,{\leq}\,\,a\,<\,b\,\,{\leq}\,\,+{\infty}$.
+    If $f$ is locally Riemann integrable on $(a,b)$, and if ${\displaystyle \int_{a}^{b} |f(x)|\,dx}$ is finite,
+    then the improper integral ${\displaystyle \int_{a}^{b} f(x)\,dx}$ converges.
+
+\V
+
+        {\bf Proof} Since $f$ and $|f|$ are locally integrable on $(a,b)$ (see Remark~\Ref{RemrkH50.70}~(3) above),
+    it is clear that $|f| + f$ is locally integrable on $(a,b)$. Note that one has
+        \begin{displaymath}
+        0\,\,{\leq}\,\,|f(x)| + f(x)\,\,{\leq}\,\,2|f(x)| \mbox{ for all $x$ in $(a,b)$}.
+        \end{displaymath}
+    Thus, by the preceding theorem, one has
+        \begin{displaymath}
+        0\,\,{\leq}\,\,\int_{a}^{b} \left(|f(x)| + f(x)\right)\,dx\,\,{\leq}\,\,2\int_{a}^{b} |f(x)|\,dx\,<\,+{\infty}.
+        \end{displaymath}
+    The desired result follows by noting that $f(x) \,=\, (|f(x)| + f(x)) - |f(x)|$.
+
+\V
+\V
+
+        \subsection{\small{{\bf Examples}}}
+        \label{ExampH50.110}
+
+\V
+
+\hspace*{\parindent}(1) Since $e^{-x^{2}}\,\,{\leq}\,\,e^{-x}$ for all $x$ in $[0,+{\infty})$, it follows that ${\displaystyle \int_{1}^{{\infty}} e^{-x^{2}}\,dx}$ is convergent.
+
+\V
+
+        (2) One has ${\displaystyle \int_{{\pi}}^{{\infty}} \left|\frac{{\sin}\,x}{x}\right|} \,=\, +{\infty}$.
+    Indeed, for each $k{\in}{\NN}$ if $k{\pi} + {\pi}/4\,\,{\leq}\,\,x\,\,{\leq}\,\,3{\pi}/4 + k{\pi}$, then $|{\sin}\,x|/|x|\,\,{\geq}\,\,1/((k+1){\pi}\sqrt{2})$.
+ Thus
+        \begin{displaymath}
+        \int_{k{\pi}}^{(k+1){\pi}} \left|\frac{{\sin}\,x}{x}\right|\,dx\,\,{\geq}\,\,\frac{{\pi}}{(k+1){\pi}\sqrt{2}} \,=\, \frac{1}{(k+1)\sqrt{2}}.
+        \end{displaymath}
+    The claimed result follows from the fact that the harmonic series diverges to~$+{\infty}$.
+
+\V
+
+        (3) The improper integral ${\displaystyle \int_{{\pi}}^{{\infty}} \frac{{\sin}\,x}{x}\,dx}$ converges.
+    Indeed, note that if $d\,>\,{\pi}$ then one has
+        \begin{displaymath}
+        \int_{{\pi}}^{d} \frac{{\sin}\,x}{x}\,dx \,=\, -\left.\frac{{\cos}\,x}{x}\right|_{{\pi}}^{d} - \int_{{\pi}}^{d} \frac{{\cos}\,x}{x^{2}}\,dx.
+        \end{displaymath}
+    It follows easily that the right side of this equation approaches a finite limit as $d$ approaches $+{\infty}$.
+%
+
+}% \EndSkip
+%-----------------C
+
+\newpage
+
+\input{Exercises_M140AB_H_2017} %% NOTE: Automatically starts on a new page
+%
+%
+

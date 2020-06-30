@@ -1,0 +1,153 @@
+% Exercises_M140AB_H.TeX   Exercises for Chapter H
+
+%
+% Revised: 06/26/09
+%
+
+%% NOTE: Copy the 52 lines below to each chapter, and change the Chapter letters.
+
+%\thispagestyle{myheadings}
+
+
+%\markboth{Exercises for Chapter~\ref{ChaptH} -}{Exercises for Chapter~\ref{ChaptH} -}
+
+\newcommand{\ExHa}{{\bf \ref{ChaptH} - \,1} }
+\newcommand{\ExHb}{{\bf \ref{ChaptH} - \,2} }
+\newcommand{\ExHc}{{\bf \ref{ChaptH} - \,3} }
+\newcommand{\ExHd}{{\bf \ref{ChaptH} - \,4} }
+\newcommand{\ExHe}{{\bf \ref{ChaptH} - \,5} }
+\newcommand{\ExHf}{{\bf \ref{ChaptH} - \,6} }
+\newcommand{\ExHg}{{\bf \ref{ChaptH} - \,7} }
+\newcommand{\ExHh}{{\bf \ref{ChaptH} - \,8} }
+\newcommand{\ExHi}{{\bf \ref{ChaptH} - \,9} }
+\newcommand{\ExHj}{{\bf \ref{ChaptH} -  10} }
+\newcommand{\ExHk}{{\bf \ref{ChaptH} -  11} }
+\newcommand{\ExHl}{{\bf \ref{ChaptH} -  12} }
+\newcommand{\ExHm}{{\bf \ref{ChaptH} -  13} }
+\newcommand{\ExHn}{{\bf \ref{ChaptH} -  14} }
+\newcommand{\ExHo}{{\bf \ref{ChaptH} -  15} }
+\newcommand{\ExHp}{{\bf \ref{ChaptH} -  16} }
+\newcommand{\ExHq}{{\bf \ref{ChaptH} -  17} }
+\newcommand{\ExHr}{{\bf \ref{ChaptH} -  18} }
+\newcommand{\ExHs}{{\bf \ref{ChaptH} -  19} }
+\newcommand{\ExHt}{{\bf \ref{ChaptH} -  20} }
+\newcommand{\ExHu}{{\bf \ref{ChaptH} -  21} }
+\newcommand{\ExHv}{{\bf \ref{ChaptH} -  22} }
+\newcommand{\ExHw}{{\bf \ref{ChaptH} -  23} }
+\newcommand{\ExHx}{{\bf \ref{ChaptH} -  24} }
+\newcommand{\ExHy}{{\bf \ref{ChaptH} -  25} }
+\newcommand{\ExHz}{{\bf \ref{ChaptH} -  26} }
+
+
+\newcommand{\ExHaa}{{\bf \ref{ChaptH} - 27} }
+\newcommand{\ExHab}{{\bf \ref{ChaptH} - 28} }
+\newcommand{\ExHac}{{\bf \ref{ChaptH} - 29} }
+\newcommand{\ExHad}{{\bf \ref{ChaptH} - 30} }
+\newcommand{\ExHae}{{\bf \ref{ChaptH} - 31} }
+\newcommand{\ExHaf}{{\bf \ref{ChaptH} - 32} }
+\newcommand{\ExHag}{{\bf \ref{ChaptH} - 33} }
+\newcommand{\ExHah}{{\bf \ref{ChaptH} - 34} }
+\newcommand{\ExHai}{{\bf \ref{ChaptH} - 35} }
+\newcommand{\ExHaj}{{\bf \ref{ChaptH} - 36} }
+\newcommand{\ExHak}{{\bf \ref{ChaptH} - 37} }
+\newcommand{\ExHal}{{\bf \ref{ChaptH} - 38} }
+\newcommand{\ExHam}{{\bf \ref{ChaptH} - 39} }
+\newcommand{\ExHan}{{\bf \ref{ChaptH} - 40} }
+\newcommand{\ExHao}{{\bf \ref{ChaptH} - 41} }
+\newcommand{\ExHap}{{\bf \ref{ChaptH} - 42} }
+\newcommand{\ExHaq}{{\bf \ref{ChaptH} - 43} }
+\newcommand{\ExHar}{{\bf \ref{ChaptH} - 44} }
+\newcommand{\ExHas}{{\bf \ref{ChaptH} - 45} }
+\newcommand{\ExHat}{{\bf \ref{ChaptH} - 46} }
+\newcommand{\ExHau}{{\bf \ref{ChaptH} - 47} }
+\newcommand{\ExHav}{{\bf \ref{ChaptH} - 48} }
+\newcommand{\ExHaw}{{\bf \ref{ChaptH} - 49} }
+\newcommand{\ExHax}{{\bf \ref{ChaptH} - 50} }
+\newcommand{\ExHay}{{\bf \ref{ChaptH} - 51} }
+\newcommand{\ExHaz}{{\bf \ref{ChaptH} - 52} }
+
+
+
+                       \section{EXERCISES FOR CHAPTER~\ref{ChaptH}}
+                        \label{SectHEX}
+
+\V
+\V
+\V
+\V
+
+\noindent \ExHa \underline{Preliminary Remarks} The definition of ${\displaystyle \int_{a}^{b} f\,d{\alpha}}$ given in the {\em Notes} is the same as the one found in,
+    say, Rudin's `Principles of Mathematical Analysis'. Some authors use the following definition, which yields a somewhat different theory.
+
+\V
+
+        {\bf Alternate Definition} Let $[a,b]$ be a closed bounded interval in ${\RR}$, and as usual let ${\cal P}_{[a,b]}$ denote the set of partitions of the interval $[a,b]$.
+
+\V
+
+        (i)\, If ${\cal P} \,=\, \{a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{k} \,=\, b\}$ is a partition of $[a,b]$ then the {\bf mesh of the partition ${\cal P}$} is the number $||{\cal P}||$ given by
+        \begin{displaymath}
+        ||{\cal P}|| \,=\, {\max}\,\{|x_{1}-x_{0}|, |x_{2}-x_{1}|,\,{\ldots}\,|x_{k}-x_{k-1}|\}.
+        \end{displaymath}
+    Speaking geometrically, $||{\cal P}||$ is the length of the longest subinterval of $[a,b]$ determined by the partition~${\cal P}$.
+
+\V
+
+        (ii) Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is a bounded function and ${\alpha}:[a,b] \,{\rightarrow}\, {\RR}$ is monotonic up.
+    Using the notation and terminology of Lemma~H.1.7 and Definition~H.1.8, one says that $f$ is `Riemann-Stieltjes Integrable' in this alternate sense provided that the following condition holds:
+
+       \h There exists a number $A$ such that for every ${\varepsilon}\,>\,0$ there exists ${\delta}\,>\,0$ such that if ${\cal P}$ is any partition of $[a,b]$ such that $||{\cal P}||\,<\,{\delta}$, then for every choice list ${\tau} \,=\, (t_{1},t_{2},\,{\ldots}\,t_{k})$ associated with ${\cal P}$ one has
+        \begin{displaymath}
+        \left|S({\cal P},f,{\alpha},{\tau}) - A\right|\,<\,{\varepsilon}.
+        \end{displaymath}
+    (Recall that $S({\cal P},f,{\alpha},{\tau}) \,=\, {\displaystyle \sum_{j=1}^{k}} f(t_{j}){\Delta}{\alpha}_{j}$.) The number $A$ is then the value of the integral.
+
+\V
+
+        \underline{Problem}
+
+\V
+
+        (a) Show that if $f$ is Riemann-Stieltjes integrable on $[a,b]$ with respect to ${\alpha}$ in this alternate sense,
+    then it is also Riemann-Stieltjes integrable on $[a,b]$ with respect to ${\alpha}$ in the sense of Definition~H.1.4, and the integrals are equal.
+
+\V
+
+        (b) Give an example of $[a,b]$, $f$ and ${\alpha}$ for which the integral exists in the sense of Definition~H.1.4, but not in this alternate sense.
+
+\V      (c) Show that in the case of the ordinary Riemann integral, i.e., when ${\alpha}(x) \,=\, x$ for all $x$,
+    the two definitions are equivalent; that is, they produce the same class of integrable functions, and the same values for the integrals.
+
+% Apostol # 7.3, 7.4 p. 174
+
+\V
+\V
+
+\noindent \ExHb Prove Part~(a) of Theorem~H.2.4 (Hint: Use Theorem H.1.9)
+
+\V
+\V
+
+\noindent \ExHc Prove Part~(b) of Theorem~H.2.4 (Hint: Use Theorem H.1.9)
+
+\V
+\V
+
+\noindent \ExHd For each {\em even} natural number $m$, let ${\alpha}^{(m)}$ be the integrator described on Page~415,
+    in Example~H.1.10~(6), the `Simpson's Rule' example.
+
+\V
+
+        (a) Determine the value ${\alpha}^{(m)}(x)$ for each $x$ in $[a,b]$.
+
+\V
+
+        (b) Show that if $f:[a,b] \,{\rightarrow}\, {\RR}$ is continuous, then ${\displaystyle \int_{a}^{b} f \,=\, \lim_{m \,{\rightarrow}\, {\infty}} \int_{a}^{b} f\,d{\alpha}^{(m)}}$.
+
+
+\V
+\V
+
+
+\noindent \ExHe \underline{Prove or Disprove} If $f{\in}{\cal R}_{[0,1]}$, then ${\displaystyle \lim_{k \,{\rightarrow}\, {\infty}} \int_{0}^{1} x^{k}f(x)\,dx \,=\, 0}$.
+

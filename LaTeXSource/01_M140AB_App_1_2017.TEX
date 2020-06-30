@@ -1,0 +1,953 @@
+% M140AB_A.TeX  Notes for `Single-Variable Analysis': Appendix A
+
+%
+% Revised: 08/29/2016 %% Encoding: Western ASCII
+%
+
+
+\appendix
+                  \chapter{The Dedekind-Peano Axioms for ${\NN}$}
+
+        \underline{Quotes for Appendix~A}\IndB{chapter quotes}{for Appendix~A}:
+
+\V
+
+\begin{quotation}
+{\footnotesize
+
+              (1) `Die ganzen Zahlen hat der liebe Gott gemacht, alles andere ist Menschenwerk.'
+
+        (`The dear God has made the integers; all the rest is man's work.')
+
+        Statement quoted of Leopold Kronecker.
+
+}%EndFootNoteSize
+\end{quotation}
+
+
+\V
+\V
+
+
+        In this appendix we present an axiomatic approach to the concept of `counting'.
+     The usual custom is to refer to the axioms discussed here as the `Peano Axioms'.
+    However, since they apparently were discovered earlier (and independently) by Dedekind,
+    in {\TheseNotes} we follow the usage of several authors and refer to them as the {\em Dedekind-Peano axioms}.
+    The approach in this Appendix largely follows that of Dedekind in his famous essay {\em Was sind und was sollen die Zahlen};
+    of course, Dedekind's terminology and notation have been upgraded to reflect the more modern usage.
+
+
+        \underline{Note} If you have never worked through the `Dedekind-Peano' axiomatic approach to the natural numbers,
+    it is worth your time to at least skim through the material in this appendix;
+    however, doing so is not required for reading the preceding chapters.
+
+
+\V
+\V
+
+        In Definition~\Ref{DefA12.70} we characterize what it means for a finite nonempty set $A$ to have (exactly) $k$ elements, for some $k{\in}{\NN}$,
+    in terms of a complete pairing of $A$ with the subset~${\NN}_{k}$ of the `standard counting set~${\NN}$; that is, the set of standard counting numbers.
+    Of course other sets could have been chosen to play the role of `standard counting set';
+    for example, in many computer spreadsheets the columns are labeled by letters, not natural numbers:
+        \begin{displaymath}
+        A, B, \,{\ldots}\,Z, A\,A, A\,B,\,{\ldots}\,A\,Z, B\,A, B\,B\,{\ldots}\,
+        \end{displaymath}
+    In this appendix we characterize axiomatically the properties which any such comparison set ought to enjoy.
+
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 1: Definition} A {\bf counting structure} is a pair of objects $(X,{\sigma})$ consisting of a nonempty set $X$ together with a function ${\sigma}:X \,{\rightarrow}\, X$ which satisfies the following {\bf Dedekind-Peano Axioms}:
+
+\V
+
+        (a) The function ${\sigma}$ is one-to-one on $X$, and there is exactly one element of $X$ which is {\em not} in the image ${\sigma}(X)$.
+    This element is denoted $u_{{\sigma}}$; the letter $u$ stands for `unit'.
+
+\V
+
+        (b) Suppose that $A$ is any subset of $X$ with the following properties:
+
+            \h (i)\, The element $u_{{\sigma}}$ is in the set $A$;
+
+            \h (ii)  For every element $x$ in $A$ the element ${\sigma}(x)$ is also in $A$;
+    that is, ${\sigma}[A] \,{\subseteq}\, A$.
+
+\noindent Then $A \,=\, X$.
+
+\V
+
+
+        {\bf Add1-\Ref{ChaptA} 2: Remarks}
+
+        (1) \underline{Concerning Axiom (a)} The function ${\sigma}$ associated with the counting structure $(X,{\sigma})$ is usually called the {\bf successor function} of that structure,
+    and if $x$ is any element of $X$ then ${\sigma}(x)$ is called the {\bf successor of $x$}.
+    The requirement that ${\sigma}$ be one-to-one then can be phrased as `No  element of $X$ can be the successor of more than one element'.
+    Likewise, the requirement on the special element $u_{{\sigma}}$ can be phrased as `The special element $u_{{\sigma}}$ is not the successor of any element, and it is the {\em unique} element of $X$ which is not a successor'.
+    Because of this last fact, one often refers to $u_{{\sigma}}$ as the {\bf initial element of $X$}.
+    When there can be no confusion, one normally writes the simpler $u$ instead of $u_{{\sigma}}$.
+
+        Note that most authors assume the existence, but not the uniqueness, of an element $u$ in $X$ which is not the successor of any element.
+    They can do this because the uniqueness can be trivially deduced later on using Axiom~(b).
+    The choice, whether to treat the `uniqueness' as part of an axiom or as a theorem to be proved later on, is thus largely a matter of taste.
+
+\V
+
+        (2) \underline{Concerning Axiom (b)} For obvious reasons, this axiom is called the {\bf Induction Axiom},
+    and any nonempty subset of $X$ which satisfies Part~(ii) of this condition is called an {\bf inductive subset of $X$}.
+    Peano uses essentially this axiom in his formulation; that is, he {\em assumes} as an axiom the `Principle of Mathematical Induction'.
+
+        In contrast, the analogous axiom in Dedekind's formulation can be phrased as follows:
+
+        \h `The set $X$ is the intersection of the family of all the inductive subsets of $X$ containing the element $u$.'
+
+\noindent (Note that $X$ itself is an inductive subset of $X$ containing $u$, so the family in question is not empty.)
+    In particular, Dedekind does {\em not} assume the Principle of Mathematical Induction as an axiom;
+    instead he {\em proves} that Principle as a consequence of his axioms.
+    Likewise, one can prove that the Peano axiom implies the Dedekind version. (Both proofs are trivial.)
+    In any event, one needs both the `Principle of Mathematical Induction' and Dedekind's `intersection of inductive subsets' construction to work out the theory;
+    the choice, of which is to be an axiom and which is to be a theorem, is thus largely a matter of taste.
+
+\V
+\V
+
+        {\bf Add1-\Ref{ChaptA} 3: Examples}
+
+\V
+
+        (1) Let $X$ be the standard set ${\NN} \,=\, \{1,2,3,\,{\ldots}\,\}$, whose elements are described by Arabic (decimal) numerals.
+    Let the function ${\sigma}:{\NN} \,{\rightarrow}\, {\NN}$ be given by the usual rule for finding the successor of a natural number $k$:
+    if the right-most (decimal) numeral of a number $k$ is one of the digits $0$, $1$,\,{\ldots}\,$8$, then replace that digit by the next higher one,
+    and leave the other digits alone.
+    If the decimal expression for $k$ ends with a string of one or more `$9$'s on the right, to get ${\sigma}(k+1)$ replace each such $9$ with the digit $0$,
+    and increase the right-most non-$9$ digit to the next higher digit; if {\em all} the numerals of $k$ are $9$,
+    then ${\sigma}(k+1)$ has initial numeral $1$ followed by as many $0$s as $k$ has $9$s.
+    The initial element for this counting structure is~$1$.
+
+        \underline{Note} A faster way of describing the successor function in this example would be to simply say ${\sigma}(k) \,=\, k+1$.
+    The reason for using the wordier description given above is to emphasize that one does not have to know about `addition' --
+    not even the special case of `addition with $1$' -- to characterize the successor function.
+    Because of this, when we later {\em define} addition for arbitrary counting structures in terms of the successor function,
+    we can avoid the sensation that the definition is somehow `circular' -- we define addition in terms of the successor function,
+        which itself is often defined in terms of `addition with $1$'.
+    Having done so in this key example, however, we take the easy way out in some of the following examples
+    and describe the successor function there in terms of addition.
+
+\V
+
+        (2) The set $X$ is $\hat{{\NN}} \,=\, \{0,1,2,\,{\ldots}\,\}$, the function ${\sigma}:\hat{{\NN}} \,{\rightarrow}\, \hat{{\NN}}$ is given by ${\sigma}(k) \,=\, k+1$.
+    Then $u \,=\, 0$.
+
+\V
+
+        (3) The set $X$ consists of all elements of ${\NN}$ starting with $7$:
+    $X \,=\, \{7, 8, 9, \,{\ldots}\,\}$.
+    The function ${\sigma}$ is given as usual by ${\sigma}(k) \,=\, k+1$.
+    In this case the initial element is $u \,=\, 7$.
+
+\V
+
+        (4) The set $X$ consists of all the {\em even} natural numbers; that is, $X \,=\, \{2,4,6,\,{\ldots}\,\}$.
+    The function ${\sigma}$ is given by the rule ${\sigma}(k) \,=\, k+2$, so that $u \,=\, 2$.
+
+\V
+
+        (5) The set $X$ consists of the standard Roman numerals
+        \begin{displaymath}
+        I, II, III, IV, V,\,{\ldots}\,X,\,{\ldots}\,C,\,{\ldots}\,M,\,{\ldots}\,
+        \end{displaymath}
+    Since we shall not be using these numerals extensively, we shall leave to the reader the happy task of determining the corresponding successor function~${\sigma}$.
+
+    The reader should be able to easily figure out the pattern and from that to determine the corresponding `successsor function'~${\sigma}$.
+
+\V
+\V
+
+        {\bf Add1-\Ref{ChaptA} 4: Theorem} Suppose that $(X,{\sigma})$ is a counting structure with initial element~$u$.
+    Then for all $x$ in $X$ one has ${\sigma}(x) \,\,{\neq}\,\, x$.
+
+\V
+
+        {\bf Proof}\,  Let $A$ be the set of all $x$ in $X$ such that ${\sigma}(x) \,\,{\neq}\,\, x$.
+    Certainly the initial element $u$ is in $A$; for if not then one would have ${\sigma}(u) \,=\, u$, contrary to the fact that the initial element is not in the image of the function ${\sigma}$.
+
+        Next, suppose that $x{\in}A$. If ${\sigma}(x)$ were not in $A$, then one would have ${\sigma}({\sigma}(x)) \,=\, {\sigma}(x)$.
+    But by the fact that ${\sigma}$ is one-to-one, one would then also have ${\sigma}(x) \,=\, x$, contrary to the induction hypothesis that $x{\in}A$.
+    Thus, if $x{\in}A$ then ${\sigma}(x){\in}A$ as well.
+    By the Induction Axiom it follows that $A \,=\, X$, and the desired result follows.
+
+\V
+\V
+
+
+        Example~(3) above illustrates a way of obtaining new counting structures from a given such structure.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 5: Theorem} Suppose that $(X,{\sigma})$ is a counting structure with initial element~$u$.
+    Let $x_{1}$ be an element of $X$, and let $X_{1}$ denote the intersection of the family ${\cal F}_{1}$ of all the inductive subsets of $X$ which contain the element $x_{1}$.
+    Then $X_{1}$ is a nonempty subset of $X$.
+    Furthermore, if ${\sigma}_{1}$ denotes the restriction of the function ${\sigma}$ to the subset $X_{1}$,
+    then $(X_{1},{\sigma}_{1})$ is a counting structure, and its initial element is $x_{1}$.
+
+\V
+
+        {\bf Proof}\,  Let $A$ be the set of all $x_{1}$ in $X$ for which the conclusion of the theorem is true.
+    It suffices to show that $A \,=\, X$.
+
+        \underline{Initial Step} Clearly $u{\in}A$, since by the Induction Axiom the only inductive subset of $X$ containing $u$ is $X$ itself, and thus when $x_{1} \,=\, u$ one has $X_{1} \,=\, X$ and ${\sigma}_{1} \,=\, {\sigma}$.
+
+        \underline{Inductive Step} Now suppose that $w{\in}A$, and let $W$ denote the intersection of all inductive subsets of $X$ containing $w$,
+    and let ${\sigma}_{w}$ denote the restriction of ${\sigma}$ to $W$. Then, by the definition of the set~$A$,
+    the pair $(W,{\sigma}_{w})$ is a counting structure with initial element~$w$.
+    Let $x_{1} \,=\, {\sigma}(w)$, and let ${\cal F}_{1}$, $X_{1}$ and ${\sigma}_{1}$ be as in the statement of the theorem.
+    Note that the family ${\cal F}_{1}$ is nonempty, since $X$ itself is an inductive set containing $x_{1}$.
+    In adddition, by definition of ${\cal F}_{1}$, every set in the family ${\cal F}_{1}$ contains $x_{1}$, hence so does the intersection~$X_{1}$.
+    Thus, $x_{1}{\in}X_{1}$, so in particular $X_{1} \,\,{\neq}\,\, {\emptyset}$.
+    Next, suppose that $y{\in}X_{1}$. Then for every set $Y$ in the family ${\cal F}_{1}$ one has $y{\in}Y$;
+    and since each such set $Y$ is an inductive subset of $X$, it follows that ${\sigma}(y){\in}Y$ as well.
+    Thus, ${\sigma}(y)$ is also in the intersection $X_{1}$, hence $X_{1}$ is an inductive set.
+    In particular, the restriction ${\sigma}_{1}$ of ${\sigma}$ to $X_{1}$ maps $X_{1}$ into itself.
+    It is clear that ${\sigma}_{1}$ is one-to-one on $X_{1}$, since it is the resriction to $X_{1}$ of the one-to-one function ${\sigma}$ on $X$.
+    Furthermore, if $z$ is a point of $X_{1}$ such that $z \,\,{\neq}\,\, x_{1}$, then $z$ must be of the form ${\sigma}_{1}(x)$ for some $x$ in $X_{1}$.
+    Indeed, if this were not the case, consider the set $Y \,=\, X_{1}{\setminus}\{z\}$.
+    Since $z \,\,{\neq}\,\, x_{1}$ it is clear that $x_{1}{\in}Y$.
+    And since $z$ is not in ${\sigma}_{1}(X_{1})$, and $X_{1}$ is an inductive subset of $X$,
+    it is clear that $Y$ is a nonempty inductive subset of $X$ containing $x_{1}$.
+    Thus, $X_{1}$, being the intersection of all such sets, must be a subset of $Y$.
+    However, this is impossible since $z{\in}X_{1}$ but $z$ is {\em not} in $Y$.
+
+        All that is left to show is that $x_{1}$ is not in ${\sigma}_{1}(X_{1})$.
+    Since, by definition, $x_{1} \,=\, {\sigma}(w)$, and ${\sigma}$ is one-to-one on $X$, this means one need only show that $w$ is not in $X_{1}$.
+    But if $w$ were in $X_{1}$, then $X_{1}$ would be an inductive subset of $X$ containing $w$,
+    hence one would have $W \,{\subseteq}\, X_{1}$, since $W$ is the intersection of all such subsets.
+    On the other hand, $w$ is in $W$, and $W$ is an inductive subset of $X$, so $x_{1} \,=\, {\sigma}(w)$ is also in $W$, so $W$ is an inductive subset of $X$ containing $x_{1}$.
+    Since $X_{1}$ is the intersection of all such subsets of $X$, it follows that $X_{1} \,{\subseteq}\, W$.
+    Combining these results, one sees that if $w{\in}X_{1}$, then $X_{1} \,=\, W$.
+    However, since $w{\in}A$ it follows that $w$ is the initial element of $W$, hence if one removes $w$ from $W \,=\, X_{1}$ one would get a proper subset of $X_{1}$ which contains $x_{1} \,=\, {\sigma}(w)$ and is inductive.
+    (Note that ${\sigma}(w) \,\,{\neq}\,\, w$ because $w$ is the initial element of $W$; that is, $x_{1} \,\,{\neq}\,\, w$. Thus, removing $w$ from $W$ does not remove $x_{1}$ from $W$.)
+    This would contradict the definition of $X_{1}$ as the intersection of all such subsets of $X$.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 6: Definition} Let $(X,{\sigma})$ be a counting structure with initial element $u$.
+    Let $x_{1}$ be an element of $X$. Then the counting structure $(X_{1},{\sigma}_{1})$ with initial element $x_{1}$
+    described in the preceding theorem is called the {\bf counting substructure of $(X,{\sigma})$ determined by $x_{1}$}.
+    The set $X_{1}$ so described is denoted $<x_{1}>_{{\sigma}}$, and the correspondng function ${\sigma}_{1}$ is denoted ${\sigma}_{x_{1}}$.
+
+\V
+\V
+
+        By a similar line of reasoning one can prove the following result; the details are left as an exercise.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 7: Corollary} Let $(X,{\sigma})$ be a counting structure with initial element $u$.
+    Let $x_{1}$ be an element of $X$, and let $(X_{1},{\sigma}_{1})$ be the counting substructure of $(X,{\sigma})$ determined by $x_{1}$.
+    Then the counting substructure of $(X,{\sigma})$ determined by $x_{2} \,=\, {\sigma}(x_{1})$ is of the form $(X_{2},{\sigma}_{2})$,
+    where $X_{2} \,=\, {\sigma}(X_{1}) \,=\, X_{1}{\setminus}\{x_{1}\}$.
+
+\V
+\V
+
+        {\bf Add1-\Ref{ChaptA} 8: Theorem} Let $(X,{\sigma})$ be a counting structure with initial element $u$.
+    Let $x_{1}$ and $x_{2}$ be elements of $X$ such that $x_{1} \,\,{\neq}\,\, x_{2}$, and let $(X_{1},{\sigma}_{1})$ and $(X_{2},{\sigma}_{2})$ be the corresponding counting substructures of $(X,{\sigma})$.
+    Then exactly one of the following statements is true:
+
+        \h (i)\, $x_{1}$ is in $X_{2}$
+
+        \h (ii)  $x_{2}$ is in $X_{1}$
+
+\V
+
+        {\bf Proof}\,  To see that {\em at most} one of these properties can hold for such $x_{1}$ and $x_{2}$,
+    suppose that $x_{1}$ is in $X_{2}$. Then $X_{2}$ is an inductive subset of $X$ which contain $x_{1}$.
+    Since $x_{2} \,\,{\neq}\,\, x_{1}$, and (by the preceding theorem) $x_{2}$ is the initial element of the set $X_{2}$,
+    it follows that the set $Y \,=\, X_{2}{\setminus}\{x_{2}\}$ obtained by removing $x_{2}$ from $X_{2}$ is also an inductive subset of $X$ which contains $x_{1}$.
+    Since $X_{1}$ is, by definition, the intersection of such subsets, it follows that $X_{1} \,{\subseteq}\, Y$.
+    But $Y$ does not contain $x_{2}$, hence neither does $X_{1}$, as claimed.
+    A similar argument shows that if $x_{2}$ is in $X_{1}$ then $x_{1}$ cannot be an element of $X_{2}$.
+
+        To see that {\em at least} one of these properties must hold, let $A$ be the set of all $x_{1}$ in $X$ such that if $x_{2}$ is an element of $X$ not equal to $x_{1}$, then either (i) or (ii) holds.
+
+        \underline{Initial Step} Certainly $x_{1} \,=\, u$ is in $A$, since in this case $X_{1} \,=\, X$ and thus (ii) holds for every $x_{2}$.
+
+        \underline{Induction Step} Suppose that $w{\in}A$, and let $(W,{\sigma}_{w})$ denote the counting substructure of $(X,{\sigma})$ determined by $w$.
+    Let $x_{1} \,=\, {\sigma}(w)$, and suppose that $x_{2}$ is an element of $X$ with $x_{2} \,\,{\neq}\,\, x_{1}$.
+    Let $X_{1}$ and $X_{2}$ be as in the statement of the theorem. Note that, by the preceding corollary, one has $X_{1} \,=\, {\sigma}[W]$.
+    If $x_{2} \,=\, w$ then $x_{1} \,=\, {\sigma}(x_{2})$, and thus $x_{1}$ is an element of $W_{2}$, so (i) holds.
+    Thus, suppose $x_{2} \,\,{\neq}\,\, w$.
+    Then, by the induction hypothesis that $w$ is in $A$, it follows that either $w$ is in $X_{2}$ or $x_{2}$ is in $W$.
+    In the former case it follows (from the fact that $X_{2}$ is an inductive set) that $x_{1} \,=\, {\sigma}(w)$ is also in $X_{2}$, and thus (i) holds.
+    In the latter case, since $x_{2} \,\,{\neq}\,\, w$, it follows from the fact that ${\sigma}[W] \,=\, W{\setminus}\{w\}$, that $x_{2}{\in}{\sigma}[W]$; that is, since ${\sigma}[W] \,=\, X_{1}$, $x_{2}{\in}X_{1}$, and thus in this case (ii) holds.
+    Thus, in all the cases either (i) or (ii) holds, hence ${\sigma}(w)$ is also in $A$.
+
+        It now follows from the Induction Axiom that $A \,=\, X$, and the desired theorem follows.
+
+\V
+\V
+
+        In light of the preceding theorem, it is now easy to introduce the concept of `greater than' (or equivalently, `less than') for any counting structure.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 9: Definition} Let $(X,{\sigma})$ be a counting structure. Let $x_{1}$ and $x_{2}$ be elements of $X$ with $x_{1} \,\,{\neq}\,\, x_{2}$,
+    and let $(X_{1},{\sigma}_{1})$ and $(X_{2},{\sigma}_{2})$ denote the counting substructures of $(X,{\sigma})$ determined by $x_{1}$ and $x_{2}$, respectively.
+    One says that {\bf $x_{2}$ is greater than $x_{1}$} or, equivalently, {\bf $x_{1}$ is less than $x_{2}$}, with respect to the given structure $(X,{\sigma})$, provided $x_{2}$ is in $X_{1}$.
+    In this case one writes $x_{2}\,>_{(X,{\sigma})}\,x_{1}$ (equivalently, $x_{1}\,<_{(X,{\sigma})}\,x_{2}$);
+    or, if the choice of counting structure $(X,{\sigma})$ is understood from the context, simply $x_{2}\,>\,x_{1}$ (equivalently, $x_{1}\,<\,x_{2}$).
+
+        More generally, one writes $x_{2}\,\,{\geq}\,\,x_{1}$, or, equivalently, $x_{1}\,\,{\leq}\,\,x_{2}$, if either $x_{1} \,=\, x_{2}$ or $x_{2}\,>\,x_{1}$.
+
+        If $w$ is any element of $X$, then $X_{w}$ denotes the set of all elements $x$ of $X$ such that $x\,\,{\leq}\,\,w$;
+    this set is called the {\bf initial section of $X$}.
+    More generally, if $w_{1}$ and $w_{2}$ are elements of $X$ such that $w_{1}\,\,{\leq}\,\,w_{2}$,
+    then $X_{[x_{1},x_{2}]}$ denotes the set of all $x$ in $X$ such that $w_{1}\,\,{\leq}\,\,x\,\,{\leq}\,\,w_{2}$.
+    Note that $X_{w} \,=\, X_{[u,w]}$.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 10: Examples} $X_{u} \,=\, \{u\}$; $X_{{\sigma}(u)} \,=\, \{u,{\sigma}(u)\}$.
+    More generally, for each $x$ in $X$ one has $X_{{\sigma}(x)} \,=\, X_{x}\,{\cup}\,\{{\sigma}(x)\}$.
+
+\V
+
+        The next result follows easily from what precedes, so the proof is left as an exercise.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 11: Theorem} Let $(X,{\sigma})$ be a counting structure, and let $\,<\,$ denote the corresponding `less than' relation.
+    Then:
+
+\V
+
+        (a) (`The Trichotomy Law') If $x_{1}$ and $x_{2}$ are elements of $X$, then exactly one of the following statements is true:
+
+        \h (i)\,\,$x_{1} \,=\, x_{2}$
+
+        \h (ii)\, $x_{1}\,<\,x_{2}$
+
+        \h (iii) $x_{2}\,<\,x_{1}$
+
+\V
+
+        (b) (`The Transitivity Law') If $x_{1}$, $x_{2}$ and $x_{3}$ are elements of $X$ such that $x_{1}\,<\,x_{2}$ and $x_{2}\,<\,x_{3}$, then $x_{1}\,<\,x_{3}$.
+
+\V
+\V
+
+
+        {\bf Add1-\Ref{ChaptA} 12: Theorem} Let $(X,{\sigma})$ be a counting structure. If $x_{1}$ is any element of $X$, then $x_{1}\,<\,{\sigma}(x_{1})$.
+    Moreover, then there is no element $w$ of $X$ such that $x_{1}\,<\,w\,<\,{\sigma}(x_{1})$.
+    (This is often phrased: `There is no element of $X$ between two consecutive elements of $X$'.)
+
+\V
+
+        {\bf Proof}\,  Let $x_{2} \,=\, {\sigma}(x_{1})$, and as usual denote the counting substructures of $(X,{\sigma})$ determined by $x_{1}$ and $x_{2}$, respectively, by $(X_{1},{\sigma}_{1})$ and $(X_{2},{\sigma}_{2})$.
+    It follows from the corollary above that $X_{2} \,=\, X_{1}{\setminus}\{x_{1}\}$; that is, $X_{2}$ is obtained by removing from $X_{1}$ the single element $x_{1}$.
+    Now suppose that there exists $w$ in $X$ such that $x_{1}\,<\,w\,<\,x_{2}$.
+    Denote the counting substructure of $(X,{\sigma})$ determined by $w$ as $(X_{w},{\sigma}_{w})$.
+    Then, by the definition of the relation `$\,<\,$', the element $w$ must be in the set $X_{1}$ but not in the set $X_{2}$.
+    However, the only element of $X_{1}$ which is not in $X_{2}$ is $x_{1}$, which would imply $w \,=\, x_{1}$.
+    This would contradict the Trichotomy Law, since it is given that $x_{1}\,<\,w$.
+    Thus, no such $w$ can exist, which proves the desired result.
+
+\V
+
+
+        {\bf Add1-\Ref{ChaptA} 13: Theorem} Let $(X,{\sigma})$ be a counting structure. Then every nonempty subset $Y$ of $X$ has a least element;
+    that is, there is an element $y_{0}$ in $X$ such that $y_{0}{\in}Y$ and $y_{0}\,\,{\leq}\,\,y$ for all $y$ in~$Y$.
+
+\V
+
+        This is essentially just the `Least-Natural-Number Principle',
+    but expressed in the more general context of counting structures.
+    The proof is left as an exercise.
+
+\V
+\V
+
+
+        The next result says, in effect, that all counting structures are equivalent in a natural sense,
+    and thus it does not matter which specific example one uses as one's `standard counting structure'.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 14: Theorem} Let $(X,{\sigma})$ and $(Y,{\tau})$ be counting structures, with initial elements $u$ and $v$, respectively.
+    Then there exists a unique bijection $F:X \,{\rightarrow}\, Y$ of $X$ onto $Y$ such that
+
+        \h (i)\, $F(u) \,=\, v$;
+
+        \h (ii) $F({\sigma}(x)) \,=\, {\tau}\left(F(x)\right)$ for all $x$ in~$X$.
+
+\V
+
+        {\bf Proof}\,  The proof of the stated result follows directly from the following.
+
+        \underline{Claim} For each $w$ in $X$ there exists a unique function $F_{w}: X_{{\sigma}(w)} \,{\rightarrow}\, Y$
+    such that $F_{w}(u) \,=\, v$ and $F_{w}({\sigma}(x)) \,=\, {\tau}\left(F_{w}(x)\right)$ for all $x$ in $X_{w}$.
+
+        \underline{Proof (`by Contradiction') of the Claim} Let $C$ denote the set of all $w$ in $X$ for which it is {\em not}
+    the case that there exists a unique function with the indicated properties.
+    If $C \,\,{\neq}\,\, {\emptyset}$, then by the Theorem of the Least Element the set $C$ must have a least element; call it $m$.
+    Clearly $m \,\,{\neq}\,\, u$, since it is obvious that the function $F_{u}:X_{{\sigma}(u)} \,{\rightarrow}\, Y$ given by the rule $F_{u}(u) \,=\, v$, $F_{u}({\sigma}(u)) \,=\, {\tau}(v)$ has the desired properties, and is the only such function.
+    Thus, $m$ must be of the form $m \,=\, {\sigma}(w_{1})$ for some (unique) $w_{1}$ in $X$; clearly $w_{1}\,<\,m$.
+    Since, by hypothesis, $m$ is the {\em least} element of $C$, it follows that $w_{1}$ is not in $C$,
+    and thus there is exactly one function $F_{w_{1}}:X_{{\sigma}(w_{1})} \,{\rightarrow}\, Y$ which has the desired properties.
+    Note that the domain of $F_{w_{1}}$ can also be written as $X_{m}$ since $m \,=\, {\sigma}(w_{1})$.
+    Now define $F_{m}:X_{{\sigma}(m)} \,{\rightarrow}\, Y$ by the rule
+        \begin{displaymath}
+        F_{m}(x) \,=\, F_{w_{1}}(x) \mbox{ if $x{\in}X_{m}$}; \h F_{m}({\sigma}(m)) \,=\, {\tau}\left(F_{m}(m)\right).
+        \end{displaymath}
+    It is clear that this function also satisfies the conditions of the `Claim', and thus $m$ is not in $C$.
+    That is, assuming that $C \,\,{\neq}\,\, {\emptyset}$ leads to an element which is simultaneously in $C$ and not in $C$, which is impossible.
+    Thus, $C \,=\, {\emptyset}$, and the claim follows.
+
+        The theorem now follows easily.
+    Indeed, it is clear that the set $X$ is the union of the nonempty subsets of the form $X_{x}$ for $x$ in $X$.
+    Moreover, since the intersection of sets $X_{x_{1}}$ and $X_{x_{2}}$ is of the form $X_{x}$, with $x$ being the larger of $x_{1}$ and $x_{2}$,
+    it follows from the uniqueness properties enjoyed by the functions $F_{w}$ described in the Claim that Theorem~\Ref{ThmA30.27} can be applied to conclude that there is a unique function $F:X \,{\rightarrow}\, Y$ whose restriction to each set $X_{{\sigma}(w)}$ equals $F_{w}$.
+    In light of the results of the `Claim', this function clearly satisfies Conditions~(i) and~(ii) of the theorem, and is the only function that does.
+    To see that $F$ is a bijection of $X$ onto $Y$, first note that in the special case $(Y,{\tau}) \,=\, (X,{\sigma})$ one gets that there is a unique function $H:X \,{\rightarrow}\, X$ such that $H(u) \,=\, u$ and $H({\sigma}(x)) \,=\, {\sigma}\left(H(x)\right)$ for all $x$ in $X$.
+    However, it is clear that the identity map $I_{X}$ on $X$ has these properties, so in this case $H \,=\, I_{X}$.
+    Next, note that by reversing the roles of $(X,{\sigma})$ and $(Y,{\tau})$ in the theorem,
+    it follows that there exists a unique function $G:Y \,=\, X$ such that $G(v) \,=\, u$ and $G({\tau}(z)) \,=\, {\sigma}\left(G(z)\right)$ for all $z$ in $V$.
+    Now let $H:X \,{\rightarrow}\, X$ be the composition $H \,=\, G{\circ}F$. Then $H(u) \,=\, G(F(u)) \,=\, G(v) \,=\, u$, and $H({\sigma}(x)) \,=\, G((F({\sigma}(x)))) \,=\, G({\tau}\left(F(x))\right) \,=\, {\sigma}(G(F(x))) \,=\, {\sigma}(H(x))$ for all $x$.
+    Thus by what was observed above, it follows that $G \,=\, I_{X}$. In a similar way one gets $F{\circ}G \,=\, I_{Y}$.
+    It now follows from Part~(c) of Theorem~\Ref{ThmA30.160} that $F$ is a bijection of $X$ onto $Y$, and that $G \,=\, F^{-1}$.
+
+\V
+\V
+
+        The Peano Axioms are strong enough to characterize all the main features of the standard comparison sets for counting.
+    For example, here is how to define `addition'.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 15: Theorem} Let $(X,{\sigma})$ be a counting structure with initial element~$u$.
+    Then there is a unique function $S_{{\sigma}}:X{\times}X \,{\rightarrow}\, X$, called the {\bf sum function associated with the structure $(X,{\sigma})$},
+    with the following properties: If $x$ is any element of $X$, then
+
+        (a) $S_{{\sigma}}(x,u) \,=\, S_{{\sigma}}(u,x) \,=\, {\sigma}(x)$;
+
+        (b) $S_{{\sigma}}(x,{\sigma}(y)) \,=\, {\sigma}(S_{{\sigma}}(x,y))$ for all $y$ in $X$.
+
+\noindent If the context makes clear which counting structure $(X,{\sigma})$ is under discussion,
+    one normally drops the explicit reference to ${\sigma}$ and writes $S$ instead of the more proper $S_{{\sigma}}$.
+
+\V
+
+        \underline{NOTE} To understand how these formulas arise, first think of the expression $S(x,y)$ as a shorthand for `the {\em sum} of $x$ and $y$'.
+    Then in the context of  ${\NN}$, for which $u \,=\, 1$ and ${\sigma}(x) \,=\, x+1$, the formulas become
+        \begin{displaymath}
+        \mbox{(i) } S(x,1) \,=\, x+1 \mbox{ and } \mbox{(ii) } S(x,y+1) \,=\, S(x,y)+1.
+        \end{displaymath}
+    Equation~(i) says that the `sum' $S$ agrees with the usual addition~$+$ in ${\NN}$ when applied to $x$ and $1$;
+    that is, the `sum of $x$ and $1$', as defined by the function $S$, equals the usual $x+1$ in ${\NN}$.
+    Equation~(ii) says, in effect, that if $S(x,y)$ agrees with the usual $x+y$ in ${\NN}$ for a particular second summand $y$,
+    then it continues to agree with the usual addition for the next larger second summand $y+1$.
+    Indeed, if $S(x,y) \,=\, x+y$, then $S(x,y)+1 \,=\, (x+y)+1 \,=\, x+(y+1)$, where the last equation reflects the associative law for ordinary addition of  natural numbers.
+    Thus, Equation~(ii) becomes $S(x,y+1) \,=\, x+(y+1)$. Combining these observations with induction on the second summand $y$ then yields the fact that, 
+    in the case of ${\NN}$, the sum $S$ satisfies $S(x,y) \,=\, x+y$ for {\em all} $x$ and $y$.
+
+\V
+
+        {\bf Proof of Theorem}
+
+\V
+
+        \underline{Uniqueness of $S$} Suppose that $S_{1}$ and $S_{2}$ are both functions which satisfy the conditions stated in the theorem.
+    Then certainly $S_{1}(x,u) \,=\, S_{2}(x,u)$ for all $x$ in $X$, since, by~(a), both quantities equal ${\sigma}(x)$.
+
+        Next, let $A$ denote the set of $y$ in $X$ such that $S_{1}(x,y) \,=\, S_{2}(x,y)$ for all $x$ in $X$.
+    By what was just proved, it is clear that $u{\in}A$.
+    Furthermore, if $y{\in}A$, then by~(b) one has
+        \begin{displaymath}
+        S_{1}(x,{\sigma}(y)) \,=\, {\sigma}(S_{1}(x,y)) \mbox{ and }
+        S_{2}(x,{\sigma}(y)) \,=\, {\sigma}(S_{2}(x,y)) \mbox{ for all $x$ in $X$}.
+        \end{displaymath}
+    However, by the hypothesis that $y{\in}A$ one has $S_{1}(x,y) \,=\, S_{2}(x,y)$, so that ${\sigma}(y)$  is also in $A$.
+    Now the Induction Axiom implies that $A \,=\, X$.
+    Thus, $S_{1}(x,y) \,=\, S_{2}(x,y)$ for all $(x,y)$ in $X{\times}X$, so $S_{1} \,=\, S_{2}$, as claimed.
+
+\V
+
+        \underline{Existence of $S$} According to Definition~\Ref{DefA30.10}, a function with domain $X{\times}X$ and values in $X$ is a subset of the
+    Cartesian product $Z \,=\, (X{\times}X){\times}X$ which satisfies certain properties.
+    The approach followed here is to construct the subset of $Z$ corresponding to the desired function $S$ -- viewed as a  subset of $Z$ --
+    as the disjoint union of smaller subsets of $Z$. In effect, we use the fact that $Z$  can be expressed as the disjoint union
+        \begin{displaymath}
+        Z \,=\, {\bigcup}_{x{\in}X} \left(\{x\}{\times}X\right){\times}X
+        \end{displaymath}
+
+        Let $A$ be the set of all $x$ in $X$ such that the following holds:
+    There exists a nonempty subset $Y_{x}$ of $Z$ such that
+
+        \h (i)\,\, Every element of $Y_{x}$ is of the form $((x,y),z)$ for some $y$ and $z$ in $X$.
+    That is, $Y_{x}$ is a subset of $\left(\{x\}{\times}X\right){\times}X$.
+
+        \h (ii)\, For every $y$ in $X$ there is exactly one element of the form $((x,y),z)$ in $Y_{x}$.
+    That is, $Y_{x}$ is a function (in the sense of Definition~\Ref{DefA30.10}) with domain $\{x\}{\times}X$ and values in $X$.
+
+        \h (iii) The points $((x,u),{\sigma}(x))$ and $((u,x),{\sigma}(x))$ are in $Y_{x}$.
+    Likewise, for every $y$ in $X$ if $((x,y),z)$ is in $Y_{x}$ then $((x,{\sigma}(y)),{\sigma}(z))$ is also in $Y_{x}$.
+    That is, $Y_{x}$ satisfies Conditions~(a) and~(b) for the desired function~$S$.
+
+\noindent It is easy to show, by Mathematical Induction, that $A \,=\, X$:
+
+
+        \underline{Initial Step} To see that $u{\in}A$, define $Y_{u}$ to be the set of all $((x,y),z)$ of the form $((u,y),{\sigma}(y))$ for $y$ in $X$.
+    Since ${\sigma}$ is a function with domain $X$ and with values in $X$, it is clear that Conditions~(i) and~(ii) for the set $Y_{u}$ hold.
+    As for Condition~(iii), note that when $y \,=\, u$ then the element $((u,y),{\sigma}(y))$ becomes $((u,u),{\sigma}(u))$, so that the first portion of the condition is satisfied.
+    Likewise, if $((u,y),z)$ is in $Y_{u}$, then (by definition of $Y_{u}$) one has $z \,=\, {\sigma}(y)$.
+    But (again be the definition of $Y_{u}$) one also has $((u,{\sigma}(y)),{\sigma}({\sigma}(y)))$ in $Y_{u}$;
+    that is, the second part of Condition~(iii) also holds, so $u{\in}A$.
+
+        \underline{Induction Step} Suppose that $x{\in}A$, and let $Y_{x}$ be a set which satisfies Conditions~(i), (ii) and~(iii).
+    Then for each $y$ in $X$ there is a unique element $y'$ in $X$ such that $((x,y),y')$ is in $Y_{x}$.
+    (Of course $y'$  depends on both $x$ and $y$.)
+    Using this notation, define $Y_{{\sigma}(x)}$ to be the set of all elements  of $Z$ of the form $(({\sigma}(x),y),{\sigma}(y'))$ with $y$ in $X$.
+    It is easy to see, from the properties of $Y_{x}$, that $Y_{{\sigma}(x)}$ also satisfies Conditions~(i), (ii) and~(iii), and thus ${\sigma}(x)$ is in $A$.
+
+        Finally, define $S$ to be the union of the sets $Y_{x}$, with $x$ in $X$, constructed above.
+    The sets $Y_{x}$ are clearly disjoint, so it is easy to see that the set $S$ is a function with domain $X{\times}X$ and with values in $X$.
+
+    And since each set $Y_{x}$ satisfies Conditions~(i), (ii) and~(iii), it is clear that the function $S$ satisfies Conditions~(a) and~(b) of the theorem.
+
+\V
+\V
+
+        In a like manner one can define `multiplication'.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 16: Theorem} Let $(X,{\sigma})$ be a counting structure with initial element~$u$.
+    Then there is a unique function $P_{{\sigma}}:X{\times}X \,{\rightarrow}\, X$, called the {\bf product function associated with the structure $(X,{\sigma})$},
+    with the following properties: If $x$ is any element of $X$, then
+
+        (a) $P_{{\sigma}}(x,u) \,=\, P_{{\sigma}}(u,x) \,=\, x$;
+
+        (b) $P_{{\sigma}}(x,{\sigma}(y)) \,=\, S(P_{{\sigma}}(x,y),x)$ for all $y$ in $X$, where $S$ denotes the sum function $S_{{\sigma}}$ associated with $(X,{\sigma})$.
+
+\noindent As usual, if there is no possibility of confusion one normally writes $P$ instead of $P_{{\sigma}}$.
+
+\V
+
+        {\bf Proof}\,  Left to the reader.
+
+\V
+\V
+
+
+        {\bf Add1-\Ref{ChaptA} 17: Examples}
+
+\V
+
+        (1) Let $X \,=\, {\NN} \,=\, \{1,2,3,\,{\ldots}\,\}$, with the usual rule for the successor function ${\sigma}$; see Example~P3~(1) above.
+    Then the successor operation can be written
+        \begin{displaymath}
+        {\sigma}(x) \,=\, x+1 \mbox{ for all $x$ in ${\NN}$},
+        \end{displaymath}
+    where throughout this example the symbol $+$ denote the usual addition of natural numbers.
+    Likewise, the operations $S$ and $P$ associated with this counting structure are clearly the usual addition and multiplication $+$ and ${\cdot}$ on ${\NN}$.
+    For example, the condition $S(x,1) \,=\, {\sigma}(x)$ then takes the form
+        \begin{displaymath}
+        S(x,1) \,=\, x+1.
+        \end{displaymath}
+    Thus, by induction on $y$, if $x$ and $y$ are elements of ${\NN}$ such that $S(x,y) \,=\, x+y$,
+then the condition $S(x,{\sigma}(y)) \,=\, {\sigma}\left(S(x,y)\right)$ takes the form
+        \begin{displaymath}
+        S(x,y+1) \,=\, (x+y)+1 \,=\, x+(y+1),
+        \end{displaymath}
+    in which the final equation reflects the usual properties of arithmetic in ${\NN}$.
+    That is, $S(x,y) \,=\, x+y$ holds for all $x$, $y$  in ${\NN}$.
+    A similar argument shows that $P(x,y) \,=\, x{\cdot}y$ for all $x$, $y$ in ${\NN}$.
+
+\V
+
+        (2) Now let $X \,=\, \hat{{\NN}} \,=\, \{0,1,2,\,{\ldots}\,\}$, so that the role of initial element $u$ is now played by the number~$0$.
+    In this case the `addition' and `multiplication' functions associated with the given counting structure do {\em not} agree with the usual $+$ and ${\cdot}$ of numbers.
+    For example, $x+u \,=\, x+0 \,=\, x \,\,{\neq}\,\, {\sigma}(x)$, since in $\hat{{\NN}}$ one has ${\sigma}(x) \,=\, x+1$.
+    Thus, it is not the case that $S(x,y) \,=\, x+y$ for all $x$, $y$.
+    Likewise, $x{\cdot}0 \,=\, 0 \,\,{\neq}\,\,x$ when $x \,\,{\neq}\,\, 0$,  so it is not the case that $P(x,y) \,=\, x{\cdot}y$ for all $x$, $y$.
+    Indeed, one can easily show that in $\hat{{\NN}}$ one has
+        \begin{displaymath}
+        S(x,y) \,=\, x+y+1 \mbox{ and } P(x,y) \,=\, x(y+1) + y \mbox{ for all $x$, $y$ in $\hat{{\NN}}$}
+        \end{displaymath}
+
+        The fact that in the example of $\hat{{\NN}}$ the operations $S$ and $P$ as define above do not agree with the usual addition and multiplication on $\hat{{\NN}}$ is not a flaw.
+    It simply reflects the fact that, in any choice of addition and multiplication on a counting structure $(X,{\sigma})$,
+    one must decide the role to be played by the initial element $u$.
+    The choice taken in {\TheseNotes} reflects the fact that we shall use ${\NN}$, not $\hat{{\NN}}$,
+    as our primary model of a counting structure.
+    It is an easy exercise to provide an alternative formulation of `addition'  and `multiplication' axioms for those who prefer that the initial element $u$ behave like $0$.
+
+\V
+\V
+
+        {\bf Add1-\Ref{ChaptA} 18: Modified Notation} It is customary to use the more familiar notation $1_{{\sigma}}$, $x+_{{\sigma}}y$, $x{\cdot}_{{\sigma}}y$
+    instead of $u_{{\sigma}}$, $S_{{\sigma}}(x,y)$ and $P_{{\sigma}}(x,y)$ when dealing with a general counting structure $(X,{\sigma})$.
+    And, as usual, if the context makes clear which ${\sigma}$ is under consideration, the subscript ${\sigma}$ is normally omitted and one writes $1$, $x+y$ and $x{\cdot}y$ instead.
+    With this notation, the basic defining properties of addition and multiplication take the following more familiar form for all $x$ (or, where appropriate, all $x$ and $y$) of $X$:
+        \begin{displaymath}
+        (i)\, {\sigma}(x) \,=\, x+1 \,=\, 1+x;\, (ii)\, x+(y+1) \,=\, (x+y)+1; \, (iii)\, x{\cdot}1 \,=\, 1{\cdot}x \,=\, x; \, (iv)\, x{\cdot}(x+1) \,=\, x{\cdot}y+x \h ({\ast})
+        \end{displaymath}
+
+\V
+\V
+
+        The operations of addition and multiplication for a counting structure obey the usual rules of grade-school arithmetic.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 19: Theorem} Let $(X,{\sigma})$ be a counting structure, with initial element $1$, addition operation $+$ and multiplication ${\cdot}$.
+    Then the following facts hold.
+
+\V
+
+        (a) (Commutative Laws) If $x$ and $y$  are in $X$  then
+        \begin{displaymath}
+        (i)\, x+y \,=\, y+x \mbox{ and } (ii)\, x{\cdot}y \,=\, y{\cdot}x.
+        \end{displaymath}
+
+
+\V
+
+        (b) (Associative Laws) If $x$, $y$ and $z$ are in $X$  then
+        \begin{displaymath}
+        (i)\, (x+y)+z \,=\, x+(y+z) \mbox{ and } (ii)\, (x{\cdot}y){\cdot}z \,=\, x{\cdot}(y{\cdot}z).
+        \end{displaymath}
+
+
+\V
+
+        (c) (Distributive Laws) If $x$, $y$ and $z$ are in $X$ then
+        \begin{displaymath}
+        (i)\, x{\cdot}(y+z) \,=\, x{\cdot}y + x{\cdot}z \mbox{ and } (ii)\, (x+y){\cdot}z \,=\, x{\cdot}y + x{\cdot}z.
+        \end{displaymath}
+
+
+
+\V
+
+        {\bf Partial Proof} The laws above are grouped to emphasize the similarities shared by addition and multiplication, and to ease the task of learning their statements;
+    for example, the two commutative laws are joined together, and are stated before the two (more complicated) associative laws.
+    The proofs of the laws as given here, however, require handling them in a different order.
+    For instance, we use the Commutative and Associative Laws for Addition, together with the Distributive Laws,
+    in the proof of the Associative Law for Multiplication.
+    As usual, since the structure of the proofs of the various laws are so similar, we leave some of the proofs as exercises.
+
+\V
+
+        \underline{Part $(i)$ of (b)} (Associative Law for Addition) Let $A_{1}$ denote the set of $z$ in $X$ such that $(x+y)+z \,=\, x+(y+z)$ for all $x$ and $y$ in $X$.
+    It is clear that it suffices to show that $A_{1} \,=\, X$.
+
+        \underline{Initial Step} Property~$(ii)$ of $({\ast})$ above states that $1{\in}A_{1}$.
+
+        \underline{Inductive Step} Suppose that $z{\in}A_{1}$. Then for all $x$ and $y$ in $X$ one has
+        \begin{displaymath}
+        x+(y+(z+1)) \stackrel{(1)}{ \,=\, } x+((y+z)+1) \stackrel{(2)}{ \,=\, } (x+(y+z))+1  \stackrel{(3)}{ \,=\, } ((x+y)+z)+1  \stackrel{(4)}{ \,=\, }
+        (x+y)+(z+1)
+        \end{displaymath}
+    That is, $(z+1)$ is also in $A_{1}$, so by mathematical induction $A_{2} \,=\, X$, as desired.
+
+        Here are the justifications for the numbered equations above:
+
+        \h Equation~(1): This comes by applying Property~(ii) of $({\ast})$ to the expression $y+(z+1)$.
+
+        \h Equation~(2): This follows from the fact, proved above, that $1{\in}A_{1}$.
+
+        \h Equation~(3): This reflects the induction hypothesis that $z{\in}A_{1}$.
+
+        \h Equation~(4): This comes by applying Property~$(ii)$ of $({\ast})$ to the expression $((x+y)+z)+1$.
+
+\V
+
+        \underline{Part $(i)$ of $(a)$} (Commutative Law for Addition) Let $A_{2}$ be the set of all $y$ in $X$ such that $x+y \,=\, y+x$ for all $x$ in $X$.
+
+
+        \underline{Initial Step} It is clear, from the defining proeprties of `addition',
+    that $x+1 \,=\, 1+x \,=\, {\sigma}(x)$ for all $x$ in $X$, so certainly $1{\in}A_{2}$.
+
+        \underline{Inductive Step} Suppose that $y{\in}A_{2}$. Then for all $x$ in $X$ one has
+        \begin{displaymath}
+        x+(y+1) \stackrel{(1)}{ \,=\, }
+        (x+y)+1 \stackrel{(2)}{ \,=\, }
+        (y+x)+1 \stackrel{(3)}{ \,=\, }
+        y+(x+1) \stackrel{(4)}{ \,=\, }
+        y+(1+x) \stackrel{(5)}{ \,=\, }
+        (y+1)+x.
+        \end{displaymath}
+    That is, $(y+1){\in}A_{2}$, so $A_{2} \,=\, X$, and the desired result follows.
+
+        Here are the justifications of the preceding equations:
+
+        \h Equations $(1)$, $(3)$ and $(5)$: the Associative Law for Addition
+
+        \h Equations $(2)$ and $(4)$: the fact that $1$ and (by the Induction Hypothesis) $y$ are both in $A_{2}$.
+
+
+\V
+
+
+        \underline{Part $(i)$ of(c)} (The First Distributive Law) Let $A_{3}$ be the set of all $z$ in $X$ such that $x{\cdot}(y+z) \,=\, x{\cdot}y + x{\cdot}z$ for all $x,y$ in $X$.
+
+        \underline{Initial Step} Note that, from the defining properties of `multiplication', one has
+        \begin{displaymath}
+        x{\cdot}(y+1) \,=\, x{\cdot}y + x \,=\, x{\cdot}y+x{\cdot}1.
+        \end{displaymath}
+    That is, $x{\cdot}(y+1) \,=\, x{\cdot}y+x{\cdot}1$ for all $x$ and $y$ in $X$, hence $1{\in}A_{3}$.
+
+        \underline{Induction Step} Suppose that $z{\in}A_{3}$. Then for all $x$ and $y$ in $X$ one has
+        \begin{displaymath}
+        x{\cdot}(y+(z+1)) \stackrel{(1)}{ \,=\, }
+        x{\cdot}((y+z)+1) \stackrel{(2)}{ \,=\, }
+        x{\cdot}(y+z) + x \stackrel{(3)}{ \,=\, }
+        (x{\cdot}y + x{\cdot}z)+x \stackrel{(4)}{ \,=\, }
+        x{\cdot}y+(x{\cdot}z+x) \stackrel{(5)}{ \,=\, }
+        x{\cdot}y+x{\cdot}(z+1).
+        \end{displaymath}
+    Thus, $z+1$ is also in $A_{3}$. It now follows that $A_{3} \,=\, X$, so the First Distributative Law, $x{\cdot}(y+z) \,=\, x{\cdot}y + x{\cdot}z$, follows.
+
+    The justifications of the preceding equations are as follows:
+
+        \h Equations $(1)$ and $(4)$: The Associative Law for Addition
+
+        \h Equations $(2)$ and $(5)$: Defining properties of `multiplication'
+
+        \h Equation $(3)$: The induction hypothesis that $z{\in}A_{3}$.
+
+\V
+
+        \underline{Part $(ii)$ of(c)} (The Second Distributive Law) Let $A_{4}$ be the set of all $z$ in $X$ such that $(x+y){\cdot}z \,=\, x{\cdot}z + y{\cdot}z$ for all $x,y$ in $X$.
+
+        \underline{Initial Step} Since $(x+y){\cdot}1 \,=\, x+y \,=\, x{\cdot}1 + y{\cdot}1$ by one of the defining properties of `multiplication',
+    it follows that $1{\in}A_{4}$.
+
+        \underline{Induction Step} Suppose that $z{\in}A_{4}$. Then for all $x$ and $y$ in $X$ one has
+        \begin{displaymath}
+        (x+y){\cdot}(z+1) \stackrel{(1)}{ \,=\, }
+        (x+y){\cdot}z + (x+y) \stackrel{(2)}{ \,=\, }
+        (x{\cdot}z+y{\cdot}z) + (x+y) \stackrel{(3)}{ \,=\, }
+        (x{\cdot}z + x) + (y{\cdot}z + y) \stackrel{(4)}{ \,=\, }
+        x{\cdot}(z+1) + y{\cdot}(z+1).
+        \end{displaymath}
+    Thus $z+1$ is also in $A_{4}$. It follows that $A_{4} \,=\, X$, so the desired result holds.
+
+        The reader should be able to figure out the justifications for the preceding equations.
+    Note that Equation~$(3)$ uses several applications of the commutative and associative laws for addition;
+    be sure you can break it down to the individual applications of those laws.
+    Also, be sure you can determine where the induction hypothesis gets used.
+
+\V
+
+        \underline{Part $(ii)$ of (a)} (The Commutative Law for Multiplication) Let $A_{5}$ be the set of all $y$ in $X$ such that $x{\cdot}y \,=\, y{\cdot}x$ for all $x$ in $X$.
+
+        \underline{Initial Step} One of the defining proerties of  'multiplication' is that $x{\cdot}1 \,=\, 1{\cdot}x \,=\, x$ for all $x$ in $X$,
+    so clearly $1{\in}A_{5}$.
+
+        \underline{Induction Step} Suppose that $y{\in}X$. Then for all $x$ in $X$ one has
+        \begin{displaymath}
+        x{\cdot}(y+1) \,=\, x{\cdot}y+x \,=\, y{\cdot}x + x \,=\, y{\cdot}x + 1{\cdot}x \,=\, (y+1){\cdot}x.
+        \end{displaymath}
+    (The reader is invited to explain why each of these equations is valid.)
+    In particular, $y+1$ is also in $A_{5}$, and thus $A_{5} \,=\, X$, as desired.
+
+\V
+
+        The proofs of the remaining laws are left as exercises.
+
+
+\V
+\V
+
+        There is a simple relation between the operation of `addition' and the concept of `greater than'.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 20: Theorem} Let $(X,{\sigma})$ be a counting structure, with associated initial element $1$,
+    addition operation $+$ and `greater than' ordering $\,>\,$.
+    Then a pair of elements $x$ and $y$ in $X$ satisfy the condition $y\,>\,x$ if, and only if, there exists $z$ in $X$ such that $y \,=\, x+z$.
+
+\V
+
+        {\bf Proof}  
+
+\V
+
+        (The `If' Part) Let $A$ be the set of all $z$ in $X$ such that for all $x$ in $X$ the elements $x$ and $x+z$ satisfy $x+z\,>\,x$.
+    Certainly $1{\in}A_{1}$,  by Theorem~Add1-\Ref{ChaptA}~12.
+    Next, suppose that $z{\in}A$.
+    Then, for all $x$ in $X$, one has $(x+z)+1\,>\,x+z$ (since $1{\in}A$), and $x+z\,>\,x$ (since, by the induction hypothesis, $z{\in}A_{1}$).
+    Then, from the Transitive Law one obtains $(x+z)+1\,>\,x$; that is, in light of the Associative Law, $x+(z+1)\,>\,x$.
+    It follows that $z+1$ is also in $A$.
+    Now apply the Principle of Mathematical Induction to conclude that $A \,=\, X$, as required.
+
+\V
+
+        (The `Only if' Part) Suppose that $x$ and $y$ are elements of $X$ such that $y\,>\,x$.
+    Let $C$ be the set of all $w$ in $X$ such that $x+w\,\,{\geq}\,\,y$.
+    By what was just proved, it is clear that $y{\in}C$, since $x+y\,>\,y$.
+    In particular, $C$ is a nonempty subset of $X$, so, by Theorem~Add1-\Ref{ChaptA}~13, there is a smallest element of $C$; call it $z$.
+    Clearly $x+z\,\,{\geq}\,\,y$, since $z$ is in $C$. If $z \,=\, 1$ then one has $x+1\,\,{\geq}\,\,y\,>\,x$,
+    which implies $x+1 \,=\, y$, since there  are no elements of $X$ which lie between $x$ and $x+1$.
+    Thus, suppose $z \,\,{\neq}\,\, 1$, so that $z \,=\, v+1$ for some $v$ in $X$.
+    Since $z$ is the {\em smallest} element of $C$, and clearly $v\,<\,z$, it follows that $v$ is {\em not} in $C$.
+    That is, it is not the case that $x+v\,\,{\geq}\,\,y$, hence one has $x+v\,<\,y$.
+    Thus, one has $x+v\,<\,y\,\,{\leq}\,\,(x+v)+1$. Since there are no elements of $X$ between $(x+v)$ and $(x+v)+1$,
+    it must be the case that $y \,=\, (x+v)+1 \,=\, x+(v+1) \,=\, x+z$, as claimed.
+
+\V
+\V
+
+        There is a similar theorem involving multiplication and the ordering `greater than'.
+
+\V
+
+        {\bf Add1-\Ref{ChaptA} 21: Theorem} Let $(X,{\sigma})$ be a counting structure, with associated initial element $1$,
+    multiplication operation ${\cdot}$ and `greater than' ordering $\,>\,$.
+    If $x$ and $y$  are elements of $X$ such that $y\,>\,x$,
+    then $y{\cdot}z\,>\,x{\cdot}z$ for all $x$ in $X$.
+
+\V
+
+        The simple proof is left as an exercise.
+
+\V
+\V
+
+
+        There is a result, {\em not} one  of the standard facts from grade-school arithmetic, that is worth mentioning here.
+
+\V
+\V
+
+        {\bf Add1-\Ref{ChaptA} 22: Theorem} Let $(X,{\sigma})$ and $(Y,{\tau})$ be counting structures with initial elements $1_{{\sigma}}$ and $1_{{\tau}}$,
+    addition operations $+_{{\sigma}}$ and $+_{{\tau}}$,
+    multiplication operations ${\cdot}_{{\sigma}}$ and ${\cdot}_{{\tau}}$, and orderings $\,>_{{\sigma}}$ and $\,>_{{\tau}}$, respectively.
+    Furthemore, let $F:X \,{\rightarrow}\, Y$ be the bijection described in Theorem~Add1-\Ref{ChaptA}~14.
+  Then the bijection $F$ preserves addition and multiplication, in the following sense:
+        \begin{displaymath}
+        F(x_{1}+_{{\sigma}}x_{2}) \,=\, F(x_{1}) +_{{\tau}} F(x_{2}) \mbox{ and }
+        F(x_{1}{\cdot}_{{\sigma}}x_{2}) \,=\, F(x_{1}) {\cdot}_{{\tau}} F(x_{2})
+    \mbox{ for all $x_{1},x_{2}$ in $X$}.
+        \end{displaymath}
+    Likewise, $F$ preserves the ordering, in the following sense:
+        \begin{displaymath}
+        \mbox{ If $x_{2}\,>_{{\sigma}}x_{1}$ then $F(x_{2})\,>_{{\tau}}F(x_{1})$}.
+        \end{displaymath}
+    (For readers with a background in modern algebra: the map $F$ is an {\em isomorphism} between the two counting structures.)
+
+
+    The simple proof of this theorem is left as an exercise; it boils down to noticing that the definitions of
+    addition, multiplication and the order all come from the properties of  the successor functions ${\sigma}$ and ${\tau}$;
+    and the bijection $F$ `preserves' those functions because of the condition $F({\sigma}(x)) \,=\, {\tau}(F(x))$.
+
+        The import of this result is that it does not matter which counting structure one elects to use: they are equivalent.
+    From now on we shall use the standard example ${\NN}$ from grade-school arithmetic, for which the successor function is `addition by~$1$'.
+
+\V
+\V
+
+        It is useful to prove some of the results that were accepted without proof earlier in {\TheseNotes}.
+    For example, here is a more complete treatment of Theorem~\Ref{ThmA15.30}
+
+
+        {\bf Add1-\Ref{ChaptA} 23: Theorem}
+            %\subsection{\small{\bf Theorem}}
+            %\label{ThmA15.30}
+
+\hspace*{\parindent}(a) Let $X$ be a nonempty finite set. If $X$ has the same cardinality as ${\NN}_{k}$ and the same cardinality as ${\NN}_{m}$ for natural numbers $k$ and $m$, then $k \,=\, m$.
+
+\V
+
+        (b) If $Y$ is a subset of a finite set $X$, then $Y$ is a finite set, and $\#(Y)\,\,{\leq}\,\,\#(X)$.
+    Moreover, the only time one gets $\#(Y) \,=\, \#(X)$ is when $Y \,=\, X$.
+    In particular, $X$ cannot have the same cardinality as one of its proper subsets (i.e., there is no `Galileo Paradox' for finite sets.)
+
+
+\V
+
+        (c) Suppose that $\{X_{1},X_{2},\,{\ldots}\,X_{n}\}$ is a finite collection of finite sets.
+    Then the union $X_{1}\,{\cup}\,X_{2}\,{\cup}\,\,{\ldots}\,\,{\cup}\,X_{n}$ is also a finite set. More precisely,
+        \begin{displaymath}
+         \#(X_{1}\,{\cup}\,X_{2}\,{\cup}\,\,{\ldots}\,\,{\cup}\,X_{n})
+    \,\,{\leq}\,\,
+        \#(X_{1}) + \#(X_{2}) + \,{\ldots}\,+\#(X_{n}).
+        \end{displaymath}
+    One gets equality in this last relation if, and only if, the sets are mutually disjoint,
+    in the sense that $X_{i}\,{\cap}\,X_{j} \,=\, {\emptyset}$ whenever $i \,\,{\neq}\,\, j$.
+
+\V
+
+
+        {\bf Proof}\, 
+
+\V
+
+        (a) It follows easily from Part~(c) of Theorem~\Ref{ThmA15.15} that the issue to be proved reduces to this:
+    if $k$ and $m$ are natural numbers such that ${\NN}_{k}$ has the same cardinality as ${\NN}_{m}$, then $k \,=\, m$;
+    equivalently: if $k \,\,{\neq}\,\, m$, then ${\NN}_{k}$ does {\em not} have the same cardinality as ${\NN}_{m}$.
+    Then in light of Part~(b) of the same theorem, the problem reduces to proving the following statement:
+
+\V
+
+        \h For every $j$ in ${\NN}$, if $k$ in ${\NN}$ satisfies the condition $k\,>\,j$, then ${\NN}_{j}$ does not have the same cardinality as ${\NN}_{k}$.
+
+\V
+
+\noindent We shall prove a slightly more precise result: For every $j$ in ${\NN}$. if $k{\in}{\NN}$ satisfies $k\,>\,j$,
+    then there is no surjection of ${\NN}_{j}$ onto ${\NN}_{k}$.
+
+        Indeed, let $A$ be the set of $j$ in ${\NN}$ for which this last statement is true.
+
+
+        \underline{Initial Step} It is clear that $1{\in}A$.
+    Indeed, suppose that $k\,>\,1$, so that $k\,\,{\geq}\,\,2$ and thus $1$ and $2$ are both elements of ${\NN}_{k}$.
+    If $F:{\NN}_{1} \,{\rightarrow}\, {\NN}_{k}$ were a surjection onto ${\NN}_{k}$,
+    then there would have to exist $x_{1}$ and $x_{2}$ in ${\NN}_{1}$ such that $F(x_{1}) \,=\, 1$ and $F(x_{2}) \,=\, 2$.
+    However, the only element of ${\NN}_{1}$ is~$1$, so this would require $x_{1} \,=\, x_{1} \,=\, 1$, and thus $F(1) \,=\, 1$ and $F(1) \,=\, 2$.
+    Viewing $F$ as a set of ordered pairs, this would mean that $(1,1){\in}F$ and $(1,2){\in}F$, contrary to the definition of `function'.
+
+        \underline{Inductive Step} Suppose that $j{\in}A$. If $j+1$ were {\em not} in $A$,
+    then there would have to exist a surjection $F$ from ${\NN}_{j+1}$ onto ${\NN}_{m}$ for some $m\,>\,j+1$.
+    Note that in this case one would certainly have $k \,=\, m-1\,>\,j$. There are two cases to consider:
+
+        \h \underline{Case 1}: Suppose that $F(j+1) \,=\, m$.
+    Define $G:{\NN}_{j} \,{\rightarrow}\, {\NN}_{k}$ by the rule
+        \begin{displaymath}
+        G(i) \,=\, \left\{
+        \begin{array}{cl}
+        F(i) & \mbox{if $F(i) \,\,{\neq}\,\, m$} \\
+           1 & \mbox{if $F(i) \,=\, m$}
+        \end{array}
+        \right.
+        \end{displaymath}
+    It is easy to see that $G$ would have to map ${\NN}_{j}$ onto ${\NN}_{k}$ with $k\,>\,j$.
+    This would contradict the induction hypothesis that $j{\in}A$.
+
+        \h \underline{Case 2}: Suppose that $F(j+1) \,\,{\neq}\,\, m$. Let $p \,=\, F(j+1)$, so that $1\,\,{\leq}\,\,p\,\,{\leq}\,\,k$.
+    Now define $G:{\NN}_{j} \,{\rightarrow}\, {\NN}_{k}$ by the rule
+        \begin{displaymath}
+        G(i) \,=\,
+        \left\{
+        \begin{array}{cl}
+        F(i) & \mbox{if $F(i) \,\,{\neq}\,\, m$} \\
+          p  & \mbox{if $F(i) \,=\, m$}
+        \end{array}
+        \right.
+        \end{displaymath}
+    It is easy to see that $G$ maps ${\NN}_{j}$ onto ${\NN}_{k}$, contrary to the hypothesis that $j{\in}A$.
+
+    This argument shows that $j+1$ is also in $A$. Thus, by the Principle of Mathematical Induction one concludes that $A \,=\, {\NN}$. The desired result now follows.
+
+\V
+
+        (b) and (c): These follow easily from Part~(a) combined with Mathematical Induction. The details are left as exercises.
+
+\VV
+
+        There are many more results about ${\NN}$ (or, if you prefer, about counting structures) that one could list.
+    However, the main purpose of this appendix is to convince the reader  that the standard properties of ${\NN}$ can be derived from the Dedekind-Peano axioms.
+    The results already given here are sufficient for that purpose.
+

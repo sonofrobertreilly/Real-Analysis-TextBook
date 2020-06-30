@@ -1,0 +1,1769 @@
+% M140AB_A.TeX  Notes for `Single-Variable Analysis': Appendix B
+
+%
+% Revised: 01/23/2013 
+%
+
+
+
+                        \chapter{Further Results in Set Theory}
+                        \label{SectAAdd2}
+
+\VV
+
+        \underline{Quotes for Appendix~B}\IndB{chapter quotes}{for Appendix~B (Further Results in Set Theory)}:
+
+\V
+
+\begin{quotation}
+{\footnotesize
+
+        (1) Fake Quote
+
+}%EndFootNoteSize
+\end{quotation}
+
+
+        In this appendix we consider some standard results in Set Theory with which every mathematician should eventually become familiar;
+    however, this material is not required for reading the preceding chapters.
+
+\VV
+
+                 \subsection{\small{\bf Theorem (DeMorgan's Laws for Sets)}}
+            %\label{ThmA10.30}
+            \index{DeMorgan's laws for sets}
+
+        Let ${\cal A}$ be a nonempty family of sets, and let $X$ be a set; we do {\em not} assume that $X$ is a member of the family ${\cal A}$.
+    Let ${\cal B}$ be the family of all sets $Y$ which can be expressed in the form $Y \,=\, X{\setminus}A$ for at least one set $A$ in the family ${\cal A}$. Then
+
+\V
+
+        (i) $X{\setminus}\left({\bigcup}\, {\cal A}\right) \,=\, {\bigcap}\, {\cal B}$.
+    \h
+        (ii) $X{\setminus}\left({\bigcap}\, {\cal A}\right) \,=\, {\bigcup}\, {\cal B}$.
+
+\noindent Using the alternate notation introduced in Part~(d) of Definition~\Ref{DefA10.15} above,
+    these set identities can be written, without needing to introduce the family~${\cal B}$, as follows:
+        \begin{displaymath}
+        (i)\,\, X{\setminus}\left({\bigcup}_{A{\in}{\cal A}}\, A\right) \,=\, {\bigcap}_{A{\in}{\cal A}} (X{\setminus}A) \h
+        (ii)\,\, X{\setminus}\left({\bigcap}_{A{\in}{\cal A}}\, A\right) \,=\, {\bigcup}_{A{\in}{\cal A}} (X{\setminus}A).
+        \end{displaymath}
+\V
+\V
+
+        \underline{Proof of (i)} (The proof of (ii) is similar, and is left as an exercise): Suppose that $c$ is an element of the set $X{\setminus}\left({\bigcup}\, {\cal A}\right)$.
+	Then $c$ is in $X$ but $c$ is not in ${\bigcup}\,{\cal A}$.
+    To say that $c$ is not in ${\bigcup}\,{\cal A}$ means that for each $A$ in the family ${\cal A}$, $c$ is not in $A$.
+	Thus, for each such $A$ one has $c$ in $X$ but $c$ not in $A$;
+    hence one has $c{\in}(X{\setminus}A)$.
+    Thus, $c$ is in each of the sets of the family ${\cal B}$, hence $c$ is in ${\bigcap}\,{\cal B}$.
+	It follows that
+        \begin{displaymath}
+        X{\setminus}\left({\bigcup}\, {\cal A}\right) \,{\subseteq}\, {\bigcap}\,{\cal B} \h ({\ast})
+        \end{displaymath}
+
+		Likewise, suppose that $p$ is an element of ${\bigcap}\,{\cal B}$.
+    Then $p$ is in each of the sets of the family ${\cal B}$;
+    that is, $p$ is in every set of the form $X{\setminus}A$ with $A$ in the family ${\cal A}$.
+    That is, for each such $A$ the point $p$ is in $X$ but not in $A$.
+    Since $p$ fails to be in any of these sets $A$, it follows that $p$ is also not in ${\bigcup}\,{\cal A}$;
+    and since $p$ is in $X$, it then follows that $p$ is in $X{\setminus}\left({\bigcup}\,{\cal A}\right)$.
+    That is,
+        \begin{displaymath}
+        {\bigcap}\,{\cal B} \,{\subseteq}\, X{\setminus}\left({\bigcup}\, {\cal A}\right) \h ({\ast}{\ast})
+        \end{displaymath}
+
+
+        The set relations $({\ast})$ and $({\ast}{\ast})$ then imply, by Theorem~\Ref{ThmA10.10},
+    that $ X{\setminus}\left({\bigcup}\, {\cal A}\right) \,=\, {\bigcap}\,{\cal B}$, as claimed.
+    
+
+\V
+
+        {\bf Remark} The preceding theorem is sometimes expressed informally as follows:
+
+        \h (i)\, The complement of a union is the intersection of the complements;
+
+       \h (ii) The complement of an intersection is the union of the complements.
+
+
+\VV
+
+\V
+
+        \subsection{\small{\bf Remark} Russell's Paradox}
+        %\label{RemrkA10.35}
+        \IndBD{set theory}{Russell's Paradox}
+
+        The theory of sets is a very deep subject, and is still an area of active research.
+    Fortunately, the use of sets in {\TheseNotes} does not require a deep knowledge of this theory.
+    Nevertheless, it is appropriate to mention one topic from the wider theory of sets.
+
+        The basic issue arises directly from the definition of a `set' as being simultaneously a collection of objects and an object in its own right.
+    As has already been seen, this allows the construction of sets whose individual elements are themselves sets.
+
+\V
+
+        {\bf Example}: Let us say that a set $Y$ has Property~R provided that the set $Y$,
+    thought of as an object in its own right, is {\em not} an element of the set~$Y$, thought of as a collection of objects.
+    (Note that all the sets we have considered so far do have Property~R.)
+    Now define the set $X$ be the family of all sets $Y$ such that $Y$ has Property~R.
+
+        \underline{Question} Does the set $X$ have Property~R?
+
+        \underline{Analysis} Suppose that the set $X$ {\em does} have Property~R.
+    Then, by the very definition of the set $X$ just given, the elements of $X$ include {\em every} set having Property~R and thus include $X$ itself.
+    That is, $X$, viewed as an object, is an element of $X$, viewed as a set. However, by definition of Property~R,
+    this last fact means that $X$ does not have Property~R, which contradicts the supposition that $X$ does have Property~R.
+
+        Now suppose that $X$ does {\em not} have Property~R. Then, by definition of `Property~R',
+    the set $X$, thought of as an object, {\em is} an element of the set $X$.
+    But by the very definition of $X$ given above, each element of the set $X$ -- including now $X$ itself --
+    is a set which has Property~R, contradicting the supposition that $X$ does not have Property~R.
+
+    In summary: assuming that $X$ {\em does} have Property~R implies that $X$ does {\em not} have Property~R;
+    while assuming $X$ does {\em not} have Property~R implies that $X$ {\em does} have Property~R.
+        This mysterious state of affairs is called {\bf Russell's Paradox},
+    in honor of the British philosopher Bertrand Russell, who discovered it in~$1901$.
+    It is well beyond the scope of {\TheseNotes} to consider a proper analysis of such set-theoretic paradoxes;
+    for that, the reader should pick up a book on the logical foundations of mathematics.
+    Instead, we follow the common approach in Analysis and assume that the sets we deal with are all subsets of some fixed,
+    but unspecified, `universal set' which is big enough for our purposes but `small enough' to avoid such paradoxes.
+    In particular, this approach allows us to use only sets $X$ which satisfy the relation $X \not \in X$.
+
+\VV
+
+
+        (4) Suppose that $X$ is a nonempty set and let $k$ be a natural number. If $X_{1}$, $X_{2}$,\,{\ldots}\,$X_{k}$ are nonempty subsets of $X$,
+    then the set of all $k$-tuples $g:{\NN}_{k} \,{\rightarrow}\, X$ such that $g(j){\in}X_{j}$ for each $j \,=\, 1,2,\,{\ldots}\,k$ is denoted $X_{1}{\times}X_{2}{\times}\,{\ldots}\,{\times}X_{k}$; it is called the {\bf Cartesian product} of these sets.
+    This is sometimes written more briefly by expressions such as ${\prod}_{j \,=\, 1}^{n} X_{j}$, where, as usual, the symbol $\prod$ stands for `product'.
+
+        More generally, suppose that ${\varphi}:Z \,{\rightarrow}\, {\cal P}(X){\setminus}\{{\emptyset}\}$ is a function defined on a nonempty set $Z$, 
+    with values being nonempty subsets of $X$.
+    For each $i$ in $Z$ let $X_{i} \,=\, {\varphi}(i)$.
+    Then the corresponding {\bf Cartesian product of the indexed family $\Bfm{X}_{i}$}, denoted ${\prod}_{i{\in}Z} X_{i}$,
+    consists of the functions $g:Z \,{\rightarrow}\, X$ such that $g(i){\in}X_{i}$ for each $i$ in $Z$.
+    The set $X_{i}$ is called the {\bf $\Bfm{i}$-th factor} in this product.
+
+        It is convenient to extend these ideas to cases in which one of the `factors' is the empty set by declaring that such a product to also be the empty set.
+
+        \underline{Remark} For small values of $k$ it is customary to use older language.
+    For instance, an ordered $2$-tuple is often called an {\bf ordered pair}. Of course this conflicts with the primitive (i.e., Kuratowski) concept of `ordered pair.
+    The way to get around this ambiguity is to think of the definition of $2$-tuple (as a function defined on the set $\{1,2\}$) as the `new, improved' type of ordered pair, while the Kuratowski definition describes the 'primitive ordered pair'.
+    From this point on in {\TheseNotes} the phrase `ordered pair' means this new, improved version unless stated otherwise.
+
+\V
+\V
+
+        Associated with a set $X$ is a second set whose elements are precisely the subsets of $X$,
+    each such subset being thought of as a single object in its own right.
+
+\V
+
+        \subsection{\small{\bf Definition}}
+        %\label{DefA10.40}
+
+        Let $X$ be a set. The {\bf power set of $\Bfm{X}$}\IndBD{set theory}{power set} is the collection whose elements are precisely the subsets of $X$.
+    That is, to say that an object $C$ is an element of the power set of $X$ means that $C$ is a subset of $X$.
+    Some authors denote the power set of $X$ by the symbol ${\cal P}(X)$; some denote it by the symbol $2^{X}$ (whence the name `{\em power} set').
+    We shall use the ${\cal P}(X)$ notation in {\TheseNotes}.
+    (See Example~(5) below for the origin of the `exponential' notation $2^{X}$ mentioned here.)
+
+\V
+
+        \subsection{\small{\bf Examples}}
+        %\label{ExampA10.50}
+
+\hspace*{\parindent}
+        (1) Suppose that $X \,=\, \{c\}$ for some object $c$, so that $X$ is a singleton  set.
+    It is obvious that ${\cal P}(X)$ has exactly two (different) subsets, namely $X$ itself and the empty set ${\emptyset}$.
+    (You should try to provide a correct proof before going on. You might also wish to read the \Note\, `on the power set of a singleton set'.)
+
+\V
+
+        (2) A similar analysis, which is left as an exercise, shows that if $X \,=\, \{c,d\}$ where 
+$c \,{\neq}\, d$, (i.e., if $X$ is a doubleton set),
+    then ${\cal P}(X) \,=\, \{{\emptyset}, \{c\}, \{d\}, X\}$.
+	In particular, if $X$ has exactly two elements, then ${\cal P}(X)$ has exactly four elements.
+
+\V
+
+        (3) The empty set ${\emptyset}$ has a subset, namely itself; see Part~(b) of Theorem~\Ref{ThmA10.25}.
+    It is also clear that ${\emptyset}$ has no other subsets, and thus that ${\cal P}({\emptyset}) \,=\, \{{\emptyset}\}$.
+    In particular, the power set of the empty set is \underline{not} the empty set, since ${\cal P}({\emptyset})$ does have an element, namely the set ${\emptyset}$, thought of as an object in its own right.
+
+\V
+
+        (4) It is possible that $X$ and ${\cal P}(X)$ can have one or more elements in common.
+    For instance, let $c$ be an object, and let $X \,=\, \{c,\{c\}\}$.
+    Thus, $X$ is a set with two distinct elements, namely the object $c$ and the singleton set $\{c\}$, thought of as an object in its own right.
+    It follows from the results of Example~(2) above that the power set ${\cal P}(X)$ consists of the four elements ${\emptyset}$, $\{c\}$, $\{\{c\}\}$ and $X$.
+    Notice that the second entry in this list is the set $\{c\}$, which is also an element of $X$.
+
+        A simpler example of this type is $X \,=\, \{{\emptyset}\}$;
+    that is, $X$ is as in Example~(1) above, with $c$ equal to the empty set ${\emptyset}$, thought of as an object in its own right.
+    Then the result of Example~(1) takes the form ${\cal P}(X) \,=\, \{{\emptyset},X\}$.
+    In particular, the object ${\emptyset}$ is both an element of $X$ and an element of ${\cal P}(X)$.
+
+\V
+
+        (5) We shall see later that if $X$ is a set with exactly $n$ members, where $n$ is some natural number,
+    then ${\cal P}(X)$ has exactly~$2^{n}$ members; and of course if $X$ has no members (i.e., if $X \,=\, {\emptyset}$),
+    then ${\cal P}(X)$ has~$1 \,=\, 2^{0}$ members. The exponential notation $2^{X}$ grew out of these facts.
+
+\V
+
+%%% 
+\begin{quotation}
+{\footnotesize \underline{\Note} (on the power set of a singleton set)\IndB{\notes}{on the power set of a singleton set}: 
+    In Example (1) above it is asserted that the fact that $X \,=\, \{c\}$ has exactly two subsets, namely, $X$ itself and ${\emptyset}$.
+    Whenever you see such an assertion of `obviousness' in a math context, beware:
+    the author may be trying to slide something by you. And even if you agree that the stated result is `obvious',
+    you should always be prepared to give a {\em proper} proof; that is, a proof which arises from definitions and previously-accepted, results using correct logic.
+    For example, the following is a `fake proof':
+
+\VA
+
+        \h `The sets $X$ and ${\emptyset}$ are certainly subsets of $X$, and I can't think of any others.'
+
+\VA
+
+\noindent Here is a proper proof:
+
+        First note that, by Part~(b)(i) of Theorem~\Ref{ThmA10.25}, the sets ${\emptyset}$ and $X$ are, indeed, subsets of $X$;
+    in particular, by the definition of `power set' and `subset', $\{{\emptyset}, X\} \,{\subseteq}\, {\cal P}(X)$.
+    (This is essentially how the `fake proof' above starts.)
+
+        To see that there are no other subsets of $X$, i.e., no other elements of ${\cal P}(X)$, let $Y$ be any nonempty subset of $X$.
+    Since, by hypothesis, $Y \,\,{\neq}\,\, {\emptyset}$, it follows,
+    by the definition of `empty set', that there must be at least one element in the set $Y$.
+    Let $d$ be any element of $Y$. Since, by hypothesis, $Y \,{\subseteq}\, X$, it follows (from the definition of `subset') that $d$ is an element of $X$.
+    However, by the Fundamental Principle of Set Theory, combined with the hypothesis that $X \,=\, \{c\}$,
+    so that $c$ is the {\em only} element of $X$, it follows that $d \,=\, c$.
+    That is, every element of $Y$ equals $c$, so $Y$ and $X$ have exactly the same elements,
+    namely the single element $c$. Thus, by the Fundamental Principle of Set Theory, one has $Y \,=\, X$.
+    That is, if $Y \,{\subseteq}\, X$ and $Y \,\,{\neq}\,\, {\emptyset}$, then $Y \,=\, X$.
+    It follows that ${\cal P}(X) \,{\subseteq}\, \{{\emptyset},X\}$. However, it was already noted above that ${\cal P}(X) \,{\supseteq}\, \{{\emptyset},X\}$.
+
+    
+    In the latter case, $Y$ must have at least one element (by definition of `not the empty set'),
+    and any such element must be an element of $X$ (by definition of $Y$ being a {\em subset} of $X$).
+    If $d$ is any element of $Y$, then, as just shown, $d$ must be an element of $X$ and thus, by the hypothesis that $X \,=\, \{c\}$, one must have $d \,=\, c$.
+}%EndFootnotesize
+\end{quotation} 
+%##
+
+
+\V
+\V
+
+
+        \underline{Preliminary Comment} One knows that if $X$ is a finite set with exactly $n$ elements,
+    then the corresponding power set ${\cal P}(X)$ has exactly $2^{n}$ elements. In particular, the power set ${\cal P}(X)$ has more elements than the original set $X$;
+    moreover, the larger $n$ is, the greater the difference in the sizes of the sets.
+    This observation may make the next result seem almost `obvious'.
+
+\V
+
+            \subsection{\small{\bf Theorem} (Cantor's Power-Set Theorem)} \IndBD{set theory}{Cantor's Power-Set Theorem}
+            %\label{ThmA20.90}
+
+        Let $X$ be a set, and let $Y \,=\, {\cal P}(X)$ be the corresponding power set of $X$.
+
+    Then $X$ does {\em not} have the same cardinality as $Y$; that is, there does not exist a bijection of $X$ onto ${\cal P}(X)$.
+    Indeed, even more can be said; namely, if $X \,\,{\neq}\,\, {\emptyset}$ and $F:X \,{\rightarrow}\, {\cal P}(X)$ is any function with domain $X$ and values in ${\cal P}(X)$,
+    then $F$ does {\em not} map $X$ onto ${\cal P}(X)$; that is, $F$ is {\em not} a surjection of $X$ onto~${\cal P}(X)$.
+    In particular, anyone who claims to have constructed an example of a bijection of $X$ onto ${\cal P}(X)$ is wrong,
+    since there does not exist a surjection, much less a bijection.
+
+\V
+
+
+        \underline{Proof}: \underline{Case 1} Suppose that $X$ is the empty set.
+    Recall that ${\cal P}({\emptyset}) \,=\, \{{\emptyset}\}$, so ${\cal P}({\emptyset})$ is a nonempty set.
+    Since, as has already been noted, the empty set does not have the same cardinality as a nonempty set,
+    it follows that the claimed result is true when $X$ is empty. (More intuitively: The empty set has no elements, while ${\cal P}({\emptyset})$ has one element.)
+
+\V
+
+        \underline{Case 2} Suppose that $X$ is nonempty, and suppose that $F:X \,{\rightarrow}\, {\cal P}(X)$ is a function with domain $X$ and values in ${\cal P}(X)$.
+    Let $S$ be the set of all $x$ in $X$ such that $x$ is {\em not} an element of the set $F(x)$.
+
+        \h \underline{Claim} The set $S$ is not in the image of the function~$F$.
+
+        \h \underline{Proof of Claim} Suppose, to the contrary, that $S$ can be expressed as $F(x_{0})$ for some $x_{0}$ in $X$.
+    If $x_{0}$ is in $S$, then (by definition of $S$) $x_{0}$ is {\em not} an element of  $F(x_{0})$; that is, since $S$ is supposed to equal $F(x_{0})$, one has $x_{0}$ {\em not} in $S$.
+    Similarly, if $x_{0}$ is {\em not} in $S$, then (again by the definition of $S$) $x_{0}$ must be an element of $F(x_{0})$; that is, $x_{0}$ is an element of $S$.
+    Thus, assuming that there exists $x_{0}$ in $X$ such that $S \,=\, F(x_{0})$ leads to the existsence of an element, namely this $x_{0}$,
+    which is simultaneously an element of $S$ and {\em not} an element of~$S$. No such $x_{0}$ can exist, hence $S$ is not in the image of $F$.
+
+
+\V
+\V
+
+            \subsection{\small{\bf Corollary}}
+            %\label{RemrkA20.92}
+
+        There exist sets which are uncountable.
+
+\V
+
+        {\bf Proof}\, 
+
+\V
+
+        Let $Y \,=\, {\cal P}({\NN})$, the power set of ${\NN}$.
+    It is clear that $Y$ is not finite since it has the infinite subset
+    $\{\{n\}: n{\in}{\NN}\}$ whose elements are the singleton sets of natural numbers.
+    In addition, by Cantor's Power-Set Theorem above, $Y$ does not have the same cardinality as ${\NN}$;
+    that is, $Y$ is not countably infinite. It follows that the set $Y$ is not countable.
+
+\V
+\V
+
+        The uncountable set ${\cal P}({\NN})$ is difficult to visualize. Fortunately, it is possible to interpret it geometrically as a subset of the real number line.
+    The basic idea is to use the representation of subsets of ${\NN}$, in terms of sequences of $0$s and~$1$s, discussed in Example~\Ref{ExampA40.30}~(6).
+    For convenience we break up the discussion into several parts.
+
+\V
+
+
+
+                        \section{`Ordered Pairs' in Terms of Sets (Kuratowski)}
+                        %\label{SectA12A}
+
+\V
+
+
+    In the current section we illustrate the `reduction to set theory' process by expressing the important concept of `an ordered pair of objects' purely in terms of sets.
+
+        Most students first encounter the idea of an `ordered pair of objects' in analytical geometry:
+    one characterizes the location of a point (i.e., a `dot') in the $xy$-plane in terms of a pair of numbers,
+    the `Cartesian coordinates' of the point (relative to a choice of origin and coordinate axes).
+    The order in which these numbers are written makes a difference; for instance,
+    the pair $(2,-3)$ corresponds to a geometric point in the fourth quadrant of the $xy$-plane,
+    while the pair $(-3,2)$ corresponds to a geometric point in the second quadrant.
+
+        More generally, if $x$ and $y$ are any objects, one seeks a purely set-theoretic way to encode the main information contained in intuitive concept of `the ordered pair $(x,y)$':
+
+\VA
+
+        \h (i) The concept should be expressed purely in terms of sets formed from the objects $x$ and~$y$.
+
+        \h (ii) If $x \,\,{\neq}\,\, y$, then the definition should allow one to distinguish which of these objects is to be the `first' and which is to be the `second'.
+
+\VA
+
+\noindent Notice that the `obvious' solution, namely to define the desired ordered pair as the set $\{x,y\}$, does not satisfy Condition~(ii);
+    indeed, one has $\{x,y\} \,=\, \{y,x\}$, so this doubleton set does not single out one of the objects $x$ or $y$ as somehow being `preferred'.
+
+        Around 1914 the American mathematician Norbert Wiener developed a suitable set-theoretic treatment of `ordered pairs';
+    this was simplified by the Polish mathematician Kasimir Kuratowski in~1921. We follow Kuratowski's approach here.
+
+\V
+\V
+
+        \subsection{\small{{\bf Definition} (Kuratowski Ordered Pairs})}
+        \label{DefA12.10}\IndB{ordered pairs}{Kuratowski definition}
+
+        Let $x$ and $y$ be objects. Then the {\bf Kuratowski ordered pair whose first entry is $\Bfm{x}$ and whose second entry is $\Bfm{y}$} is the set $\{\{x\},\{x,y\}\}$.
+    If $x \,=\, y$ one says that the ordered pair is of {\bf Type~I}\IndC{ordered pairs}{Kuratowski definition}{Type I}, while if $x \,\,{\neq}\,\, y$ then it is of {\bf Type~II}\IndC{ordered pairs}{Kuratowski definition}{Type II}.
+
+\V
+
+        \underline{Remarks}
+
+\V
+
+        (1) For convenience one normally denotes the ordered pair whose first entry is $x$ and whose second entry is $y$ by the standard symbol $(x,y)$,
+    where the first entry of the ordered pair appears on the left in this notation and the second on the right;
+    in the spoken form, one then refers to `the ordered pair $x$\,~$y$', with the first entry of the pair spoken first.
+    Note that neither of these conventions distinguishes `first entry' in a purely set-theoretic way:
+    the phrase `on the left' introduces a visual aspect, while the phrase `spoken first' introduces a temporal aspect.
+
+\V
+
+        (2) In the Kuratowski formulation, the ordered pair with first entry $x$ and second entry $y$ is either a singleton set, if $x \,=\, y$, or a doubleton set, if $x \,\,{\neq}\,\, y$.
+
+\V
+
+        (3) As was indicated above, other set-theoretic definitions of `ordered pairs' have been proposed.
+    These are not simply rewordings of the Kuratowski definition which describe the same objects.
+    For instance, in the Kuratowski formulation the ordered pair whose first entry is the number $x$
+    and whose second entry is the number~$y$ is the set $\{\{x\}, \{x,y\}\}$, thought of as a single object.
+    In the earlier formulation of Norbert Wiener, however, the same ordered pair is defined to be the set $\{\{\{x\},{\emptyset}\}, \{\{y\}\}\}$.
+    In particular, the Wiener version of the ordered pair $(x,y)$ is a set which includes the object $\{\{y\}\}$ as an element;
+    in contrast, the Kuratowski version is a set which does {\em not} have $\{\{y\}\}$ as an element.
+    It follows from the Fundamental Principle of Set Theory that these objects (i.e., sets) cannot be equal,
+    so the definitions themselves, while superficially similar, are fundamentally different.
+    More precisely, one cannot take, say, the Kuratowski definition of the ordered pair $(x,y)$
+    and then prove that $(x,y)$ is also given by the Wiener definition.
+    (Compare this situation with the discussion above on defining even and odd integers.)
+    Instead, the purpose of such constructions in modern mathematics is to provide a precise construction, purely in terms of sets,
+    of concrete objects whose set-theoretic properties correspond precisely to the properties our understanding of the given intuitive concept.
+
+\V
+\V
+
+%%% 
+\begin{quotation}
+{\footnotesize \underline{\Note} (on Kuratowski ordered pairs)\IndB{\notes}{on Kuratowski ordered pairs}:
+    The symbols used to formulate the preceding definition, when combined with the standard $(x,y)$ notation,
+    may make it appear that almost nothing has really happened. However, this perception changes when one tries to use this definition `with one's eyes closed'.
+    Indeed, the true test of whether the Kuratowski definition `works', i.e., whether it does accurately encode the intuitive idea of `ordered pair'
+    in a purely set-theoretic way, is this: given any object $Z$, one ought to be able to tell,
+    using set-theoretic ideas alone, whether $Z$ is an ordered pair in the sense of Kuratowski;
+    if it is, one ought to be able to determine the original objects from which the ordered pair $Z$ is formed,
+    and also to determine which of these objects is to be the `first'.
+    This determination should involve only set-theoretic ideas, and not involve spatial notions such as `the object on the left',
+    or temporal notions such as `the first object mentioned'. Here is how the Kuratowski formulation carries this out:
+
+       \h Step 1: Given an object $Z$, determine whether it is a set.
+    If it is not a set, then it cannot be an ordered pair, so stop. Otherwise:
+
+       \h Step 2: If $Z$ is a set, determine whether it is either a singleton or a doubleton set.
+    If $Z$ is neither a singleton set nor a doubleton set, then (Remark~2 above) it cannot be an ordered pair, so stop. Otherwise:
+
+       \h Step 3:
+
+            \h \h (a) If $Z$ is a singleton, determine whether its unique element is itself a singleton set.
+    If it is not, then $Z$ cannot be an ordered pair, so stop. However, if the unique element of $Z$ {\em is} a singleton set $A$,
+    let $x$ be the unique element of $A$. Then this analysis shows that $Z$ is the ordered pair $\{\{x\}\} \,=\, \{\{x\},\{x\}\} \,=\, \{\{x\},\{x,x\}\}$ 
+    whose first entry is $x$ and whose second entry is also $x$. Success!
+
+        \h \h (b) If $Z$ is a doubleton set, determine whether one of its two elements is a singleton set and the other is a doubleton set.
+    If this is not the case, then $Z$ cannot be an ordered pair, so stop. Otherwise:
+
+        Step 4: For convenience, call the element of $Z$ that is a singleton set $B$, and call the element of $Z$ that is a doubleton set $C$.
+    If $B$ is not a subset of $C$, then $Z$ cannot be an ordered pair, so stop. Otherwise:
+
+        Step 5: Let $x$ be the unique element of $B$, and let $D \,=\, C\,{\setminus}\,B$.
+    Since $B$ is a subset of $C$, it is clear that $D$ is obtained by removing $x$ from $C$.
+    It follows that $D$ is also a singleton set whose unique element does {\em not} equal $x$.
+    Now let $y$ be the unique element of $D$. Then it is clear that $Z \,=\, \{\{x\},\{x,y\}\}$. Success!
+
+\V
+
+       \underline{Note} The preceding analysis may seem overly fussy, but it is forced on us because the object $Z$ may be quite complicated.
+
+        \underline{Example}: Consider the following object:         \begin{displaymath}
+Z \,=\, 
+                \{
+            \{
+        \{
+           \{
+            \{
+              \{a\},\{a,b\}
+            \}
+           \}
+             ,
+        \{
+           \{\{a\},\{a,b\}\} , c
+            \}
+        \}
+            \}
+                         ,
+            \{
+        \{
+           \{
+            \{
+              \{a\},\{a,b\}
+            \}
+           \}
+             ,
+        \{
+           \{\{a\},\{a,b\}\} , c
+            \}
+        \},
+          \{\{a\},\{a,\{\{b\},\{b,c\}\}\}\}
+            \}
+                \}
+        \end{displaymath}
+%% MAKE SURE THIS OBJECT ACTUALLY WORKS SHOULD BE (x,y), WHERE
+%%  x=((a,b),c), y=(a,(b,c))
+    where $a$, $b$ and $c$ are distinct objects.
+    The reader is encouraged to determine whether $Z$ is an ordered pair in the Kuratowski sense.
+}%EndFootNoteSize
+\end{quotation} 
+%##
+
+\V
+\V
+
+
+        It is fairly straight forward to generalize the Kuratowski construction to define `ordered triples', `ordered quadruples', and so on.
+    However, the results become increasingly complicated. Instead we handle such extensions in an alternate way in Section~~\Ref{SectA30}.
+    At that time it also will be convenient to provide a `new, improved' formulation for ordered pairs.
+    The formulation there will ultimately be based on the Kuratowski construction given above,
+    but from then on the Kuratowski ordered pair will be treated as the `primitive' version.
+    This process of evolving from a `primitive definition' of ordered pair to an `improved definition' should sound familiar:
+    a similar evolution process was described in `Warning~(b)' above for `Definitions'.
+
+\V
+\V
+
+        One of the advantages of formulating concepts in terms of sets is that one has a precise way of determining when two sets are equal to each other; namely, when they have exactly the same elements (Axiom of Extension).
+    In particular, the Kuratowski definition gives actual content to the following statement:
+
+
+        \subsection{\small{\bf Theorem}}
+            \label{ThmA12.20}
+
+        A necessary and sufficient condition for ordered pairs $Z$ and $W$ to be equal is that the first entry of $Z$ equal the first entry of $W$ and the second entry of $Z$ equal the second entry of $W$.
+
+\V
+
+        \underline{Proof}:
+
+        Let $a$ be the first entry of the ordered pair $Z$ and let $b$ be the second entry of $Z$.
+    Likewise, let $c$ and $d$ be the first and second entries, respectively, of $W$.
+    Then, in accordance with Kuratowski's definition, the statement to be proved is this:
+        \begin{displaymath}
+        \mbox{A necessary and sufficient condition for } \{\{a\},\{a,b\}\} \,=\, \{\{c\},\{c,d\}\} \mbox{ is that }
+    a \,=\, c \mbox{ and } b \,=\, d.
+        \end{displaymath}
+
+        \underline{`Sufficient' Half} Suppose that $a \,=\, c$ and $b \,=\, d$.
+    Then $\{a\} \,=\, \{c\}$ and $\{a,b\} \,=\, \{c,d\}$, so $\{\{a\}, \{a,b\}\} \,=\, \{\{c\},\{c,d\}\}$.
+    (We have simply replaced `equals by equals'.) That is, $Z \,=\, W$, as claimed.
+
+\V
+
+        \underline{`Necessary' Half}: Suppose that $Z \,=\, W$.
+    Then, by the Kuratowski definition of `ordered pairs', this can be written
+        \begin{displaymath}
+        \{\{a\},\{a,b\}\} \,=\, \{\{c\},\{c,d\}\} \h ({\ast})
+        \end{displaymath}
+
+        \underline{Case 1}: Suppose that $a \,=\, b$, so that $(a,b)$ is an ordered pair of Type~I (see Definition~\Ref{DefA12.10} above).
+    Then $\{\{a\},\{a,b\}\} \,=\, \{\{a\}\}$; in particular, the left side of Equation~$({\ast})$ is a singleton set.
+    Thus, from the `Axiom of Extension', it follows that the right side of Equation~$({\ast})$ must also be a singleton.
+    That is, $(c,d)$ is also an ordered pair of Type~I, so $c \,=\, d$.
+    Thus,
+        \begin{displaymath}
+        \{\{a\}\} \,=\, \{\{c\}\}.
+        \end{displaymath}
+    Apply the Axiom of Extension to the singleton sets $\{\{a\}\}$ and $\{\{c\}\}$ to get $\{a\} \,=\, \{c\}$;
+    Apply the axiom again to the singleton sets $\{a\}$ and $\{c\}$ to get $a \,=\, c$.
+    Since in this case one also has $a \,=\, b$ and $c \,=\, d$, it follows that $a \,=\, c$ and $b \,=\, d$, as claimed.
+
+\V
+
+        \underline{Case 2}: Suppose $a \,\,{\neq}\,\, b$. Then $Z \,=\, (a,b)$ is a Type~II ordered pair,
+    hence $W \,=\, (c,d)$ is also of Type~II (since, by hypothesis, $Z \,=\, W$), and thus $c \,\,{\neq}\,\, d$.
+    The equality $Z \,=\, W$ also implies that the element of $Z$ which is a singleton set must equal the element of $W$ which is a singleton set. That is, $\{a\} \,=\, \{c\}$, so by the Axiom of Extension again one has $a \,=\, c$.
+    Likewise, the element of $Z$ which is a doubleton set must equal the element of $W$ which is a doubleton set,
+    so $\{a,b\} \,=\, \{c,d\}$. Since, as was just shown, one has $a \,=\, c$, one can then write $\{a,b\} \,=\, \{a,d\}$;
+    just replace $c$ by $a$ in the set $\{c,d\}$. The fact that $\{a,b\} \,=\, \{a,d\}$ means that $b$ must be one of the elements of the doubleton set $\{a,d\}$. Since we are assuming $a \,\,{\neq}\,\, b$, it follows that $b \,=\, d$, as required, and the desired result follows.
+
+\VV
+
+        In analysis, as elsewhere in mathematics, one encounters sequences which are constructed in a step-by-step manner,
+    using the early entries to determine the later ones. For example, in the definition of the quantity $k!$,
+    where $k$ is a natural number, one first sets $1! \,=\, 1$, and then $(k+1)! \,=\, k!(k+1)$.
+    Such definitions are said to be {\bf recursive}.
+    Likewise, the construction of the canonical bijection ${\Psi}_{C}$ in Definition~\Ref{DefA30.70} is given recursively.
+    The main theoretical fact about recursive definitions is the following result.
+
+\V
+
+        \subsection{\small{{\bf Theorem}} (Dedekind's Theorem on Recursive Definitions)}\IndBD{recursive definitions}{Dedekind's recursive-definition theorem}
+        \label{ThmA40.100}
+
+        Let $Y$ be a nonempty set, let $y_{0}$ be a point of $Y$, and let $G:Y \,{\rightarrow}\, Y$ be a function with domain $Y$ and values in $Y$.
+    Then the exists a unique function $f:{\NN} \,{\rightarrow}\, Y$ such that $f(1) \,=\, y_{0}$ and $f(k+1) \,=\, G(f(k))$ for all $k$ in ${\NN}$.
+
+\V
+
+        {\bf Proof}\,  The `uniqueness' portion is a simple consequence of the Principle of Mathematical Induction, and its proof is left as an exercise.
+        To show that such $f$ exists, we use Theorem~\Ref{ThmA30.27} to reduce the problem to the existence of analogous functions on the subsets ${\NN}_{k}$ of ${\NN}$.
+
+\V
+
+        \underline{Claim} For each $k$ in ${\NN}$ there is a function $f_{k}:{\NN}_{k} \,{\rightarrow}\, Y$
+    such that $f(1) \,=\, y_{0}$ and if $j{\in}{\NN}_{k}$ and $j\,<\,k$ then $f_{k}(j+1) \,=\, G(f_{k}(j))$.
+
+        \underline{Proof of Claim} Let $A$ be the set of $k$ in ${\NN}$ such that such $f_{k}$ exists.
+    Clearly $1{\in}A$: just define $f_{1}:{\NN}_{1} \,{\rightarrow}\, Y$ by the rule $f_{1}(1) \,=\, y_{0}$.
+
+        Next, suppose that $k{\in}A$. Define $f_{k+1}:{\NN}_{k+1} \,{\rightarrow}\, Y$ by the rule
+        \begin{displaymath}
+        f_{k+1}(j) \,=\, f_{k}(j) \mbox{ if $1\,\,{\leq}\,\,j\,\,{\leq}\,\,k$};
+        f_{k+1}(k+1) \,=\, G(f_{k}(k)).
+        \end{displaymath}
+    It is clear that $f_{k+1}$ has the desired properties, so that $k+1$ is also in $A$.
+    Now the Principle of Mathematical Induction implies that $A \,=\, {\NN}$, so the Claim follows.
+
+    It is also clear from the construction above that if $i$ and $j$ are elements of ${\NN}$ with $i\,<\,j$, then $f_{i}$ is the restriction to ${\NN}_{i}$ of $f_{j}$.
+    Hence it follows from Theorem~\Ref{ThmA30.27}, the `Union-of-Functions Theorem',
+    that the union of the functions $f_{k}$ for $k$ in ${\NN}$ is a function $f:{\NN} \,{\rightarrow}\, Y$;
+    it is also clear that this function has the desired properties.
+
+\V
+\V
+
+        \subsection{\small{{\bf Example}}}
+        \label{ExampA40.110}
+
+\V
+\V
+
+        The statement of Dedekind's Theorem above is phrased along the lines of the original Principle of Mathematical Induction.
+    There is an alternate version which follows the phrasing of the Strong Principle of Mathematical Induction~(\Ref{PrinA20.04A}).
+
+\V
+
+        \subsection{\small{{\bf Theorem}} (Strong Form of Dedekind's Theorem on Recursive Definitions)}\IndC{recursive definitions}{Dedekind's recursive-definition theorem}{strong form}
+        \label{ThmA40.120}
+
+
+        Let $Y$ be a nonempty set, let $y_{0}$ be a point of $Y$, and let ${\cal B}$ be the set of all tuples in $Y$.
+    Let $g:{\cal B} \,{\rightarrow}\, Y$ be a function with domain ${\cal B}$ and values in $Y$,
+    and let $G:{\cal B} \,{\rightarrow}\, {\cal B}$ be the function defined by the following rule:
+
+        If ${\sigma} \,=\, (y_{1},y_{2},\,{\ldots}\,y_{k})$ is an element of ${\cal B}$, then $G({\sigma})$ is the tuple $({\sigma},g({\sigma}))$;
+    more precisely,
+        \begin{displaymath}
+        G((y_{1},y_{2},\,{\ldots}\,y_{k})) \,=\, (y_{1},x_{2},\,{\ldots}\,y_{k}, g((y_{1},y_{2},\,{\ldots}\,y_{k}))).
+        \end{displaymath}
+    Then the exists a unique function $f:{\NN} \,{\rightarrow}\, Y$ such that $f(1) \,=\, y_{0}$ and $f(k+1) \,=\, g((f(1),f(2),\,{\ldots}\,f(k))$ for all $k$ in ${\NN}$.
+
+\V
+
+        The simple proof is left as an exercise. (Hint: Apply the original form of the Dedekind Theorem to the map $G:{\cal B} \,{\rightarrow}\, {\cal B}$.)
+
+\V
+\V
+
+
+
+        In {\TheseNotes} we have many occasions to construct sequences of objects.
+    Often a proper treatment of these constructions should involve one or the other of the preceding Dedekind Theorems.
+    In most of these situations, however, we leave the details of such a proper treatment to the reader,
+    and follow a more informal approach in order to simplify the discussion.
+
+
+
+
+%%% 
+\begin{quotation}
+{\footnotesize \underline{\Note} (on the Schr\"{o}der-Bernstein Theorem)\IndB{\notes}{on the Schr\"{o}der-Bernstein Theorem}: 
+    The next result is not needed for the rest of {\TheseNotes} -- which is why it appears in a \Note -- but it is a powerful tool in set theory.
+
+\V
+
+        {\bf The Schr\"{o}der-Bernstein Theorem}\IndD{Schr\"{o}der-Bernstein Theorem}{\notes}
+
+\V
+
+        Suppose that $A$ and $B$ are nonempty sets such that $A$ has a subset $X$ with the same cardinality as $B$,
+    and $B$ has a subset $Y$ with the same cardinality as $A$.
+    Then $A$ has the same cardinality as $B$.
+
+\V
+
+        {\bf Proof}\,  Let $f:A \,{\rightarrow}\, Y$ and $g:B \,{\rightarrow}\, X$ and be bijections;
+    such bijections exist because of the `equal cardinality' hypotheses.
+    The key idea is given in the following analysis:
+
+\V
+
+       \underline{The Basic Schr\"{o}der-Bernstein Construction}
+
+        Let $A' \,=\, g[Y]$. Clearly $A'$ is a subset of $X$, and $g$ maps $Y$ one-to-one onto $A'$;
+    that is, the restriction of $g$ to $Y$ is a bijection of $Y$ onto $A'$. It follows that the composition $g{\circ}f$ maps $A$ bijectively onto $A'$.
+    Likewise, let $B' \,=\, f[X]$. Then by a similar argument one sees that the composition $f{\circ}g$ maps $B$ bijectively onto $B'$
+
+        Now let $C \,=\, A{\setminus}X$ and $D \,=\, X{\setminus}A'$; note that $C$ and $D$ are mutually disjoint.
+    Since $A' \,{\subseteq}\, X \,{\subseteq}\, A$, it is also clear that $A \,=\, A'\,{\cup}\,C\,{\cup}\,D$, a disjoint union.
+    Likewise, let $E \,=\, B{\setminus}Y$ and $F \,=\, Y{\setminus}B'$. Then it is clear that $B$ is the disjoint union $B \,=\, B'\,{\cup}\,E\,{\cup}\,F$ of the subsets $B'$, $E$ and $F$.
+
+        It is also easy to see that the sets $C \,=\, A{\setminus}X$ and $F \,=\, Y{\setminus}B'$ have the same cardinality.
+    More precisely, the function $f$ maps $A$ one-to-one onto $Y$ and $f$ maps $X$ one-to-one onto $B'$,
+    so $f$ maps $A{\setminus}X$ one-to-one onto $Y{\setminus}B'$.
+    Similarly, the function $g$ maps $E \,=\, B{\setminus}Y$ bijectively onto $D \,=\, X{\setminus}A'$.
+
+        Finally, notice that $f$ maps $A'$ into $B' \,=\, f[X]$ since $A' \,{\subseteq}\, X$; likewise, $g$ maps $B'$ into $A'$.
+    In addition, the restrictions of $f$ to $A'$ and $g$ to $B'$ are one-to-one functions, since the original $f$ and $g$ are one-to-one.
+    In particular, $A'$ has a subset $X'$ with the same cardinality as $B'$, namely $X' \,=\, f[A']$;
+    likewise, $B'$ has a subset $Y'$ with the same cardinality as $A'$, namely $Y' \,=\, g[B']$.
+    Thus, the `Basic Construction' can be repeated on the sets $A'$, $B'$, $X'$ and $Y'$ to express $A'$ and $B'$ as disjoint unions of the form $A' \,=\, A''\,{\cup}\,C'\,{\cup}\,D'$ and $B' \,=\, B''\,{\cup}\,E'\,{\cup}\,F'$.
+
+
+\V
+
+        The rest of the proof consists primarily of carrying out the `Basic Construction' above infinitely many times.
+    To do this, however, it is convenient to introduce numerical subscripts instead of `primes'.
+    Thus, let us write $A_{0}$, $X_{0}$, and $A_{1}$ instead of $A$, $X$, $A'$; and write $C_{0} \,=\, A_{0}{\setminus}X_{0}$ and $D_{0} \,=\, X_{0}{\setminus}A_{1}$ 
+    instead of $C \,=\, A{\setminus}X$ and $D \,=\, X{\setminus}A'$.
+    Likewise, write $B_{0}$, $Y_{0}$ and $B_{1}$ instead of $B$, $Y$ and $B'$; and write $E_{0}$ and $F_{0}$ instead of $E$ and $F$.
+    And when one repeats the `Basic Construction', simply increase the indices by~$1$ instead of slapping on another `prime'.
+
+        By doing this, for each $k \,=\, 0,1,2,\,{\ldots}\,$ one obtains sets $A_{k}$, $X_{k}$, $C_{k}$, $D_{k}$, and $B_{k}$, $Y_{k}$, $E_{k}$ and $F_{k}$, which satisfy the following relations:
+
+\V
+
+        \h (a) $A_{0}$, $B_{0}$, $X_{0}$ and $Y_{0}$ equal the original sets $A$, $B$, $X$ and $Y$.
+
+        \h (b) $Y_{k} \,=\, f[A_{k}]$ and $X_{k} \,=\, g[B_{k}]$.
+
+        \h (c) $C_{k} \,=\, A_{k}{\setminus}X_{k}$ and $D_{k} \,=\, X_{k}{\setminus}A_{k+1}$;
+    likewise, $E_{k} \,=\, B_{k}{\setminus}Y_{k}$ and $F_{k} \,=\, Y_{k}{\setminus}B_{k+1}$.
+
+        \h (d) $A_{k}$ is the disjoint union of $A_{k+1}$, $C_{k}$ and $D_{k}$;
+    likewise, $B_{k}$ is the disjoint union of $B_{k+1}$, $E_{k}$ and $F_{k}$.
+
+        \h (e) $C_{k}$ and $F_{k}$ have the same cardinality; likewise, $D_{k}$ and $E_{k}$ have the same cardinality.
+
+\V
+
+\noindent From the preceding one then can write
+        \begin{displaymath}
+        A \,=\, A_{0} \,=\, A_{1}\,{\cup}\,C_{0}\,{\cup}\,D_{0} \,=\, A_{2}\,{\cup}\,C_{1}\,{\cup}\,D_{1}\,{\cup}\,C_{0}\,{\cup}\,D_{0} \,=\, 
+A_{3}\,{\cup}\,C_{2}\,{\cup}\,D_{2}\,{\cup}\,C_{1}\,{\cup}\,D_{1}\,{\cup}\,C_{0}\,{\cup}\,D_{0} \,=\, \,{\ldots}\,.
+        \end{displaymath}
+    Likewise,
+        \begin{displaymath}
+        B \,=\, B_{0} \,=\, B_{1}\,{\cup}\,E_{0}\,{\cup}\,F_{0} \,=\, B_{2}\,{\cup}\,E_{1}\,{\cup}\,F_{1}\,{\cup}\,E_{0}\,{\cup}\,F_{0} \,=\,
+B_{3}\,{\cup}\,E_{2}\,{\cup}\,F_{2}\,{\cup}\,E_{1}\,{\cup}\,F_{1}\,{\cup}\,E_{0}\,{\cup}\,F_{0} \,=\, \,{\ldots}\,.
+        \end{displaymath}
+    All the unions shown here are {\em disjoint} unions.
+
+        Since $A_{k+1} \,{\subseteq}\, A_{k}$ for each $k$, one can conclude that
+        \begin{displaymath}
+        A \,=\, P\,{\cup}\, C_{0}\,{\cup}\,D_{0}\,{\cup}\,C_{1}\,{\cup}\,D_{1}\,{\cup}\,\,{\ldots}\,\,{\cup}\,C_{k}\,{\cup}\,D_{k}\,{\cup}\,\,{\ldots}\, \h ({\ast})
+        \end{displaymath}
+    where $P \,=\, A_{0}\,{\cap}\,A_{1}\,{\cap}\,\, {\ldots}\,\,{\cap}\,A_{k}\,{\cap}\,\,{\ldots}\,$.
+    Likewise,
+        \begin{displaymath}
+        B \,=\, Q\,{\cup}\, E_{0}\,{\cup}\,F_{0}\,{\cup}\,E_{1}\,{\cup}\,F_{1}\,{\cup}\,\,{\ldots}\,\,{\cup}\,E_{k}\,{\cup}\,F_{k}\,{\cup}\,\,{\ldots}\, \h ({\ast}{\ast})
+        \end{displaymath}
+    where $Q \,=\, B_{0}\,{\cap}\,B_{1}\,{\cap}\,\, {\ldots}\,\,{\cap}\,B_{k}\,{\cap}\,\,{\ldots}\,$.
+
+        \underline{Claim} The sets $P$ and $Q$ have the same cardinality.
+
+        \underline{Proof of Claim} First note that $A_{k+1} \,{\subseteq}\, X_{k} \,{\subseteq}\, A_{k}$, so $P \,=\,X_{1}\,{\cap}\,X_{2}\,{\cap}\,\,{\ldots}\,\,{\cap}\,X_{k}\,{\cap}\,\,{\ldots}\,$.
+    Likewise, $B_{k+1} \,{\subseteq}\, Y_{k} \,{\subseteq}\, B_{k}$, so $Q \,=\, Y_{1}\,{\cap}\,Y_{2}\,{\cap}\,\,{\ldots}\,\,{\cap}\,Y_{k}\,{\cap}\,\,{\ldots}\,$.
+
+        Suppose first that $P$ is nonempty, and let $x$ be an element of $P$. Then for each $k$, $x{\in}A_{k}$, hence $f(x){\in}Y_{k}$ (since $f$ maps $A_{k}$ to $Y_{k}$).
+    Thus, $f(x)$ is in the intersection of the sets $Y_{1}$, $Y_{2}$,\,{\ldots}\,, hence $f(x){\in}Q$. That is, $f$ maps $P$ {\em into} $Q$.
+    To see that $f$ maps $P$ {\em onto} $Q$, let $y$ be any element of $Q$. Then for each $k$, one has $y{\in}Y_{k}$; hence, since $Y_{k} \,=\, f[A_{k}]$,
+    one has $f(x_{k})$ for some element $x_{k}$ in $A_{k}$. And since $f$ is a bijection on $X$, one has $x_{1} \,=\, x_{2} \,=\, \,{\ldots}\,$.
+    Call this common value $x$, so $x{\in}A_{k}$ for each $k$ and thus $x{\in}P$.
+    That is $f$ maps $P$ {\em onto} $Q$.  It follows that $f$ maps $P$ bijectively onto $Q$, hence $P$ and $Q$ have the same cardinality, as claimed.
+
+        It is easy to verify by a similar argument that if $P \,=\, {\emptyset}$ then $Q \,=\, {\emptyset}$;
+    thus $P$ and $Q$ have the same cardinality in this case as well.
+
+        Now consider the right sides of Equations~$({\ast})$ and~$({\ast}{\ast})$ above,
+    which express $A \,=\, A_{0}$ and $B \,=\, B_{0}$ as disjoint unions of sets.
+    We have already proved that for each $k$ the sets $C_{k}$ and $F_{k}$ have the same cardinality,  as do the sets $D_{k}$ and $E_{k}$.
+    And since $P$ and $Q$ also have the same cardinality, Theorem~\Ref{ThmA50.88A} now implies that $A$ and $B$ have the same cardinality, as claimed.
+
+\V
+
+The reader is encouraged to review the examples considered in Sections~\Ref{SectA15}, \Ref{SectA20} and~\Ref{SectA25} and see whether some of them could have been obtained more easily using the Schr\"{o}der-Bernstein theorem.
+
+%\StartSkip{
+
+\V
+
+        {\bf Remark} The reader is encouraged to review the examples considered in Sections~\Ref{SectA15}, \Ref{SectA20} and~\Ref{SectA25} and see how the results obtained there could have been proved using the Schr\"{o}der-Bernstein theorem.
+%}%\EndSkip
+}%EndFootnotesize
+\end{quotation} 
+%##
+
+
+
+        {\bf Problem} Precisely define the concept of `relation'.%\\\
+
+\V
+
+        As a starting point, consider the definition of `relation' given in one dictionary:
+
+        \h `A relation is a logical or natural association between two or more things.'
+    (Of course in the special case of a {\em binary} relation, the phrase `or more' would be omitted.)
+
+
+\noindent That is, a relation is defined to be a type of association. However, the same dictionary goes on to define `association' as follows:
+
+
+        \h `An association is a mental connection or relation between thoughts, feelings, ideas, or sensations.'
+
+\noindent One can combine these to say, in effect, that
+
+        \h `A relations is an association, and an association is a relation'.
+
+
+\noindent This is a `circular definition'. It appears that the concept of `relation' must fall under Justice Stewart's dictum:
+
+        \h `I can't define it, but I know it when I see it'.
+
+\V
+
+        Nevertheless, mathematicians have formulated a precise definition, based purely on set-theoretic concepts; this definition is given below.
+    In principle it could be given here, with no further introduction, since all the words which appear in it already make sense.
+    However,as was observed above in the discussion of the `Definition-Theorem-Proof' style of mathematical exposition,
+    in reality formal definitions arise only {\em after} one understands what the relevant features of the situation being described.
+    One normally gets that understanding through a supply of examples which indicate what features any reasonable formal definition ought to have.
+    Here is a short list of such examples of relations, both from within mathematics and from ordinary life:
+
+\V
+
+       \h (1) `John is a son of Jane.' (Relation: `is a son of')
+
+\VA
+
+       \h (2) `Jane is the mother of Jill.' (Relation: is the mother of')
+
+\VA
+
+       \h (3) `John is a son of Jane and George.' (Relation: is a son of')
+
+\VA
+
+       \h (4) `The number $x$ is greater than the number $y$. (Relation: `is greater than')
+
+\VA
+
+       \h (5) `The number $y$ is greater than the number $x$'. (Relation: `is greater than')
+
+\VA
+
+       \h (6) `The number $x$ is the square of the number $y$.' (Relation: `is the square of')
+
+
+
+\VA
+
+        These examples indicate some features that any reasonable definition of the concept `relation' ought to have,
+    where by `reasonable' is meant a definition which corresponds well to one's intuitive notion of the concept.
+
+        \h (a) A `relation' should relate two or more objects; for instance, Example~(3) relates three objects (John, Jane and George),
+    while the other examples relate pairs of objects. In {\TheseNotes} the focus is on relations of the latter type, called {\em binary} relations.
+    (This is partially because such relations are the most common in mathematics,
+    and partially because more general relations can often be reduced to the binary case.)
+
+        \h (b) The order in which the objects are listed may make a difference. For instance, in Example~(2)
+    the statements `Jane is the mother of Jill' and `Jill is the mother of Jane' both make grammatical sense, but they mean very different things.
+    Likewise, the only difference between Statements~(4) and~(5) is the order in which the numbers $x$ and~$y$ are listed.
+    If  $x \,\,{\neq}\,\, y$ then the order makes a difference in the truth of the stated relationship.
+
+        \h (c) The sets from which the objects being related are drawn must be specified, and these sets need not be the same.
+    For instance, in Example~(1) the context suggests that, in the relation `$x$ is a son of $y$',
+    the object $x$ (`John' here) should be chosen from, say, the set of all human males;
+    in contrast, it is not so clear whether the $y$ should be drawn fron the set of, say, all humans, or all human females, or all human parents.
+    Likewise, in Example~(6) it makes a difference whether the numbers $x$ and $y$ are to be chosen from the natural numbers or from the real numbers.
+
+        \h (d) Of course the real question for any such binary relation is this: which pairs are in the given relationship?
+    (Once that is answered, the issue of which pairs are {\em not} in the relationship is automatically settled.)
+
+        \h (e) The definition must allow for the possibility that there are no pairs in the given relationship.
+    For instance, the relation described by the inequality $x^{2}\,<\,-y^{2}$' is satisfied by no pair of real numbers.
+
+        Having said all that, here is the standard definition of `binary relation' in mathematics:
+
+\V
+
+        \subsection{\small{{\bf Definition}}}
+        \label{DefA12.60}\IndC{relations}{binary}{from a given set to a given set}\IndD{binary relations}{relations}
+
+\V
+
+        (1) Let $X$ and $Y$ be a pair of nonempty sets.
+    A {\bf binary relation from $\Bfm{X}$ to $\Bfm{Y}$} is a (possibly empty) subset of the Cartesian product $X{\times}Y$.
+    If $R$ is such a relation, i.e., if $R \,{\subseteq}\, X{\times}Y$, and if $(x,y)$ is an element of $R$, one says that {\bf \Bfm{x} and \Bfm{y} are in the  relation~$R$}.
+    One frequently indicates this state of affairs by writing $x\,R\,y$ instead of the more usual $(x,y){\in}R$.
+
+        If $Y \,=\, X$, then one normally speaks of a {\bf relation \underline{on} $\Bfm{X}$}\IndC{relations}{binary}{on a given set} instead of a relation \underline{from} $X$ to~$X$.
+
+        (2) If $R$ is a binary relation from $X$ to $Y$, as above, then the corresponding
+    {\bf negated binary relation}\IndC{relations}{binary}{negated relation} from $X$ to~$Y$, often denoted ${\not}R$,
+    is the complement $X{\times}Y\,{\setminus}\,R$; that is, it is the set of all ordered pairs $(x,y)$, with $x$ in $X$ and $y$ in $Y$, such that $(x,y)$ is {\em not} in the set~$R$.
+
+        (3) A {\bf formal binary relation}\IndC{relations}{binary}{formal} is an ordered pair $(U,R)$,
+    where $U$ is an ordered pair $(X,Y)$ of nonempty sets and $R$ is a subset of $X{\times}Y$.
+
+\VV
+
+        \subsection{\small{{\bf Some Nonmathematical Examples of Binary Relations}}}
+        \label{ExampA12.65A}
+
+\V
+
+
+        (1) Let $W$ be the set consisting of the following women; the numbers following their names are their ages as of January~1, 2000:
+
+        \begin{center}
+        Abigail (85), Betty (65), Carrie (22), Debbie (45), Edie (34) and Francine (42)
+        \end{center}
+
+        Here are the familial relations between these women:
+
+
+        Betty is the daughter of Abigail; Carrie is the daughter of Francine; Debbie is the daughter of Betty.
+
+        \underline{Problem} Let $X \,=\, Y \,=\, W$, and consider the binary relation on $W$, `is the daughter of'.
+    Describe this relation in terms of the preceding definition; that is, as a set of ordered pairs.
+
+        \underline{Solution} To save a little writing, abbreviate the names of the six women to their first initials, so that $W \,=\, \{A,B,C,D,E,F\}$.
+    Then the relation is the following set $R$ of ordered pairs:
+        \begin{displaymath}
+        R \,=\, \mbox{\{(B,A), (C,F), (D,B)\}.}
+        \end{displaymath}
+
+\V
+
+        (2) Let $W$ be the same set as in the preceding example.
+
+        \underline{Problem} As before, let $X \,=\, Y \,=\, W$, but now consider the binary relation,
+    again on $W$, described by `is exactly twenty years younger than' (on January~1, 2000, of course).
+    Describe this relation in terms of a set of ordered pairs.
+
+        \underline{Solution} It is easy to see that the answer is exactly the same set $R$ as in the preceding example.
+
+\V
+
+        (3) Let $\hat{W} \,=\, W\,{\setminus}\,\{E\} \,=\, \{A, B, C, D, F\}$, and once again consider the binary relation described by `is the daughter of', but now on the set~$\hat{W}$.
+    It is clear that the corresponding set of ordered pairs is the same as in the preceding examples.
+    Nevertheless, in light of Part~(3) of Definition~\Ref{DefA12.60} they are considered to be different.
+    Indeed, as `formal' binary relations the first is the ordered pair $((W,W),R)$ while the second is $(\hat{W},\hat{W},R)$.
+    Since $W \,\,{\neq}\,\, \hat{W}$, these two ordered pairs are physically different objects.
+
+\V
+
+        \underline{Remarks} (a) The relations discussed in Examples~(1) amd~(2) above are, intuitively speaking, quite dissimilar:
+    one concerns the specific relation of daughters to mothers, while the other concerns age differences.
+    Nevertheless, from the viewpoint of Definition~\Ref{DefA12.60} they are literally the same object.
+
+        In contrast, the binary relation described in Example~(3) appears to be the same as that in Example~(1), even when speaking intuitively.
+    Nevertheless, in terms of Definition~\Ref{DefA12.60} they must be considered to be different, because the underlying sets $W$ and $\hat{W}$ are not equal.
+    If this seems strange, consider the alternative: if these relations were literally the same, then the corresponding negated relations would be equal.
+    However, the set of ordered pairs associated with the {\em negated} relation for Example~(1) includes,
+    among several others, the pair $(E,A)$: Edie is not the daughter of Abigail.
+    In contrast, the pair $(E,A)$ cannot be part of the negated relation for Example~(3), since $E$ is not in the set~$W'$.
+
+
+\VV
+
+        \subsection{\small{{\bf Some Mathematical Examples of Binary Relations}}}
+        \label{ExampA12.65B}
+
+\V
+
+        (1) Some of the standard well-known examples of mathematical binary relations have been alluded to before:
+    `greater than' `less than', `equal to' and so on. To formulate these precisely in the terms of Definition~\Ref{DefA12.60},
+    one needs to specify the sets which pay the role of $X$ and $Y$ in that definition.
+    For instance, the relation `is greater than', denoted `$\,>\,$', certainly applies when $X \,=\, Y \,=\, {\RR}$, the set of all real numbers.
+    In this case, the corresponding set of ordered pairs is $R \,=\, \{(x,y): x{\in}{\RR}, y{\in}{\RR}, x\,>\,y\}$.
+
+        The corresponding negated relation, denoted $\not>$ and pronounced `not greater than',
+    consists of those elements $(x,y)$ in ${\RR}{\times}{\RR}$ for which $x\not>y$.
+    This is equivalent to the relation `less than, or equal to', denoted 	`$\,\,{\leq}\,\,$' on the same set.
+
+\V
+
+        (2) Let $X \,=\, \{1,2,3,4,5\}$ and let $R$ be the binary relation on $X$ decribed as the set of all ordered pairs $(x,y)$ in $X{\times}X$
+    such that $x \,\,{\neq}\,\, y$ and $x-y$ is a whole-number multiple of~$3$. One easily verifies that $R \,=\, \{(4,1), (5,2)\}$.
+
+\V
+
+        (3) Let $X$ be as in the preceding example but now let $R'$ be the binary relation on $X$
+    decribed as the set of all ordered pairs $(x,y)$ in $X{\times}X$ such that $x-y$ is a whole-number multiple of~$6$;
+    that is, $x-y \,=\, 6\,k$ for some $k$ in ${\NN}$. Clearly, $R' \,=\, {\emptyset}$.
+
+\V
+
+        (4) Let $\hat{X} \,=\, \{4, 5, 6, 7, 8\}$ and let $R''$ be described as the set of all ordered pairs $(x,y)$ in $\hat{X}{\times}\hat{X}$ such that $x-y$ is a whole-number multiple of~$10$
+    Clearly $R'' \,=\,{\emptyset}$, so $R''$ equals the corresponding set $R'$ from the preceding example.
+    Nevertheless, the binary relations $R'$ and $R''$ are treated as being different:
+    the sets $X$ and $\hat{X}$ on which these relations are defined are not the same.
+
+
+
+        \underline{Remarks} (1) The phrasing `relation {\em from} $X$ {\em to} $Y$' emphasizes the requirement, already mentioned above,
+    that the definition should allow the possibility that the order ($X$ is first, $Y$ is second) in a relation might make a difference.
+    Indeed, the phrases `from $X$ to $Y$' and `from $Y$ to $X$' certainly do not signify the same ideas.
+    However, some authors use instead the phrasing `relation of $X$ {\em with} $Y$'.
+    Linguistically speaking, this means the same as `relation of $Y$ with $X$', which hides the order dependence.
+    Such authors rely on the convention that by writing $X{\times}Y$, as opposed to $Y{\times}X$,
+    one tacitly treats $X$ as the first set, $Y$ as the second. (See the {\Note} below on the `left-to-right bias' in mathematics.)
+    This usage is mildly sloppy, but seems to cause no confusion.
+
+        (2) Some authors abbreviate the content of Definition~\Ref{DefA12.60} to the following:
+
+\VA
+
+        \h `A binary relation is a set $R$ of ordered pairs of objects'
+
+\VA
+
+\noindent In this formulation there is no reference to any given sets from which the entries of the ordered pairs in $R$ are to be drawn.
+    Stated this way, the binary relation {\em is} the set $R$ itself. With that viewpoint, it would follow that if $R \,{\subseteq}\, X{\times}Y$,
+    and $X'$ and $Y'$ are proper supersets of $X$ and $Y$, respectively, then the same object, $R$,
+    would be a binary relation from $X$ to $Y$ and, simultaneously, a binary relation from $X'$ to $Y'$.
+    This is {\em not} the intent of Definition~\Ref{DefA12.60}, as is made clear in the examples.
+    
+
+        (3) The restriction that $X$ and $Y$ be nonempty is to avoid situations which are of no interest whatsoever.
+    In contrast, the definition {\em does} allow the possibility that the subset $R$ might be empty, since that fact might reflect something of interest;
+    namely, that no pairs $(x,y)$ in $X{\times}Y$ happen to be in the given relation.
+
+        (4) The preceding definition uses only subsets of the Cartesian product $X{\times}Y$, and the latter concept is defined purely in set-theoretic terms.
+    Thus, Definition~\Ref{DefA12.60} does formulate the concept of `relation' purely in terms of set theory.
+    However, by identifying a relation from $X$ to $Y$ with a subset of $X{\times}Y$,
+    the definition does allow the possibility of two relations, which intuitively to be seem very different, being treated as the same; see below.
+
+
+\V
+\V
+
+        One of the most important types of binary relations on a set is a so-called `equivalence relation'.
+
+\V
+
+
+        \subsection{\small{{\bf Definition}}}
+        \label{DefA50.90}\IndC{relations}{binary}{equivalence relations}\IndD{equivalence relations}{relations}
+
+        Let $X$ be a nonempty set.
+    An {\bf equivalence relation on $X$} is a subset $W$ of $X{\times}X$ with the following properties:
+
+        \h (i) (Reflexivity) If $x{\in}X$ then $(x,x){\in}W$.
+
+\V
+
+        \h (ii) (Symmetry) If $(x,y){\in}W$ then $(y,x){\in}W$.
+
+\V
+
+        \h (iii)(Transitivity) If $(x,y){\in}W$ and $(y,z){\in}W$ then $(x,z){\in}W$.
+
+\V
+
+        One often indicates that $(x,y){\in}W$ by the notation $x \stackrel{W}{\,\sim\,}y$;
+    the expression  $x\stackrel{W}{\,\sim\,y}$ is pronounced `$x$ is equivalent to $y$ with respect to~$W$'.
+    If the choice of equivalence relation $W$ is understood from the context, then this notation may be simplified to $x\,{\sim}\,y$,
+    which is pronounced `$x$ is equivalent to $y$'; in this situation we may also refer to `the equivalence relation ${\sim}$'.
+
+        If $x$ is any element of $X$ then $[x]_{W}$ denotes the set of all $y$ in $X$ such that $x \stackrel{W}{\,\sim\,}y$.
+    The set $[x]_{W}$ is called the {\bf equivalence class of $\Bfm{x}$ relative to~$W$};
+    as usual, the explicit reference to the equivalence relation $W$ may be dropped if it is clear from the context.
+
+
+        \subsection{\small{{\bf Examples}}}
+        \label{ExampA50.100}
+
+\hspace*{\parindent}
+        (1) The relation of `equality' is an equivalence relation on any nonempty set.
+    For this equivalence relation, the equivalence class $[x]$ of $x$ is simply the singleton set~$\{x\}$.
+
+\V
+
+        (2) Suppose that ${\cal F}$ is a partition of a nonempty set $X$.
+    Then ${\cal F}$ determines an equivalence relation $W_{{\cal F}}$ on $X$ by the rule that $x \stackrel{W_{{\cal F}}}{\,{\sim}\,} y$ if, and only if,
+    $x$ and $y$ lie in the same element of the family ${\cal F}$. Indeed, suppose that $x{\in}X$.
+    Then the fact that ${\bigcup} {\cal F} \,=\, X$ implies that there is an element $S$ in the family ${\cal F}$ such that $x{\in}S$.
+    Clearly $x$ and $x$ are in $S$. Likewise, if $x$ and $y$ are both in the same element $S$ of ${\cal F}$ then $y$ and $x$ are both in $S$.
+    Finally, suppose that $x$ and $y$ are both in the same element $S$ of ${\cal F}$ and that $y$ and $z$ are both in the same element $T$ of ${\cal F}$.
+    Then $S$ and $T$ have an element in common, namely $y$, so $S\,{\cap}\,T \,\,{\neq}\,\, {\emptyset}$.
+    By the fact that ${\cal F}$ is a partition it follows that $S \,=\, T$, and thus $x$ and $z$ are both in $T$.
+
+        It is clear that if $x{\in}X$ then the equivalence class $[x]$ is precisely the unique set $A$ in the partition ${\cal F}$ such that $x{\in}A$.
+
+\V
+
+        (3) Suppose that $f:X \,{\rightarrow}\, Y$ is a surjection of a set $X$ onto a set~$Y$.
+    Then $f$ determines an equivalence relation $W$ on $X$ by the rule $x \stackrel{W}{\,\sim\,}y$ if, and only if, $f(x) \,=\, f(y)$.
+    We refer to this as the {\bf equivalence relation on $\Bfm{X}$ determined by~$\Bfm{f}$}, and we denote it by $W_{f}$.
+    We also sometimes write $x\,{\sim}_{f}\,y$ instead of the more proper $x \stackrel{W_{f}}{\,\sim\,}y$.
+
+\VV
+
+        The next result summarizes the relations between these concepts.
+
+        \subsection{\small{{\bf Theorem}}}
+        \label{ThmA50.110}
+
+        Let $X$ be a nonempty set.
+
+\V
+
+        (1) A subset $W$ of $X{\times}X$ is an equivalence relation on $X$ if, and only if,
+    there exists a partition ${\cal F}$ on $X$ such that $W \,=\, W_{{\cal F}}$, where $W_{{\cal F}}$ is described above.
+    The partition ${\cal F}$ is unique; that is, if ${\cal F}$ and ${\cal G}$ are partitions of $X$ such that $W_{{\cal F}} \,=\, W_{{\cal G}}$, then ${\cal F} \,=\, {\cal G}$.
+
+\V
+
+        (2) A subset $W$ of $X{\times}X$ is an equivalence relation on $X$ if, and only if,
+    there exists a surjection $f:X \,{\rightarrow}\, Y$ of $X$ onto some set $Y$ such that such that $W \,=\, W_{f}$.
+    (The set $Y$ is {\em not} at all unique, and therefore neither is the map~$f$.)
+
+\V
+
+        \underline{Proof}: (1) The `if' portion is essentially the content of Example~(2) above.
+    The rest of the proof is left as a straight-forward exercise.
+
+\V
+
+        (2) This follows from Part~(1) together with the results of Theorem~\Ref{ThmA50.80}.
+
+ 
+%\StartSkip{
+      The next result says, in effect, that an equivalence relation on a set $X$ determines corresponding equivalence relations on the nonempty subsets of $X$.
+    Likewise, a partition on $X$ determines corresponding partitions on the nonempty subsets of $X$.
+
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+                \label{ThmA50.115}
+
+        Let $X$ be a nonempty set, and let $Y$ be a nonempty subset of $X$.
+
+\V
+
+        (a) Suppose that $W$ is an equivalence on $X$, and let $W|_{Y}$ denote the set $W\,{\cap}\,(Y{\times}Y)$.
+    Then $W|_{Y}$ is an equivalence relation on $Y$.
+
+\V
+
+        (b) Let ${\cal F}$ be a partition of $X$, and let ${\cal F}_{Y}$ denote the family of all nonempty sets of the form $S\,{\cap}\,Y$, where $S$ is in the family ${\cal F}$.
+    Then ${\cal F}_{Y}$ is a partition of $Y$.
+
+\V
+
+        (c) Suppose that $W$ is an equivalence relation on $X$, and let ${\cal F}$ be the partition of $X$ such that $W \,=\, W_{{\cal F}}$
+    (see Part~(a) of Theorem~\Ref{ThmA50.110}).
+    Then $W|_{Y} \,=\, W_{{\cal F}_{Y}}$.
+
+\V
+
+        {\bf Proof}\, 
+
+\V
+
+        (a) Suppose that $y{\in}Y$.
+    Then $y{\in}X$ (since $Y$ is a subset of $X$), hence $(y,y){\in}W$ (since $W$ satisfies the Reflexivity condition).
+    But $(y,y){\in}Y{\times}Y$ (by definition of Cartesian Product), so $(y,y){\in}W\,{\cap}\,Y{\times}Y$ (by definition of intersection).
+    In particular, $W_{Y}$ satisfies the Reflexivity condition on $Y$.
+    Similar arguments can be used to show that $W_{Y}$ also satisfies the Symmetry and Transitivity conditions on $Y$.
+
+\V
+
+        (b) First note that the family ${\cal F}_{Y}$ is nonempty.
+    Indeed, let $y$ be an element of $Y$; such $y$ exists because $Y$ is assumed to be nonempty.
+    Then (by definition of `partition') there exists a unique set $S$ in the family ${\cal F}$ such that $y{\in}S$.
+    Thus $y$ is in both $S$ and $Y$, so $y{\in}(S\,{\cap}\,Y)$, hence the intersection $S\,{\cap}\,Y$ is nonempty.
+    Thus $S\,{\cap}\,Y$ is an element of ${\cal F}_{Y}$, which implies that the family ${\cal F}_{Y}$ is nonempty.
+
+        Next, consider a pair of sets $U$ and $V$ in the family ${\cal F}_{Y}$, with $U \,\,{\neq}\,\, V$.
+    Then, by definition of this family, there exists elements $S$ and $T$ of ${\cal F}$ such that $U \,=\, S\,{\cap}\,Y$ and $V \,=\, T\,{\cap}\,Y$.
+    Since $U\,\,{\neq}\,\, V$, it follows that $S \,\,{\neq}\,\, T$.
+    Thus $S\,{\cap}\,T \,=\, {\emptyset}$, by the `Disjointness Property' of partitions.
+    It follows that
+        \begin{displaymath}
+        U\,{\cap}\,V \,=\, (S\,{\cap}\,Y)\,{\cap}\,(T\,{\cap}\,Y) \,=\, (S\,{\cap}\,T)\,{\cap}\,(Y\,{\cap}\,Y) \,=\, {\emptyset}\,{\cap}\,Y \,=\, {\emptyset},
+        \end{displaymath}
+    by basic properties of `intersection'.
+    That is, the family ${\cal F}_{Y}$ satisfies the `Disjointness Property' as well.
+
+        Finally, it follows from the fact that $X \,=\, {\bigcup}_{S{\in}{\cal F}} S$, the definition of ${\cal F}_{Y}$,
+    and basic properties of `union' and `intersection', that
+        \begin{displaymath}
+        Y \,=\, X\,{\cap}\,Y \,=\, \left({\bigcup}_{S{\in}{\cal F}} S\right)\,{\cap}\,Y \,=\, {\bigcup}_{S{\in}{\cal F}} (S\,{\cap}\,Y) \,=\, 
+    {\bigcup}_{U{\in}{\cal F}_{Y}} U.
+        \end{displaymath}
+    (In the final equation any sets of the form $S\,{\cap}\,Y$ for which this intersection is empty can be ignored, since they do not contribute to the union.)
+    Thus, ${\cal F}_{Y}$ satisfies the `Union Property' for partitions.
+
+\V
+
+        (c) The simple proof is left to the reader as an exercise.
+
+
+\V
+\V
+
+        \subsection{\small{{\bf Definition}}}
+                \label{DefA50.117}
+
+        Let $X$ be a nonempty set and let $Y$ be a nonempty subset of $X$.
+
+\V
+
+        (a) If $W$ is an equivalence relation on $X$, then the {\bf equivalence relation on $Y$ induced from $W$} is the equivalence relation $W|_{Y} \,=\, Y\,{\cap}\,(Y{\times}Y)$ discussed in the preceding theorem.
+
+\V
+
+        (b)  If ${\cal F}$ is a partition of $X$, then the {\bf partition of $Y$ induced from ${\cal F}$} is the partition ${\cal F}_{Y}$ described in the preceding theorem.
+    
+%}%\EndSkip
+
+ 
+        \subsection{\small{{\bf Definition}}}
+                \label{DefA50.120}
+
+        Let $W$ be an equivalence relation on a nonempty set $X$.
+
+\V
+
+        (1) For each $x$ in $X$ the set $W[x] \,=\, \{y{\in}X: (x,y){\in}W\})$ is called the {\bf equivalence class of $x$ with respect to $W$}.
+    (If the equivalence relation $W$ under consideration is clear from the context,  we may abbreviate the notation $W[x]$ to $[x]$.)
+    If $S$ is an equivalence class for the equivalence relation $W$ then each element of $S$ is called a {\bf representative of $S$} (relative to the given equivalence relation).
+    (The element $x$ `represents' the equivalence class $S$ in the sense that one can write $S \,=\, [x]$;
+    but of course the choice of $x$ used to represent $S$ this way is not unique unless $S$ happens to be a singleton set.)
+
+\V
+
+        (2) The set whose elements are the equivalence sets of $W$ is called the {\bf quotient set of $X$ with respect to $W$}; this set is denoted $X/W$.
+
+\V
+
+        Note: It is clear that the quotient set $X/W$ is the same as the partition ${\cal F}$ described in Part~(a) of Theorem~\Ref{ThmA50.110}.
+    It is also clear that $X/W \,=\, X/(f)$, where $f$ is the map described in Part~(b) of the same theorem.
+
+
+\V
+\V
+
+        The next result ties together much of what we have just seen.
+
+
+\V
+\V
+
+        \subsection{\small{{\bf Theorem}}}
+                \label{ThmA50.125}
+
+        Suppose that $f:X \,{\rightarrow}\, Y$ is a surjection of a nonempty set $X$ onto a set $Y$,
+    and let $Z \,=\, X/(f)$ be the corresponding quotient set.
+    Define a function $\hat{f}:Z \,{\rightarrow}\, Y$ as follows: if $S$ is an element of $Z$, so $S \,=\, f^{-1}[y]$ for some element $y$ in $Y$, set $\hat{f}(S) \,=\, y$.
+    Then the function $\hat{f}$ is a bijection from $Z$ onto $Y$.
+
+\V
+
+        The simple proof is left as an exercise.
+
+\VV
+
+        \subsection{\small{{\bf Definition}}}
+                \label{DefA50.127}
+
+        The bijection $\hat{f}$ described in the preceding theorem is called the {\bf canonical bijection from $W$ onto $Y$ determined by the bijection $f:X \,{\rightarrow}\, Y$}.
+
+\VV
+
+                        \section{Construction of ${\QQ}$ from ${\NN}$}
+                        \label{SectAAdd3}%\\\
+\VV
+
+        {\bf Introduction} In Chapter~\Ref{ChaptA} we accepted as `primitive truths' basic properties of the natural numbers and the rational numbers;
+    but there was a promise to delve more deeply into the structure of such systems.
+    Indeed, in Appendix~A the internal structure of the natural numbers is reduced to a consideration of the Dedekind-Peano axioms.
+    Of course, the actual nature of these numbers, that is, the answer to the question
+    `Exactly what is a natural number in some philosophical sense', is left open:
+    We continue to treat these numbers as `primitive objects' which we do not define, but `we know them when we see them'. In particular,
+    we do not prove that there exists a system of objects which satifies the Dedekind-Peano axioms; we accept our intuitive notions of ${\NN}$ as a given.
+
+        Having done this, however, it is now easy to derive from this primitive notion of `Natural Number',
+    in a rigorous manner which uses only these accepted facts about ${\NN}$ and accepted set-theoretic concepts,
+    the rigorous construction of systems which correspond in every important way to our intuitive ideas of `integer' and `rational number'.
+    The process lets the intuitive notion lead lead us, in a fairly natural way, to a rigorous construction of~${\QQ}$.
+    The goal of the present section is such a contruction.
+
+\V
+
+    \underline{Note} The analogous questions for the real number system are postponed to Chapter~\Ref{ChaptB}.
+
+\VV
+
+%-----------------
+
+
+        \subsection{\small{{\bf Construction 1: The Positive Rationals from the Natural Numbers}}}
+                \label{ConstA50.130A}
+
+ \V
+
+        Let $X$ be the set ${\NN}{\times}{\NN}$ of all ordered pairs of natural numbers.
+    The set $X$ is `rigorously defined', in the sense that we are taking both the set ${\NN}$ and the concept of `ordered pairs' as primitive concepts..
+    Let $Y$ be the set ${\QQ}^{+}$ of all positive rational numbers', viewed as an intuitively understood system which eventually must be defined rigorously. 
+    In terms of this intuition, there is a well-known surjective map ${\rho}:X \,{\rightarrow}\, {\QQ}^{+}$ defined by
+    ${\rho}(j,k) \,=\, j/k$ for each ordered pair $(j,k)$ in~$X$; the Greek lettre `${\rho}$' stands for `ratio'.
+    It is easy to see that the equivalence relation determined on $X$ by the surjection ${\rho}$ is this:
+        \begin{displaymath}
+        (j_{1},k_{1}) \,{\sim}\, (j_{2}, k_{2}) \mbox{ if, and only if, }
+        j_{1}{\cdot}k_{2} \,=\, j_{2}{\cdot}k_{1} \h ({\ast})
+        \end{displaymath}
+    This equivalence relation, even though it arises in this discussion from an intitive understanding of `rational number', which includes the map~${\rho}$,
+    is formulated in~$({\ast})$ purely in terms of the primitive notions of ordered pairs and the algebraic system ${\NN}$ as described by the Dedekind-Peano axioms.
+    In particular, there is no mention in Condition~$({\ast})$ of either the `intuitive' concept of the set ${\QQ}^{+}$ or the `intuitive' map~${\rho}$.
+    For that reason we use the symbol ${\sim}$ instead of the more proper ${\sim}_{{\rho}}$ in Condition~$({\ast})$.
+
+        Return now to the intuitive discussion of~${\QQ}^{+}$. Let $A \,=\, X/({\rho})$ be the set of equivalence classes associated with the equivalence relation described above,
+    and let $\hat{{\rho}}:A \,{\rightarrow}\, {\QQ}^{+}$ be the corresponding canonical bijection; see Definition~\Ref{DefA50.127} above.
+   Note also that the inverse map $\hat{{\rho}}^{-1}:{\QQ}^{+} \,{\rightarrow}\, A$ is easy to compute:
+    if $r{\in}{\QQ}^{+}$, express $r$ in the form $j/k$ as above; then $\hat{{\rho}}^{-1}(r)$ is the equivalence class with representative~$(j,k)$.
+    Note that there is no need at this stage to verify that if $r$ is expressed as $j'/k'$ then $(j',k'){\sim}(j,k)$,
+    since that is built into the definition of the equivalence relation determined by the surjection~${\rho}$.
+
+        The bijection $\hat{{\rho}}$, together with the binary operation of `addition' already (intuitively) defined on the set~${\QQ}^{+}$,
+    determines a corresponding operation of `addition' on $A$ for which the map ${\varphi}$ is an isomorphism; see Example~\Ref{ExampA60.80}~(4).
+    More precisely, suppose that $z_{1}$ and $z_{2}$ are elements of~$A$,
+    so that $z_{1} \,=\, \hat{{\rho}}^{-1}[\{r_{1}\}]$ and $z_{2} \,=\, \hat{{\rho}}^{-1}[\{r_{2}\}]$ for positive rationals $r_{1}$ and~$r_{2}$. Then define the sum $z_{1} + z_{2}$ by the rule
+        \begin{displaymath}
+        z_{1} + z_{2} \,=\, \hat{{\rho}}^{-1}[\{r_{1}+r_{2}\}],
+        \end{displaymath}
+    where the addition on the right is the (intuitive) addition of positive rational numbers.
+    It is clear from the description of $\hat{{\rho}}^{-1}$ just given that if $r_{1} \,=\, j_{1}/k_{1}$ and $r_{2} \,=\, j_{2}/k_{2}$,
+    then 
+        \begin{displaymath}
+        \hat{{\rho}}^{-1}(r_{1} + r_{2})
+    \,=\, 
+        \hat{{\rho}}^{-1}\left(\frac{j_{1}{\cdot}k_{2} + j_{2}{\cdot}k_{1}}{k_{1}{\cdot}k_{2}}\right),
+        \end{displaymath}
+    which is the equivalence class with representative $(j_{1}{\cdot}k_{2} + j_{2}{\cdot}k_{1}, k_{1}{\cdot}k_{2})$.
+    Likewise, one sees that the bijection ${\rho}$, together with the (intuitive) concept of `multiplication' on ${\QQ}^{+}$,
+    determines a `multiplication' on $A$, given by
+        \begin{displaymath}
+        z_{1}{\cdot}z_{2} \,=\, \hat{{\rho}}^{-1}[\{r_{1}{\cdot}r_{2}\}] \mbox{ for all $z_{1}$ and $z_{2}$ in $A$}.
+        \end{displaymath}
+    Using the same notation as above, one sees that $z_{1}{\cdot}z_{2}$ is the equivalence class
+    with the representative $(j_{1}{\cdot}j_{2}, k_{1}{\cdot}k_{2})$.
+    Furthermore, the `order' relation on ${\QQ}^{+}$ likewise determines a corresponding order relation on~$A$:
+        \begin{displaymath}
+        z_{1}\,<\,z_{2} \mbox{ if, and only if, } {\rho}(z_{1})\,<\,{\rho}(z_{2}).
+        \end{displaymath}
+    In terms of fractions used above, one has $z_{1}\,<\,z_{2}$ if, and only if, $j_{1}{\cdot}k_{2}\,<\,j_{2}{\cdot}k_{1}$.
+    It is clear that the bijection $\hat{{\rho}}$ is an isomorphism between the operations of addition and multiplication,
+    just defined on the set $A$, and the corresponding `intuitive' operations on~${\QQ}^{+}$;
+    likewise, the bijection~$\hat{{\rho}}$ is an order-preserving map from $A$ onto~${\QQ}^{+}$.
+    It follows that the algebraic properties of $A$ are the same as those on ${\QQ}^{+}$.
+    For example, the `intuitive' understanding of ${\QQ}^{+}$ implies that there is a unique element in ${\QQ}^{+}$, the number~$1$, such that $r{\cdot}1\,=\, r$
+    for all $r$ in~${\QQ}^{+}$. Likewise, for each $r$ in ${\QQ}^{+}$ there is a unique $s$ in ${\QQ}^{+}$ such that $r{\cdot}s \,=\, 1$.
+    The existence of the isomorphism $\hat{{\rho}}$ then implies that the analogous properties hold for~$A$.
+
+        As the formulas given above for $+$, ${\cdot}$ and~$\,<\,$ on $A$ indicate,
+    the definitions of these concepts can also be obtained directly using only the equivalence relation~$\sim$, given by~$({\ast})$, and properties of~${\NN}$.
+    That is, by using only the {\em results} of the intuitive discussion as a new starting point, and eliminating the intuitive discussion itself entirely,
+    one can give a rigorous development of ${\QQ}^{+}$ directly from the properties of ${\NN}$ (and elementary set theory),
+    as if one had never heard of ${\QQ}^{+}$ before. Here is how such a rigorous construction would normally be carried out:
+
+        Given the set $X \,=\, {\NN}{\times}{\NN}$ and the equivalence relation~$(\sim)$ described above in Condition~$({\ast})$,
+    let $A$ being the corresponding quotient set $X/\sim$. Define the binary operations of $+$ and~${\cdot}$ on $A$, and the order $\,<\,$, as follows:
+    Let $z_{1}$ and $z_{2}$ be elements of $A$, i.e., equivalence classes associated with~${\sim}$,
+    and let $(j_{1},k_{1})$ and $(j_{2},k_{2})$ in $X$ be representatives of $z_{1}$ and~$z_{2}$, respectively.
+    Define $z_{1} + z_{2}$ to be the equivalence class which is represented by the ordered pair $(j_{1}{\cdot}k_{2} + j_{2}{\cdot}k_{1}, k_{1}{\cdot}k_{2})$.
+    Likewise, define $z_{1}{\cdot}z_{2}$ to be the equivalence class represented by the ordered pair $(j_{1}{\cdot}j_{2}, k_{1}{\cdot}k_{2})$.
+    Finally, define the relation $z_{1}\,<\,z_{2}$ to mean $j_{1}{\cdot}k_{2}\,<\,j_{2}{\cdot}k_{1}$.
+    Of course these definitions might seem somewhat arbitrary without the earlier intuitive discussion using the surjection~${\rho}$;
+    but technically speaking they do not refer to that discussion, and thus are ultimately based purely on the rigorously defined ${\NN}{\times}{\NN}$.
+    Using the standard notation $[(j,k)]$ for the equivalence class with repressentative $(j,k)$,
+    one can write 
+        \begin{displaymath}
+        [(j_{1},k_{1})] + [(j_{2},k_{2})] \,=\, [(j_{1}{\cdot}k_{2} + j_{2}{\cdot}k_{1}, k_{1}{\cdot}k_{2})], \h
+        [(j_{1},k_{1})]{\cdot}[(j_{2},k_{2})] \,=\, [(j_{1}{\cdot}j_{2},{\cdot} k_{1}{\cdot}k_{2})], \h
+        \end{displaymath}
+        \begin{displaymath}
+        [(j_{1},k_{1})] \,<\, {(j_{2},k_{2})} \mbox{ if, and only if, }
+        j_{1}{\cdot}k_{2}\,<\,j_{2}{\cdot}k_{1}.
+        \end{displaymath}
+    The first need is to check that these constructions are {\bf well defined}\IndA{well defined constructions},
+    in the sense that they does not depend on the choice of representatives of the classes $z_{1}$ and~$z_{2}$ used.
+    Consider in more detail, for example, the definition of `multiplication' just given.
+    Suppose that $(m_{1}, n_{1})$ and $(m_{2}, n_{2})$ are also representatives of $z_{1}$ and~$z_{2}$, respectively,
+    so that by~$(\sim)$ one has $j_{1}{\cdot}n_{1} \,=\, k_{1}{\cdot}m_{1}$ and $j_{2}{\cdot}n_{2} \,=\, k_{2}{\cdot}m_{2}$.
+    Then $(m_{1}{\cdot}m_{2},n_{1}{\cdot}n_{2})$ is equivalent to $((j_{1}{\cdot}j_{2}, k_{1}{\cdot}k_{2}))$,
+    since $(m_{1}{\cdot}m_{2}){\cdot}(k_{1}{\cdot}k_{2}) \,=\, (n_{1}{\cdot}n_{2}{\cdot}(k_{1}{\cdot}k_{2}))$.
+    That is, using different representatives for the equivalence classes $z_{1}$ and $z_{2}$ produce the same equivalence class $z_{1}{\cdot}z_{2}$, as required.
+    The proofs that the operation of addition and the order relation are also well-defined are left as exercises.
+
+%% EXERCISES +, \,<\, well-defined.
+
+        The set $A$ of equivalence classes just constructed from ${\NN}$, together with the operations $+$ and ${\cdot}$, and the order relation $\,<\,$,
+    can now  be considered as our our `official' definition of the system ${\QQ}^{+}$ of positive rational numbers, at least for the time being.
+    (Later on we'll `improve' the construction.)
+
+        Notice that system just constructed has a subsystem which behaves just like our original primitive system ${\NN}$ of natural numbers,
+    namely the subset ${\NN}'$ of ${\QQ}^{+}$ consisting of all equivalence classes $z$ in $A$ of the form $[(j,1)]$ with $j$ in ${\NN}$.
+    It is easy to see that $[(j_{1},1)] + [(j_{2},1)] \,=\, [((j_{1}+j_{2}),1)$ and $[(j_{1},1)]{\cdot}[(j_{2},1)] \,=\, [(j_{1}{\cdot}j_{2},1)]$.
+    Likewise, $[(j_{1},1)]\,<\,[(j_{2},1)]$ if, and only if, $j_{1}\,<\,j_{2}$ in the original set~${\NN}$.
+    We think of the set ${\NN}'$ so obtained as the `new and improved natural numbers':
+    `new' because obviously the set ${\NN}'$ is different from the original set ${\NN}$;
+    `improved', because these new numbers extend the original algebra of ${\NN}$ to the more inclusive arithmetic of~${\QQ}^{+}$.
+    It is easy to see that in this arithmetic one has $[(1,1)]{\cdot}[(j,k)] \,=\, [(j,k)]$
+    and $[(k,j)]{\cdot}[(j,k)] \,=\, [(k{\cdot}j,k{\cdot}j)] \,=\, [(1,1)]$. In particular,
+    $[(1,1)]$ is the multiplicative unit, while $[(k,j)]$ is the multipicative inverse of $[(j,k)]$.
+    By introducing the obvious `division' operation by $[(j_{1},k_{1})/(j_{2},k_{2})] \,=\, [(j_{1},k_{1})]{\cdot}[(k_{2},j_{2})]$,
+    one gets the formula $[(j,k)] \,=\, [(j,1)]/[(k,1)]$. This is the `new and improved'
+    version of the formula ${\rho}(j,k) \,=\, j/k$ used in the intuitive discussion above.
+
+        Note that, by the preceding constructions, a positive rational number is an equivalence class of ordered pairs of the primitive natural numbers.
+    In particular, the `new and improved' natural numbers are special types of such classes.
+
+
+
+        \subsection{\small{{\bf Construction 2: The Rationals from the Positive Rationals}}}
+                \label{ConstA50.130B}
+
+ \V
+
+        The next step is to rigorously extend the system ${\QQ}^{+}$, just obtained,
+    to the system consisting of {\em all} the rational numbers, not just the positives.
+    The procedure is, in spirit, similar to -- but, in the details, rather different from -- that used in Construction~(1), so we can be somewhat briefer.
+    Indeed, if we let ${\QQ}$ denote for now the rational numbers of our intuition,
+    there is a natural surjection ${\delta}:{\QQ}^{+}{\times}\,{\QQ}^{+}  \,{\rightarrow}\,  {\QQ}$ given by
+        \begin{displaymath}
+        {\delta}(z_{1},z_{2}) \,=\, z_{1} - z_{2}.
+        \end{displaymath}
+    (The symbol ${\delta}$ here stands for `difference'.) The equivalence relation on ${\QQ}^{+}{\times}\,{\QQ}^{+}$ determined by this surjection is
+        \begin{displaymath}
+        (z_{1},z_{2}){\sim}(z_{1}',z_{2}') \mbox{ if, and only if, }
+        z_{1} + z_{2}' \,=\, z_{1}' + z_{2}
+        \end{displaymath}
+    Let ${\QQ}$ denote the set of equivalence classes arising from this equivalence relation on ${\QQ}^{+}{\times}\,{\QQ}^{+}$.
+    It is easy to define the concepts of addition, multiplication and order on the set ${\QQ}$,
+    using only the structures on~${\QQ}^{+}$, but not the intuitive map ${\Delta}$.
+    For example, if $s \,=\, [(z_{1},z_{2}))]$ and $s' \,=\, [(z_{1}',z_{2}')]$ are elements of ${\QQ}$,
+    then $s+s' \,=\, [(z_{1} + z_{1}', z_{2} + z_{2}')]$. Likewise, $s{\cdot}s' \,=\, [(z_{1}{\cdot}z_{1}' + z_{2}{\cdot}z_{2}', z_{1}{\cdot}z_{2}' + z_{2}{\cdot}z_{1}')]$.
+    Likewise, $s\,<\,s'$ if, and only if, $z_{1} + z_{2}'\,<\,z_{1}' + z_{2}$. These constructions use only the rigorously defined structure of ${\QQ}^{+}$.
+
+        There is a zero element in ${\QQ}$, namely the equivalence class with representative $(1,1)$,
+    where $1$ now denotes the multiplicative identity in~${\QQ}^{+}$; any representative of the form $(c,c)$ with $c$ in ${\QQ}^{+}$ works too.
+    One then defined the {\em positive rationals} to be those elements $[(z_{1},z_{2})]$ of ${\QQ}$ such that $[(z_{1},z_{2})]\,>\,[(1,1)]$.
+    It is easy to check that this is equivalent to $z_{1}\,>\,z_{2}$ in ${\QQ}^{+}$,
+    and that this set of `positive rationals' is isomorphic to~${\QQ}^{+}$ in the usual sense.
+    Likewise, there is a subset of the set ${\QQ}$ just constructed which corresponds to the set ${\ZZ}$ of integers.
+
+    Of course one needs to verify that these concepts do not depend on choices of representatives of equivalence classes in ${\QQ}^{+}{\times}\,{\QQ}^{+}$,
+    and one needs to show that the copy of ${\QQ}^{+}$ in ${\QQ}$ just described is equivalent to the ${\QQ}^{+}$ already described.
+    The details are tedious, so the usual custom, gladly followed here, is to leave the details to the reader.
+
+\VV
+
+ 
+%-----------------
+\StartSkip{
+
+        \subsection{\small{{\bf Examples}}
+                \label{ExampA50.130}
+
+ \V
+
+\hspace*{\parindent} (1) Let $X$ be the set ${\NN}{\times}{\NN}$ of all ordered pairs of natural numbers, treated as a `rigorous' primitive concept.
+    Let $Y$ be the set ${\QQ}^{+}$ of all positve rational numbers', viewed as an intuitively understood system which eventually must be defined rigorously. 
+    In terms of this intuition, there is a well-known surjective map ${\rho}:X \,{\rightarrow}\, {\QQ}^{+}$ defined by
+    ${\rho}(j,k) \,=\, j/k$ for each ordered pair $(j,k)$ in~$X$; `${\rho}$' stands for `ratio'.
+    It is esay to see that the equivalence relation determined on $X$ by the surjection ${\rho}$ is this:
+        \begin{displaymath}
+        (j_{1},k_{1}) \,{\sim}\, (j_{2}, k_{2}) \mbox{ if, and only if, }
+        j_{1}{\cdot}k_{2} \,=\, j_{2}{\cdot}k_{1} \h ({\ast})
+        \end{displaymath}
+    This equivalence relation, even though it arises in this discussion from an intitive understanding of `rational number', which includes the map~${\rho}$,
+    is formulated here purely in terms of the primitive notions of ordered pairs and the algebraic system ${\NN}$ as described by the Dedekind-Peano axioms.
+    In particular, there is no mention in Condition~$({\ast})$ of either the `intuitive' concept of the set ${\QQ}^{+}$ or the `intuitive' map~${\rho}$.
+    For that reason we use the symbol ${\sim}$ instead of the more proper ${\sim}_{{\rho}}$ in Condition~$({\ast})$.
+
+        Return now to the intuitive discussion of~${\QQ}$. Let $Z \,=\, X/({\rho})$ be the set of equivalence classes associated with the equivalence relation described above,
+    and let $\hat{{\rho}}:Z \,{\rightarrow}\, {\QQ}^{+}$ be the corresponding canonical bijection; see Definition~\Ref{DefA50.127} above.
+   Note also that the inverse map $\hat{{\rho}}^{-1}:{\QQ}^{+} \,{\rightarrow}\, Z$ is easy to compute:
+    if $r{\in}{\QQ}^{+}$, express $r$ in the form $j/k$ as above; then $\hat{{\rho}}^{-1}(r)$ is the equivalence class with representative~$(j,k)$.
+    Note that there is no need at this stage to verify that if $r$ is expressed as $j'/k'$ then $(j',k'){\sim}(j,k)$,
+    since that is built into the definition of the equivalence relation determined by the surjection~${\rho}$.
+
+        The bijection $\hat{{\rho}}$, together with the binary operation of `addition' already (intuitively) defined on the set~${\QQ}^{+}$,
+    determines a corresponding operation of `addition on $Z$ for which the map ${\varphi}$ is an isomorphism; see Example~\Ref{ExampA60.80}~(4).
+    More precisely, suppose that $z_{1}$ and $z_{2}$ are elements of~$Z$,
+    so that $z_{1} \,=\, \hat{{\rho}}^{-1}[\{r_{1}\}]$ and $z_{2} \,=\, \hat{{\rho}}^{-1}[\{r_{2}\}]$ for positive rationals $r_{1}$ and~$r_{2}$. Then
+        \begin{displaymath}
+        z_{1} + z_{2} \,=\, \hat{{\rho}}^{-1}[\{r_{1}+r_{2}\}],
+        \end{displaymath}
+    where the addition on the right is the (intuitive) addition of positive rational numbers,
+    while that on the left is the addition of elements of $Z$ being defined.
+    It is clear from the description of $\hat{{\rho}}^{-1}$ just given that if $r_{1} \,=\, j_{1}/k_{1}$ and $r_{_{2} \,=\, j_{2}/k_{2}}$,
+    then 
+        \begin{displaymath}
+        \hat{{\rho}}^{-1}(r_{1} + r_{2})
+    \,=\, 
+        \hat{{\rho}}^{-1}\left(\frac{j_{1}{\cdot}k_{2} + j_{2}{\cdot}k_{1}}{k_{1}{\cdot}k_{2}}\right),
+        \end{displaymath}
+    which is the equivalence class with representative $(j_{1}{\cdot}k_{2} + j_{2}{\cdot}k_{1}, k_{1}{\cdot}k_{2})$.
+    Likewise, one sees that the bijection ${\rho}$, together with the (intuitive) concept of `multiplication' on ${\QQ}^{+}$,
+    determines a `multiplication' on $Z$, given by
+        \begin{displaymath}
+        z_{1}{\cdot}z_{2} \,=\, \hat{{\rho}}^{-1}[\{r_{1}{\cdot}r_{2}\}] \mbox{ for all $z_{1}$ and $z_{2}$ in $Z$}.
+        \end{displaymath}
+    Using the same notation as above, one sees that $z_{1}{\cdot}z_{2}$ is the equivalence class
+    with the representative $(j_{1}{\cdot}j_{2}, k_{1}{\cdot}k_{2})$.
+    Furthermore, the `order' relation on ${\QQ}^{+}$ likewise determines a corresponding order relation on~$Z$:
+        \begin{displaymath}
+        z_{1}\,<\,z_{2} \mbox{ if, and only if, } {\rho}(z_{1})\,<\,{\rho}(z_{2}).
+        \end{displaymath}
+    In terms of fractions used above, one has $z_{1}\,<\,z_{2}$ if, and only if, $j_{1}{\cdot}k_{2}\,<\,j_{2}{\cdot}k_{1}$.
+    It is clear that the bijection $\hat{{\rho}}$ is an isomorphism between the operations of addition and multiplication,
+    just defined on the set $Z$, and the corresponding `intuitive' operations on~${\QQ}^{+}$;
+    likewise, the bijection~$\hat{{\rho}}$ is an order-preserving map from $Z$ onto~${\QQ}^{+}$.
+    It follows that the algebraic properties of $Z$ are the same as those on ${\QQ}^{+}$.
+    For example, the `intuitive' understanding of ${\QQ}^{+}$ implies that there is a unique element in ${\QQ}^{+}$, the number~$1$, such that $r{\cdot}1\,=\, r$
+    for all $r$ in~${\QQ}^{+}$. Likewise, for each $r$ in ${\QQ}^{+}$ there is a unique $s$ in ${\QQ}^{+}$ such that $r{\cdot}s \,=\, 1$.
+    The existence of the isomorphism $\hat{{\rho}}$ then implies that the analogous properties hold for~$Z$.
+
+        As the formulas given above for $+$, ${\cdot}$ and~$\,<\,$ on $Z$ indicate,
+    the definitions of these concepts can also be obtained directly using only the equivalence relation~$\sim$, given by~$({\ast})$, and properties of~${\NN}$.
+    That is, by using only the {\em results} of the intuitive discussion as a new starting point, and eliminating the intuitive discussion itself entirely,
+    one can give a `rigorous' development of ${\QQ}^{+}$ directly from the properties of ${\NN}$ (and elementary set theory),
+    as if one had never heard of ${\QQ}^{+}$ before. Here is how such a `rigorous' construction would normally be carried out:
+
+        Given the set $X \,=\, {\NN}{\times}{\NN}$ and the equivalence relation~$(\sim)$ described above in Condition~$({\ast})$,
+    let $Z$ being the corresponding quotient set $X/\sim$. Define the binary operations of $+$ and~${\cdot}$ on $Z$, and the order $\,<\,$, as follows:
+    Let $z_{1}$ and $z_{2}$ be elements of $Z$, i.e., equivalence classes associated with~${\sim}$,
+    and let $(j_{1},k_{1})$ and $(j_{2},k_{2})$ in $X$ be representatives of $z_{1}$ and~$z_{2}$, respectively.
+    Define $z_{1} + z_{2}$ to be the equivalence class which is represented by the ordered pair $(j_{1}{\cdot}k_{2} + j_{2}{\cdot}k_{1}, k_{1}{\cdot}k_{2})$.
+    Likewise, define $z_{1}{\cdot}z_{2}$ to be the equivalence class represented by the ordered pair $(j_{1}{\cdot}j_{2}, k_{1}{\cdot}k_{2})$.
+    Finally, define the relation $z_{1}\,<\,z_{2}$ to mean $j_{1}{\cdot}k_{2}\,<\,j_{2}{\cdot}k_{1}$.
+    Of course these definitions might seem somewhat arbitrary without the earlier intuitive discussion using the surjection~${\rho}$;
+    but technically speaking they do not refer to that discussion, and thus are ultimately based purely on the rigorously defined ${\NN}{\times}{\NN}$.
+    Using the standard notation $[(j,k])$ for the equivalence class with repressentative $(j,k)$,
+    one can write 
+        \begin{displaymath}
+        [(j_{1},k_{1})] + [(j_{2},k_{2})] \,=\, [(j_{1}{\cdot}k_{2} + j_{2}{\cdot}k_{1}, k_{1}{\cdot}k_{2})], \h
+        [(j_{1},k_{1})]{\cdot}[(j_{2},k_{2})] \,=\, [(j_{1}{\cdot}j_{2},{\cdot} k_{1}{\cdot}k_{2})], \h
+        [(j_{1},k_{1})] \,<\, {(j_{2},k_{2})} \mbox{ if, and only if, }
+        j_{1}{\cdot}k_{2}\,<\,j_{2}{\cdot}k_{1}.
+        \end{displaymath}
+    The first need is to check that these constructions are {\bf well defined}IndA{well defined constructions},
+    in the sense that they does not depend on the choice of representatives of the classes $z_{1}$ and~$z_{2}$ used.
+    Consider in more detail, for example, the definition of `multiplication' just given.
+    Suppose that $(m_{1}, n_{1})$ and $(m_{2}, n_{2})$ are also representatives of $z_{1}$ and~$z_{2}$, respectively,
+    so that by~$(\sim)$ one has $j_{1}{\cdot}n_{1} \,=\, k_{1}{\cdot}m_{1}$ and $j_{2}{\cdot}n_{2} \,=\, k_{2}{\cdot}m_{2}$.
+    Then $(m_{1}{\cdot}m_{2},n_{1}{\cdot}n_{2})$ is equivalent to $((j_{1}{\cdot}j_{2}, k_{1}{\cdot}k_{2}))$,
+    since $(m_{1}{\cdot}m_{2}){\cdot}(k_{1}{\cdot}k_{2}) \,=\, (n_{1}{\cdot}n_{2}{\cdot}(k_{1}{\cdot}k_{2}))$.
+    That is, using different representatives for the equivalence classes $z_{1}$ and $z_{2}$ produce the same equivalence class $z_{1}{\cdot}z_{2}$, as required.
+    The proofs that the operation of addition and the order relation are also well-defined are left as exercises.
+
+%% EXERCISES +, \,<\, well-defined.
+
+        The set $Z$ of equivalence classes just constructed from ${\NN}$, together with the operations $+$ and ${\cdot}$, and the order relation $\,<\,$,
+    can now  be considered as our our `official' definition of the system ${\QQ}^{+}$ of positive rational numbers, at least for the time being.
+    Notice that this system has a subsystem which behaves just like our original primitive system ${\NN}$ of natural numbers,
+    namely the subset ${\NN}'$ of ${\QQ}^{+}$ consisting of all equivalence classes $z$ in $Z$ of the form $[(j,1)]$ with $j$ in ${\NN}$.
+    It is easy to see that $[(j_{1},1)] + [(j_{2},1)] \,=\, [((j_{1}+j_{2}),1)$ and $[(j_{1},1)]{\cdot}[(j_{2},1)] \,=\, [(j_{1}{\cdot}j_{2},1)]$.
+    Likewise, $[(j_{1},1)]\,<\,[(j_{2},1)]$ if,and only if, $j_{1}\,<\,j_{2}$ in the original set~${\NN}$.
+    We think of the set ${\NN}'$ so obtained as the `new and improved natural numbers':
+    `new' because obviously the set ${\NN}'$ is different from the original set ${\NN}$;
+    `improved', because these new numbers extend the original algebra of ${\NN}$ to the more inclusive arithmetic of~${\QQ}^{+}$.
+    It is easy to see that in this arithmetic one has $[(1,1)]{\cdot}[(j,k)] \,=\, [(j,k)]$
+    and $[(k,j)]{\cdot}[(j,k)] \,=\, [(k{\cdot}j,k{\cdot}j)] \,=\, [(1,1)]$. In particular,
+    $[(1,1)]$ is the multiplicative unit, while $[(k,j)]$ is the multipicative inverse of $[(j,k)]$.
+    By introducing the obvious `division' operation by $[(j_{1},k_{1})/(j_{2},k_{2})] \,=\, [(j_{1},k_{1})]{\cdot}[(k_{2},j_{2})]$,
+    one gets the formula $[(j,k)] \,=\, [(j,1)]/[(k,1)]$. This is the `new and improved'
+    version of the formula ${\rho}(j,k) \,=\, j/k$ used in the intuitive discussion above.
+
+        Note that, by the preceding constructions, a positive rational number is an equivalence class of ordered pairs of the primitive natural numbers.
+    In particular, the `new and improved' natural numbers are special types of such classes.
+
+
+\VV
+
+        (2) The next step is to extend the system ${\QQ}^{+}$ just obtained to the system consisting of {\em all} the rational numbers, not just the positives.
+    The procedure is, in spirit, similar to -- but, in the details, rather different from -- that used in Example~(1), so we can be somewhat briefer.
+    Indeed, if we let ${\QQ}$ denote for now the rational numbers of our intuition,
+    there is a natural surjection ${\delta}:{\QQ}^{+}{\times}{\QQ}^{+} \,{\supseteq}\, {\QQ}$ given by
+        \begin{displaymath}
+        {\delta}(z_{1},z_{2}) \,=\, z_{1} - z_{2}.
+        \end{displaymath}
+    (The symbol ${\delta}$ here stands for `difference'.) The equivalence relation on ${\QQ}^{+}{\times}{\QQ}^{+}$ determined by this surjection is
+        \begin{displaymath}
+        (z_{1},z_{2}){\sim}(z_{1}',z_{2}') \mbox{ if, and only if, }
+        z_{1} + z_{2}' \,=\, z_{1}' + z_{2}
+        \end{displaymath}
+    Let ${\QQ}$ denote the set of equivalence classes arising from this equivalence relation on ${\QQ}^{+}{\times}{\QQ}^{+}$.
+    It is easy to define the concepts of addition, multiplication and order on the set ${\QQ}$ using only the structures on~${\QQ}^{+}$, and not the intuitive map ${\delta}$.
+    For example, if $s \,=\, [(z_{1},z_{2}))]$ and $s' \,=\, [(z_{1}',z_{2}')]$ are elements of ${\QQ}$,
+    then $s+s' \,=\, [(z_{1} + z_{1}', z_{2} + z_{2}')]$. Likewise, $s{\cdot}s' \,=\, [(z_{1}{\cdot}z_{1}' + z_{2}{\cdot}z_{2}', z_{1}{\cdot}z_{2}' + z_{2}{\cdot}z_{1}')]$.
+    Likewise, $s\,<\,s'$ if, and only if, $z_{1} + z_{2}'\,<\,z_{1}' + z_{2}$. These constructions use only the rigorously defined structure of ${\QQ}^{+}$.
+
+        There is a zero element in ${\QQ}$, namely the equivalence class with representative $(1,1)$,
+    where $1$ now denotes the multiplicative identity in~${\QQ}^{+}$; any representative of the form $(c,c)$ with $c$ in ${\QQ}^{+}$ works too.
+    One then defined the {\em positive rationals} to be those elements $[(z_{1},z_{2})]$ of ${\QQ}$ such that $[(z_{1},z_{2})]\,>\,[(1,1)]$.
+    It is easy to check that this is equivalent to $z_{1}\,>\,z_{2}$ in ${\QQ}^{+}$,
+    and that this set of `positive rationals' is isomorphic to~${\QQ}^{+}$ in the usual sense.
+    Likewise, there is a subset of the set ${\QQ}$ just constructed which corresponds to the set ${\ZZ}$ of integers.
+
+    Of course one needs to verify that these concepts do not depend on choices of representatives of equivalence classes in ${\QQ}^{+}{\times}{\QQ}^{+}$,
+    and one needs to show that the copy of ${\QQ}^{+}$ in ${\QQ}$ just described is equivalent to the ${\QQ}^{+}$ already described.
+    The details are tedious, so the custom is to leave them to the reader.
+
+\VV
+
+}%\EndSkip
+%------------------------
+
+%--------------------------
+\StartSkip{
+
+\hspace*{\parindent} (3) The preceding examples first extended the positive integers to the positive rationals,
+    then extended further to obtain all the rationals, including negative numbers.
+    Historically speaking, this makes sense: the positive rationals appeared long before negative numbers.
+    In modern mathematics, however, the custom is to start with ${\NN}$, then extend to ${\ZZ}$, the set of all integers,
+    and finally extend from ${\ZZ}$ to~${\QQ}$, the set of all rationals. Here is the first stage of that process.
+
+\V
+
+        As before, start with with one's intuitive understanding of the set ${\ZZ}$ of all integers.
+    There is a corresponding (intuitive) map ${\Delta}:{\NN}{\times}{\NN} \,{\rightarrow}\, {\ZZ}$ of ${\NN}{\times}{\NN}$ onto ${\ZZ}$ given by the rule
+        \begin{displaymath}
+        {\Delta}(j,k) \,=\, j-k \mbox{ for all $(j,k)$ in ${\NN}{\times}{\NN}$}
+        \end{displaymath}
+    (${\Delta}$ stands for `difference'.) It is easy to see that ${\Delta}$ is a surjection of (rigotously defined) set ${\NN}{\times}{\NN}$ onto the (intuitive) set ${\ZZ}$.
+    Note also that the operation of addition of integers corresponds to a simple operation on pairs of natural numbers.
+    Indeed, suppose that $m_{1} \,=\, {\Delta}(j_{1},k_{1}) \,=\, j_{1}-k_{1}$ and $m_{2} \,=\, {\Delta}(j_{2},k_{2}) \,=\, j_{2}-k_{2}$, with $(j_{1},k_{1})$, and $(j_{2},k_{2})$ being elements of ${\NN}{\times}{\NN}$.
+    Then
+        \begin{displaymath}
+        m_{1} + m_{2} \,=\, (j_{1} - k_{1}) + (j_{2} - k_{2}) \,=\,(j_{1} + j_{2}) - (k_{1} + k_{2})
+    \,=\,
+        {\Delta}(j_{1} + j_{2}, k_{1} + k_{2})
+        \end{displaymath}
+    Similarly, the operation of multiplication of integers corresponds to a (somewhat less simple) operation on elements of ${\NN}{\times}{\NN}$,
+    Indeed, if $m_{1} \,=\, j_{1}-k_{1}$ and $m_{2} \,=\, j_{2}-k_{2}$, then
+        \begin{displaymath}
+        m_{1}{\cdot}m_{2} \,=\, (j_{1}-k_{1}) {\cdot} (j_{2}-k_{2}) \,=\, (j_{1}{\cdot}j_{2} + k_{1}{\cdot}k_{2}) - (j_{1}{\cdot}k_{2} + k_{1}{\cdot}j_{2})
+        \end{displaymath}
+    That is,
+        \begin{displaymath}
+        m_{1}{\cdot}m_{2} \,=\, {\Delta}(j_{1}{\cdot}j_{2} + k_{1}{\cdot}k_{2},j_{1}{\cdot}k_{2} + k_{1}{\cdot}j_{2}) \h ({\ast}{\ast})
+        \end{displaymath}
+
+        The surjection ${\Delta}$ determines an equivalence relation $W_{{\Delta}}$ on ${\NN}{\times}{\NN}$ by the rule
+        \begin{displaymath}
+        (j,k) {\sim}_{{\Delta}} (j',k') \mbox{ if, and only if, } j-k \,=\, j'-k';
+        \end{displaymath}
+ see Example~\Ref{ExampA50.100}~(2).
+    Note that this condition can be reformulated purely in terms of natural numbers as
+        \begin{displaymath}
+        (j,k) {\sim}_{{\Delta}} (j',k') \mbox{ if, and only if, } j + k' \,=\, j' + k \h ({\ast}{\ast}{\ast})
+        \end{displaymath}
+    Let $W$ be the quotient set corresponding to this equivalence relation on ${\NN}{\times}{\NN}$.
+    Then Theorem~\Ref{ThmA50.125} produces a natural bijection $\hat{{\Delta}}:W \,{\rightarrow}\, {\ZZ}$.
+    As in the preceding examples, this intuitive treatment can be reformulated purely in terms of the structure on ${\NN}$,
+    with no reference to the map ${\Delta}$, to give a rigorous construction of ${\ZZ}$
+    the tedious details are omitted here.
+
+        Now that a rigorous construction of the set ${\ZZ}$ of all integers has been outlined,
+    it is easy to use our experience from Example~(1) above to go directly from this set ${\ZZ}$ to a rigorous definition of the set ${\QQ}$ of all rationals.
+    Indeed, let $X'$ be the set of all ordered pairs $(m,n)$ with $m$ and $n$ in ${\ZZ}$ and $n\,>\,0$.
+    (Note that here $0$ means the integer, i.e., equivalence class of ordered pairs $(j,k)$ of natural numbers, for which $j \,=\, k$.
+    Likewise, $m$ and $n$ are themselves equivalence classes of ordered pairs of natural numbers.)
+    Define an equivalence relation ${\sim}'$ on $X'$ by the rule
+        \begin{displaymath}
+        (m_{1}, n_{1}) \,{\sim}'\, (m_{2},n_{2}) \mbox{ if, and only if, }
+        m_{1}{\cdot}n_{2} \,=\, m_{2}{\cdot}n_{1};
+        \end{displaymath}
+     the multiplication indicated here is, of course, that defined rigotously on the set ${\ZZ}$ above.
+    The addition, multiplication and order are then defined much as in Example~(1).
+    As usual, the details that all of this works is left to the reader as an exercise.
+
+\VV
+
+        {\bf Remarks} (1) In both Examples (2) and (3) one rigorously constructs, from the same `primitive' system~${\NN}$,
+    new systems which correspond to one's intuitive concept of `rational number'.
+    However the {\em natures} of the individual objects in these systems are quite different. For instance,
+    in Example~(3) the rational number~$0$ is an equivalence class consisting of ordered pairs of integers, which in turn are sets of ordered pairs of natural numbers.
+    In contrast, the corresponding element~$0$ in Example~(2) is also an equivalence class,
+    but one whose elements are ordered pairs of positive rationals, which in turn are also sets of ordered pairs of natural numbers, but different sets.
+    In set-theoretic terms, these objects are unequal because of the Axiom of Extension.
+    However, it is straight-forward, but extrewmely boring, to check that the two systems have the same algebraic properties as each other.
+    Indeed, the main purpose of such constructions is to rigorously establish the existence of systems which correspond to our intuitive concept of~${\QQ}$.
+    Of course both of these constructions are based on the set ${\NN}$ of natural numbers, which we have taken as a primitive concept:
+    we do not here provide a rigorous construction of ${\NN}$ from objects which are even more primitive.
+
+\V
+
+        (2) It is clear that the original natural numbers are certainly not elements of the set ${\QQ}$,
+    whether one uses the first construction or the second. Nevertheless, the set ${\QQ}$ does have a natural subset which correponds to the natural numbers.
+    We follow the usual custom and treat these as `new, improved' natural numbers and thus treat ${\NN}$ as this subset of~${\QQ}$.
+    The sam holds for the set ${\ZZ}$ of integers: we treat it as a subset of~${{\QQ}}$,
+    Later on we `improve' these numbers again and replace them with a subset of the real numbers.
+
+}%\EndSkip
+%---------------------
+
+%\\\\\
+\StartSkip{
+        In the preceding construction we assume that both ${\NN}$ and ${\ZZ}$ are already known;
+    the bijection $\hat{{\Delta}}$ then tells us that the (known) set ${\ZZ}$ has a lot of similarities with the quotient set $W$.
+    However, because of Condition~$({\ast}{\ast}{\ast})$, it is possible to define the given equivalence relation on ${\NN}{\times}{\NN}$
+    purely in terms of the set ${\NN}$ alone, without explicitly mentioning the set ${\ZZ}$ or the function ${\Delta}$.
+    Likewise, the arguments of ${\Delta}$ on the right sides of Equations~$({\ast})$ and~$({\ast}{\ast})$ describe operations on elements of ${\NN}{\times}{\NN}$ which make sense without mentioning either ${\ZZ}$ or ${\Delta}$.
+    Many authors exploit these facts to {\em define} the set ${\ZZ}$, together with its operations of addition and multiplication,
+    purely in terms of the more primitive set ${\NN}$ and its operations. Here is how it works:
+
+        \h (i)\,\, Inspired by Condition~$({\ast}{\ast}{\ast})$ above, let ${\sim}$ be the relation on ${\NN}{\times}{\NN}$ given by the condition
+        \begin{displaymath}
+        (j,k) {\sim} (j',k') \mbox{ if,and only if, } j+k' \,=\, j'+k.
+        \end{displaymath}
+    It is a simple exercise to show, using only the properties of ${\NN}$ (and without mentioning `zero' or `negative numbers') that ${\sim}$ is an equivalence relation on ${\NN}{\times}{\NN}$.
+    Now one simply {\em defines} ${\ZZ}$ to be the quotient set of this equivalence relation.
+
+        \h (ii)\, Inspired by Condition~$({\ast})$ above, define an operation of `addition' on the set ${\ZZ}$ just obtained as follows:
+    Suppose that $m_{1}$ and $m_{2}$ are elements of ${\ZZ}$; that is, $m_{1}$ and $m_{2}$ are equivalence classes of the equivalence relation $\sim$ on ${\NN}{\times}{\NN}$.
+    Let $(j_{1},k_{1})$ and $(j_{2},k_{2})$ be elements of the equivalence classes $m_{1}$ and $m_{2}$, respectively;
+    using the notation of Definition~\Ref{DefA50.120}, one then has $m_{1} \,=\, [(j_{1},k_{1})]$ and $m_{2} \,=\, [(j_{2},k_{2})]$.
+    Now {\em define} $m_{1}+m_{2}$ to be the equivalence class containing the ordered pair $(j_{1}+j_{2},k_{1}+k_{2})$.
+    That is,
+        \begin{displaymath}
+        [(j_{1},k_{1})] + [(j_{2},k_{2})] \,=\, [(j_{1}+j_{2},k_{1}+k_{2})].
+        \end{displaymath}
+        This `definition' of $m_{1}+m_{2}$ has an obvious flaw: it uses a choice of representatives from $m_{1}$ and $m_{2}$,
+    so it appears that the value of $m_{1}+m_{2}$ depends not only on the sets $m_{1}$ and $m_{2}$, but may depend on how one chooses these representatives.
+    Fortunately, this apparent dependence is an illusion.
+    Indeed, it is easy to show directly from the definition of the equivalence relation ${\sim}$ that if we replace $(j_{1},k_{1})$ by an equivalent element $(j_{1}',k_{1}')$,
+    and replace $(j_{2},k_{2})$ by an equivalent $(j_{2}',k_{2}')$, then the resulting pair $(j'_{1}+j'_{2},k'_{1}+k'_{2})$ is equivalent to the original $(j_{1}+j_{2},k_{1}+k_{2})$;
+    in other words, $[(j'_{1}+j'_{2},k'_{1}+k'_{2})] \,=\, [(j_{1}+j_{2},k_{1}+k_{2})]$.
+
+
+        \h (iii) Inspired by Condition~$({\ast}{\ast})$ above, define an operation of `multipication' on the set ${\ZZ}$ as follows:
+    Suppose that $m_{1}$ and $m_{2}$ are elements of ${\ZZ}$; that is, $m_{1}$ and $m_{2}$ are equivalence classes of the equivalence relation $\sim$ on ${\NN}{\times}{\NN}$.
+    Let $(j_{1},k_{1})$ and $(j_{2},k_{2})$ be elements of the equivalence classes $m_{1}$ and $m_{2}$, respectively.
+    Now {\em define} $m_{1}{\cdot}m_{2}$ to be the equivalence class containing the ordered pair $(j_{1}{\cdot}j_{1} + k_{1}{\cdot}k_{2}, j_{1}{\cdot}k_{2}+k_{1}{\cdot}j_{2}])$.
+    That is,
+        \begin{displaymath}
+        [(j_{1},k_{1})] {\cdot} [(j_{2},k_{2})] \,=\, [(j_{1}{\cdot}j_{2} + k_{1}{\cdot}k_{2}, j_{1}{\cdot}k_{2} + k_{1}{\cdot}j_{2})].
+        \end{displaymath}
+    As with the definition of `addition' on ${\ZZ}$, one must verify that this construction of $m_{1}{\cdot}m_{2}$ does not depend on the choice of representatives of these sets.
+    The analysis is slightly tedious, but not difficult; it is left as an exercise.
+
+        \underline{Note} In the preceding construction, an `integer' turns out to be set of ordered pairs of natural numbers.
+    Of course each such `ordered pair' $(j,k)$ is a set of sets of natural numbers, $\{\{j\},\{j,k\}\}$, if one uses the Kuratowski definition of `ordered pair';
+    or, if one uses the `new and improved' definition of `ordered pair' given in Definition~\Ref{DefA30.30},
+    $(j,k)$ is a set of sets of sets of natural numbers.
+    In any event, an integer is a  type of object much more complicated than our original notion of `natural number'.
+    In particular, the set ${\ZZ}$ just constructed does {\em not} have the set ${\NN}$ as a subset, since (as was just noted) none of the elements of ${\ZZ}$ is actually a natural number!
+    This  should  seem  disconcerting, but the solution is simple:  the set ${\ZZ}$ does have a subset that behaves just like ${\NN}$;
+    namely, the set of all equivalence classes of the form $[(k+1,1)]$ with $k$ in ${\NN}$.
+    If we were going to stop with the set of integers, it would make sense to choose this subset as our preferred `new, improved' set of natural numbers.
+    In fact, however, that honor will be saved for a set to be described in the next chapter.
+
+\V
+
+        (2) Let ${\QQ}$ denote the set of all rational numbers, and let ${\ZZ}^{*}$ denote the set of all nonzero integers.
+    There is a natural function ${\rho}:{\ZZ}{\times}{\ZZ}^{*} \,{\rightarrow}\, {\QQ}$,
+    given by the rule ${\rho}(j,k) \,=\, j/k$ for all $(j,k)$ in ${\ZZ}{\times}{\ZZ}^{*}$.
+    It is easy to see that this function maps ${\ZZ}{\times}{\ZZ}^{*}$ surjectively onto ${\QQ}$,
+    and thus ${\rho}$ determines an equivalence relation on ${\ZZ}{\times}{\ZZ}^{*}$.
+    The function ${\rho}$ is certainly not an injection, however, since if a rational number $r$ can be expressed as $r \,=\, j/k$ with $j$ and $k$ in ${\ZZ}$ and $k \,\,{\neq}\,\, 0$,
+    then it can also be expressed as $r \,=\, j'/k'$ with $j' \,=\, mj$ and $k' \,=\, mk$ for any $m$ in ${\ZZ}^{*}$.
+
+       The surjection ${\rho}$ determines an equivalence relation on ${\ZZ}{\times}{\ZZ}^{*}$:
+    $(j,k) {\sim} (j',k')$ provided ${\rho}(j,k) \,=\, {\rho}(j',k')$, i.e., $j/k \,=\, j'/k'$.
+    As in  Example~(1) above, however, this condition can be formulated without explicitly mentioning either ${\rho}$ or the rational numbers:
+        \begin{displaymath}
+        (j,k) {\sim} (j',k') \mbox{ if, and only if, } j{\cdot}k' \,=\, j'{\cdot}k.
+        \end{displaymath}
+    And, as in Example~(1), one can define appropriate operations of `addition' and `multiplication' on the quotient set $\left({\ZZ}{\times}{\ZZ}^{*}\right)/{\sim}$ to make this set into a model of the rational numbers.
+    This is the approach followed by many authors in their construction of ${\QQ}$.
+    We shall not carry it  any further here, however, since we'll deal with ${\QQ}$ in a different manner in the next chapter.
+}%\EndSkip %% NOT CLEAR WHY THIS EXTRA ENDSKIP IS NEEDED
+}%\Endskip
+

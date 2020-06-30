@@ -1,0 +1,107 @@
+            \documentclass[12pt,twoside]{book}
+
+% Revised 10/24/2017
+
+%                \setlength{\oddsidemargin}{0in}
+%                \setlength{\evensidemargin}{0in}
+%                \setlength{\textwidth}{6.2in}
+                \setlength{\oddsidemargin}{-.25in}
+                \setlength{\evensidemargin}{-.25in}
+                \setlength{\textwidth}{6.5in}
+                \setlength{\topmargin}{-.5in}
+                \setlength{\textheight}{9in}
+
+                \usepackage{makeidx}
+                \makeindex
+
+                         \begin{document}
+
+                %\input{genthm}
+                \input{gencom}
+%% Special Abbreviations
+
+\newcommand{\Note}{Side Comment}
+\newcommand{\Notes}{Side Comments}
+\newcommand{\notes}{side comments}
+
+\newcommand{\ThisText}{{\em This Textbook}} %% Replace ` {\em This Textbook}' by, say `{\em This Set of Notes}' depending on circumstances.
+\newcommand{\TheseNotes}{{\em This Textbook}} %% Replace ` {\em This Textbook}' by, say `{\em This Set of Notes}' depending on circumstances.
+
+%% MOVE THESE DEFINITIONS TO gencom.tex
+
+%\newcommand{\Subsetneq}{
+%\raisebox{.4ex}{\mbox{$\subset$}}_{{\mbox{{\kern-.7em $\neq$}}}}}
+
+%\newcommand{\Supsetneq}{
+%\raisebox{.4ex}{\mbox{$\supset$}}_{{\mbox{{\kern-.7em $\neq$}}}}}
+
+%%
+
+\renewcommand{\thechapter}{\Roman{chapter}}
+%\setcounter{secnumdepth}{2}
+
+
+
+% \includeonly{}
+
+\StartSkip{
+        \title{Supplement on Set Theory for Math 205A Fall 2010}
+        \author{by R. C. Reilly}
+        \date{Revised September 20, 2010 \\
+              \copyright 2010}
+        \maketitle
+}%\EndSkip
+
+\StartSkip{
+        \title{Real Analysis \\ 
+        PART \, I}
+        \author{by R. C. Reilly}
+        \date{Revised May 1, 2013 \\
+              \copyright 2013}
+        \maketitle
+}%\EndSkip
+
+             \pagestyle{headings}
+
+             %\tableofcontents
+
+               \newcommand{\Inputclude}{\include}
+
+%               \pagenumbering{roman}
+
+%              \Inputclude{M140C_0}
+
+
+                 \Inputclude{01_M140AB_A_2017} %% Set Theory 
+                 \Inputclude{01_M140AB_B_2017} %% Axioms for {\RR}
+                 \Inputclude{01_M140AB_C_2017} %% Limits
+                 \Inputclude{01_M140AB_D_2017} %% Basic Continuity
+                 \Inputclude{01_M140AB_E_2017} %% Differentiation
+                 \Inputclude{01_M140AB_EE_2017} %% AntiDifferentiation
+                 \Inputclude{01_M140AB_H_2017} %% Riemann Integ
+                 \Inputclude{01_M140AB_F_2017} %% Adv Lims, Cont
+                 \Inputclude{01_M140AB_G_2017} %% Infinite Sums
+
+                 \Inputclude{01_M140AB_App_1_2017} %% Peano-Dedekind Axioms
+                 \Inputclude{01_M140AB_App_2_2017} %% More Set Theory
+
+                 %\Inputclude{01_M140AB_HH_2012_2017} %% Riemann-Stieltjes
+
+%  Exercises on unnumbered pages
+
+                 %\pagestyle{empty}
+                 %\include{Exercises_M140AB_A_2017}
+                 %\include{Exercises_M140AB_B_2017}
+                 %\include{Exercises_M140AB_C_2017}
+                 %\include{Exercises_M140AB_D_2017}
+                 %\include{Exercises_M140AB_E_2017}
+                 %\include{Exercises_M140AB_F_2017}
+                 %\include{Exercises_M140AB_G_2017}
+                 %\include{Exercises_M140AB_H_2017}
+                 %\include{Exercises_M140AB_HH_2017}
+
+%%               \pagenumbering{arabic}
+
+                \printindex
+
+                \end{document}

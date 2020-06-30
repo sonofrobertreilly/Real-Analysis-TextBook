@@ -1,0 +1,2944 @@
+% M140AB_D.TeX  Notes for `Single-Variable Analysis': 
+
+%
+% Revised: 01/20/2017 Encoding: Western Ascii
+%
+
+                  \chapter{Continuity -- The Basic Theory}
+                  \label{ChaptD}
+
+\VV
+
+
+        \underline{Quotes for Chapter~\Ref{ChaptD}}\IndB{chapter quotes}{for Chapter~\Ref{ChaptD} (Continuity -- The Basic Theory}:
+
+\V
+
+\begin{quotation}
+{\footnotesize
+        (1) `How fleeting are all human passions compared to the massive continuity of ducks.'
+
+        (Lord Peter Wimsey to Miss Harriet Vane, in the novel {\em Gaudy Nights}, by Dorothy L. Sayers)
+
+\V
+
+}%EndFootNoteSize
+\end{quotation}
+
+
+            \small{\bf Introduction}
+
+\V
+
+        In the standard textbooks of elementary calculus one learns about the concepts of `limits' and `continuity'
+    in the context of a real-valued function defined on a fairly simple set in ${\RR}$ -- usually an interval, or at worst the union of disjoint intervals.
+    Generally speaking, the treatment of this concept in such texts is neither rigorous nor carried out in depth. For example, such texts do not normally consider
+    `complicated' subsets of~${\RR}$, or carefully develop the structure of the real number system, or discuss in depth the convergence of real sequences.
+    That is, calculus texts typically omit most of the material found in Chapters~\Ref{ChaptA}, \Ref{ChaptB} and~\Ref{ChaptC} of {\ThisText}.
+
+        In texts on real analysis, such as {\ThisText}, one major goal is to revisit elementary calculus, but in a much more rigorous manner.
+    Another major goal, however, is to prepare the reader for even more advanced modern analysis which involves `spaces', for example, `metric spaces' or `topological spaces',
+    that are much more general than ${\RR}$ or even~${\RR}^{n}$. The structure of the proofs given here is often the same as in the more general contexts,
+    so studying the theory for real-valued functions defined on subsets of~${\RR}$ is good preparation, in a familiar context, for the more advanced theories.
+
+        In {\ThisText} the basic theory of `limits' and `continuity' that is presented in Chapters~\Ref{ChaptC} above and the present chapter provides ample background
+    to cover the rigorous treatment of  elementary calculus which is carried out in Chapters~\Ref{ChaptE} and~\Ref{ChaptH} below.
+
+        In addition to the basic theory on limits and continuity referred to above, Chapter~\Ref{ChaptF} expands on that theory.
+        Any reader who prefers to finish the full theory of limits and continuity before starting the study of calculus can do so:
+    simply procede directly from the present chapter to Chapter~\Ref{ChaptF}, and return to the calculus chapters later.
+    The references to calculus in Chapter~\Ref{ChaptF} usually involve facts which are familiar from elementary calculus and can be temporarily accepted `on faith'.
+
+\VV
+
+                \section{{\bf Continuity for Real-Valued Functions Defined in ${\RR}$}}
+                \label{SectD20}\IndB{ZZ Sections}{\Ref{SectD20} Continuity for Real-Valued Functions Defined in ${\RR}$}
+
+
+\VV
+
+        Throughout this chapter all the functions under consideration are real-valued
+with domains being nonempty subsets of~${\RR}$, unless stated explicitly otherwise.
+
+
+        There are two main approaches to the concept of `continuity' that are commonly used for the theory of
+    real-valued functions defined on a subset of~${\RR}$. The next result says that it doesn't matter which approach one adopts as the `official' definition.
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD20.20}
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ be a real-valued function defined on a (nonempty) subset $X$ of ${\RR}$.
+    Let $c$ be a point of the set $X$. Then the following statements are equivalent:
+
+\V
+
+        \h (i) For every sequence ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$ of numbers in $X$ such that $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c$,
+    one has $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$.
+
+\V
+
+        \h (ii)\, For every number ${\varepsilon}\,>\,0$ there exists a number ${\delta}\,>\,0$ such that if $d$ in $X$ satisfies $|d-c|\,<\,{\delta}$, then $|f(d)-f(c)|\,<\,{\varepsilon}$.
+
+\V
+
+        \underline{Proof} Suppose that Statement~(ii) holds. Let ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$
+    be a sequence of numbers in $X$ such that $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c$, and let ${\varepsilon}\,>\,0$ be given.
+    Statement~(i) guarantees that there exists ${\delta}\,>\,0$ so that if $d{\in}X$ and $|d-c|\,<\,{\delta}$, then $|f(d)-f(c)|\,<\,{\varepsilon}$.
+    For that ${\delta}$ the `convergence' hypothesis for the sequence ${\xi}$ impies that there exists a number $N$ in ${\NN}$ such that if $k\,\,{\geq}\,\,N$, then $|x_{k}-c|\,<\,{\delta}$.
+    Combining these facts, one sees that for each ${\varepsilon}\,>\,0$ there exists a number $N$ in ${\NN}$ such that if $k\,\,{\geq}\,\,N$,
+    then $|f(x_{k})-f(c)|\,<\,{\varepsilon}$. That is, $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$. It follows that Statement~(i) holds.
+
+\V
+
+        To show that Statement~(i) implies Statement~(ii), it suffices to show the truth of the contrapositive assertion;
+    that is, to prove that Statement~(ii) being false implies that Statement~(i) is also false.
+
+        Thus, suppose that Statement~(ii) does not hold for the given $f$ and $c$.
+    This implies that there exists some ${\varepsilon}_{0}\,>\,0$ so that for every ${\delta}\,>\,0$
+    there exists $d$ in $X$ such that $|d-c|\,<\,{\delta}$ but $|f(d)-f(c)|\,\,{\geq}\,\,{\varepsilon}_{0}$.
+    Apply this successively for ${\delta}$ of the form $1/k$ with $k$ in~${\NN}$ to see that for each $k$ in ${\NN}$ there exists $x_{k}$ in $X$
+    such that $|x_{k}-c|\,<\,1/k$ but $|f(x_{k})-f(c)|\,\,{\geq}\,\,{\varepsilon}_{0}$.
+    The first of these properties implies that $c \,=\, \lim_{k \,{\rightarrow}\, {\infty}} x_{k}$, while the second implies that the sequence
+    $(f(x_{1}), f(x_{2}),\,{\ldots}\,f(x_{k}),\,{\ldots}\,)$ does {\em not} converge to~$f(c)$. In particular, Statement~(i) fails to hold.
+
+\VV
+
+            \subsection{\small{\bf Definition}}
+            \label{DefD20.30}%\IndA{continuity}
+
+\V
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ be a real-valued function whose domain is a (nonempty) subset $X$ of ${\RR}$. Let $c$ be a point of $X$.
+
+\V
+
+        (1) One says that {\bf $f$ is continuous at $\Bfm{c}$}\IndB{continuity}{continuity at a point} if either Statement~(i) or Statement~(ii) of the preceding theorem holds;
+    of course it then follows that {\em both} statements hold.
+    One then refers to Statement~(i) as the {\bf sequential characterization of continuity}\IndBD{continuity}{sequential characterization of continuity},
+    and Statement~(ii) as the {\bf $\Bfm{{\varepsilon}\,{\delta}}$ characterization of continuity}\IndBD{continuity}{${\varepsilon}\,{\delta}$ characterization of continuity}.
+
+        If $f:X \,{\rightarrow}\, {\RR}$ is {\em not} continuous at $c$, then one says that {\bf $\Bfm{f}$ is discontinuous at $\Bfm{c}$},
+    and that {\bf the point $\Bfm{c}$ is a discontinuity of $f$}\IndB{continuity}{discontinuity at a point}.
+
+\V
+
+        (2) Let $S$ be a nonempty subset of the set $X$.
+    One says that {\bf $\Bfm{f}$ is continuous on the subset $\Bfm{S}$}\IndB{continuity}{continuity on a subset}
+    provided $f:X \,{\rightarrow}\, {\RR}$ is continuous at $c$ (in the sense of Part~(1) of this definition) for each number $c$ in $S$.
+
+\V
+
+        (3) The function $f:X \,{\rightarrow}\, {\RR}$ is said to be a {\bf continuous function}\IndB{continuity}{continuous function}
+    if it is continuous on $X$ (in the sense of Part~(b)); that is, if $f$ is continuous at each point of its domain~$X$.
+
+\VV
+
+            \subsection{\small{\bf Remarks}}
+            \label{RemrkD20.50}
+
+\hspace*{\parindent}(1) Many texts in real analysis use the `${\varepsilon}\,{\delta}$' characterization of continuity as their `official' definition.
+    For such texts the `sequential' characterization becomes a theorem to be proved.
+    Likewise, other such texts prefer to use the `sequential' characterization as their `official' definition of continuity.
+    In those texts the `${\varepsilon}\,{\delta}$' characterization then becomes a theorem. In any event, both types of texts must prove Theorem~\Ref{ThmD20.20}. 
+    The approach taken in {\ThisText} avoids the problem of choosing which of these characterizations to take as the `official' definition.
+
+\V
+
+        (2) Note also that to say that `$f:X \,{\rightarrow}\, {\RR}$ has a discontinuity at a number $c$' requires that $c$ be in~$X$.
+    This usage, which appears to be the norm in real analysis texts such as {\ThisText}, is {\em not} what is taught in elementary calculus.
+    Indeed, a typical problem in a freshman calculus course might be to `find the discontinuites of the function $f(x) \,=\, 1/\sqrt{x^{2}-1}$',
+    and the `correct' answer would be `$x \,=\, -1$ and $x \,=\, 1$'; correct, that is, in the context of elementary calculus.
+    In real analysis, in contrast, the domain of this function consists of all $x$ in ${\RR}$ such that $x\,<\,-1$ or $x\,>\,1$,
+    so it is continuous at each point of its domain, and thus, in accordance with Definition~\Ref{DefD20.30}, has no discontinuities.
+
+\V
+
+        (3) Part~(2) of the preceding definition appears to be innocuous, but it can lead to confusion.
+    The problem is that the phrase `$f$ is continuous on $S$' is sometimes interpreted as meaning (using the `sequential characterization'):
+
+\VA
+
+    \h `{\em For every point $c$ in $S$ and for every sequence ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$ of points {\em in $S$} converging to $c$,
+    the corresponding sequence of values $(f(x_{1}),f(x_{2}),\,{\ldots}\,)$ converges to $f(c)$.}'
+
+\VA
+
+\hspace*{\parindent}This is equivalent to saying that the restriction $g \,=\, f|_{S}$ of $f$ to $S$, whose domain is the set $S$, is continuous at each point of~$S$.
+    This is {\em not} the intended meaning of Part~(2) of the definition. For example, suppose that $f:X \,{\rightarrow}\, {\RR}$
+    is a function with domain $X$ such that $f$ is not contiuous at a particular point~$c$ of~$X$. Let $S$ be the singleton set $\{c\}$.
+    Then the function $f$ is {\em not} continuous on the subset~$S$, in the sense of Part~(2) of the definition,
+    since it fails to be continuous at a point of~$S$, namely~$c$. However, it is easy to see that the restriction $f|_{S}$
+    {\em is} continuous on~$S$, since constant functions are continuous; see Example~\Ref{ExampD20.53}~(1) below.
+
+\V
+
+        (4) It is useful, for future reference, to reformulate the condition for $f:X \,{\rightarrow}\,{\RR}$ to be continuous on~$X$,
+    stated in Part~(2) of the preceding definition with $S \,=\, X$, the full domain of~$f$, in the following alternate form:
+
+\VA
+
+        \h {\em `For every $c$ in $X$ and for every ${\varepsilon}\,>\,0$ there exists ${\delta}\,>\,0$
+    such that for every $d$ in $X$ such that $|d-c|\,<\,{\delta}$, one has $|f(d)-f(c)|\,<\,{\varepsilon}$'}.
+
+\VA
+
+        This alternate formulation does not refer to a previously defined concept of continuity at a single point of~$X$.
+    In that sense, this formulation is closer to the original definitions of continuity given by Bolzano and Cauchy,
+    which focused on the continuity of a function on a full interval; see the following \Note.
+
+\VV
+
+\begin{quotation}
+{\footnotesize \underline{\Note}\IndB{\notes}{on the approaches to continuity of Bolzano and Cauchy} (on the approaches to continuity of Bolzano and Cauchy)
+
+\V
+
+        The modern concept of `continuity' of a function $y \,=\, f(x)$, namely that small changes in the input $x$ of the function cause small changes in the corresponding output~$y$,
+    took many years to evolve. Historians of mathematics tell us that the earliest treatments of continuity
+    that agree in essence with the modern definitions were carried out by Bolzano and Cauchy in publications of $1817$ and~$1821$, respectively.
+    Both definitions focus on real-valued functions with domain some intervals in~${\RR}$, instead of more general sets of numbers.
+
+        Bolzano's definition can be translated as follows:
+
+\VA
+
+       \h `{\em According to a correct definition, the expression that a function {\em f\,x}
+    varies according to the law of continuity for all values of $x$ inside or outside certain limits means just that:
+    if $x$ is some such value, the difference $f(x+{\omega})-f\,x$ can be made smaller than any given quantity provided
+    ${\omega}$ can be taken as small as we please.}' (Translation given in `{\em Bolzano's Philosophy and the Emergence of Modern Mathematics'} by P.~Rusnock.)
+
+\VA
+
+\noindent {\bf Remark} Bolzano's definition is essentaily the same as the ${\varepsilon}\,{\delta}$ characterization described in Remark~\Ref{RemrkD20.50}~(4) above;
+    in particular,  the `given quantity' corresponds to our~${\varepsilon}$, and the quantity ${\omega}$ is our ${\delta}$; `as small as we please' should then be interpreted to mean `sufficiently small'. Of course when Bolzano says
+    `smaller than any given quantity' and `as small as we please', he is referring to the absolute value of the quantities involved.
+    The `absolute value notation' $|\,|$ now taught in arithmetic did not become common in mathematics until after~$1840$.
+
+
+\VA
+
+        The Cauchy definition expresses the same idea:
+
+\VA
+
+       \h `{\em Let $f(x)$ be a function of the variable $x$, and suppose that for each value of $x$ between two given limits,
+    the function always takes a unique finite value. If, beginning with a value of $x$ contained between these limits,
+    we add to the variable $x$ an infinitely small increment $a$, the function itself is incremented by the difference $f(x+a)- f(x)$,
+    which depends both on the new variable $a$ and on the value of $x$. Given this,
+    the function $f(x)$ is a continuous function of $x$ between the assigned limits if,
+    for each value of $x$ between these limits, the numerical value of the difference $f(x+a) - f(x)$
+    decreases indefinitely with the numerical value of $a$. In other words, the function $f (x)$ is continuous with respect to $x$ between the given limits if, 
+    between these limits, an infinitely small increment in the variable always produces an infinitely small increment in the function itself.}'
+    (Translation given in {\em Cauchy's Cours d'analyse: An Annotated Translation} by Bradley and Sandifer.)
+
+\VA
+
+\noindent \underline{Remark} By `infinitesimal quantity' Cauchy means `a quantity which has $0$ as its limit'.
+    This evokes a sense of a quantity `approaching' a value and thus a sense of `time' and  `motion',
+    physical concepts which lie outside the purely analytical treatment of analysis which Cauchy claimed to present.
+    Indeed, Cauchy even uses the phrase `successive values' of such a quantity in this context, which again suggests the idea of `time'.
+    However, Cauchy goes on to provide an explicit example of what he means by an `infinitesimal quantity':
+    $a \,=\, {\displaystyle \frac{1}{4}, \frac{1}{3}, \frac{1}{5}, \frac{1}{6},\,{\ldots}\,}$.
+    This example shows that, whatever Cauchy meant by `infinitesimal quantity', he included all sequences of real numbers which converge to~$0$.
+    The Cauchy approach to `continuity' thus corresponds essentially to the standard `sequence characterization' of continuity given above.
+    Indeed, the sequence $(x_{1}-c, x_{2}-c,\,{\ldots}\,x_{k}-c, \,{\ldots}\,)$ corresponds to Cauchy's infinitesimal~$a$: note that $c + (x_{k}-c) \,=\, x_{k}$.
+
+        Cauchy's `numerical value' is the same as the modern `absolute value'.
+
+\V
+
+        Note that both Cauchy and Bolzano use the word `limit' in the sense of a quantity which bounds the variable~$x$,
+    not as a limit as in `limit of a sequence'. For example, Bolzano allows his $x$ to vary `inside or outside certain limits'.
+    This means restrictions such as $a\,<\,x\,<\,b$ or $-{\infty}\,<\,x\,<\,b$
+ and so on. Similarly, Cauchy `limits' his variable $x$ to lie in some sort of interval.
+
+        In addition, each author's definition could be translated in more modern language as
+    `$f$ is continuous inside an interval provided it is continuous at each $x$ in the interval'.
+    However, at this time neither author assigns a name to what we now refer to as `continuity at a single point~$c$';
+    perhaps both would have found it silly to even consider a function if it were continuous at, say, only a single point.
+    Indeed, later on Cauchy does define `continuity at a single point $x$', but for him this means `continuity on a full interval containing~$x$'.
+    In particular, at this early stage both Bolzano and Cauchy would describe `continuity of $f:X \,{\rightarrow}\, {\RR}$ on a subset $S$ of~$X$'
+    along the lines of Remark~\Ref{RemrkD20.50}~(4) above. Of course neither author would have considered functions defined on arbitrary nonempty subsets of~${\RR}$,
+    as is done in {\ThisText}; that is a much more recent viewpoint.
+}%EndFootNoteSize
+\end{quotation}
+
+\VV
+
+            \subsection{\small{\bf Examples}}
+            \label{ExampD20.53}
+
+\V
+
+\hspace*{\parindent}(1) Let $X$ be a nonempty set of real numbers.
+
+\VA
+
+        \h (i)\, If $f:X \,{\rightarrow}\,{\RR}$ is a constant function with domain~$X$, then $f$ is continuous on~$X$.
+
+        \h (ii) If $g:X \,{\rightarrow}\, X$ is the identity function with domain~$X$, then $g$ is continuous on~$X$.
+
+\VA
+
+\noindent Indeed, suppose ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$
+    is a sequence of points in~$X$ which converges to a point~$c$ in~$X$. Let $b$ be the constant value of the function $f$,
+    so that $f(x_{k}) \,=\, b \,=\, f(c)$ for each index~$k$. Then clearly $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, b \,=\, f(c)$.
+    Likewise, since $g(x) \,=\, x$ for each $x$ in~$X$, it follows that $g(x_{k}) \,=\, x_{k}$,
+    and thus $\lim_{k \,{\rightarrow}\, {\infty}} g(x_{k}) \,=\, \lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c \,=\, g(c)$.
+    The claimed continuity follows.
+
+\V
+
+        (2) Let $f:{\RR} \,{\rightarrow}\, {\RR}$ be the Dirichlet function which was discussed in Example~\Ref{ExampA30.29}.
+    Thus, if $x{\in}{\RR}$ then $f(x) \,=\, 0$ if $x$ is irrational, while $f(x) \,=\, 1$ if $x$ is rational.
+
+        It is easy to see that $f$ is discontinuous at every point of ${\RR}$.
+    Indeed, suppose that $c$ is an irrational number, and let ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$ be a sequence of {\em rational} numbers such that $c \,=\, \lim_{k \,{\rightarrow}\, {\infty}} x_{k}$.
+    Then $f(x_{k}) \,=\, 1$ for all $k$ in ${\NN}$, hence $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, 1$.
+    However, $f(c) \,=\, 0$, so it is {\em not} the case that $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$;
+    thus, $f$ is discontinuous at $c$.
+
+        Similarly, if $c$ is a rational number, then let ${\zeta} \,=\, (z_{1},z_{2},\,{\ldots}\,)$
+    be a sequence of {\em irrational} numbers which converges to $c$.
+    One then notes that $f(z_{k}) \,=\, 0$ for all $k$, hence $\lim_{k \,{\rightarrow}\, {\infty}} f(z_{k}) \,=\, 0 \,\,{\neq}\,\, f(c)$
+     since $f(c) \,=\, 1$ when $c$ is rational.
+
+\V
+
+        (3) Let $g:{\RR} \,{\rightarrow}\, {\RR}$ be given by the rule $g(x) \,=\, x\,f(x)$,
+    where $f$ is the Dirichlet function studied in the preceding example. It is a simple exercise to show that if $c \,=\, 0$ then $g$ is continuous at~$c$,
+    but if $c \,\,{\neq}\,\, 0$ then $g$ is discontinuous at~$c$. That is, with the modern definition of `continuity'
+    it is possible for a function defined on an interval to be continuous at just a single point of its domain. %%EXERCISE
+
+\V
+
+        (4) Let $f:[0,+{\infty}) \,{\rightarrow}\, {\RR}$ be given by the formula $f(x) \,=\, \sqrt{x}$ for all $x$ in the domain $[0,+{\infty})$ of~$f$.
+
+        \underline{Claim 1}\,If $c\,>\,0$, then $f$ is continuous at~$c$.
+
+        \underline{Proof of Claim 1}\,Note that, by the usual algebraic trick, one has
+        \begin{displaymath}
+        |f(d) - f(c)|
+    \,=\,
+        |\sqrt{d} - \sqrt{c}|
+    \,=\,
+        \left|(\sqrt{d} - \sqrt{c})\,
+        \left(\frac{\sqrt{d} + \sqrt{c}}{\sqrt{d} + \sqrt{c}}\right)\right|
+     \,=\, 
+        \frac{|d-c|}{\sqrt{d} + \sqrt{c}}\,\,{\leq}\,\,\frac{|d-c|}{\sqrt{c}} \mbox{ for all $d\,\,{\geq}\,\,0$}
+        \end{displaymath}
+    Now let ${\varepsilon}\,>\,0$ be given, and let ${\delta} \,=\, {\varepsilon}\,\sqrt{c}$.
+    Then it is clear that if $d{\in}X$ and $|d-c|\,<\,{\delta}$, then $|f(d)-f(c)|\,<\,{\varepsilon}$, as required.
+
+        \underline{Claim 2}\,The function $f$ is also continuous at $c \,=\, 0$.
+
+        \underline{Proof of Claim 2}\,Let ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ be any sequence in $X$ converging to~$0$,
+    and consider the corresponding sequence of values, namely ${\rho} \,=\, (r_{1}, r_{2},\,{\ldots}\,r_{k},\,{\ldots}\,)$,
+    where $r_{k} \,=\,f(x_{k}) \,=\, \sqrt{x_{k}}$ for each index~$k$. Since the (convergent) sequence ${\xi}$ is bounded, so is the sequence ${\rho}$.
+    Let ${\sigma} \,=\, (s_{1}, s_{2},\,{\ldots}\,s_{m},\,{\ldots}\,)$ be any convergent subsequence of ${\rho}$, and let its limit be~$L$.
+    Then the sequence $(s_{1}^{2}, s_{2}^{2},\,{\ldots}\,s_{m}^{2},\,{\ldots}\,)$ is a subsequence of the original sequence ${\xi}$,
+    hence by the Product Rule for Limits of Sequences, together with the fact that ${\xi}$ converges to~$0$,
+    one has $L^{2} \,=\, 0^{2} \,=\, 0$, so $L \,=\, 0$. Now Part~(b) of Theorem~\Ref{ThmC30.20} applies to show that ${\rho}$ converges to~$0$;
+    that is, $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, 0 \,=\, f(0)$. Thus $f$ is also continuous at~$0$, as claimed.
+
+\V
+        (5) Let $P_{0} \,=\, (x_{0}, y_{0})$, $P_{1} \,=\, (x_{1},y_{1})$,\,{\ldots}\,$P_{n} \,=\, (x_{n},y_{n})$
+    be $n+1$ points in ${\RR}^{2}$ such that $x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{n-1}\,<\,x_{n}$. For convenience set $a \,=\, x_{0}$ and $b \,=\, x_{n}$, and let $I$ denote the closed interval $[a,b]$.
+    Now let $h:I \,{\rightarrow}\, {\RR}$ be the piecewise-linear interpolation through these $n+1$ points; see Example~\Ref{ExampA30.29}. Then $h$ is continuous at every point of~$I$.
+    More precisely, for each ${\varepsilon}\,>\,0$ there exists ${\delta}\,>\,0$ such that if $c,d{\in}I$ are such that $|d-c|\,<\,{\delta}$, then $|h(d)-h(c)|\,<\,{\varepsilon}$.
+
+        More precisely, for each $j \,=\, 1,2,\,{\ldots}\,n$ let $s_{j} \,=\, (y_{j}-y_{j-1})/(x_{j}-x_{j-1})$;
+    in geometric terms, $s_{j}$ is the slope of the line segment in the plane ${\RR}^{2}$ joining the points $P_{j-1}$ and~$P_{j}$.
+    Let $M$ be any positive number such that $M\,\,{\geq}\,\,\max\,\{|s_{1}|, |s_{2}|,\,{\ldots}\,|s_{n}|\}$.
+    Then for each pair of numbers $c$ and $d$ in $I$ one has $|h(d)-h(c)|\,\,{\leq}\,\,M\,|d-c|$.
+
+        To see this, note first that if $x$ is a number such that $x_{j-1}\,\,{\leq}\,\,x\,\,{\leq}\,\,x_{j}$ for some index~$j$,
+    then, by the formula for `linear interpolation', one has
+        \begin{displaymath}
+        h(x) \,=\, y_{j-1} + \left(\frac{y_{j}-y_{j-1}}{x_{j}-x_{j-1}}\right)\,(x-x_{j-1})
+     \,=\, 
+        y_{j-1} + s_{j}\,(x - x_{j-1}).
+        \end{displaymath}
+    Without loss of generality, assume that $c\,<\,d$. Then there exist indices $i$ and $k$, with $i\,\,{\leq}\,\,k$,
+    such that $x_{i-1}\,\,{\leq}\,\,c\,\,{\leq}\,\,x_{i}$ and $x_{k-1}\,\,{\leq}\,\,d\,\,{\leq}\,\,x_{k}$.
+    Assume that $i\,<\,k$; the case $i \,=\, k$ is even easier, and is left as an exercise. Using the formula for $h$ obtained above, together with the old `Add-and-Subtract' trick, one gets
+        \begin{displaymath}
+        h(d)-h(c)
+         \,=\, 
+        (h(d) - h(x_{k-1})) + (h(x_{k-1})-h(x_{k-2})) + \,{\ldots}\, + (h(x_{i}) - h(c))
+     \,=\, 
+        \end{displaymath}
+        \begin{displaymath}
+        s_{k}\,(d-x_{k-1}) + s_{k-1}\,(x_{k-1} - x_{k-2}) + \,{\ldots}\, + s_{i}\,(x_{i}-c).
+        \end{displaymath}
+    Now use the Triangle Inequality, together with the fact that the coefficients $d-x_{k-1}$, $x_{k-1}-x_{k-2}$,\,{\ldots}\,$x_{i}-c$ of $s_{k}$, $s_{k-1}$,\,{\ldots}\,$s_{i}$ are nonnegative, to get
+        \begin{displaymath}
+        |h(d)-h(c)|\,\,{\leq}\,\,|s_{k}|\,(d-x_{k-1}) + |s_{k-1}|\,(x_{k-1}-x_{k-2}) + \,{\ldots}\,+ |s_{i}|\,(x_{i}-c)
+    \,\,{\leq}\,\,
+        \end{displaymath}
+        \begin{displaymath}
+        M\,((d-x_{k-1}) + (x_{k-1}-x_{k-2}) + \,{\ldots}\, + (x_{i}-c))
+     \,=\, 
+        M\,|d-c|\,<\,M\,\left(\frac{{\varepsilon}}{M}\right) \,=\, {\varepsilon}.
+        \end{displaymath}
+
+        Finally, suppose that $c$ is any point of the interval~$I$. Let ${\varepsilon}\,>\,0$ be given, and let ${\delta} \,=\, {\varepsilon}/M$.
+    Then, by the preceding result, for each $d$ in $I$ such that $|d-c|\,<\,{\delta}$ one has
+        \begin{displaymath}
+        |g(d)-g(c)|\,\,{\leq}\,\,M\,|d-c|\,<\,M\,\left(\frac{{\varepsilon}}{M}\right) \,=\, {\varepsilon},
+        \end{displaymath}
+    as required.
+
+
+
+%% EXERCISE Give a physical interpretation of `claim' in terms of speeds
+
+\V
+
+        (6) Let $h$, $I \,=\, [a,b]$ and $M$ be as in the preceding example. Let $h:{\RR} \,{\rightarrow}\, {\RR}$ be the extension of $g$ to ${\RR}$ (see Definition~\Ref{A30.127}) defined by the rule
+        \begin{displaymath}
+        g(x) \,=\, 
+        \begin{array}{cl}
+        h(x) & \mbox{if $a\,\,{\leq}\,\,x\,\,{\leq}\,\,b$} \\
+        h(a) & \mbox{if $x\,<\,a$} \\
+        h(b) & \mbox{if x\,>\,b}
+        \end{array}
+        \end{displaymath}
+    It is easy to see, from the preceding exercise, that $g$ satisfies the analogous inequality
+        \begin{displaymath}
+        |g(d) - g(c)|\,\,{\leq}\,\,M\,|d-c| \mbox{ for every $c$}
+        \end{displaymath}
+
+% EXERCISE -- prove it
+
+\V
+
+        \underline{Note} The preceding examples illustrate the fact that sometimes it is easier to attack a `continuity' problem
+    by using the sequential characterization, while sometimes the ${\varepsilon}{\delta}$ characterization works more easily.
+
+\VV
+
+        The conditions enjoyed by the piecewise-linear functions $h$ in Example~(5) and $g$ in Example~(6) above appear frequently in analysis and is given a name.
+
+\V
+
+
+            \subsection{\small{\bf Definition}}
+            \label{DefD20.54}
+
+\V
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ be a real-valued function defined on a nonempty subset $X$ of~${\RR}$.
+    One says that {\bf $\Bfm{f}$ satisfies a Lipschitz condition on $\Bfm{X}$}, or that {\bf $\Bfm{f}$ is a Lipschitz function on~$\Bfm{X}$},
+    \IndBD{functions}{Lipschitz condition, Lipschitz function}provided there exists a real number $M\,>\,0$
+    such that $|f(d)-f(c)|\,\,{\leq}\,\,M\,|d-c|$ for all $c$ and $d$ in the set~$X$.
+
+\V
+
+        {\bf Remarks} (1) The condition in question is named after the nineteenth-century German mathematician Rudolf Lipschitz,
+    who recognized its importance in the theory of differential equations.
+
+\V
+
+        (2) The result in Example (5) above can be phrased to say that a continuous piecewise-linear function on an interval $[a,b]$ satisfies a Lipschitz condidtion on the set~$[a,b]$.
+    A similar remark applies to Example~(6).
+
+\V
+
+        (3) It is obvious that if a function $f:X \,{\rightarrow}\, {\RR}$ satisfies a Lipschitz condition on a set~$X$, then $f$ is continuous on~$X$.
+    However, the converse is not true. For example, it is an instructive exercise to show that
+    the square-root function is {\em not} Lipschitz on, say, the closed interval $[0,1]$. %% EXERCISE
+
+\VV
+
+%-------------
+\StartSkip{
+            \subsection{\small{\bf Theorem} (The Concatenation Theorem for Continuous Functions)}\IndBD{concatenation}{theorem for continuous functions}
+            \label{ThmD30.05}\IndA{concatenation}
+
+        In this theorem, $I$ is an interval in ${\RR}$ of any type: open, closed, bounded, unbounded  etc.
+
+\V
+
+               (a) Let $f:I \,{\rightarrow}\, {\RR}$ and $g:I \,{\rightarrow}\, {\RR}$ be continuous functions on the interval~$I$.
+    Suppose that there is a point $c$ in the interior of $I$ and a number $C$ such that $f(c) \,=\, g(c) \,=\, C$.
+    Define a new function $h:I \,{\rightarrow}\, {\RR}$ by the following rule: when $x{\in}I$ then
+        \begin{equation}
+        \label{EqnD.20}
+        h(x) \,=\, 
+                \left\{
+        \begin{array}{ll}
+      f(x) & \mbox{if $x\,\,<\,c$} \\
+       C   & \mbox{if $x \,=\, c$} \\
+      g(x) & \mbox{if $x\,>\,c$}
+        \end{array}
+                 \right.
+        \end{equation}
+    Then $h$ is also continuous on $I$.
+
+\V
+
+        (b) More generally, suppose that $F$ and $G$ are real-valued functions, with $F$ defined and continuous at all $x$ in $I$ such that $x\,<\,c$,
+    and $G$ defined and continuous at all $x$ in $I$ such that $x\,>\,c$. Suppose, in addition, that there is a number $C$ such that
+    $\lim_{x{\nearrow}c} F(x) \,=\, C$ and $\lim_{x{\searrow}c} G(x) \,=\, C$.
+    Define a new function $H:I \,{\rightarrow}\, {\RR}$ by the following rule: when $x{\in}I$, then 
+        \begin{equation}
+        \label{EqnD.20A}
+        h(x) \,=\, 
+                \left\{
+        \begin{array}{ll}
+      F(x) & \mbox{if $x\,\,<\,c$} \\
+       C   & \mbox{if $x \,=\, c$} \\
+      G(x) & \mbox{if $x\,>\,c$}
+        \end{array}
+                 \right.
+        \end{equation}
+    Then $H$ is continuous on~$I$. (Note that we allow the possibity that $F$ and $G$ are defined at other values of~$x$; in particular, at $x \,=\, c$.)
+
+\V
+
+        {\bf Proof} (a)\,It is clear that if $\overline{x}{\in}I$ but $\overline{x} \,\,{\neq}\,\, c$ then $h$ is continuous at $\overline{x}$.
+    Indeed, suppose that $\overline{x}\,<\,c$, and let ${\varepsilon}\,>\,0$ be given.
+    Since $\overline{x}\,<\,c$, it is possible to choose ${\delta}_{1}\,>\,0$ small enough that if $x{\in}I$ and $|x-\overline{x}|\,<\,{\delta}_{1}$ then $x\,<\,c$;
+    for instance, let ${\delta}_{1} \,=\, (c-\overline{x})/2$.
+    Next, use the assumed continuity of $f$ to choose ${\delta}_{2}\,>\,0$ so that if $|\overline{x}-x|\,<\,{\delta}_{2}$ then $x{\in}I$ and $|f(x)-f(\overline{x})|\,<\,{\varepsilon}$.
+    Now set ${\delta} \,=\, {\min}\,\{{\delta}_{1},{\delta}_{2}\}$.
+    One sees that ${\delta}\,>\,0$, and if $|x-\overline{x}|\,<\,{\delta}$ then $|f(x)-f(\overline{x})|\,<\,{\varepsilon}$.
+    However, $h(x) \,=\, f(x)$ for $x$ in $I$ such that $x\,<\,c$, so the preceding result can be stated:
+    if $x{\in}I$ and $|x-\overline{x}|\,<\,{\delta}$  then $|h(x)-h(\overline{x})|\,<\,{\varepsilon}$.
+    That is, $h$ is continuoous at such $\overline{x}\,<\,c$.
+    A similar argument shows that if $\overline{x}{\in}I$ and $\overline{x}\,>\,c$ then $h$ is continuous at $\overline{x}$.
+
+        Finally, consider the continuity situation at $c$.
+    By Theorem~\Ref{ThmD20.55}, it suffices to show that if ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$ is any {\em monotonic} sequence in $I$ converging to $c$,
+    then $\lim_{k \,{\rightarrow}\, {\infty}}  h(x_{k}) \,=\, h(c)$. Note that if the exists a value of the index $k$ such that $x_{k} \,=\, c$,
+    then (by the monotonic convergence to~$c$) one has $x_{m} \,=\, c$ for all $m\,\,{\geq}\,\,k$,
+    so that $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$, as required.
+    Thus, there are two remaining cases to consider:
+
+        \h \underline{Case (i)}\, Suppose that ${\xi}$ is monotonic {\em up}, but never equal to~$c$.
+    Then clearly $x_{k}\,<\,c$ for all $k$, hence $h(x_{k}) \,=\, f(x_{k})$, by the definition of $h$.
+    Then the desired equation
+        \begin{displaymath}
+        \lim_{k \,{\rightarrow}\, {\infty}} h(x_{k}) \,=\, h(c)
+        \end{displaymath}
+    is simply a rewriting of the equation
+        \begin{displaymath}
+        \lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c) \,=\, C.
+        \end{displaymath}
+    But this latter equation is true, by the continuity hypothesis on $f$;
+    thus the corresponding equation on $h$ also holds, as desired.
+
+        \h \underline{Case (ii)} Suppose instead that ${\xi}$ is monotonic {\em down}. The argument is similar to Case~(i) and is left to the reader.
+
+         In summary: the function $h$ is continuous at each point of $I$, as claimed.
+
+\V
+
+        (b)\,This follows easily from Part~(a) by defining $f,g:I \,{\rightarrow}\, {\RR}$ by the following rule: when $x{\in}I$ then
+        \begin{equation}
+        f(x) \,=\, 
+                \left\{
+        \begin{array}{ll}
+      F(x) & \mbox{if $x\,\,<\,c$} \\
+       C   & \mbox{if $x\,\,{\geq}\,\,c$}
+        \end{array}
+                 \right.
+        \mbox{ and }
+        g(x) \,=\, 
+                \left\{
+        \begin{array}{ll}
+       C   & \mbox{if $x\,\,{\leq}\,\,c$} \\
+      G(x) & \mbox{if $x\,>\,c$}
+        \end{array}
+                 \right.
+        \end{equation}
+    It is clear that the functions $f$ an $g$ then satisfy the hypotheses of Part~(a),
+    and that the conclusion of Part~(a) when applied to this $f$ and $g$ implies the conclusion of Part~(b).
+
+\V
+            \subsection{\small{\bf Remarks}}
+            \label{RemrkD30.05A}
+
+
+ \hspace*{\parindent}(1) The reason for the two-fold formulation of the preceding theorem is that sometimes one formulation is more convenient to use than the other.
+
+\V
+
+        (2) The title `Concatenation' of this theorem comes from the Latin word for `link' or `chain'.
+    Indeed, the process described in this theorem consists of `linking together' functions.
+
+\VV
+
+        It is clear that the `concatenation' process described above can be extended
+    to form a continuous function by linking together more than two continuous functions.
+    For simplicity we formulate this extension only for the situation given in Part~(a) of the preceding theorem;
+    it is easy to modify the extension to include the situation in Part~(b).
+
+\V
+
+            \subsection{\small{\bf Corollary}}
+            \label{CorD30.05B}
+
+    Let $I$ be an interval in ${\RR}$, and let $c_{1}$, \,{\ldots}\,$c_{n}$ be interior points of $I$
+    such that $c_{1}\,<\,c_{2}\,<\,\,{\ldots}\,\,<\,c_{n}$.
+    Suppose that for each $j \,=\, 0,1,\,{\ldots}\,n$ one is given a continuous function
+    $f_{j}:I \,{\rightarrow}\, {\RR}$ such that
+        \begin{displaymath}
+        f_{0}(c_{1}) \,=\, f_{1}(c_{1}), \,f_{1}(c_{2}) \,=\, f_{2}(c_{2}),\,{\ldots}\,
+        f_{n-1}(c_{n}) \,=\, f_{n}(c_{n})
+        \end{displaymath}
+    For each $j \,=\, 1,\,{\ldots}\,n$ let $C_{j} \,=\, f_{j-1}(c_{j})$.
+Define a function $h:I \,{\rightarrow}\, {\RR}$ as follows: when $x{\in}I$, then
+        \begin{displaymath}
+    h(x) \,=\,
+        \left\{
+        \begin{array}{ll}
+        f_{0}(x) & \mbox{if $x\,<\,c_{1}$}   \\
+        C_{1}    & \mbox{if $x \,=\, c_{1}$} \\
+        f_{1}(x) & \mbox{if $c_{1}\,<\,x\,<\,c_{2}$}   \\
+        C_{2}    & \mbox{if $x \,=\, c_{2}$} \\
+    \,{\vdots}\, &    \,{\vdots}\,           \\
+        f_{n-1}(x) & \mbox{if $c_{n-1}\,<\,x\,<\,c_{n}$}   \\
+        C_{n}    & \mbox{if $x \,=\, c_{n}$} \\
+        f_{n}(x) & \mbox{if $x\,>\,c_{n}$}
+        \end{array}
+        \right.
+        \end{displaymath}
+
+}%\EndSkip
+%-----------------
+
+%------------------
+\StartSkip{
+        The word `concatenation' in the name of the Theorem~\Ref{ThmD20.56} derives from the Latin verb `to link together' or `to `chain together'.
+    It reflects the process by which the function $h$ in the previous theorem is constructed; namely,
+    by `linking together' the functions $f$ and $g$ at the point $c$ as described in Equation~\Ref{EqnD.20}.
+    The word `concatenation' and the symbol~$\&$ are used in 
+    The next definition makes this more precise.
+
+\V
+
+            \subsection{\small{\bf Definition}}
+            \label{DefD20.58A}
+
+\hspace*{\parindent}
+        (1) Let $I$ be an interval in ${\RR}$ and let $c$ be an interior point of $I$.
+    Suppose that $f$ and $g$ are real-valued functions such that $f(x)$ is defined for all $x$ in $I$ such that $x\,<\,c$, and $g(x)$ is defined for all $x$ in $I$ such that $x\,>\,c$.
+    (The functions $f$ and $g$ are allowed to be defined at other points -- even at $c$.)
+    Then {\bf a concatenation\IndA{concatenation} in $I$ of $f$ with $g$ at $c$} is a function $h:I \,{\rightarrow}\, {\RR}$ such that if $x{\in}I$ then
+        \begin{displaymath}
+        \mbox{$h(x) \,=\, f(x)$ for $x\,<\,c$ and $h(x) \,=\, g(x)$ for $x\,>\,c$};
+        \end{displaymath}
+    the value $C \,=\, h(c)$ of $h$ at $c$ can be any real number.
+    The symbol for the specific concatenation formed this way from $f$ and $g$ and the data $(c,C)$ is $f\mbox{\&}_{(c,C)}g$.
+
+    The rule defining the concatenation $f\stackrel{(c,C)}{\&}g$ is often written as follows:
+    if $x{\in}I$, then
+        \begin{displaymath}
+        \left(f \stackrel{(c,C)}{\&}g\right) \,=\, 
+        \left\{
+        \begin{array}{cl}
+        f(x) & \mbox{if $x\,<\,c$}   \\
+          C  & \mbox{if $x \,=\, c$} \\
+        g(x) & \mbox{if $x\,>\,c$}.
+        \end{array}
+                            \right.
+        \end{displaymath}
+
+\V
+
+        (2) More generally, suppose that $c_{1}$, $c_{2}$, \,{\ldots}\,$c_{k}$ are interior points of $I$ such that
+        \begin{displaymath}
+        c_{1}\,<\,c_{2}\,<\,\,{\ldots}\,\,<\,c_{k},
+        \end{displaymath}
+	and let $C_{1}$, $C_{2}$,\,{\ldots}\,$C_{k}$ be any real numbers.
+    Suppose that $f_{1}$, $f_{2}$,\,{\ldots}\,$f_{k+1}$ are real-valued functions such that $f_{1}$ is defined at all $x$ in $I$ such that $x\,<\,c_{1}$,
+    $f_{k+1}$ is defined at all $x$ in $I$ such that $x\,>\,c_{k}$, and if $2\,\,{\leq}\,\,j\,\,{\leq}\,\,k$ then $f_{j}(x)$ is defined for all $x$ such that $c_{j-1}\,<\,x\,<\,c_{j}$.
+    (Once again, these functions may  be defined at other points as well.)
+    Then the symbol
+        \begin{displaymath}
+f_{1}\stackrel{(c_{1},C_{1})}{\&}f_{2}\stackrel{(c_{2},C_{2})}{\&}\,{\ldots}\,\stackrel{(c_{k},C_{k})}{\&}f_{k+1}:I \,{\rightarrow}\, {\RR}
+        \end{displaymath}
+    denotes the real-valued function $h:I \,{\rightarrow}\, {\RR}$ such that if $x{\in}I$ then $h(x)$ is given by the following (complicated!) rule:
+        \begin{displaymath}
+        h(x) \,=\, \left\{
+        \begin{array}{cl}
+        f_{1}(x) & \mbox{if $x\,<\,c_{1}$}             \\
+        C_{1}    & \mbox{if $x \,=\, c_{1}$}           \\
+        f_{2}(x) & \mbox{if $c_{1}\,<\,x\,<\,c_{2}$}   \\
+        C_{2}    & \mbox{if $x \,=\, c_{2}$}           \\
+        {\vdots} &        {\vdots}                     \\
+        f_{k}(x) & \mbox{if $c_{k-1}\,<\,x\,<\,c_{k}$} \\
+        C_{k}    & \mbox{if $x \,=\, c_{k}$}           \\
+        f_{k+1}(x) & \mbox{if $x\,>\,c_{k}$}        
+        \end{array}
+                                \right.
+        \end{displaymath}
+    The subintervals of $I$ of the form $\{x{\in}I:x\,<\,c_{1}\}$, $\{x{\in}I:c_{1}\,<\,x\,<\,c_{2}\}$,\,{\ldots}\,$\{x{\in}I:c_{k-1}\,<\,x\,<\,c_{k}\}$, $\{x{\in}I: x_{k}\,>\,c_{k}\}$ are called the {\bf subintervals of the concatenation}.
+    (Note that if the interval $I$ is not an open interval, then a concatenation subinterval which contains an endpoint of $I$ will also not be an open interval.)
+
+    The numbers $c_{1}$, $c_{2}$, \,{\ldots}\,$c_{k}$ are called the {\bf nodes of the concatenation},
+    and the numbers $C_{1}$, $C_{2}$,\,{\ldots}\,$C_{k}$ are the corresponding {\bf nodal values of $h$}.
+
+\V
+
+        (3) A function $h:I \,{\rightarrow}\, {\RR}$ is said to be {\bf piecewise continuous on $I$} provided $h$ can be expressed as a concatenation
+    $h \,=\, f_{1}\stackrel{(c_{1},C_{2})}{\&}f_{2}\stackrel{(c_{2},C_{2})}{\&}\,{\ldots}\,\stackrel{(c_{k},C_{k})}{\&}f_{k+1}$
+    on $I$ such that each function $f_{j}$ is continuous on the corresponding concatenation subinterval of $I$.
+
+        If, in addition, each of the functions $f_{1}$, $f_{2}$,\,{\ldots}\,$f_{k+1}$ is linear on the corresponding subinterval, then one says that $h$ is {\bf continuous piecewise linear}.
+
+\V
+
+        (4) A function $h:I \,{\rightarrow}\, {\RR}$ is said to be {\bf piecewise linear on $I$} provided $h$ can be expressed as a concatenation
+    $h \,=\, f_{1}\mbox{\&}_{(c_{1},C_{1})}f_{2}\mbox{\&}_{(c_{2},C_{2})}\,{\ldots}\,\mbox{\&}_{(c_{k},C_{k})}f_{k+1}$
+    on $I$ such that each function $f_{j}$ is linear on the corresponding concatenation subinterval of $I$.
+
+\V
+
+        (5) More generally, let ${\cal A}$ be an adjective for which it makes sense to say that a function `is ${\cal A}$' on a given interval';
+    in~(3) ${\cal A}$ is `continuous', while in~(4) ${\cal A}$ is `linear'.
+    A function $h:I \,{\rightarrow}\, {\RR}$ is said to be {\bf piecewise ${\cal A}$ on $I$} provided $h$ can be expressed as a concatenation
+    $h \,=\, f_{1}\mbox{\&}_{(c_{1},C_{1})}f_{2}\mbox{\&}_{(c_{2},C_{2})}\,{\ldots}\,\mbox{\&}_{(c_{k},C_{k})}f_{k+1}$
+    on $I$ such that each function $f_{j}$ is ${\cal A}$ on the corresponding concatenation subinterval of $I$.
+
+        Some common choices for ${\cal A}$:
+
+        \h `monotonic'; `differentiable'; `$C^{k}$'; `smooth''; the last three terms are defined later, in Chapter~\Ref{ChaptE}.
+
+
+\V
+\V
+
+            \subsection{\small{\bf Examples}}
+            \label{ExampD20.58B}
+
+\V
+
+\hspace*{\parindent}(1) Let $f$, $g$ and $h$ be the functions which appear in Theorem~\Ref{ThmD20.56}.
+    Then one can write
+        \begin{displaymath}
+        h \,=\, f\mbox{\&}_{(c,f(c))}g \,=\, f\mbox{\&}_{(c,g(c))}g.
+        \end{displaymath}
+
+\V
+
+        (2) Let $h:{\RR} \,{\rightarrow}\, {\RR}$ be the absolute value function, given by the rule $h(x) \,=\, |x|$ for all $x$ in ${\RR}$.
+    This function can be written in the form $f\mbox{\&}_{(0,0)}g$, where $g$ is the identity function and $f \,=\, -g$.
+    This function is continuous on ${\RR}$, piecewise linear and piecewise monotonic on ${\RR}$.
+    The open intervals associated with this concatenation are $(-{\infty},0)$ and $(0,+{\infty})$, and the node is~$0$.
+
+\V
+
+        (3) Let ${\cal D} \,=\, \{(x_{0},y_{0}),  (x_{2},y_{2}),\,{\ldots}\, (x_{k},y_{k})\}$ be a set of $(k+1)$ points of ${\RR}^{2}$ such that $x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{k-1}\,<\,x_{k}$;
+    think of ${\cal D}$ as a set of `data points'.
+    Then the {\bf piecewise-linear interpolating function for the data set ${\cal D}$} is the concatenation
+        \begin{displaymath}
+        F_{{\cal D}} \,=\, L_{1}\mbox{\&}_{(x_{1},y_{1})}L_{2}\mbox{\&}_{(x_{2},y_{2})}\,{\ldots}\,L_{k-1}\mbox{\&}_{(x_{k-1},y_{k-1})}L_{k}:[x_{0},x_{k}] \,{\rightarrow}\, {\RR},
+        \end{displaymath}
+    where for each $j \,=\, 1,2,\,{\ldots}\,k$ the function $L_{j}:{\RR} \,{\rightarrow}\, {\RR}$ is the linear function whose graph passes through the data points $(x_{j-1},y_{j-1})$ and $(x_{j},y_{j})$.
+    That is,
+        \begin{displaymath}
+        L_{j}(x) \,=\, \left(\frac{y_{j}-y_{j-1}}{x_{j}-x_{j-1}}\right)(x-x_{j-1}) + y_{j-1} \mbox{ for all $x$}.
+        \end{displaymath}
+    It is useful to extend the definition of $F_{{\cal D}}(x)$ to make sense for all $x$ in ${\RR}$ by setting $F_{{\cal D}}(x) \,=\, y_{0}$ if $x\,<\,x_{0}$ and $F_{{\cal D}}(x) \,=\, y_{k}$ if $x\,>\,x_{k}$.
+    This extension can also be expressed as a concatenation, namely
+        \begin{displaymath}
+        L_{0}\mbox{\&}_{(x_{0},y_{0})}\,{\ldots}\,\mbox{\&}_{(x_{k-1},y_{k-1})}L_{k}\mbox{\&}_{(x_{k},y_{k})}L_{k+1},
+        \end{displaymath}
+    where $L_{0}(x) \,=\, x_{0}$ and $L_{k+1}(x) \,=\, x_{k}$ for all $x$ in ${\RR}$.
+
+        \underline{Note} The most common use of such interpolations occurs when the data points $(x_{j},y_{j})$ form a table of values for a difficult-to-compute function $f$;
+    for example, the values $y_{j} \,=\, f(x_{j})$ may have been determined through physical experiments, and the actual `formula' for $f$ is unknown.
+    In this case one can use the values $F_{{\cal D}}(x)$ of the interpolation function $F_{{\cal D}}$
+    to approximate the (unknown) values $f(x)$ when $x$ is not equal to a node $x_{j}$.
+    Theorem~\Ref{ThmD20.56A} shows that if $f$ is continuous then the linear interpolation process can produce accurate results.
+}%\EndSkip
+%-------------------  
+
+\VV
+
+                \section{{\bf Standard Continuity Laws in ${\RR}$}}
+                \label{SectD25}\IndB{ZZ Sections}{\Ref{SectD25} Standard Continuity Laws in ${\RR}$}
+
+
+\VV
+
+
+        The next several results allow one to construct functions which are
+    continuous at a point,
+    from other such functions, using the ordinary processes of algebra. If one uses the `sequential characterization' of continuity,
+    then proving these standard continuity laws becomes a trivial exercise in applying the standard limit laws
+    for convergent sequences of real numbers from the preceding chapter; most such proofs are left to the reader.
+    Some of these results are proved here using the `${\varepsilon}\,{\delta}$' characterization,
+    mainly to illustrate how such `${\varepsilon}\,{\delta}$' proofs work.
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD20.60A}
+
+
+\hspace*{\parindent} Let $f:X \,{\rightarrow}\, {\RR}$ be a real-valued function defineed on a (nonempty) subset $X$ of ${\RR}$.
+
+\V
+
+        (a) If $f$ is continuous at a point $c$ of~$X$, then the function $|f|$ is also continuous at $c$.
+
+\V
+
+        (b) If $f$ is continuous at a point~$c$ of $X$ and $A$ is any real number, then $A{\cdot}f$ is continuous at~$c$.
+
+
+\V
+
+        (c) Suppose that $S$ is a subset of $X$ and that $c$ is a point of~$S$. Let $g \,=\, f|_{S}:S \,{\rightarrow}\, {\RR}$.
+    If $f$ is continuous at $c$, then $g$ is also continuous at~$c$. However, the converse need not be true.
+    That is, it can happen that $g$ is continuous at $c$ but $f$ is not. (Compare with Remark~\Ref{RemrkD20.50}.)
+
+\V
+
+        (d) Suppose that $X$, $S$ and $c$ are as in Part~(c), and suppose further that there is an open interval $I \,=\, (a,b)$ such that
+    $c{\in}I$ and $I \,{\subseteq}\, S$. With this extra hypothesis, the converse of the conclusion in Part~(c) {\em is} true.
+    That is, if $g \,=\, f|_{S}:S \,{\rightarrow}\, {\RR}$ is continuous at~$c$, then $f:X \,{\rightarrow}\, {\RR}$ is also continuous at~$c$.
+
+        Similarly, suppose that $X$ has a least element $a$, and suppose that there is an interval $I \,=\, [a,b)$ with $c{\in}I$ and $I \,{\subseteq}\, X$.
+    Then the converse of Part~(c) is true. Likewise, if $X$ has a maximum element $b$ and there is an interval $I \,=\, (a,b]$ such that $c{\in}I$ and $I \,{\subseteq}\, X$, then the converse of Part~(c) is true.
+
+\V
+
+        \underline{Partial Proof}
+
+\V
+
+        (a) By the definition of the function $|f|$, together with the Reverse Triangle Inequality, one has
+        \begin{displaymath}
+        |\,|f|(d) - |f|(c)\,| \,=\, |\,|f(d)|-|f(c)|\,|\,\,{\leq}\,\,|f(d)-f(c)|,
+        \end{displaymath}
+    The rest of the proof of the desired result is now left as an easy exercise.
+
+\V
+
+        (b) The case in which $A \,=\, 0$ is trivial, and is left as an exercise.
+
+        Thus, assume that $A \,\,{\neq}\,\, 0$, and let ${\varepsilon}\,>\,0$ be given.
+    The hypothesis that $f$ is continuous at~$c$ then implies that there is ${\delta}\,>\,0$ such that if $d{\in}X$ and $|d-c|\,<\,{\delta}$,
+    then $|f(d)-f(c)|\,<\,{\varepsilon}/|A|$. Multiply both sides of this inequality by $|A|$ and do the obvious simplification to get
+        \begin{displaymath}
+        |(A{\cdot}f)(d) - (A{\cdot}f)(c)| \,=\, |A|{\cdot}|f(d) - f(c)|\,<\,{\varepsilon} \mbox{ if $d{\in}X$ and $|d-c|\,<\,{\delta}$}
+        \end{displaymath}
+    The desired result follows.
+
+\V
+
+        (c) The proof that $g$ is continuous at $c$ is trivial, and is left as an exercise.
+
+        One simple example of the `converse' not holding is this: Suppose that $X \,=\, {\RR}$, $S \,=\, {\QQ}$ and $c \,=\, 0$.
+    Let $f:{\RR} \,{\rightarrow}\, {\RR}$ be the Dirichlet function, which is known to be discontinuous at every point; see Example~\Ref{ExampD20.53}~(2).
+    But by the definition of the Dirichlet function, $g \,=\, f|_{{\QQ}}:{\QQ} \,{\rightarrow}\, {\RR}$
+    is a constant function, hence continuous at each point of its domain, including at~$0$.
+
+\V
+
+        (d) Write the open interval $I$ in the form $I \,=\, (a,b)$, so that $a\,<\,c\,<\,b$.
+    Let ${\delta}_{1}\,>\,0$ be small enough that $a\,<\,c-{\delta}_{1}\,<\,c\,<\,c+{\delta}_{1}\,<\,b$.
+    Now let ${\varepsilon}\,>\,0$ be given, and let ${\delta}_{2}\,>\,0$ be small enough that if $d{\in}S$ and $|d-c|\,<\,{\delta}_{2}$,
+    then $|g(d)-g(c)|\,<\,{\varepsilon}$. Let ${\delta} \,=\, \min\,\{{\delta}_{1}, {\delta}_{2}\}$.
+    If $d$ in $X$ satisfies $|d-c|\,<\,{\delta}$, then $|d-c|\,<\,{\delta}_{1}$ and thus $d{\in}I \,{\subseteq}\, S$; in particular, $d{\in}S$.
+    It follows that $|f(d)-f(c)| \,=\, |g(d)-g(c)|$, by the definition of `restriction'.
+    Furthermore, one also has $|d-c|\,<\,{\delta}_{2}$, so $|g(d)-g(c)|\,<\,{\varepsilon}$.
+    Combine these facts to conclude that if $d{\in}X$ and $|d-c|\,<\,{\delta}$, then $|f(d)-f(c)|\,<\,{\varepsilon}$.
+    It follows that $f:X \,{\rightarrow}\, {\RR}$ is continuous at~$c$, as required.
+
+        The other statements in this part of the theorem are proved in a similar manner.
+
+
+\VV
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD20.60B}
+
+\V
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ and $g:Y \,{\rightarrow}\, {\RR}$ be real-valued functions defined on $X$ and $Y$, respectively,
+    where $X$ and $Y$ are nonempty subsets of ${\RR}$. Suppose that $Z \,=\, X\,{\cap}\,Y \,\,{\neq}\,\, {\emptyset}$,
+    and that $c$ is a point of~$Z$. Assume that $f:X \,{\rightarrow}\, {\RR}$ and $g:Y \,{\rightarrow}\, {\RR}$ are both continuous at~$c$,
+    when viewed as function diagrams $f:X \,{\rightarrow}\, {\RR}$ and $g:Y \,{\rightarrow}\, {\RR}$, resepctively. Then:
+
+\V
+
+        (a) Then $(f+g):Z \,{\rightarrow}\, {\RR}$ and $(f-g):Z \,{\rightarrow}\, {\RR}$ are both continuous at $c$.
+
+\V
+
+        (b) Likewise, the function $(f{\cdot}g):Z \,{\rightarrow}\, {\RR}$ is continuous at~$c$.
+
+\V
+
+        (c) Suppose, in addition, that $g(c) \,\,{\neq}\,\, 0$, and let $W \,=\, \{x{\in}Z: g(x) \,\,{\neq}\,\, 0\}$.
+    Then $(f/g):W \,{\rightarrow}\, {\RR}$ is continuous at $c$.
+
+\V
+
+        \underline{Partial Proof} (a) and (b): The reader is encouraged to prove these parts using the ${\varepsilon}\,{\delta}$ characterization of contiinuity.
+
+\V
+
+        (c) For simplicity, set $h \,=\, f{\cdot}g:Z \,{\rightarrow}\, {\RR}$.
+
+        \underline{Special Case} Suppose that $f(c) \,=\, 0$ and $g(c) \,=\, 0$. Then one has $h(c) \,=\, f(c)\,g(c) \,=\, 0$,
+    hence $|h(d) - h(c)| \,=\, |f(d)\,g(d)|$. Let ${\varepsilon}\,>\,0$ be given; without loss of generality one may assume that ${\varepsilon}\,<\,1$.
+    By hypothesis, $f:X \,{\rightarrow}\, {\RR}$ and $g:Y \,{\rightarrow}\, {\RR}$ are continuous at $c$.
+    It then follows from Part~(c) of the preceding theorem that their restrictions to $Z$ are continuous at $c$.
+    Now let ${\varepsilon}\,>\,0$; without loss of generality, assume that $0\,<\,{\varepsilon}\,<\,1$.
+    It follows from this continuity that there exists ${\delta}\,>\,0$ such that if $d{\in}Z$ and $|d-c|\,<\,{\delta}$,
+    then $|f(d)|\,<\,{\varepsilon}$ and $|g(d)|\,<\,{\varepsilon}$. Since, by hypothesis, $0\,<\,{\varepsilon}\,<\,1$,
+    it then follows that for such $d$ one has $|h(d)| \,=\, |f(d){\cdot}g(d)|\,<\,{\varepsilon}^{2}\,<\,{\varepsilon}$, as required.
+
+        \underline{General Case} Define $F:Z \,{\rightarrow}\, {\RR}$ and $G:Z \,{\rightarrow}\, {\RR}$
+    given by the rules $F(x) \,=\, f(x)-f(c)$ and $G(x) \,=\, g(x)-g(c)$.
+Consider  $H:Z \,{\rightarrow}\, {\RR}$
+    given by $H(x) \,=\, F(x){\cdot}G(x)$, so that $F(c) \,=\, G(c) \,=\, 0$.
+    It follows from Part~(b), together with the fact that constant functions are continuous,
+    that $F$ and $G$ satisfy the hypothesis of the special case just considered, and thus that $H$ is continuous at $c$.
+    However, one computes that for all $x$ in~$Z$ one has
+        \begin{displaymath}
+        H(x) \,=\,
+        f(x){\cdot}g(x) - f(c){\cdot}g(x) - f(x){\cdot}g(c) + f(c){\cdot}g(c);
+        \end{displaymath}
+    that is,
+        \begin{displaymath}
+        f(x)\,{\cdot}\,g(x) \,=\,
+    H(x) + f(c){\cdot}g(x) + f(x){\cdot}g(c) - f(c){\cdot}g(c).
+        \end{displaymath}
+    It follows easily by repeated use of Parts~(a) and~(b) of the present theorem, together with Part~(b) of the preceding theorem,
+    that $f{\cdot}g:Z \,{\rightarrow}\, {\RR}$ is continuous at~$c$, as claimed.
+\VV
+
+
+            \subsection{\small{\bf Examples}}
+            \label{ExampD20.65}
+
+\V
+
+\hspace*{\parindent}(1) Suppose that $f:{\RR} \,{\rightarrow}\, {\RR}$ is a polynomial function on ${\RR}$;
+    that is, there exist finitely many real numbers $c_{0}$, $c_{1}$,\,{\ldots}\,$c_{m}$ such that
+        \begin{displaymath}
+        f(x) \,=\, c_{0} + c_{1}\,x + c_{2}\,x^{2} + \,{\ldots}\,+c_{m}\,x^{m} \mbox{ for all $x$ in ${\RR}$}.
+        \end{displaymath}
+     Then $f$ is continuous on ${\RR}$.
+
+\V
+
+        (2) Suppose that $h$ is a rational function; that is, there exist polynomial functions $f$ and $g$ on ${\RR}$, with $g$ not equal to the zero polynomial, such that the domain $D$ of $h$ equals the set of all $x$ such that $g(x) \,\,{\neq}\,\, 0$, and $h(x) \,=\, f(x)/g(x)$ for all $x$ in $D$.
+    Then $h$ is continuous on $D$.
+
+\V
+
+        Both of these statements follow directly from the previous theorems, combined with Mathematical Induction. The details are left as an exercise.
+%% EXERCISE
+
+\VV
+
+        The next result says, in effect, that `continuity' behaves nicely under composition.
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD20.70}
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ be a real-valued function defined on a nonempty subset $X$ of ${\RR}$.
+    Likewise, let $g:Y \,{\rightarrow}\, {\RR}$ be such a function defined on a nonempty subset $Y$ of ${\RR}$. Assume that $f[X] \,{\subseteq}\, Y$.
+    Let $c$ and $b$ be points of $X$ and $Y$, respectively, such that $b \,=\, f(c)$. Suppose that $f$ is continuous at $c$ and that $g$ is continuous at $b$.
+    Then the composition $h \,=\, g{\circ}f$ is continuous at $c$.
+
+\V
+
+        \underline{Proof} For sake of variety let us prove this result using the `sequences characterization' of continuity.
+
+\V
+
+    Let ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$ be a sequence in $X$ such that $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c$.
+    It follows from the continuity hypothesis on $f$ that $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$.
+    Let $y_{k} \,=\, f(x_{k})$ for each $k$ in ${\NN}$, so that the previous equation can be written $\lim_{k \,{\rightarrow}\, {\infty}} y_{k} \,=\, b$.
+    (Recall that, by hypothesis, $f(c) \,=\, b$.)
+    Then, since $f[X] \,{\subseteq}\, Y$, it also follows that $y_{k}{\in}Y$ for each $k$.
+    Now the continuity hypothesis on $g$ implies that $\lim_{k \,{\rightarrow}\, {\infty}} g(y_{k}) \,=\, g(b)$.
+    Combine this with the fact that $h(x_{k}) \,=\, g(f(x_{k})) \,=\, g(y_{k}) \mbox{ for each $k$ in ${\NN}$, and } h(c) \,=\, g(f(c)) \,=\, g(b)$
+    to get $\lim_{k \,{\rightarrow}\, {\infty}} h(x_{k})  \,=\, \lim_{k \,{\rightarrow}\, {\infty}} g(y_{k}) \,=\, g(b) \,=\, h(c)$, as required.
+
+\VV
+
+
+            \subsection{\small{\bf Example}}
+            \label{ExampD20.80}
+\V
+
+        Let $f:[0,+{\infty}) \,{\rightarrow}\, {\RR}$ be the standard Square-Root Function, given by $f(x) \,=\, \sqrt{x}$ for each $x\,\,{\geq}\,\,0$.
+    In Example~\Ref{ExampD20.53}~(4) it is proved that $f$ is continuous at each point of its domain~$[0,+{\infty})$.
+    Since $f$ maps $[0,+{\infty})$ into itself, it follows that the composition $f{\circ}f:[0,+{\infty}) \,{\rightarrow}\, {\RR}$ is defined,
+    and by the preceding theorem this composition is continuous. This process can be repeated as often as one wishes.
+
+        Thus, for each $n$ in ${\NN}$ let $f_{n}:[0,+{\infty}) \,{\rightarrow}\, {\RR}$ be the function obtained by composing
+    $f$ with itself $(n-1)$~times; thus, $f_{1} \,=\, f$, $f_{2} \,=\, f{\circ}f$, $f_{2} \,=\, f{\circ}f{\circ}f$, and so on.
+    Clearly each of these functions is also continuous on~$[0,+{\infty})$. It is easy to see that for each $x\,\,{\geq}\,\,0$,
+    $f_{n}(x)$ is the $2^{n}$-th root of~$x$; that is, $\left(f_{n}(x)\right)^{2^{n}} \,=\, x$.
+    Using the `exponent' notation from high-school algebra, this can be written $f_{n}(x) \,=\, x^{1/2^{m}}$.
+    Thus the function $g(x) \,=\, x^{1/2^{m}}$ is continuous on~$[0.+{\infty})$.
+
+        Now let $m$ be any natural number, and $p_{m}:{\RR} \,{\rightarrow}\, {\RR}$ denote the `$m$-th power function' on ${\RR}$.
+    This is a polynomial function, hence continuous on~${\RR}$, so the composition
+    $h(x) \,=\, (p_{m}{\circ}f_{n})(x) \,=\, x^{m/2^{n}}$ is continuous on $[0,+{\infty})$ as well.
+    We shall see later in this chapter that the exponent $m/2^{n}$ can be replaced by any rational exponent,
+    and even later by any real number, with the result still continuous on~$[0,+{\infty})$.
+
+\VV
+
+%---------------
+\StartSkip{
+%%%
+\begin{quotation}
+{\footnotesize \underline{\Note}\IndB{\notes}{on a physical interpretation of Lemma~\Ref{LemmaD20.100}} (on a physical interpretation of Lemma~\Ref{LemmaD20.100})
+        The truth of the preceding lemma becomes `obvious' by interpreting its statement properly.
+    Indeed, think of the function $g$ as describing the motion of an object moving along the $y$-axis.
+    That is, in the equation $y \,=\, g(x)$ think of $x$ as the `time' and think of $y$ as the `position on the $y$-axis' at the time~$x$.
+    With this interpretation the quantity $s_{j}$ represents the velocity, and $|s_{j}|$ the speed, of the object during the time interval $[x_{j-1},x_{j}]$.
+    Then $g(d)-g(c)$ represents the (net) change of position of the object along the $y$-axis during the time interval $c\,\,{\leq}\,\,x\,\,{\leq}\,\,d$.
+    At no time during that time interval did the speed of the object exceed~$M$. Thus the magnitude of the change of position
+    of the object during that time interval certainly cannot exceed the magnitude of the change of position, during the same interval,
+    of a second object moving at {\em constant} speed~$M$ along the $y$-axis. That is, $|g(d)-g(c)|\,\,{\leq}\,\,M\,|d-c|$, as claimed.
+}%EndFootNoteSize
+\end{quotation}
+%##
+}%\EndSkip
+%---------------
+
+\VV
+
+        Definition~\Ref{DefD20.30} seems to require that one verify that $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$ for {\em every} sequence ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$ in $X$ which converges to $c$.
+    The next result, however, shows that one can get by with checking it only for such sequences which are {\em monotonic}.
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD20.55}
+
+\V
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ be a real-valued function whose domain is a (nonempty) subset $X$ of ${\RR}$.
+    Let $c$ be a point of $X$.
+    If $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$ for every monotonic sequence
+    ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$ in $X$ converging to $c$, then $f$ is continuous at $c$.
+
+\V
+
+        \underline{Proof} We actually prove the contrapositive of the given statement. That is:
+
+\VA
+
+        \h If $f$ is {\em not} continuous at $c$ then there exists a monotonic sequence ${{\zeta}} \,=\, (z_{1},z_{2},\,{\ldots}\,)$
+    in $X$ converging to $c$ such that the corresponding sequence  $(f(z_{1}),f(z_{2}),\,{\ldots}\,)$ does {\em not} converge to $f(c)$.
+
+\VA
+
+        Indeed, suppose that $f$ is not continuous at $c$. Then there must exist a number ${\varepsilon}_{0}\,>\,0$ with the following property:
+        \begin{displaymath}
+        \mbox{For every $k$ in ${\NN}$ there exists a number $x_{k}$ in $X$ such that ${\displaystyle |x_{k}-c|\,<\,\frac{1}{k}}$ and $|f(x_{k})-f(c)|\,\,{\geq}\,\,{\varepsilon}_{0}$} \h ({\ast})
+        \end{displaymath}
+    It is clear from~$({\ast})$ that the sequence ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,)$ converges to~$c$.
+    It then follows from Theorem~\Ref{ThmC30.15} that the sequence ${\xi}$ has a subsequence ${\zeta} \,=\, (z_{1}, z_{2},\,{\ldots}\,)$ which is monotonic.
+    The sequence ${\zeta}$ also converges to~$c$, by Part~(b) of Theorem~\Ref{ThmC20.10A}.
+    However, since $|f(x_{k}) - f(c)|\,\,{\geq}\,\,{\varepsilon}_{0}$ for all~$k$,
+    it follows that $|f(z_{j}) - f(c)|\,\,{\geq}\,\,{\varepsilon}_{0}$ for all~$j$,
+    and thus the sequence $(f(z_{1}), f(z_{2}),\,{\ldots}\,)$ does not converge to~$f(c)$. The desired result now follows.
+
+\VV
+
+
+
+        The preceding result is especially useful in determining whether a function $f$ is continuous
+    at a point $c$ in the case the formula for $f$ to the left of $c$ differs from that to the right of~$c$.
+    It leads naturally to the following generalization of the concept of `continuity'.
+
+\V
+
+            \subsection{\small{\bf Definition}}\IndBD{continuity}{one-sided continuity using sequences}
+            \label{DefD20.55A}
+
+\V
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ be a real-valued function defined on a nonempty subset $X$ of~${\RR}$, and let $c$ be a point of~$X$.
+    One says that $f$ is {\bf continuous at $\Bfm{c}$ from the left}\IndB{continuity}{continnuity from the left, from the right} provided that $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$
+    for every sequence ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ in $X$
+    which is monotonic up and converges to~$c$. Likewise, one says that $f$ is {\bf continuous at $\Bfm{c}$ from the right} provided that $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, f(c)$
+    for every sequence ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ in $X$
+    which is monotonic down and converges to~$c$. If either of these conditions holds, then one says that {\bf $\Bfm{f}$ has one-sided continuity at~$\Bfm{c}$}.
+
+
+\V
+
+        The preceding theorem can now be phrased more compactly.
+
+\V
+
+            \subsection{\small{\bf Corollary}}
+            \label{CorD20.55A}
+
+\V
+
+        A function $f:X \,{\rightarrow}\, {\RR}$ is continuous at a point $c$ of a nonempty subset $X$ of ${\RR}$ if, and only if,
+    $f$ has {\bf two-sided continuity at $\Bfm{c}$}\IndBD{continuity}{two-sided continuity};
+    that is, $f$ is continuous at $c$ both from the left and from the right.
+
+\V
+
+        The simple proof is left as an exercise.
+
+\V
+
+    It is a useful exercise to use the preceding result to redo the analysis of the piecewise-linear function studied in Example~\Ref{ExampD20.53} above.
+
+% EXERCISE `Compare with the earlier analysis. Which is easier? Which gives more information?
+
+\V
+
+        {\bf Remark} If $c \,=\, {\min}\,X$ then $f$ is automatically continuous from the left,
+    since the only monotonic-up sequence in $X$ with limit $c$ is the constant sequence $(c,c,\,{\ldots}\,c,\,{\ldots}\,)$.
+    In this situation one need only show that $f$ is continuous at $c$ from the right.
+    Likewise, if $c \,=\, \max X$, then $f$ is automatically continuous from the right at~$c$, and one need only check continuity at $c$ from the left.
+
+\VV
+
+
+                \section{{\bf Continuity Theorems on Nonempty Subsets of~${\RR}$}}
+                \label{SectD30}\IndB{ZZ Sections}{\Ref{SectD30} Continuity Theorems on Nonempty Subsets of~${\RR}$}
+
+\VV
+
+        The next theorem is always stated in elementary calculus, at least for functions defined on closed bounded intervals,
+    and is used in a variety of important ways, both practical and theoretical; but it is almost never proved there.
+    In contrast, the theorem which follows it is almost never even stated in elementary calculus.
+
+\VV
+
+
+        \subsection{\small{\bf Theorem} (The Extreme-Value Theorem in ${\RR}$)}
+            \label{ThmD30.10}\IndBD{functions}{extreme-value theorem in ${\RR}$}
+
+\V
+
+        Suppose that $f:X \,{\rightarrow}\, {\RR}$ is a real-valued function which is continuous on a closed bounded set $X$ in ${\RR}$.
+    Then the function $f$ assumes minimum and maximum values on the set~$X$. That is, there are numbers $c$ and $d$ in $X$ such that 
+    $f(c)\,\,{\leq}\,\,f(x)\,\,{\leq}\,\,f(d)$ for all $x$ in $X$.
+
+\V
+
+        {\bf Proof} Let $S$ be the image $f[X]$ of the set $X$ under the function~$f$; that is,
+        \begin{displaymath}
+        S \,=\, \{y: y \,=\, f(x) \mbox{ for at least one $x$ in the set~$X$}\}.
+        \end{displaymath}
+     It is clear that {\em if} such points $c$ and $d$ in $X$ do exist,
+    then one must have $f(c) \,=\, {\inf}\,S$ and $f(d) \,=\, {\sup}\,S$. Thus consider the quantities $m \,=\, {\inf}\,S$ and $M \,=\, {\sup}\,S$;
+    we do not assume that either of these quantities is finite.
+
+    First note that, by Theorem~\Ref{ThmC50.10}, there exists a sequence ${\zeta} \,=\, (z_{1}, z_{2},\,{\ldots}\,z_{k},\,{\ldots}\,)$
+    in the set $S$ such that $\lim_{k \,{\rightarrow}\, {\infty}} z_{k} \,=\, m$.
+    (The fact that this sequence can be chosen to be monotonic down is not needed here.)
+    The definition of the set $S$ then implies that for each index $k$ there exists at least one point $x_{k}$ in $X$ such that $f(x_{k}) \,=\, z_{k}$.
+    Of course there is no reason to expect that the sequence ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ has a limit.
+    However, the hypothesis that $X$ is bounded allows one to conclude, from the Standard Bolzano-Weierstrass Theorem for sequences,
+    that the sequence ${\xi}$ does have a subsequence ${\sigma} \,=\, (s_{1}, s_{2},\,{\ldots}\,s_{m},\,{\ldots}\,)$ which is convergent.
+    Let $c \,=\, \lim_{m \,{\rightarrow}\, {\infty}} s_{m}$. The hypothesis that $X$ is closed in~${\RR}$ then implies that $c{\in}X$.
+    Since, by hypothesis, $f$ is continuous at every point of the set~$X$, it is therefore continuous at~$c$.
+    Thus $\lim_{m \,{\rightarrow}\, {\infty}} f(s_{m}) \,=\, f(c)$. However, the sequence $(f(s_{1}), f(s_{2}),\,{\ldots}\,f(s_{m}),\,{\ldots}\,)$
+    is a subsequence of the sequence ${\zeta}$,
+    so $\lim_{m \,{\rightarrow}\, {\infty}} f(s_{m}) \,=\, \lim_{k \,{\rightarrow}\, {\infty}} z_{k} \,=\, {\inf}\,S$.
+    Combine these facts to get that ${\inf}\,S \,=\, f(c)$ with $c$ in~$X$, and thus ${\inf}\,S$, i.e., $f(c)$,
+    is an element of~$S$, hence $f(c)$ is the minimum element of~$S$. That is, $f(c)$ is the minimum value of $f$ on the set~$X$.
+
+        A similar proof works for the maximum value of $f$ on~$X$. Even simpler, just apply the preceding result for `minimum' to the function $g \,=\, -f$.
+    
+
+\V%%\\\
+
+            \subsection{\small{\bf Corollary}}
+            \label{CorD30.20}
+
+\V
+
+        Suppose that $X$ and $f:X \,{\rightarrow}\, {\RR}$ is as in the preceding theorem,
+    and that for every $x$ in $X$ one has $f(x) \,\,{\neq}\,\, 0$. Then there exists a number $m\,>\,0$ such that $|f(x)|\,\,{\geq}\,\,m$ for all $x$ in~$X$.
+
+\V
+
+        \underline{Proof} Let $h:X \,=\, {\RR}$ be defined by $h(x) \,=\, 1/|f(x)|$ for each $x$ in~$X$; note that $h(x)\,>\,0$ for every $x$ in~$I$.
+    Clearly $h$ is continuous on $I$, so the preceding theorem implies that $h$ is bounded.
+    In particular, there exists $M\,>\,0$ such that $0\,<\,h(x)\,\,{\leq}\,\,M$ for all $x$ in~$I$; that is, $0\,<\,1/|f(x)|\,\,{\leq}\,\,M$.
+    It follows that $|f(x)|\,\,{\geq}\,\,m\,>\,0$, where $m \,=\, 1/M$.
+
+\VV
+
+
+%%%
+\begin{quotation}
+{\footnotesize \underline{\Note}\IndB{\notes}{on motivating the concept of uniform continuity} (on motivating the next important concept)
+
+\V
+
+        Because of the length of this {\Note}, it seems approriate to remind you that the content of
+    a {\Note} is not needed for the logical development of the material in {\ThisText}, and no exercises are based on it.
+    Nevertheless, you are encouraged to read the {\Notes} for whatever extra insights they might provide.
+
+\VV
+
+        The next big definition, namely Definition~\Ref{DefD25.65} below, illustrates a major problem with the modern style of mathematical writing:
+    in order to present topics in a `logical' order, these topics must often be introduced without explaining
+    historically how their importance became clear to mathematicians.
+    For example, the definition in question `logically' belong in the current chapter because it involves only continuity.
+    In reality, however, it originally grew out of Cauchy's attempt to rigorously define the definite integral,
+    a topic which appears -- quite `logically' -- much later in {\ThisText}, and thus whose historical origins cannot readily be discussed at this point.
+
+        One common way out of this dilemma, certainly the easiest, and often the best, is for the textbook author to give the following advice:
+
+\VA
+
+       \h {\em `Trust me; you'll understand the true significance of the concept later on.'}
+
+\VA
+
+\noindent However, sometimes it is possible to follow a `pseudo-historical' approach to such a topic.
+    This means considering a situation which makes sense at the current point of the logical treatment and which {\em could} have motivated the desired topic,
+    but which historically did not play that role. This is the approach taken here to motivate Definition~\Ref{DefD25.65}.
+    Of course, if this approach does not provide sufficient motivation for your needs, then follow the dictates of the advice given above.
+
+\VV
+
+        {\bf Preliminary Remark} 
+
+\VV
+
+        Suppose that $f:(a,b) \,{\rightarrow}\, {\RR}$ is a continuous function whose domain is an open interval $(a,b)$, where $a$ and $b$ are finite.
+    Is it possible to `extend' $f$ to a continuous function on the closed interval $[a,b]$?
+    That is, is there a function $g:[a,b] \,{\rightarrow}\, {\RR}$ which is continuous on $[a,b]$ and whose restriction to $(a,b)$ equals~$f$?
+
+        The immediate answer is: it depends on the circumstances.
+\V
+
+        {\bf Example} Consider the following functions, each with domain the open interval $(0,1)$:
+        \begin{displaymath}
+        f_{1}(x) \,=\, x\,(1-x); \h f_{2}(x) \,=\, \frac{1}{x\,(1-x)}.
+        \end{displaymath}
+    Clearly $f_{1}$ extends to continuous $g_{1}:[0,1] \,{\rightarrow}\, {\RR}$, where $g_{1}(x) \,=\, x\,(1-x)$ for all $x$ in $[0,1]$.
+    However, $f_{2}$ cannot extend to a continuous function on $[0,1]$, since such an extension would be bounded on $[0,1]$ (by the Extreme-Value Theorem), 
+    hence its restriction to $(0,1)$ would also be bounded on $(0,1)$, while the given function $f$ is clearly {\em unbounded} on~$(0,1)$.
+
+\V
+
+        One way to analyse the issue is to predict what the values of such $g$ -- if it exists -- must be.
+    Of course the value $g(x)$ of the hoped-for extension $g$ is clear when $0\,<\,x\,<\,1$: for such $x$ one must have $g(x) \,=\, f(x)$.
+    Thus the issue becomes this: what about $g(0)$ and $g(1)$? Let us consider $g(1)$.
+
+        Let ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ be any sequence in $(0,1)$
+    such that $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, 1$. Then the only possible value for $g(1)$ is $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k})$.
+    This, in turn, would require that for every such sequence, the corresponding sequence
+    $f{\circ}{\xi} \,=\, (f(x_{1}),f(x_{2}),\,{\ldots}\,f(x_{k}),\,{\ldots}\,)$ must be convergent to some number; that is, it must be a Cauchy sequence.
+
+\VV
+
+        The issue, of extending a given continuous function $f:X \,{\rightarrow}\, {\RR}$
+    from its original domain $X$ to some superset of that domain, arises with domains that are much more complicated than simple intervals;
+    and in those more general situations the connection with Cauchy sequences is still crucial. This connection leads to the following question:
+    If ${\xi} \,=\, {(x_{1},x_{2}},\,{\ldots}\,x_{k},\,{\ldots}\,)$ is a Cauchy sequence in the set~$X$,
+    under what circumstances must the corresponding sequence $f{\circ}{\xi} \,=\, (f(x_{1}),f(x_{2}),\,{\ldots}\,f(x_{k}),\,{\ldots}\,)$
+    also be a Cauchy sequence in~${\RR}$?
+
+\V
+
+        To get a feel for the situation, it helps to consider what must hold for $f$ to {\em not} not have this property.
+    The answer is that there must exist a Cauchy sequence ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ in $X$
+    for which the corresponding sequence $f{\circ}{\xi}\,=\, (f(x_{1}),f(x_{2}),\,{\ldots}\,f(x_{k})\,{\ldots}\,)$ is not a Cauchy sequence.
+    The latter fact would imply that there must exist ${\varepsilon}_{0}\,>\,0$ such that for every $N$ in ${\NN}$, no matter how large,
+    there exists $m$ in ${\NN}$ for which $|f(x_{N+m})-f(x_{N})|\,\,{\geq}\,\,{\varepsilon}_{0}$.
+    The hypothesis that ${\xi}$ is a Cauchy sequence, however, implies that $x_{N+m}$ and $x_{N}$
+    can be made arbitrarily close to each other by simply choosing $N$ sufficiently large. Thus one can conclude that
+    in this situation, then the following condition must hold:
+
+\VA
+
+    \underline{Condition A} There exists ${\varepsilon}_{0}\,>\,0$ such that for every ${\delta}\,>\,0$, no matter how small,
+    there exist points $c$ and $d$ in $X$ such that $|d-c|\,<\,{\delta}$ but $|f(d)-f(c)|\,\,{\geq}\,\,{\varepsilon}_{0}$.
+
+\VA
+
+\hspace*{\parindent}It follows that the negation of Condition~A is {\em sufficient} to guarantee that if ${\xi}$ is Cauchy then so is~$f{\circ}{\xi}$.
+    This negation can be written as follows:
+
+\VA
+
+        \underline{Condition B} For every ${\varepsilon}\,>\,0$ there exists ${\delta}\,>\,0$
+    such that for every pair of points $c$ and $d$ in $X$ which satisfy $|d-c|\,<\,{\delta}$ one has $|f(d)-f(c)|\,<\,{\varepsilon}$.
+
+\VA
+
+        If one accepts that it is important to know about such issues, then it makes sense to give a name to Condition~B.
+    This name is given in Definition~\Ref{DefD25.65}.
+
+
+}%EndFootNoteSize
+\end{quotation}
+%##
+
+\VV
+
+
+            \subsection{\small{\bf Definition}}\IndBD{functions}{uniform continuity on a set}
+            \label{DefD25.65}
+
+\V
+
+\hspace*{\parindent}(1) Let $f:X \,{\rightarrow}\, {\RR}$ be a real-valued function whose domain is  a nonempty subset $X$ of~${\RR}$.
+    Suppose that $f$ enjoys the following property on the set~$X$:
+
+\VA
+
+    \h For every ${\varepsilon}\,>\,0$ there exists ${\delta}\,>\,0$ such that for each $c$ in $X$ if $d$ in $X$ satisfies $|d-c|\,<\,{\delta}$,
+    then $|f(d)-f(c)|\,<\,{\varepsilon}$.
+
+\VA
+
+\noindent Then one says that the function $f$ is {\bf uniformly continuous on the set~$X$}.
+
+\V
+
+        (2) More generally, suppose as above that $f:X \,{\rightarrow}\, {\RR}$ is a function with domain~$X$, and that $Y$ is a nonempty subset of~$X$.
+    One says that $f$ is {\bf uniformly continuous on the subset~$Y$} provided the restriction $f|_{Y}:Y \,{\rightarrow}\, {\RR}$, with domain~$Y$,
+    is uniformly continuous on~$Y$ in the sense of Part~(a).
+
+\VV
+
+            \subsection{\small{\bf Examples}}
+            \label{ExampD25.65A}
+
+\V
+
+        Let $f:X \,{\rightarrow}\, {\RR}$, with domain $X \,=\, {\RR}\,{\setminus}\,\{0\}$, be given by the formula $f(x) \,=\, 1/x$.
+    Note that $f$ is continuous on the set $X$; that is, for each $c \,\,{\neq}\,\, 0$ the function $f$ is continuous at~$c$.
+
+\V
+
+        (1) The function $f$ is uniformly continuous on the interval $[1,+{\infty})$.
+    Indeed, note that if $c,d\,\,{\geq}\,\,1$ then
+        \begin{displaymath}
+        |f(d) - f(c)| \,=\, \left|\frac{1}{d} - \frac{1}{c}\right| \,=\, \left|\frac{c-d}{d\,c}\right|
+    \,\,{\leq}\,\,
+        |c-d| \,=\, |d-c| \mbox{ since $|d\,c|\,\,{\geq}\,\,1$}.
+        \end{displaymath}
+    Let ${\varepsilon}\,>\,0$ be given, and let ${\delta} \,=\, {\varepsilon}$. Then the preceding inequality implies that
+    if $d$ and $c$ are in the set $[1,+{\infty})$ and satisfy $|d-c|\,<\,{\delta}$, then $|f(d)-f(c)|\,<\,{\varepsilon}$.
+
+\V
+
+        (2) More generally, let $a\,>\,0$ be any positive real number. Then $f$ is uniformly continuous on the interval $[a,+{\infty})$.
+    The simple verification is left as an exercise.
+    %% EXERCISE (Reduce it to (1).)
+
+\V
+
+        (3) The continuous function $f$ is {\em not} uniformly continuous on the subset $(0,1]$.
+    Indeed, one calculates as above that if $0\,<\,c,d\,\,{\leq}\,\,1$ then, as before,
+        \begin{displaymath}
+        |f(d) - f(c)| \,=\, \left|\frac{1}{d} - \frac{1}{c}\right| \,=\, \left|\frac{c-d}{d\,c}\right|.
+        \end{displaymath}
+    But now one has $1/(d\,c)\,\,{\geq}\,\,1/c$. Thus,
+        \begin{displaymath}
+        |f(d)-f(c)|\,\,{\geq}\,\,\frac{|d-c|}{c} \mbox{ for all $d$ in $(0,1]$}
+        \end{displaymath}
+    In particular, let $d \,=\, c/2$, so that $|d-c| \,=\, c/2$ and $|f(d)-f(c)| \,=\, |f(c/2)-f(c)| \,\,{\geq}\,\,(c/2)/c \,=\, 1/2$.
+
+        Now let ${\varepsilon} \,=\, 1/2$. There is no single ${\delta}\,>\,0$ such that $|d-c|\,<\,{\delta}$
+    implies that $|f(d)-f(c)|\,<\,1/2$ for {\em all} choices of $d$ and $c$ such that $0\,<\,d,c\,\,{\leq}\,\,1$.
+    Indeed , suppose that such ${\delta}$ did exist. Choose $c \,=\, \min\,\{1, {\delta}\}$ and choose $d \,=\, c/2$.
+    Then by the preceding analysis one would have $0\,<\,c\,\,{\leq}\,\,1$ and $0\,<\,d\,<\,1$, so that $|d-c| \,=\, c/2\,<\,{\delta}$.
+    By the (purported) construction of ${\delta}$, this would imply that $|f(c/2)-f(c)|\,<\,1/2$, contrary to what was obtained above.
+
+\V
+
+        (4) Let $g:{\RR} \,{\rightarrow}\, {\RR}$ be the `squaring function'; that is, $g(x) \,=\, x^{2}$ for all $x$ in~${\RR}$.
+    It is an instructive exercise to show that $g$ is not uniformly continuous on~$[1,+{\infty})$.
+
+\VV
+
+
+            \subsection{\small{\bf Remark}}
+            \label{RemrkD25.20}
+
+\V
+
+        The statement of the preceding definition looks very much like the formulation, in Remark~\Ref{RemrkD20.50}~(2) above,
+    of the condition for $f$ to be continuous on~$X$. Indeed, many students think the two formulations are equivalent ways of stating this condition.
+
+        In reality, they are {\em not} equivalent. It is true that being uniformly continuous on a set does imply being continuous on that set.
+    However, Example~(3) above illustrates the fact that the converse is not true.
+
+        The key to this difference in the meanings of these concepts is the location of the phrase `there exists ${\delta}\,>\,0$':
+    in the formulation of Remark~\Ref{RemrkD20.50}, this phrase comes after the phrase
+    `for every ${\varepsilon}\,>\,0$ {\em and} after the phrase `for every~$c$'. This means that the choice of ${\delta}$ depends on
+    the previous choices of both ${\varepsilon}$ and~$c$. In the current definition, however,
+    the phrase `there exists ${\delta}\,>\,0$' comes after the phrase `for every ${\varepsilon}\,>\,0$' but {\em before} the phrase `for every~$c$'.
+    This means that, given a choice of ${\varepsilon}$ one needs a choice ${\delta}$,
+    still depending on~${\varepsilon}$, but one which works {\em simultanously} for all~$c$; that is,
+    given the choice of ${\varepsilon}$, it requires that a `uniform' choice of ${\delta}$ can be made which works for all~$c$.
+    This is why the word `uniform' is included.
+
+\VV
+
+        For future reference it is worth writing down more formally a fact which is alluded to in the preceding remark; its trivial proof is omitted.
+
+\V
+
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD25.65C}
+
+\V
+
+        If $f:X \,{\rightarrow}\, {\RR}$ is uniformly continuous on~$X$, then $f$ is continuous on~$X$.
+    Otherwise stated: Uniform continuity on a set implies continuity on that set.
+
+\VV
+
+%%%
+\begin{quotation}
+{\footnotesize \underline{\Note}\IndB{\notes}{on students' confusion over Theorem~\Ref{ThmD25.65C}} (on students' confusion over Theorem~\Ref{ThmD25.65C})
+        Some students get confused over the fact that Theorem~\Ref{ThmD25.65C} needs to be stated at all, much less proved.
+    They reason, in effect, that the hypothesis `$f$ is uniformlly continuous' {\em means} that $f$ is continuous
+    -- so it is pointless to even state this conclusion -- but continuous in a special way, namely `uniformly'.
+    From this point of view it is not even necessary to know the meaning of `continuous' to agree that the conclusion is correct.
+    In the context of ordinary language, it is similar to saying `The flower is bright pink';
+    one does not need to then assert `Therefore the flower is pink', and one need not even know what `bright' or `pink' means,
+    just their grammatical roles as adverb and adjective.
+
+    The cause of the confusion, however, is that mathematical usage is often technical, and does not follow the usage of ordinary language.
+    For example, the phrase `uniformly continuous' has the same grammatical  {\em format} as the phrase `bright pink': an adverb modifying an adjective.
+    However, the former phrase is defined technically, as a single unit, by Definition~\Ref{DefD25.65},
+    and not as the grammatical juxtaposition of an adverb (uniformly) and an adjective (continuous), each with their own previously defined meaning.
+
+        One encounters similar confusion in elementary calculus; a good example appears there in the treatment of `infinite series'.
+    (If you are not familiar with this topic, simply skip this paragraph.)
+    Indeed, one learns to distinguish between a series which is `absolutely convergent' and a series which is `conditionally convergent'.
+    In the former case one proves a theorem which says that an absolutely convergent series is convergent;
+    this leads calculus students to the same grammatical type of confusion as was just discussed concerning `uniformly continuous'.
+    In contrast, one does {\em not} prove that a conditionally convergent series is convergent,
+    because the very {\em definition} of `conditionally convergent' includes the hypothesis that the series in question is convergent.
+    That is, the phrase `conditionally convergent' {\em does} refer to a series which is convergent, but convergent in a special way.
+    (What actually confuses students here instead is why the adverb `conditionally' is chosen to describe this special type of convergence.)
+}%EndFootNoteSize
+\end{quotation}
+%##
+
+\VV
+
+            \subsection{\small{\bf Theorem} (The Uniform-Continuity Theorem in ${\RR}$)}\IndBD{continuity}{uniform-continuity theorem in ${\RR}$}
+            \label{ThmD25.70}
+
+\V
+
+        Suppose that $f:X \,{\rightarrow}\, {\infty}$ is a continuous real-valued function on a nonempty closed and bounded subset $X$ of ${\RR}$.
+    Then $f$ is uniformly continuous on~$X$.
+
+\V
+
+        {\bf Proof} Suppose that the statement is {\em not} true for some $f$ and $X$ satisfying the hypotheses.
+    Then there exists ${\varepsilon}_{0}\,>\,0$ such that for every ${\delta}\,>\,0$ there exist $c$ and $d$ in $X$
+    with the property that $|d-c|\,<\,{\delta}$ but $|f(d)-f(c)|\,\,{\geq}\,\,{\varepsilon}_{0}$;
+    of course both $c$ and~$d$ depend on~${\delta}$. In particular, for each $k$ in ${\NN}$ let ${\delta}_{k} \,=\, 1/k$.
+    Then there must exist $c_{k}$ and $d_{k}$ in $X$ such that
+        \begin{displaymath}
+        |d_{k}-c_{k}|\,<\,1/k \mbox{ but }|f(d_{k})-f(c_{k})|\,\,{\geq}\,\,{\varepsilon}_{0} \h ({\ast})
+        \end{displaymath}
+    Since $X$ is bounded, the standard Bolzano-Weierstrass Theorem implies that the sequence
+    ${\psi} \,=\, (c_{1},c_{2},\,{\ldots}\,c_{k},\,{\ldots}\,)$ must have a subsequence
+    $(c_{k_{1}}, c_{k_{2}},\,{\ldots}\,c_{k_{m}},\,{\ldots}\,)$ which converges to some point $p$, which must be in~$X$ by the hypothesis that $X$ is closed.
+    Since $|d_{k_{m}}-c_{k_{m}}|\,<\,1/k_{m}$ for each $m$, it follows easily from the Squeeze Theorem
+    for real sequences that the sequence $(d_{k_{1}}, d_{k_{2}},\,{\ldots}\,d_{k_{m}},\,{\ldots}\,)$ also converges to~$p$.
+    It now follows from the continuity that $\lim_{m \,{\rightarrow}\, {\infty}} f(d_{k_{m}}) \,=\, \lim_{m \,{\rightarrow}\, {\infty}} f(c_{k_{m}}) \,=\, f(p)$.
+    However, this contradicts Statement~$({\ast})$ above, so the desired result follows.
+
+\VV
+
+        {\bf Remark} Many texts attribute the first treatment of `Uniform Continuity' and the `Uniform Continuity Theorem in~${\RR}$'
+    to the German mathematician E.~Heine around~$1871$, and refer to Theorem~\Ref{ThmD25.70} as `Heine's Theorem'.
+    At various times, however, other names have been associated with these results, including Cantor, Borel, Schoenflies, Cousin and~Lebesgue.
+
+        Historians now seem to agree that the concept and theorem were first clearly presented by Dirichlet in his lecture notes from around $1854$.
+    (These lecture notes were first published, however, only in~$1904$, so the confusion is understandable.)
+    The name `Uniform Continuity Theorem', given above to Theorem~\Ref{ThmD25.70}, is not used uniformly in analysis (no pun intended),
+    but it does have the advantage of being more descriptive than, say, the `Dirichlet-Heine-Cantor-Borel-Schoenflies-Cousin Theorem'.
+
+\VV
+
+        Most of the applications of the Uniform Continuity Theorem appear later in {\ThisText}, but here is a simple one.
+
+
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD25.80}
+
+\V
+
+        Suppose that $f:X \,{\rightarrow}\, {\RR}$ is a uniformly continuous function on a nonempty subset $X$ of~${\RR}$.
+
+\V
+
+
+        (a) If ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ is a Cauchy sequence in $X$,
+    then $f{\circ}{\xi} \,=\, (f(x_{1}), f(x_{2}),\,{\ldots}\,f(x_{k}),\,{\ldots}\,)$ is a Cauchy sequence in~${\RR}$.
+
+\V
+
+        (b) Suppose that ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$
+    and ${\tau} \,=\, (t_{1}, t_{2}, \,{\ldots}\,t_{k},\,{\ldots}\,)$ are Cauchy sequences in $X$ which both converge to the same number~$L$ in~${\RR}$.
+    Then the corresponding sequences $f{\circ}{\xi}$ and $f{\circ}{\tau}$ of values both converge to the same value.
+
+\V
+
+        {\bf Proof}\, (a) Let ${\varepsilon}\,>\,0$ be given, and let ${\delta}\,>\,0$
+    be small enough that if $c$ and $d$ are in $X$ such that $|d-c|\,<\,{\delta}$, then $|f(d)-f(c)|\,<\,{\varepsilon}$.
+    (Such ${\delta}$ exists by the hypothesis of uniform continuity.) Next, let $N$ in ${\NN}$
+    be large enough that $|x_{N+m} - x_{N}|\,<\,{\delta}$ for all $m$ in ${\NN}$. (Such $N$ exists by the `Cauchy' hypothesis.)
+    Combining all this then yields $|f(x_{N+m})-f(x_{N})|\,<\,{\varepsilon}$ for all $m$ in~${\NN}$. It follows that $(f{\circ}{\xi})$ is a Cauchy sequence,
+    as required.
+
+\V
+
+        (b) It is given that ${\xi}$ and ${\tau}$ both converge to the number~$L$.
+    Let ${\sigma} \,=\, (s_{1}, s_{2},\,{\ldots}\,s_{m}, \,{\ldots}\,)$ be the sequence $(x_{1}, t_{1}, x_{2},t_{2},\,{\ldots}\,)$.
+    That is, $s_{2\,k-1} \,=\, x_{k}$ and $s_{2\,k} \,=\, t_{k}$ for each index~$k$.
+    It follows from the Odd/Even Limit Theorem (see Theorem~\Ref{ThmC20.90}) that the sequence ${\sigma}$ is also convergent to~$L$,
+    and thus, by the Cauchy Convergence Theorem, Theorem~\Ref{ThmC70.20}, ${\sigma}$ is a Cauchy sequence.
+    By Part~(a) of the present theorem it then follows that $f{\circ}{\sigma}$ is a Cauchy sequence, and thus is convergent.
+    By Theorem~\Ref{ThmC20.10A} it then follows that the subsequences $f{\circ}{\xi}$
+    and~$f{\circ}{\tau}$ of $f{\circ}{\sigma}$ also converge to the same limit, as required.
+
+\VV
+
+                \section{{\bf Continuity Theorems on Intervals in ${\RR}$}}
+                \label{SectD40}\IndB{ZZ Sections}{\Ref{SectD40} Continuity Theorems on Intervals in ${\RR}$}
+
+\V
+
+        {\bf Preliminary Remark} In elementary calculus one considers, almost exclusively, real-valued functions defined on intervals in~${\RR}$.
+    This contrasts with the situations considered so far in this chapter, in which the domains can be arbitrary nonempty subsets of ${\RR}$.
+    The present section focuses on theorems which make sense only for functions defined on real intervals.
+
+\VV
+
+
+            \subsection{\small{\bf Theorem} (The Intermediate-Value Theorem -- Standard Form)}
+            \label{ThmD25.30}\IndBD{functions}{intermediate-value theorem -- standard form}
+
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is a continuous function on a closed bounded interval $[a,b]$ in~${\RR}$, and $f(a) \,\,{\neq}\,\, f(b)$.
+    Then for every number $y_{0}$ strictly between $f(a)$ and $f(b)$ there exists at least one number $x_{0}$, with $a\,<\,x_{0}\,<\,b$,
+    such that $f(x_{0}) \,=\, y_{0}$.
+
+        Otherwise stated: If a number $y_{0}$ is \underline{intermediate} between $f(a)$ and $f(b)$,
+    then $y_{0}$ is a \underline{value} of $f$ on the interval~$[a,b]$. (This explains the name of the theorem.)
+
+\V
+        {\bf Proof} Without loss of generality assume that $f(a)\,<\,f(b)$, and define a bisection sequence
+    ${\cal A} \,=\, ([a_{1},b_{1}], [a_{2},b_{2}],\,{\ldots}\,[a_{k},b_{k}],\,{\ldots}\,)$, 
+    with initial interval $[a_{1},b_{1}] \,=\, [a,b]$, as follows:
+
+\VA
+
+        \h \underline{Step 1}\, Let $c_{1}$ be the midpoint of the interval $[a,b] \,=\, [a_{1},b_{1}]$.
+    If $f(c_{1})\,\,{\leq}\,\,y_{0}$, then set $a_{2} \,=\, c_{1}$ and $b_{2} \,=\, b_{1}$;
+    if, instead, $f(c_{1})\,>\,y_{0}$, then set $a_{2} \,=\, a_{1}$ and $b_{2} \,=\, c_{1}$.
+    In either case, one has $f(a_{2})\,<\,f(b_{2})$.
+
+        \h \underline{General Step}\,Suppose that $[a_{1},b_{1}]$,\,{\ldots}\, $[a_{m},b_{m}]$, with $m\,\,{\geq}\,\,2$,
+    have been constructed so that for each $j \,=\, 1,\,{\ldots}\,m-1$ the interval
+    $[a_{j+1},b_{j+1}]$ is one of the halves of the interval $[a_{j}, b_{j}]$ and one has $f(a_{m})\,<\,f(b_{m})$.
+    Now let $c_{m}$ be the midpoint of $[a_{m},b_{m}]$, and define $a_{m+1} \,=\, c_{m}$ and $b_{m+1} \,=\, b_{m}$ if $f(c_{m})\,\,{\leq}\,\,y_{0}$,
+    while $a_{m+1} \,=\, a_{m}$ and $b_{m+1} \,=\, c_{m}$ if $f(c_{m})\,>\,y_{0}$.
+
+\VA
+
+\noindent The resulting bisection sequence
+    $[a_{1},b_{1}] \,{\supseteq}\, [a_{2},b_{2}] \,{\supseteq}\, \,{\ldots}\, \,{\supseteq}\, [a_{m},b_{m}] \,{\supseteq}\, $
+    then satisfies the condition $f(a_{m})\,\,{\leq}\,\,y_{0}\,<\,b_{m}$ for each index~$m$.
+    The Bisection Principle then implies that $\lim_{m \,{\rightarrow}\, {\infty}} a_{m} \,=\, \lim_{m \,{\rightarrow}\, {\infty}} b_{m} \,=\, c$,
+    where $c$ is the unique number which lies in each of the intervals of the bisection principle.
+    It follows that $\lim_{m \,{\rightarrow}\, {\infty}} f(a_{m}) \,=\, f(c) \,=\, \lim_{m \,{\rightarrow}\, {\infty}} f(b_{m})$.
+    Since $f(x_{m})\,\,{\leq}\,\,y_{0}\,\,{\leq}\,\,f(b_{m})$ for all~$m$, it follows that $f(c)\,\,{\leq}\,\,y_{0}\,\,{\leq}\,\,f(c)$;
+    that is, $f(c) \,=\, y_{0}$, and the desired result follows.
+
+\V
+
+        {\bf Remark} The proof given here is in essence the same as the proofs of Bolzano and Cauchy; see [BOLZANO~1817] and [CAUCHY~1821].
+
+\V
+
+        {\bf Example} If $f(x) \,=\, x^{2}$ and $y_{0} \,=\, 2$, then the procedure described above
+    is essentially the same as that used to compute $\sqrt{2}$ in Example~\Ref{ExampB25.90}.
+
+\VV
+
+
+            \subsection{\small{\bf Corollary} (Intermediate-Value Theorem, Extended Form)}\IndBD{functions}{intermediate-value theorem, extended form}
+            \label{CorD25.40}
+
+\V
+
+        Suppose that $f:I \,{\rightarrow}\, {\RR}$ is a continuous real-valued function defined on an interval $I$ in ${\RR}$;
+    the interval $I$ need not be bounded or closed. Let $S \,=\, f[I]$ be the image of $I$ under $f$.
+
+\V
+        Let $A \,=\, {\inf}\,S$ and $B \,=\, {\sup}\,S$. If $y_{0}$ is any number such that $A\,<\,y_{0}\,<\,B$,
+    then there exists a number $x_{0}$ in $I$ such that $f(x_{0} \,=\, y_{0})$.
+
+        Equivalently, the image $f[I]$ of $f$ on $I$ is either a singleton set (if $f$ is constant on~$I$), or an interval (if $f$ is nonconstant on~$I$).
+
+\V
+
+        {\bf Proof} If $A \,=\, B$, so that $f$ is constant on~$I$, then $I$ is the singleton $\{A\}$.
+    In this case the hypothesis $A\,<\,y_{0}\,<\,B$ is never satisfied, so the conclusion is automatically true.
+    Thus, suppose, instead, that $A\,<\,B$, so that $f$ is not constant on~$I$. Let $y_{0}$ be such that $A\,<\,y_{0}\,<\,B$.
+    It follows from the approximation properties for infima and suprema that there exist numbers $c$ and $d$
+    in $I$ such that $A\,<\,c\,<\,y_{0}\,<\,d\,<\,B$. Since $c$ and $d$ are in $I$, it follows that
+    there exist numbers $a$ and $b$ in $I$ such that $c \,=\, f(a)$ and $d \,=\, f(b)$. Since $c \,\,{\neq}\,\, d$ it follows,
+    from the basic definition of `function' that $a \,\,{\neq}\,\, b$. It now follows from the preceding theorem that
+    there exists $x_{0}$ between $a$ and $b$, so that $x_{0}$ is an element of the interval~$I$, such that $f(x_{0}) \,=\, y_{0}$, as required.
+
+        The fact that $f[I]$ is either a singleton set or an interval now follows easily.
+    
+
+\VV
+
+        The property described in the previous results is given a name.
+
+\V
+
+            \subsection{\small{\bf Definition}}
+            \label{DefD25.50A}
+
+\V
+
+        Let $f:I \,{\rightarrow}\, {\RR}$ be a real-valued function whose domain is an interval~$I$.
+
+\V
+
+        (1) One says that $f$ has the {\bf weak intermediate-value property on~$I$}\IndBD{functions}{intermediate-value property, weak}
+    provided that if $a$ and $b$ are any numbers in $I$ such that $f(a) \,\,{\neq}\,\, f(b)$,
+    then for each number $y_{0}$ strictly between $f(a)$ and $f(b)$ there exists $x_{0}$ in $I$ such that $f(x_{0}) \,=\, y_{0}$.
+
+\V
+
+        (2) One says that $f$ has the {\bf strong intermediate-value property on~$I$}\IndBD{functions}{intermediate-value property, strong}
+    provided that if $a$ and $b$ are any numbers in $I$ such that $f(a) \,\,{\neq}\,\, f(b)$,
+    then for each number $y_{0}$ strictly between $f(a)$ and $f(b)$ there exists $x_{0}$, strictly between $a$ and $b$, such that $f(x_{0}) \,=\, y_{0}$.
+
+\VV
+
+        {\bf Remarks}(1) To say that $f:I \,{\rightarrow}\, {\RR}$ has the weak intermediate-value property on an interval~$I$
+    is equivalent to saying that the image set $f[I]$ is either a singleton set (if $f$ is constant on~$I$), or else $f[I]$ is is an interval in~${\RR}$.
+    Likewise, to say that $f:I \,{\rightarrow}\, {\RR}$ has the strong intermediate-value property on~$I$
+    is equivalent to saying that for each pair of numbers $a$ and $b$ in $I$ with $a\,<\,b$
+    the image of $[a,b]$ under $f$ is either a singleton or an interval.
+
+\V
+
+        (2) It is clear that if a function has the strong intermediate-value property on an interval,
+    then it certainly also has the weak intermediate-value property on that interval.
+
+\VV
+
+        {\bf Examples} (1) The Intermediate-Value Theorem implies that every function
+    which is continuous on an interval $I$ has the strong intermediate-value property on~$I$.
+
+\V
+
+        (2) Consider the function $f:[0,1] \,{\rightarrow}\, {\RR}$ given by the rule
+        \begin{displaymath}
+        f(x) \,=\, x \mbox{ if $0\,<\,x\,<\,1$};\, f(0) \,=\, 1,\,f(1) \,=\, 0.
+        \end{displaymath}
+    It is easy to verify that this function has the weak intermediate-value property on the interval~$[0,1]$, but not the strong.
+
+\VV
+
+
+        As late as the mid-nineteenth century many mathematicians believed that if a function had the strong intermediate-value property on an interval,
+    then it must be continuous on that interval. In $1875$ the French mathematician G.~Darboux gave an example of a function
+    $f:[0,1] \,{\rightarrow}\, {\RR}$ which has the strong intermediate-value property on~$[0,1]$ but is discontinuous at~$0$.
+    Much later the English mathematician J.~Conway gave an example of a function $g:[0,1] \,{\rightarrow}\, {\RR}$ which also has the strong intermediate-value property but is discontinuous at every point of~$[0,1]$.
+
+        The next definition and theorem suggest that such examples must be fairly complicated.
+
+\V
+
+            \subsection{\small{\bf Definition}}
+            \label{DefD25.50B}
+
+\V
+
+        A function $f:[a,b] \,{\rightarrow}\, {\RR}$ defined on a closed bounded interval $[a,b]$ is said to be
+    {\bf piecewise monotonic on~$[a,b]$}\IndBD{functions}{piecewise monotonic on an interval} provided either
+
+\VA
+
+        \h (i)\,$f$ is monotonic on~$[a,b]$; or
+
+        \h (ii) there exists a partition $a \,=\, x_{0}\,<\,x_{1}\,<\,x_{2}\,<\,\,{\ldots}\,\,<\,x_{n} \,=\, b$ of $[a,b]$
+    such that $f$ is monotonic on each closed subinterval of the form $[x_{j-1},x_{j}]$ for $j \,=\, 1,2,\,{\ldots}\,n$.
+
+\VA
+
+\noindent Roughly speaking, $f$ can be `patched together' with finitely many monotonic functions.
+    It is allowed that some of these functions be monotonic up, while the others are monotonic down.
+
+\V
+
+        {\bf Remark} Note that Example~(2) above is {\em not} piecewise monotonic on~$[0,1]$.
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD25.55A}
+
+\V
+
+        Let $I \,=\, [a,b]$ be a closed bounded interval in~${\RR}$.
+
+\V
+
+        (a) Suppose that $f:I \,{\rightarrow}\, {\RR}$ is a monotonic function on the interval~$I$.
+    Then $f$ is continuous on $I$ if, and only if, it has the weak intermediate-value property on~$I$.
+    The result remains true if `weak' is replaced by `strong'.
+
+\V
+
+        (b) Suppose that $g:I \,{\rightarrow}\, {\RR}$ is a function such that, for each $a$ and $b$ in $I$ with $a\,<\,b$,
+    $g$ is piecewise monotonic on $[a,b]$. Then $g$ is continuous on~$I$ if, and only if, it has the strong intermediate-value property on~$I$.
+
+\V
+
+        The simple proof is left as an exercise. %% EXERCISE
+
+\V
+
+        {\bf Example} For each $n$ in ${\NN}$ let $P_{n}$ be the ordered pair ${\displaystyle \left(\frac{1}{n}, (-1)^{n-1}\right)}$.
+    Thus, $P_{1} \,=\, (1,1)$, $P_{2} \,=\, (1/2,-1)$, and so on; speaking geometrically,
+    if $n$ is odd then $P_{n}$ is the point in the Euclidean plane with abscissa $1/n$ and ordinate~$1$,
+    while if $n$ is even then $P_{n}$ is the point with abscissa $1/n$ and ordinate~$-1$.
+
+        Let $I \,=\, (0,1]$, and define a function $g:I \,{\rightarrow}\, {\RR}$ as follows:
+    if $0\,<\,x\,\,{\leq}\,\,1$, let $n$ be the largest natural number such that ${\displaystyle \frac{1}{n+1}\,<\,x\,\,{\leq}\,\,\frac{1}{n}}$.
+    Then set $g(x)$ equal to the value of the linear function which interpolates the points $P_{n+1}$ and $P_{n}$.
+    It is easy to see that if $0\,<\,a\,<\,b\,\,{\leq}\,\,1$, then the function $g$ is continuous, and thus has the strong intermediate-value property, 
+    on~$[a,b]$. It follows from the preceding theorem that $g$ is also continuous on~$I$, and thus has the strong intermediate-value property on~$I$.
+    Now let $f:[0,1] \,{\rightarrow}\, {\RR}$ be given by $f(x) \,=\, g(x)$ if $0\,<\,x\,\,{\leq}\,\,1$, and $f(0) \,=\, 0$.
+    It is easy to see that $f$ also has the strong intermediate-value property on~$[0,1]$, but is {\em not} continuous at~$0$.
+
+\V
+
+        {\bf Remarks} (1) The preceding example is a simplified version of Darboux's original example.
+
+\V
+
+        (2) For those whose French pronunciation is weak: the `boux' in `Darboux' is pronounced like the English word `boo'.
+
+\VV
+
+
+        There are several other important results which hold for continuous monotonic functions.
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD25.55B}
+
+\V
+
+\hspace*{\parindent}(a) Suppose that $f:I \,{\rightarrow}\, {\RR}$ is a function which is continuous on an interval~$I$ which has at least one endpoint.
+    Let $J$ be the set of interior points of~$I$. If the restriction of $f$ to $J$ is monotonic on~$J$, then $f$ is monotonic on~$I$.
+
+\V
+
+        (b) If the word `monotonic' in Part~(a) is replaced throughout by the phrase `strictly monotonic', the resulting statement remain true.
+
+\V
+
+        {\bf Proof}\, The simple proof using the preceding theorem is left as an exercise. %% EXERCISE
+
+\VV
+
+
+        If the function $f:I \,{\rightarrow}\, {\RR}$ is known to be both continuous {\em and} strictly monotonic, then even more can be proved.
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD25.55C}
+
+\V
+
+        Suppose that $f:I \,{\rightarrow}\, {\RR}$ is a continuous strictly monotonic function whose domain is an interval $I$.
+    Let $J \,=\, f[I]$ be the image of $f$; note that the `strictly monotonic' hypothesis implies that $f$ is a bijection of $I$ onto~$J$,
+    so by Part~(b) of the preceding corollary the image set $J$ is some type of interval in~${\RR}$. Then:
+
+\V
+
+        (a) The intervals $I$ and $J$ contain the same number of endpoints as each other.
+    That is, they both contain two endpoints, or both contain one endpoint, or both contain no endpoints.
+
+\V
+
+        (b) The function $f$ is a bijection of $I$ onto $J$, and the inverse function $f^{-1}:J \,{\rightarrow}\, I$ is continuous on $J$.
+
+\V
+
+        \underline{Proof} 
+
+\V
+
+        For brevity consider only the case in which $I$ is an open interval $(a,b)$ and $f$ is strictly increasing.
+    Only small changes of the argument, which are left as exercises, are need to handle the other cases.
+
+\V
+
+        (a)\,Let $A \,=\, {\inf}\,\{f(x): a\,<\,x\,<\,b\}$, and let $B \,=\, {\sup}\,\{f(x): a\,<\,x\,<\,b\}$.
+    Then $J$ is the open interval $(A,B)$. Indeed, Part~(b) of Corollary~\Ref{CorD25.40}
+    implies that the open interval $(A,B)$ is a subset of $J$, and that the only way these intervals can not be equal is if $J$ contains either $A$ or~$B$.
+    However, it is impossible to have $A$ be in the set $J$. Indeed, if this were to happen,
+    then $A$ would equal $f(x)$ for some $x$ such that $a\,<\,x\,<\,b$. Let $x'$ be a number such that $a\,<\,x'\,<\,x$, so that $x'$ is also in~$I$.
+    Then the strict monotonicity would imply that $f(x')\,<\,f(x) \,=\, A$, which would contradict $A$ being a lower bound for the values of~$f$.
+    Similarly, it is impossible for $B$ to be in~$J$, so $J \,=\, (A,B)$, as claimed.
+
+\V
+
+        (b) Since $f:(a,b) \,{\rightarrow}\, (A,B)$ is a bijection, it follows that the inverse function $f^{-1}:(A,B) \,{\rightarrow}\, (a,b)$ exists.
+    It is clear that $g$ is strictly increasing on $(A,B)$, and its image is the interval~$(a,b)$.
+    It then follows from Part~(a) of Theorem~\Ref{ThmD25.55A}, appied to the function~$g$, that $g$ is continuous on $(A,B)$, as claimed.
+
+\VV
+
+%-------------
+\StartSkip{
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD25.55D}
+
+\V
+
+        Suppose that $f:I \,{\rightarrow}\, {\RR}$ is a continuous function on an interval~$I$, and $f$ is one-to-one on~$I$.
+    Then $f$ is strictly monotonic in~$I$.
+}%\EndSkip
+%----------------- GIVE AS AN EXERCISE
+
+
+            \subsection{\small{\bf Examples}}
+            \label{ExampD30.110}
+
+\V
+
+\hspace*{\parindent}(1) Let $n$ be a natural number, and let $f:(0,+{\infty}) \,{\rightarrow}\, {\RR}$
+    be the function, with domain $(0,{\infty})$, given by the rule $f(x) \,=\, x^{n}$.
+    Clearly $f$ is continuous and strictly increasing on $(0,+{\infty})$, and its inverse function
+    $g:(0,+{\infty}) \,{\rightarrow}\, (0,+{\infty})$ is the corresponding `positive $n$-th root' function:
+        \begin{displaymath}
+        g(x) \,=\, \sqrt[n]{x} \mbox{ for $0\,<\,x\,<\,+{\infty}$}.
+        \end{displaymath}
+    It follows from the preceding theorem that this function is continuous on $(0,+{\infty})$.
+
+\V
+
+        (2) More generally,  suppose that $r \,=\, m/n$ is a rational number, with $m$ and $n$ in ${\ZZ}$ and $n\,\,{\geq}\,\,1$.
+    Define the function $h:(0,+{\infty}) \,{\rightarrow}\, {\RR}$ by the rule
+        \begin{displaymath}
+        h(x) \,=\, x^{r} \,=\, (\sqrt[n]{x})^{m} \mbox{ for $0\,<\,x\,<\,+{\infty}$}.
+        \end{displaymath}
+    It is clear that is also continuous. Indeed, it is the composition of the `$m$-th power' function with the function discussed in Example~(1).
+
+        {\bf Remark} It is a simple exercise to show that if the rational number $r$ is expressed in a second way in the form $r \,=\, m'/n'$,
+    with $m'$ and $n'$ in ${\ZZ}$ and $n'\,\,{\geq}\,\,1$, then the resulting value of $h(x)$ is the same, at least for $0\,<\,x\,<\,+{\infty}$.
+    %% EXERCISE
+
+\VV
+
+        The next result is almost never included in a course in elementary calculus; but we see in Chapter~\Ref{ChaptE} that it is useful in that context.
+
+\VV
+
+            \subsection{\small{\bf Theorem} (The Piecewise-Linear Interpolation Theorem)}\IndBD{functions}{piecewise-linear interpolation}
+            \label{ThmD25.60}
+\V
+
+        Suppose that $f:[a,b] \,{\rightarrow}\, {\RR}$ is a real-valued function which is continuous on the closed bounded interval~$[a,b]$.
+    Let ${\varepsilon}\,>\,0$ be given. Then there exists a continuous piecewise-linear function
+    $g:{\RR} \,{\rightarrow}\, {\RR}$ on ${\RR}$ such that $|f(x)-g(x)|\,<\,{\varepsilon}$ for every $x$ in~$[a,b]$.
+
+\V
+
+        {\bf Proof} Let $a \,=\, x_{0}\,<\,x_{1}\,<\,\,{\ldots}\,\,<\,x_{k-1}\,<\,x_{k} \,=\, b$ be any partition of the interval~$[a,b]$ into $k$ subintervals; see Definition~\Ref{DefB20.130}.
+    Let $g:{\RR} \,{\rightarrow}\, {\RR}$ be the continuous piecewise-linear function such that $g(x_{j}) \,=\, f(x_{j})$ for each $j \,=\, 0,1,2,\,{\ldots}\,k$; see Example~\Ref{ExampD20.53}~(6).
+    If $x$ is any element of the interval $[a,b]$ we need to relate the quantity of interest, namely $|f(x)-g(x)|$, to the given information about $f$ and $g$.
+
+        First note that there exists an index $j$ such that $x_{j-1}\,\,{\leq}\,\,x\,\,{\leq}\,\,x_{j}$.
+    In this interval one knows the formula for $g(x)$, given in Example~\Ref{ExampA30.25}~(6).
+    Furthermore, the fact that $f$ is continuous on the closed bounded set $[a,b]$, hence {\em uniformly} continuous there,
+    implies that one can make $|f(u)-f(x_{j-1})|$ as small as one needs for each $u$ in $[x_{j-1},x_{j}]$ by having $|x_{j}-x_{j-1}|$ sufficently small.
+    The connection between this data can be obtained, once again, by a clever use of the `Add-and-Subtract Trick', combined with the Triangle Inequality.
+    More precisely, if $x_{j-1}\,\,{\leq}\,\,x\,\,{\leq}\,\,x_{j}$, then one has
+        \begin{displaymath}
+        f(x) - g(x) \,=\, (f(x) - f(x_{j-1})) + (f(x_{j-1}) - g(x))
+     \,=\, 
+        (f(x) - f(x_{j-1})) - \left(\frac{f(x_{j}) - f(x_{j-1})}{x_{j} - x_{j-1}}\right)\,(x - x_{j-1}).
+        \end{displaymath}
+    (Note that this calculation uses the formula for linear interpolation between two points,
+    together with the fact that $g(x_{i}) \,=\, f(x_{i})$ for each~$i \,=\, 0,1,\,{\ldots}\,k$.)
+   Thus
+        \begin{displaymath}
+        |f(x) - g(x)| \,\,{\leq}\,\,
+        |f(x) - f(x_{j-1})| + \left|\frac{f(x_{j}) - f(x_{j-1})}{x_{j} - x_{j-1}}\right|\,|x - x_{j-1}|\,\,{\leq}\,\,|f(x) - f(x_{j-1})| + |f(x_{j})-f(x_{j-1})| \h ({\ast})
+        \end{displaymath}
+    since $|x-x_{j-1}|\,\,{\leq}\,\,|x_{j}-x_{j-1}|$.
+
+\V
+
+        Now let ${\varepsilon}\,>\,0$ be given. Let ${\delta}\,>\,0$ be small enough that if $c$ and $d$ are any points of $[a,b]$ such that
+    $|d-c|\,<\,{\delta}$, then $|f(d)-f(c)|\,<\,{\varepsilon}/2$; such ${\delta}$ exists because $f$ is uniformly continuous on~$[a,b]$.
+    Choose the partition points $x_{j}$ so that $|x_{j}-x_{j-1}|\,<\,{\delta}$ for each~$j$;
+    for example, choose $k$ large enough that $|b-a|/k\,<\,{\delta}$, and for that $k$ set ${\displaystyle x_{j} \,=\, a + j\,\left(\frac{b-a}{k}\right)}$.
+    It then follows from Inequality~$({\ast})$  above that if $x{\in}[a,b]$, then, as required,
+        \begin{displaymath}
+        |f(x)-g(x)|\,<\,\frac{{\varepsilon}}{2} + \frac{{\varepsilon}}{2} \,=\, {\varepsilon}.
+        \end{displaymath}
+%--------------
+
+\VV
+
+                 \section{{\bf Limits and Continuity as in Elementary Calculus}}
+                \label{SectD50}\IndB{ZZ Sections}{\Ref{SectD50} Limits and Continuity as in Elementary Calculus}
+
+\VV
+
+        As has been mentioned in the Introduction to this chapter, the way the topics of `limits' and `continuity'
+    are treated in elementary calculus is somewhat different from the approach taken in more advanced analysis books.
+    It is important to know both approaches, especially for the following chapter.
+
+\VV
+
+
+            \subsection{\small{\bf Definition}}
+            \label{DefD50.10}\IndBD{functions}{limits of functions defined on intervals}\IndC{functions}{limits of functions defined on intervals}{one-sided limits}\IndC{functions}{limits of functions defined on intervals}{two-sided limits}
+
+\V
+
+        Let $c$ and $L$ be extended real numbers.
+
+\V
+
+        (1) Suppose that $f$ is a real-valued function which is defined on some open interval of the form $(a,c)$, where $-{\infty}\,\,{\leq}\,\,a\,<\,c\,\,{\leq}\,\,+{\infty}$.
+    One says that {\bf $\Bfm{f}$ has left-hand limit $\Bfm{L}$ at $\Bfm{c}$} provided that for every strictly increasing sequence
+    ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ of reals such that $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c$
+    one has $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, L$. Then one writes $L \,=\, \lim_{x \,{\rightarrow}\, c-} f(x)$
+    or $\lim_{x \,{\nearrow}\, c} f(x) \,=\, L$; in spoken form, `$f(x)$ approaches $L$ as $x$ approaches $c$ from below',
+    or `$f(x)$ approaches $L$ as $x$ approaches $c$ from the left'.
+
+\V
+
+        (2) Suppose, instead, that $f$ is a real-valued function which is defined on some open interval of the form $(c,b)$, where $-{\infty}\,\,{\leq}\,\,c\,<\,b\,\,{\leq}\,\,+{\infty}$.
+    One says that {\bf $\Bfm{f}$ has right-hand limit $\Bfm{L}$ at $\Bfm{c}$} provided that for every strictly decreasing sequence
+    ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ of reals such that $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c$
+    one has $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, L$. Then one writes $L \,=\, \lim_{x \,{\rightarrow}\, c+} f(x)$
+    or $\lim_{x \,{\searrow}\, c} f(x) \,=\, L$; in spoken form, `$f(x)$ approaches $L$ as $x$ approaches $c$ from above',
+    or `$f(x)$ approaches $L$ as $x$ approaches $c$ from the right'.
+
+\V
+
+    (3) Finally, suppose that $c$ is finite and that $f$ is defined on open intervals of the form $(a,c)$ and $(c,b)$, where $-{\infty}\,\,{\leq}\,\,a\,<\,c\,<\,b\,\,{\leq}\,\,+{\infty}$.
+    If both of the equations $\lim_{x  \,{\rightarrow}\, c-} f(x) \,=\, L$ and $\lim_{x \,{\rightarrow}\, c+} \,=\, L$ are true, as described above,
+    then one says that {\bf $\Bfm{f}$ has two-sided limit~$\Bfm{L}$ at~$\Bfm{c}$}, or, more simply,
+    that {\bf $\Bfm{f}$ has limit~$\Bfm{L}$ at~$\Bfm{c}$}, and one writes $L \,=\, \lim_{x \,{\rightarrow}\, c} f(x)$.
+
+\V
+
+
+        \underline{Special Cases} If $c$ is the supremum of the domain of $f$, so that the expression $\lim_{x \,{\rightarrow}\, c+} f(x)$ makes no sense,
+    then one often abbreviates the equation $\lim_{x \,{\rightarrow}\, c-} f(x) \,=\, L$ to $\lim_{x \,{\rightarrow}\, c} f(x) \,=\, L$.
+    Likewise, if $c$ is the infimum of the domain of~$f$, then one often abbreviates the equation
+    $\lim_{x \,{\rightarrow}\, c+} f(x) \,=\, L$ to $\lim_{x \,{\rightarrow}\, c} f(x) \,=\, L$.
+    In particular, these conventions hold if $c \,=\, \,{\pm}\, {\infty}$. These `abuses of notation' generally cause no problems.
+
+\VV
+
+            \subsection{\small{\bf Remarks}}
+            \label{RemrkD50.20}
+
+\V
+
+\hspace*{\parindent}(1) We often write $f(c-)$ for the quantity $\lim_{x \,{\rightarrow}\, c-} f(x)$ provided both $c$ and this limit are finite.
+    Likewise, we often write $f(c+)$ for the quantity $\lim_{x \,{\rightarrow}\, c+}$ provided both $c$ and this second limit are finite.
+    Of course, using either expression does not require that $f$ b defined at~$c$.
+
+\V
+
+        (2) In Part~(1) of the preceding definition we do not require that the open interval  $(a,c)$ be the full domain of $f$ or that $x_{k}$ be in $(a,c)$ for each index~$k$;
+    it suffices that this hold for all but a finite number of the indices. In effect,
+    we are using the `Extended Definition' of limits given in Definition~\Ref{DefC10.40}. A similar comment holds for Part~(2).
+
+\V
+
+        (3) In Part (1) of the preceding definition it is required that $f$ be defined on {\em some} open interval of the form $(a,c)$.
+    Of course if that is true, then $f$ is also defined on any open interval of the form $(a',c)$, where $a\,\,{\leq}\,\,a'\,<\,c$.
+    It may also happen that $f$ is defined on an interval $(a'',c)$ where $a''\,<\,a$.
+    It is clear from the preceding remark, however, combined with Part~(b) of Theorem~\Ref{ThmD20.60A},
+    that neither the existence of the purported limit $L$, nor its value, depends on the particular choice of this open interval.
+    A similar comment holds for the open interval $(c,b)$ in Part~(2) of the definition.
+
+\V
+
+        (4) If $L$ is finite, then one often expresses the equation $\lim_{x \,{\rightarrow}\, c-} f(x) \,=\, L$
+    as something like `the function $f$ {\bf converges} to $L$ from the left'. Similar remarks hold for the equations
+    $\lim_{x \,{\rightarrow}\, c+} f(x) \,=\, L$ and $\lim_{x \,{\rightarrow}\, c} f(x) \,=\, L$ when $L$ is finite.
+    This practice agrees with the usage with sequences, for which one uses the word `converge' only when the limiting value is finite.
+
+\VV
+
+        The restriction to strictly monotonic sequences in the preceding definition is mainly to aid the intuition dealing with one-sides limits.
+    The following variation is often used in place of Parts~(1) and~(2).
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD50.25}
+
+\V
+
+        Let $c$ and $L$ be extended real numbers.
+
+\V
+
+        (a) Suppose that $f$ is a real-valued function defined on some open interval of the form $(a,c)$.
+    A necessary and sufficient condition that the equation $L \,=\, \lim_{x \,{\rightarrow}\, c-} f(x)$ hold, in the sense of the preceding definition,
+    is that for every sequence ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ of reals such that
+    $x_{k}\,<\,c$ for each $k$ and  $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c$ one has $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, L$.
+
+\V
+
+        (b) Suppose, instead, that $f$ is a real-valued function which is defined on some open interval of the form $(c,b)$.
+    A necessary and sufficient condition that the equation $L \,=\, \lim_{x \,{\rightarrow}\, c+} f(x)$ hold, in the sense of the preceding definition,
+    is that for every sequence ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ of reals such that
+    $x_{k}\,>\,c$ for each $k$ and  $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c$ one has $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, L$.
+
+\V
+
+        (c) Finally, suppose that $c$ is finite $f$ is a real-valued function defined on some open interval containing~$c$, except possibly at~$c$ itself.
+    A necessary and sufficient condition that the equation $L \,=\, \lim_{x \,{\rightarrow}\, c} f(x)$ hold, in the sense of the preceding definition,
+    is that for every sequence ${\xi} \,=\, (x_{1}, x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ of reals such that for each~$k$
+    $x_{k} \,\,{\neq}\,\, c$ and  $\lim_{k \,{\rightarrow}\, {\infty}} x_{k} \,=\, c$ one has $\lim_{k \,{\rightarrow}\, {\infty}} f(x_{k}) \,=\, L$.
+
+\V
+
+        The proof is left as an exercise.
+
+\VV
+
+        In elementary calculus the `limit' concept is normally formulated without the uses of sequences. The next result summarizes that approach.
+
+\V
+
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD50.30}
+
+\V
+
+\hspace*{\parindent}(a) The equation $\lim_{x \,{\rightarrow}\, c-} f(x) \,=\, L$ in Part~(a)
+    of the preceding definition is equivalent to the following pair of statements being true:
+
+\VA
+
+        \h \underline{Statement A--}\,For each real number $y$ such that $y\,<\,L$, there exists a number $a$, with $a\,<\,c$,
+    such that $y\,<\,f(x)$ for all $x$ such that $a\,<\,x\,<\,c$.
+
+        \h \underline{Staement B--}\, For each real number $z$ such that $L\,<\,z$, there exists a number~$a$, with $a\,<\,c$,
+    such that $f(x)\,<\,z$ for all $x$ such that $a\,<\,x\,<\,c$.
+
+\V
+
+        (b) The equation $\lim_{x \,{\rightarrow}\, c+} f(x) \,=\, L$ in Part~(b)
+    of the preceding definition is equivalent to the following pair of statements being true:
+
+\VA
+
+        \h \underline{Statement A+}\,For each real number $y$ such that $y\,<\,L$, there exists a number $b$, with $c\,<\,b$,
+    such that $y\,<\,f(x)$ for all $x$ such that $c\,<\,x\,<\,a$.
+
+        \h \underline{Statement B+} For each real number $z$ such that $L\,<\,z$, there exists a number~$b$, with $c\,<\,b$,
+    such that $f(x)\,<\,z$ for all $x$ such that $c\,<\,x\,<\,b$.
+
+\V
+
+        The simple proof is left as a simple application of Theorem~\Ref{ThmC40.80}. %% EXERCISE
+
+\V
+
+
+            \subsection{\small{\bf Remarks}}
+            \label{RemrkD50.35}
+
+\V
+
+\hspace*{\parindent}(1) The phrasing of this theorem is slightly complex because it includes all the possibilities for the extended reals $c$ and~$L$:
+    $c$ can be finite or one of the infinities, as can~$L$. Definition~\Ref{DefD50.10}
+    hides these complexities under the previously defined concept of a sequence of real numbers having a (possibly infinite) limit; see Theorem~\Ref{ThmC40.80}.
+
+\V
+
+        (2) If $L$ is an upper bound for the image of $f$, then Statements~B-- and~B+ are automatically true.
+    Likewise, if $L$ is a lower bound for the image of $f$, then Statements~A-- and~A+ are automatically true.
+    (Compare with Remark~\Ref{RemrkC40.80A}.)
+
+\V
+
+        (3) In elementary calculus the normal procedure is to formulate the meaning of the two-sided limit
+    `$\lim_{x \,{\rightarrow}\, c} f(x) \,=\, L$' directly, without first defining one-sided limits.
+
+\V
+
+        (4) Let ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,x_{k},\,{\ldots}\,)$ be a sequence of real numbers.
+    Recall that in the `official' definition of `sequence', ${\xi}$ is actually a real-valued function with domain~${\NN}$;
+    with that viewpoint, $x_{k}$ is simply an alternate notation for the function value ${\xi}(k)$.
+    The limit of ${\xi}$, if it has one, then can be written as $\lim_{k \,{\rightarrow}\, {\infty}} {\xi}(k)$.
+
+        Suppose now that for some strange reason we decide to label the terms of this sequence using the letter $x$ instead of the letter~$k$,
+    and to use the English letter $f$ instead of the Greek letter ${\xi}$ as the `name' of this sequence.
+    Then the notation for the sequential limit just written would change to $\lim_{x \,{\rightarrow}\, {\infty}} f(x)$.
+
+        Would this change of notation be legal? Absolutely yes. Would it be wise? Absolutely no, because it would be confusing to the reader:
+    the latter notation looks like that introduced in Definition~\Ref{DefD50.10} above.
+    In {\ThisText} we shall try to make it clear which version of `limit' is meant; in particular, we shall avoid such `unwise' changes of notation.
+
+\V
+
+            \subsection{\small{\bf Corollary}}
+            \label{CorD50.40}
+
+
+\V
+
+        Let $c$ and $L$ be real (i.e., finite) numbers.
+
+\V
+
+        (a) The equation $\lim_{x \,{\rightarrow}\, c-} f(x) \,=\, L$ in Part~(a) of Definition~\Ref{DefD50.10}
+    is equivalent to the following condition: for every ${\varepsilon}\,>\,0$ there is ${\delta}\,>\,0$ such that if $c-{\delta}\,<\,x\,<\,c$,
+    then $|f(x)-L|\,<\,{\varepsilon}$.
+
+\V
+
+        (b) The equation $\lim_{x \,{\rightarrow}\, c+} f(x) \,=\, L$ in Part~(b) of Definition~\Ref{DefD50.10}
+    is equivalent to the following condition: for every ${\varepsilon}\,>\,0$ there is ${\delta}\,>\,0$ such that if $c\,<\,x\,<\,c+{\delta}$,
+    then $|f(x)-L|\,<\,{\varepsilon}$.
+
+\V
+
+        The simple proof is left as an exercise. %% EXERCISE
+
+\V
+
+        {\bf Remark} Note that in this formulation one still does not require that the function $f$ be defined at the point~$c$.
+    Indeed, the requirements on $x$ include $x\,<\,c$ in Part~(a) and $x\,>\,c$ in Part~(b).
+
+\VV
+
+
+        The fact that we have already proved numerous results about limits of sequences
+    makes it much easier to prove analogous results for limits of functions on intervals.
+    The next three theorems illustrate this statement. In order to simplify the exposition,
+    these results focus on `two-sided' limits, which is the case that arises most frequently in practice;
+    the reader is given the task to formulate the corresponding `one-sided' results, as well as to prove most portions of these results.
+    That is, we consider limits of the form $\lim_{x \,{\rightarrow}\, c} f(x)$, where $c$ is finite,
+    and the real-valued function $f$ is defined at every point of some open interval $(a,b)$ containing $c$ except, possibly, at $c$ itself.
+    For convenience, write $X_{c} \,=\, (a,b)\,{\setminus}\,\{c\}$, so that $f$ is defined on~$X_{c}$.
+
+\V
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmC90.50}
+
+        Let $f:X_{c} \,{\rightarrow}\, {\RR}$ be as above.
+
+\V
+
+        (a) If the function $f$ has a limit at $c$, then this limit is unique.
+    That is, if the statements ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x) \,=\, L_{1}}$ and ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x) \,=\, L_{2}}$ are both true, then $L_{1} \,=\, L_{2}$.
+
+\V
+
+        (b) If there is a real number $A$ such that $f(x) \,=\, A$ for all $x$ in $X_{c}$, then ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x)} \,=\, A$.
+
+\V
+
+        (c) Suppose that there exist real numbers $m$ and $M$, with $m\,<\,M$, such that $f(x){\in}[m,M]$ for all $x$ in the set $X_{c}$.
+    If $f$ has a limit at $c$, then ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x)}$ is also in the set $[m,M]$.
+
+\V
+
+        (d) (Squeeze Property for Limits on Intervals) Let $f$, $g$ and $h$ be real-valued functions defined on the set $X_{c}$,
+    and let $L$ be an extended real number. Suppose that the following conditions hold:
+
+        \h (i) $g(x){\in}\mbox{Seg}\,[f(x),h(x)]$ for all $x$ in $X_{c}$.
+
+        \h (ii) ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x)
+     \,=\, \lim_{x \,{\rightarrow}\, c} h(x) \,=\, L}$.
+
+    Then ${\displaystyle \lim_{x \,{\rightarrow}\, c} g(x) \,=\, L}$.
+
+\V
+
+        (e) Suppose that the quantity $L$ is a real number (i.e., $L$ is finite).
+    Then the following statements are equivalent:
+
+        \h (i)\,\, ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x) \,=\, L}$;
+
+        \h (ii)\, ${\displaystyle \lim_{x \,{\rightarrow}\, c} |L-f(x)| \,=\, 0}$;
+
+        \h (iii) ${\displaystyle \lim_{x \,{\rightarrow}\, c} (L-f(x)) \,=\, 0}$.
+
+\V
+
+        (f) Suppose that ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x) \,=\, 0}$.
+    If $g$ is real-valued function which is bounded on the set $X_{c}$, then ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x){\cdot}g(x) \,=\, 0}$.
+
+\VV
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmC90.60}
+
+\V
+
+        Using the same notation as above, let $f:X_{c} \,{\rightarrow}\, {\RR}$ be a real-valued function defined on the set $X_{c} \,=\, (a,b)\,{\setminus}\,\{c\}$.
+
+\V
+
+        (a) (Constant Factor Rule) Suppose that ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x) \,=\, L}$ for some real number $L$.
+    Then for every real number $A$ one has ${\displaystyle \lim_{x \,{\rightarrow}\, c} (A{\cdot}f)(x) \,=\, A{\cdot}L}$.
+
+\V
+
+        (b) (Absolute-value Rule) Suppose that ${\displaystyle \lim_{x \,{\rightarrow}\, c}} f(x) \,=\, L$, where $L$ is an extended real number.
+    Then ${\displaystyle \lim_{x \,{\rightarrow}\, c}} |f(x)| \,=\, |L|$.
+
+\V
+
+        (c) Suppose that ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x) \,=\, L}$,
+    where $L$ is an extended real number. Also, assume that $L \,\,{\neq}\,\, 0$.
+    Then there exists ${\delta}\,>\,0$ such that if $0\,<\,|c-x|\,\,{\leq}\,\,{\delta}$ then $f(x) \,\,{\neq}\,\, 0$.
+
+        More precisely:
+
+        \underline{Case (i)} If $L\,>\,0$ and $m$ is any number such that $0\,<\,m\,<\,L$, then there exists ${\delta}\,>\,0$ so that $f(x)\,\,{\geq}\,\,m$ for all $x$ such that $0\,<\,|x-c|\,\,{\leq}\,\,{\delta}$.
+
+        \underline{Case (ii)} If $L\,<\,0$ and $m\,>\,0$ is any number such that $L\,<\,-m\,<\,0$, then there exists ${\delta}\,>\,0$ so that $f(x)\,\,{\leq}\,\,-m$ for all $x$ such that $0\,<\,|x-c|\,\,{\leq}\,\,{\delta}$.
+
+\V
+
+        \underline{Proof of Case~(i) of Part~(c)} Suppose that $L\,>\,0$ and that the conclusion in~(c) is {\em not} true for a given $f$.
+    Then there would have to exist a number $m$, with $0\,<\,m\,<\,L$, such that the following holds:
+    for every $k$ in ${\NN}$ there exists a number $x_{k}$ in the set $X_{c}$ such that $0\,<\,|c-x_{k}|\,<\,1/k$ and $f(x_{k})\,<\,m$.
+    Let ${\xi} \,=\, (x_{1},x_{2},\,{\ldots}\,)$ be the corresponding infinite sequence.
+    Since, by construction, one has $|c-x_{k}|\,<\,1/k$, it is clear that the sequence ${\xi}$ converges to $c$.
+    Since $x_{k}$ is never equal to~$c$, it follows that ${\xi}$ does not have a constant subsequence.
+    Theorem~\Ref{ThmC30.15}, the `Monotonic-Subsequences Theorem', implies that ${\xi}$ has a strictly monotonic subsequence
+    ${\zeta} \,=\, (z_{1},z_{2},\,{\ldots}\,z_{n},\,{\ldots}\,)$ which converges to~$c$.
+    It follows from Definition~\Ref{DefD50.10} that $\lim_{n \,{\rightarrow}\, {\infty}} f(z_{m})\,=\,L$.
+    However, one also has, by construction, $f(x_{k})\,<\,m$ for each $k$, hence $f(z_{n})\,<\,m$ for each~$n$.
+    Thus by Part~(c) of Theorem~\Ref{ThmC20.10B} one also has $L\,\,{\leq}\,\,m$, which contradicts the hypothesis that $0\,<\,m\,<\,L$.
+
+\VV
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmC90.70}
+
+        Using the same notation as above, let $f$ and $g$ be real-valued functions defined on the set $X_{c} \,=\, (a,b)\,{\setminus}\,\{c\}$.
+    Assume that ${\displaystyle \lim_{x \,{\rightarrow}\, c} f(x) \,=\, A}$ and ${\displaystyle \lim_{x \,{\rightarrow}\, c} g(x) \,=\, B}$,
+    where $A$ and $B$ are real numbers. Then:
+
+\V
+        (a) (Sum/Difference Rules)\IndBD{functions}{sum and difference limit rules for functions on intervals}
+    ${\displaystyle \lim_{x \,{\rightarrow}\, c} (f(x)+g(x)) \,=\, A+B}$ and ${\displaystyle \lim_{x \,{\rightarrow}\, c} (f(x)-g(x)) \,=\, A-B}$.
+
+\V
+
+        (c) (Product Rule)\IndBD{functions}{product limit rule for functions on intervals}
+    ${\displaystyle \lim_{x \,{\rightarrow}\, c} (f(x){\cdot}g(x)) \,=\, A{\cdot}B}$.
+
+\V
+
+        (d) (Quotient Rule)\IndBD{functions}{quotient limit rule for functions on intervals}
+    Suppose that, in addition, $g(x) \,\,{\neq}\,\, 0$ when $x{\in}X_{c}$, and that $B \,\,{\neq}\,\, 0$.
+    Then ${\displaystyle \lim_{x \,{\rightarrow}\, c} (f(x)/g(x)) \,=\, A/B}$.
+
+    Note: The requirement that $g(x) \,\,{\neq}\,\, 0$ when $x \,\,{\neq}\,\, c$ is included just to simplify the statement of the result.
+    In light of Part~(c) of Theorem~\Ref{ThmC90.60}, however, it is clear that this condition can be dropped since $B \,\,{\neq}\,\, 0$.
+
+\VV
+
+
+            \subsection{\small{\bf Remark}}
+            \label{RemrkC90.80}
+
+        The preceding result provides `Sum, `Difference', `Product' and `Quotient' rules for limits of functions on intervals.
+    It is natural to ask about a correponding `Composition' rule for limits of such functions.
+    The obvious statement would be something like this:
+
+        `If ${\displaystyle \lim_{x \,{\rightarrow}\, c}} f(x) \,=\, b$ and ${\displaystyle \lim_{y \,{\rightarrow}\, b} g(y) \,=\, L}$, then
+    ${\displaystyle \lim_{x \,{\rightarrow}\, c} g(f(x)) \,=\, L}$.'
+
+\noindent Intuitively, this equation seems quite plausible:  As $y$ gets close to $b$, $g(y)$ gets close to $L$,
+    and as $x$ gets close to $a$, the quantity $y \,=\, f(x)$ gets close to $b$;
+    thus combining these facts seems to imply the `law' stated above.
+
+    Unfortunately, this `law' is \underline{not} true in general. The underlying reason is the fact that
+    in the expression $\lim_{y \,{\rightarrow}\, b} g(y)$ the value of $g$ at $b$ -- or even whether $g$ is defined at $b$ -- is irrelevent.
+
+\V
+
+        \underline{Example}: Suppose that $f(x) \,=\, 1$ for all $x$ in ${\RR}$.
+    Likewise, suppose that $g:{\RR} \,{\rightarrow}\, {\RR}$ is given by the rule that $g(y) \,=\, 4$ if $y \,\,{\neq}\,\, 1$, but $g(1) \,=\, 0$.
+    It is clear that
+        \begin{displaymath}
+        \lim_{x \,{\rightarrow}\, 0} f(x) \,=\, 1 \mbox{ and } 
+        \lim_{y \,{\rightarrow}\, 1} g(y) \,=\, 4
+        \end{displaymath}
+    However, $g(f(x)) \,=\, g(1) \,=\, 0$ for all $x$, so that ${\displaystyle \lim_{x \,{\rightarrow}\, 0} g(f(x))} \,=\, 0$, not $4$ as the `law' would have predicted.
+
+\VV
+
+        There are also analogs for `limits on intervals' of the Monotonic-Sequences Principle (i.e., Part~(a) of Theorem~\Ref{ThmC20.10B}).
+    Of necessity, these analogs involve one-sided limits.
+
+\V
+
+            \subsection{\small{\bf Theorem (Limits for Monotonic Functions)}}
+            \label{ThmC90.90}
+\V
+
+        Let $(a,b)$ be an open interval in ${\RR}$, so that $-{\infty}\,\,{\leq}\,\,a\,<\,b\,\,{\leq}\,\,+{\infty}$.
+
+\V
+
+       (a) Suppose that a function $f:(a,b) \,{\rightarrow}\, {\RR}$ is monotonic up on $(a,b)$. Then the one-sided limits $\lim_{x{\nearrow}b} f(x)$ and $\lim_{x{\searrow}a} f(x)$ both exist.
+    More precisely,
+        \begin{displaymath}
+        (i)\,\,\lim_{x{\nearrow}b} f(x) \,=\, {\sup}\,\{f(x): a\,<\,x\,<\,b\}
+    \mbox{ and }
+        (ii)\,\lim_{x{\searrow}a} f(x) \,=\, {\inf}\,\{f(x): a\,<\,x\,<\,b\} \h
+        ({\ast})
+        \end{displaymath}
+    In particular, 
+        \begin{displaymath}
+        \lim_{x{\searrow}a} f(x)\,\,{\leq}\,\,f(u)\,\,{\leq}\,\,\lim_{x{\nearrow}b} f(x) \mbox{ for all $u$ in $(a,b)$}.
+        \end{displaymath}
+
+\V
+
+        (b) Suppose, instead, that the function $f:(a,b) \,{\rightarrow}\, {\RR}$ is monotonic down on $(a,b)$.
+    Then the one-sided limits $\lim_{x{\nearrow}b} f(x)$ and $\lim_{x{\searrow}a} f(x)$ both exist.
+    More precisely,
+        \begin{displaymath}
+        (i)\,\,\lim_{x{\nearrow}b} f(x) \,=\, {\inf}\,\{f(x): a\,<\,x\,<\,b\}
+    \mbox{ and }
+        (ii)\,\lim_{x{\searrow}a} f(x) \,=\, {\sup}\,\{f(x): a\,<\,x\,<\,b\} \h
+        ({\ast}{\ast})
+        \end{displaymath}
+    In particular, 
+        \begin{displaymath}
+        \lim_{x{\searrow}a} f(x)\,\,{\geq}\,\,f(u)\,\,{\geq}\,\,\lim_{x{\nearrow}b} f(x) \mbox{ for all $u$ in $(a,b)$}.
+        \end{displaymath}
+
+    
+
+\V
+
+        \underline{Partial Proof} We prove here only Equation~(i) of~$({\ast})$ in Part~(a). The rest of the proof is quite similar and is left as an exercise.
+    % EXERCISE
+
+\V
+
+        Let $L \,=\, {\sup}\,\{f(x): a\,<\,x\,<\,b\}$. It suffices to show that Statement~A+ of Part~(b) of Theorem~\Ref{ThmD50.30} holds;
+    indeed, by Remark~\Ref{RemrkD50.35}~(2), Statement~B+ of that theorem is true automatically since $L$ is an upper bound of the image of~$f$.
+    Thus, let $y$ be a number such that $y\,<\,L$. By the Approximation Property for Suprema, there exists $u$ in $(a,b)$ such that $y\,<\,f(u)\,\,{\leq}\,\,L$.
+    Since $f$ is monotonic up, it follows that if $u\,<\,x\,<\,b$ then $f(u)\,\,{\leq}\,\,f(x)\,\,{\leq}\,\,L$.
+    That is, Statement~A+ of Part~(b) of Theorem~\Ref{ThmD50.30} holds, and the desired result follows.
+
+\VV
+
+        {\bf Continuity in Elementary Calculus} The definition of `continuity' used in elementary calculus follows the approach to `limits' studied here.
+    
+\V
+
+            \subsection{\small{\bf Definition} (Continuity as Defined in Elementary Calculus)}
+            \label{DefD50.50}\IndBD{continuity}{one-sided, two-sided continuity as in calculus}
+
+\V
+
+\hspace*{\parindent}(a) A real-valued function $f$ is said to {\bf continuous from the left at a number $\Bfm{c}$ in the sense of calculus}
+     provided that the following conditions hold:
+
+\VA
+
+        \h (i)\,\, The function $f$ is defined at $c$;
+
+        \h (ii)\, The limit $\lim_{x \,{\rightarrow}\, c-} f(x)$ exists;
+
+        \h (iii) $\lim_{x \,{\rightarrow}\, c-} f(x) \,=\, f(c)$.
+
+\VA
+
+        (b) If, instead Conditions (i), (ii) and (iii) hold if one replaces $c-$ by $c+$ throughout,
+    then one says that {\bf continuous from the right at $\Bfm{c}$ in the sense of calculus}.
+
+\V
+
+        (c) If $f$ is continuous both from the left and from the right at~$c$, then one says that {\bf $\Bfm{f}$ is continuous at~$\Bfm{c}$}.
+
+\V
+
+        {\bf Remarks} (1) Recall that in {\ThisText} the symbols $f(c-)$ and $f(c+)$ are allowed only when the corresponding one-sided limits are finite;
+    see Remark~\Ref{RemrkD50.20}~(1).
+
+\V
+
+        (2)\,In Part (a) of the current definition the use of the left-hand limit $f(c-)$ in (ii)
+    tacitly assumes that $f$ is defined on some open interval of the form $(a,c)$. Also, our convention
+    Likewise, in Part~(b) there is the tacit assumption that $f$ is defined on an open interval of the form $(c,b)$.
+    Finally, in Part~(c) there is the tacit assumption that $f$ is defined at every point of an open interval of the form $(a,b)$ such that $a\,<\,c\,<\,b$,
+    with the possible exception of $c$ itself. The hypothesis that $f$ is actually defined at $c$ is treated separately by assuming Condition~(i).
+
+\VV
+
+        It is easy to see that the preceding definition agrees with Definition~\Ref{DefD20.30} in the case $X$ is an interval.
+    Thus the general results about continuity obtained earlier in this chapter are valid in this context as well.
+
+\VV
+
+        In Part~(a) of the preceding definition, if Conditions (i) and~(ii) hold,
+    then the quantity $f(c) - f(c-)$ measures the extent to which Condition~(iii) holds -- or fails to hold:
+    $f$ is continuous from the left at~$c$ if, and only if, this difference is~$0$.
+    A similar comment holds for right-hand limits: $f$ is continuous from the right at $c$ if, and only if, $f(c+)-f(c) \,=\, 0$.
+    These quantities are given names.
+
+\VV
+
+            \subsection{\small{\bf Definition} (Jump Discontinuities)}
+            \label{DefD50.55}\IndBD{continuity}{jump discontinuities}
+
+\V
+
+\hspace*{\parindent}(1) Suppose that a function $f$ is defined at a real number $c$ and has (finite) left-hand limit $f(c-)$ at~$c$.
+    Then the quantity $f(c) - f(c-)$ is called the {\bf left-hand jump of $\Bfm{f}$ at~$c$}.
+
+        If the left-hand jump of $f$ is not zero, then one says that $f$ has a {\bf left-hand jump discontinuity} at~$c$.
+
+\V
+
+        (2) Likewise, if $f$ is defined at a number $c$ and has (finite) right-hand limit $f(c+)$ at~$c$,
+    then the quantity $f(c+) - f(c)$ is called the {\bf right-hand jump of $\Bfm{f}$ at~$c$}.
+
+        If the right-hand jump of $f$ is not zero, then one says that $f$ has a {\bf right-hand jump discontinuity} at~$c$.
+
+\V
+
+        (3) If both (1) and (2) are applicable, then the sum of the left-hand jump and the right-hand jump of $f$ at $c$
+    is called the {\bf total jump of $\Bfm{f}$ at $\Bfm{c}$}. That is, it is the quantity
+        \begin{displaymath}
+        (f(c) - f(c-)) + (f(c+) - f(c)); \mbox{ that is, } f(c+) - f(c-)
+        \end{displaymath}
+    If either the left-hand jump or the right-hand jump of $f$ is not zero, then. one says that $f$ has a {\bf jump discontinuity} at~$c$.
+
+        \underline{Note} Example~(1) below shows why the definition of `jump discontinuity' here is {\em not} simply `total jump equals zero'.
+
+\VV
+
+            \subsection{\small{\bf Examples}}
+            \label{ExampD50.55A}
+
+\V
+
+        (1) Let $f:{\RR} \,{\rightarrow}\, {\RR}$ be given by the rule
+        \begin{displaymath}
+        f(x) \,=\, 1 \mbox{ if $x \,\,{\neq}\,\, 0$}, f(0) \,=\, A \mbox{ for some real number~$A$}.
+        \end{displaymath}
+    It is clear that $f(0-) \,=\, f(0+) \,=\, 1$, so that the left-hand jump of $f$ at~$0$ is $A-1$ while the corresponding right-hand jump is~$1-A$.
+    The total jump at $0$ is then $(A-1) + (1-A) \,=\, 0$. It is clear that $f$ is continuous at~$0$ if $A \,=\, 1$,
+    discontinuous there if $A \,\,{\neq}\,\, 1$. In particular, if one redefines $f$ at the one point $x \,=\, 0$ by resetting $f(0) \,=\, 0$,
+    then the `new' $f$ is continuous there. More generally,  if $f$ satisfies $f(c-) \,=\, f(c+) \,=\, L$,
+    but $f(c) \,\,{\neq}\,\, L$,
+then one says that $f$ has a {\bf removable discontinuity at~$\Bfm{c}$}. It is `removable' in the sense that by merely redefining the value of $f(c)$,
+    and at not other values of~$x$, the resulting function is continuous at~$c$.
+ 
+
+\V
+
+        (2) Let $f:{\RR} \,{\rightarrow}\, {\RR}$ be given by the rule
+        \begin{displaymath}
+        f(x) \,=\, \frac{|x|}{x} \mbox{ if $x \,\,{\neq}\,\, 0$}; \h
+        f(0) \,=\, A \mbox{ for some real number~$A$}.
+        \end{displaymath}
+        Note that $f(x) \,=\, -1$ if $x\,<\,0$, $f(x) \,=\, +1$ if $x\,>\,0$. It is clear that
+    $\lim_{x \,{\rightarrow}\, 0-} f(x) \,=\, -1$ and $\lim_{x \,{\rightarrow}\, 0+} f(x) \,=\, +1$.
+    Thus the left-hand jump of $f$ at $0$ is $A-(-1) \,=\, A+1$, while the corresponding right-hand jump is $1-A$. The total jump is then~$2$.
+    Because the left-side and right-side limits of $f$ at~$0$ are not equal, the function $f$ is discontinuous at $x \,=\, 0$,
+    regardless of the value $A$ of $f(0)$. In other words, the discontinuity of this $f$ at $c$ cannot be removed by merely changing the value of~$f(0)$.
+
+\V
+
+        (3) It is easy to see that if $f:{\RR} \,{\rightarrow}\, {\RR}$ is the Dirichlet function (see Example~\Ref{ExampA30.25}),
+    then for every $c$ in ${\RR}$ neither one-sided limit exists. In contrast, if $g:{\RR} \,{\rightarrow}\, {\RR}$
+    is the Thomae function (see the same definition), then $g$ does have both left-sided and right-sided limits at every $c$ in~${\RR}$;
+    indeed, both equal $0$ at each~$c$. The discontinuities of this function occur precisely at the rational numbers, and each one is removable.
+
+\VV
+
+        There is an important class of functions for which the nature of any discontinuities is easy to analyse.
+
+\V
+
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD60.60}
+\V
+
+        Suppose that $f:I \,{\rightarrow}\, {\RR}$ is monotonic on an interval $I$, and let $c$ be a point of~$I$.
+
+
+        (a) If $c$ is an interior point of $I$, then both of the one-sided limits $\lim_{x \,{\rightarrow}\, c-} f(x)$ and
+    $\lim_{x \,{\rightarrow}\, c+} f(x)$ exist and are finite. If, instead, $c$ is an endpoint of~$I$,
+    then the corresponding one-sided limit exists and is finite.
+
+\V
+
+        (b) If $c$ is an endpoint of $I$, then $f$ is continuous at $c$ if, and only if, the corresponding one-sided jump of $f$ at $c$ equals~$0$.
+    Likewise, if $c$ is an interior point of $I$, then $f$ is continuous at $c$ if, and only if, the total jump $f(c+)-f(c-)$ of $f$ at $c$ equals~$0$.
+
+\V
+
+
+
+        {\bf Proof} (a) Assume first that $f$ is monotonic up on~$I$ and that $c$ is an interior point of~$I$; the other cases can be handled similarly.
+    Let $a$ and $b$ be numbers in $I$ such that $a\,<\,c\,<\,b$. By the monotonicity hypothesis one has
+    $f(a)\,\,{\leq}\,\,f(x)\,\,{\leq}\,\,f(c)$ for all $x$ in $(a,c)$. Thus, by properties of `supremum', one has
+        \begin{displaymath}
+        f(a)\,\,{\leq}\,\,{\sup}\,\{f(x): a\,<\,x\,<\,c\}\,\,{\leq}\,\,f(c)
+        \end{displaymath}
+    Part~(a) of the preceding theorem then implies that $f(a)\,\,{\leq}\,\,f(c-)\,\,{\leq}\,\,f(c)$.
+    Similarly, apply Part~(a) of the preceding theorem to the interval $(c,b)$ to get $f(c)\,\,{\leq}\,\,f(c+)\,\,{\leq}\,\,f(b)$. Combine these to get
+        \begin{displaymath}
+        f(a)\,\,{\leq}\,\,f(c-)\,\,{\leq}\,\,f(c)\,\,{\leq}\,\,f(c+)\,\,{\leq}\,\,f(b).
+        \end{displaymath}
+    In particular, both $f(c-)$ and $f(c+)$ exist and are finite, as claimed.
+
+        If $f$ is monotonic down on~$I$ and $c$ is an interior point of~$I$, then apply what was just obtained to the function $g \,=\, -f$.
+    Finally, the modifications needed in the preceding argument to cover the case in which $c$ is an endpoint of~$I$ are left as an easy exercise. % EXERCISE
+
+\V
+
+        (b) The case in which $c$ is an endpoint of $I$ reduces to Definitions~\Ref{DefD50.50} and~\Ref{DefD50.55}.
+    Thus, suppose that $c$ is an interior point of~$I$. Note that the `only if' portion of the claim also follows from the same definitions.
+
+    To prove the `if' portion when $c$ is an interior point of~$I$, first assume that $f$ is monotonic up on~$I$.
+    From the definition of `total jump' one has
+        \begin{displaymath}
+        f(c+) - f(c-) \,=\, (f(c+) - f(c)) + (f(c)-f(c-)).
+        \end{displaymath}
+    Since $f$ is monotonic up on $I$, one has $f(c+)-f(c)\,\,{\geq}\,\,0$ and $f(c)-f(c-)\,\,{\geq}\,\,0$.
+    It follows that $f(c+) - f(c-) \,=\, 0$ if, and only if, $f(c+)-f(c) \,=\, 0$ and $f(c)-f(c-) \,=\, 0$.
+
+        If $f$ is montonic down on~$I$, apply the result just obtained to $g \,=\, -f$.
+
+\VV
+
+        The next theorem states that a function which is monotonic on an interval has, at worst,
+    a countable number of discontinuities, all of which are jump discontinuities.
+
+\VV
+
+            \subsection{\small{\bf Theorem}}
+            \label{ThmD50.60}
+
+\VV
+
+        Suppose that $f:I \,{\rightarrow}\, {\RR}$ is a function which is monotonic on an interval~$I$.
+    Let $S$ be the set of discontinuities of $f$ on the interval~$I$. Then:
+
+\V
+
+        (a) Every discontinuity of $f$ in $I$ is a jump discontinuity.
+    (At any endpoint of $I$ one uses the appropriate concept of one-sided continuity.)
+
+\V
+
+        (b) The set $S$ is countable (possibly empty).
+
+\V
+
+        {\bf Proof} (a) This follows directly from Theorem~\Ref{ThmD60.60} and the definition of `continuity as in calculus'.
+
+\V
+
+        (b) Let $S_{0}$ be the set of interior points of $I$ at which $f$ is discontinuous.
+    Since $I$ has at most two boundary points, the problem reduces to showing that the set $S_{0}$ is countable.
+
+    As usual, first assume that $f$ is monotonic up, and suppose that $c{\in}S_{0}$. (The case of $f$ being monotonic down then follows easily.)
+    Associate with $c$ the set $J_{c} \,=\, \{y: f(c-)\,\,{\leq}\,\,y\,\,{\leq}\,\,f(c+)\}$.
+    Since $f(c-)\,<\,f(c+)$ (because $f$ is monotonic up and discontinuous at~$c$),
+    it follows that $J_{c}$ is a true interval in~${\RR}$. In particular, $J_{c}$ contains infinitely many rational numbers.
+
+        Now suppose that $S_{0} \,\,{\neq}\,\, {\emptyset}$, and define a function $h:S_{0} \,{\rightarrow}\, {\QQ}$
+    by the rule that for each $c$ in $S_{0}$, $h(c)$ is one of the rational numbers in the interval $J_{c}$.
+
+        \underline{Claim} The function $h$ is one-to-one on $S_{0}$.
+
+        \underline{Proof of Claim} Suppose that $c_{1}$ and $c_{2}$ are points of $S_{0}$ such that $c_{1} \,\,{\neq}\,\, c_{2}$;
+    without loss of generality, assume that $c_{1}\,<\,c_{2}$.
+    It follows from Theorem~\Ref{ThmC90.90} that $f(c_{1}+)\,\,{\leq}\,\,f(c_{2}-)$. Since, by definition, 
+    $h(c_{1})\,<\,f(c_{1}+)$ and  $h(c_{2})\,>\,f(c_{2}-)$, it then follows that $h(c_{1})\,<\,h(c_{2})$, and the claim follows.
+
+        It now follows that $h:S_{0} \,{\rightarrow}\, {\QQ}$ is a  bijection of the set $S_{0}$ onto a subset of the countable set~${\QQ}$, and thus is countable, as asserted.
+
+\V
+
+        {\bf Remark} The approach followed here, which is based on the countability of the set of rational numbers, is standard.
+    In the exercises an alternate approach to this result, also standard, is outlined.
+    It relates the monotonicity to the countability in a more direct manner.
+
+
+
+%--------------------
+\StartSkip{
+                \section{{\bf Uniform Continuity of a Function on a Set}}
+                \label{SectD60}\IndB{ZZ Sections}{\Ref{SectD60} Uniform Continuity for a Function on a Set}
+
+\V
+\V
+
+
+
+        One of the major advances in the foundations of analysis was made by E.~Heine in the $1870$s,
+    when he clarified the significance of, and gave a name to, a certain property possessed by many real-valued functions; in English, his name for this property is translated as `Uniform Continuity'.
+    (As often happens in mathematics, the actual history of this property is somewhat complicated, and involves more than one person; but Heine published first, so his name is usually associated with it.)
+    Here is the precise definition, stated somewhat more generally than in Heine's original formulation.
+
+\V
+
+
+             \subsection{\small{\bf Definition} (Uniform Continuity)}
+            \label{DefD60.20}
+
+\V
+
+        Let $f:X \,{\rightarrow}\, {\RR}$ be a function whose domain is a set $D \,{\subseteq}\, {\RR}$, and let $X$ be a nonempty subset of~$D$.
+     The function $f$ is said to be {\bf uniformly continuous on $X$} if the following holds:
+
+\VA
+
+        \h for every ${\varepsilon}\,>\,0$ there exists ${\delta}\,>\,0$ such that if $x$ and $y$ are in $X$ and $|y-x|\,<\,{\delta}$, then $|f(y) - f(x)|\,<\,{\varepsilon}$.
+
+\VHalf
+
+
+
+\V
+
+             \subsection{\small{\bf Remarks}}
+            \label{RemrkD60.25}
+
+\V
+
+\hspace*{\parindent}(1) To understand the meaning of this definition, it helps to compare it with the more familiar idea of `continuity on the set $X$'.
+    To make this comparison more transparent, it helps to reformulate the condition for uniform continuity on $X$ in the following equivalent -- albeit more awkward -- form:
+
+\VHalf
+
+        \h (I) `if ${\varepsilon}\,>\,0$ then there exists ${\delta}\,>\,0$ such that for every $x$ in $X$ if $y$ is an element of $X$ such that $|y-x|\,<\,{\delta}$
+    then $|f(y)-f(x)|\,<\,{\varepsilon}$'
+
+\VHalf
+
+
+     Recall that a function $f$ is said to be {\bf continuous on $X$} provided it is continuous at every $x$ in $X$; that is, provided the following condition holds:
+
+\VHalf
+
+        \h (II) `for every $x$ in $X$ if ${\varepsilon}\,>\,0$ then there exists ${\delta}\,>\,0$ such that if $y$ is an element of $X$ such that
+    $|y-x|\,<\,{\delta}$ then $|f(y)-f(x)|\,<\,{\varepsilon}$'
+
+\VHalf
+
+
+\noindent The only difference between Condition $(I)$ and  Condition~$(II)$ is in the placement of the phrase `for every $x$ in $X$'; but this difference changes the meanings of the statements.
+    Indeed, the placement of this phrase in the first condition, namely {\em after} the determination of ${\delta}$,
+    implies that while the choice of ${\delta}$ may depend on ${\varepsilon}$, this choice can be made independently of the choice of $x$.
+    In contrast, the placement of this phrase in the second condition, namely {\em before} the determination of ${\delta}$,
+    implies that the choice of ${\delta}$ may depend, in an {\em essential} way, on both $x$ and ${\varepsilon}$.
+    This is a rather subtle distinction, and it confuses many students.
+
+\V
+
+        (2) Heine's formulation of `uniform continuity' illustrates why it can be important in mathematics to have more than one approach to a subject.
+    The major results obtained earlier in this chapter -- the Extreme-Value Theorem, the Intermediate-Value Theorem -- are most easily proved using the `sequence characterization' of continuity.
+    However, that characterization does not lend itself nearly so well to describing uniform continuity as does the `${\varepsilon}{\delta}$ characterization'.
+
+
+             \subsection{\small{\bf Examples}}
+            \label{ExampD60.30}
+
+\V
+
+\hspace*{\parindent}(1) Here are some examples of functions which {\em are} uniformly continuous on suitable subsets of their domains.
+
+
+        \h (i)\,\, If $f$ is a linear function on ${\RR}$, then $f$ is uniformly continuous on ${\RR}$.
+    Indeed, suppose that $a$ and $b$ are constants such that $f(x) \,=\, ax+b$ for all $x$ in ${\RR}$.
+    Then one has
+        \begin{displaymath}
+        |f(y) - f(x)| \,=\, |(ay+b) - (ax+b)| \,=\, |a||y-x| \h ({\ast})
+        \end{displaymath}
+    If $a \,=\, 0$, i.e., if $f$ is a constant function, then it is clear that for every ${\varepsilon}\,>\,0$ one has
+    $|f(y)-f(x)| \,=\, 0\,<\,{\varepsilon}$ for {\em all} $x$ and $y$ in ${\RR}$.
+    In particular, one can choose ${\delta}$ to be any positive number. If, instead, $a \,\,{\neq}\,\, 0$, then choose ${\delta} \,=\, {\varepsilon}/|a|$. For such ${\delta}$ Equation~$({\ast})$ shows that if $|y-x|\,<\,{\delta}$ then 
+    $|f(y)-f(x)|\,<\,|a||y-x|\,<\,|a|\left({\varepsilon}/|a|\right)\,<\,{\varepsilon}$, as required.
+
+
+        \h (ii)\, Let $f:{\RR} \,{\rightarrow}\, {\RR}$ be given by the rule $f(x) \,=\, x^{2}$.
+    Then $f$ is uniformly continuous on every closed bounded interval $[a,b]$.
+    Indeed, note that for all $x$ and $y$ in ${\RR}$ one has
+        \begin{displaymath}
+        |f(y)-f(x)| \,=\, |y^{2} - x^{2}| \,=\, |y+x||y-x|
+        \end{displaymath}
+    Now let $B$ be any positive number such that $|a|\,\,{\leq}\,\,B$ and $|b|\,\,{\leq}\,\,B$;
+    for instance, let $B \,=\, \max{|a|,|b|}$. Then clearly one has $-B\,\,{\leq}\,\,-|a|\,\,{\leq}\,\,a\,\,{\leq}\,\,b\,\,{\leq}\,\,|b|\,\,{\leq}\,\,B$. In particular, for all $x$ and $y$ in $[a,b]$ one has $|y+x|\,\,{\leq}\,\,|y| + |x|\,\,{\leq}\,\,2B$.
+    Now let ${\varepsilon}\,>\,0$ be given, and let ${\delta} \,=\, {\varepsilon}/2B$.
+    If $|y-x|\,<\,{\delta}$, then one has
+        \begin{displaymath}
+        |f(y) - f(x)| \,=\, |y+x||y-x|\,<\,2B\frac{{\varepsilon}}{2B} \,=\, {\varepsilon}.
+        \end{displaymath}
+    The uniform continuity of $f$on $[a,b]$ now follows.
+
+
+\V
+
+        (2) The function $f(x) \,=\, x^{2}$ discussed in Part~(ii) of the preceding example is {\em not} uniformly continuous on ${\RR}$.
+    Note that for every ${\delta}\,>\,0$ one can find $x$ and $y$ so that $|y-x|\,<\,{\delta}$ but $|y^{2}-x^{2}|\,\,{\geq}\,\,1$.
+    Indeed, let $x \,=\, 2/{\delta}$ and $y \,=\, x+{\delta}/2$, then one has $|y-x| \,=\, {\delta}/2\,<\,{\delta}$ and $|x+y|\,>\,2/{\delta}$. Thus
+        \begin{displaymath}
+        |f(y) - f(x)| \,=\, |y-x|{\cdot}|y+x|\,\,{\geq}\,\,\left(\frac{{\delta}}{2}\right){\cdot}\left(\frac{2}{{\delta}}\right) \,=\, 1.
+        \end{displaymath}
+    Thus $f$ is not uniformly continuous on ${\RR}$.
+
+\V
+%
+        (3) Let $f:(0,+{\infty}) \,{\rightarrow}\, {\RR}$ be given by $f(x) \,=\, 1/x$ for all $x\,>\,0$. Let $a\,>\,0$ be a fixed positive number.
+
+        \h (i)\, It is clear that $f$ is uniformly continuous on each unbounded interval of the form $[a,+{\infty})$.
+    Indeed, if $x\,\,{\geq}\,\,a$ and $y\,\,{\geq}\,\,a$ then
+        \begin{displaymath}
+        \left|\frac{1}{y} - \frac{1}{x}\right| \,=\, \left|\frac{x-y}{xy}\right|\,\,{\leq}\,\,\frac{|y-x|}{a^{2}}
+        \end{displaymath}
+    Thus if ${\varepsilon}\,>\,0$ is given, let ${\delta} \,=\, a^{2}/{\varepsilon}$. It follows that if $x$ and $y$ are in $[a,+{\infty})$ and $|y-x|\,<\,{\delta}$ then $|f(y) - f(x)|\,<\,{\varepsilon}$, as required.
+
+        \h (ii) It is perhaps less obvious, but still true, that $f$ {\em fails} to be uniformly continuous on the bounded interval $(0,a]$.
+    To see this, note that
+        \begin{displaymath}
+        |f(y)-f(x)| \,=\, \left|\frac{1}{y} - \frac{1}{x}\right| \,=\, \left|\frac{x-y}{xy}\right| \,=\, \frac{|y-x|}{xy}.
+        \end{displaymath}
+    In particular, if $0\,<\,y \,=\, 2x\,\,{\leq}\,\,a$, then one gets
+        \begin{displaymath}
+        |f(y) - f(x)| \,=\, |f(2x) - f(x)| \,=\, \frac{|2x-x|}{(2x)x} \,=\, \frac{1}{2x}.
+        \end{displaymath}
+    If ${\delta}\,>\,0$ is given, let $x$ satisfy $0\,<\,x\,<\,{\min}\,\{{\delta}, a/2\}$.
+    Then $x$ and $y \,=\, 2x$ are both in $(0,a]$, and $|y-x| \,=\, |2x-x| \,=\, x\,<\,{\delta}$,
+    but ${\displaystyle |f(y)-f(x)| \,=\, \frac{1}{2x}\,\,{\geq}\,\,\frac{1}{a}}$.
+    In other words, if one choose ${\varepsilon} \,=\, 1/a$, then it is not the case that there is a single ${\delta}\,\,{\geq}\,\,0$ such that $|f(y)-f(x)|\,<\,{\varepsilon}$ whenever $x$ and $y$ in $(0,a]$ satisfy $|y-x|\,<\,{\delta}$.
+
+
+\V
+\V
+
+        The first result Heine proved after defining the concept of `uniform convergence' is a generalization of Example~(1)~(ii) above.
+    It is convenient for future applications to formulate it in two steps.
+
+\V
+
+            \subsection{\small{\bf Lemma} (The Difference-of-Powers Inequality)}\index{difference-of-powers inequality}
+            \label{LemmaD60.35A}
+
+        Let $m$ be a natural number. If $x$ and $y$ are real numbers, and $R\,>\,0$ is a real number such that $|x|\,\,{\leq}\,\,R$ and $|y|\,\,{\leq}\,\,R$, then
+        \begin{equation}
+        \label{IneqD.30A} %% Formerly E.20A
+        |y^{m}-x^{m}|\,\,{\leq}\,\,mR^{m-1}|y-x|
+        \end{equation}
+
+\V
+
+        \underline{Proof} Note that, from basic algebra, one has
+        \begin{equation}
+        \label{EqnD.30B}
+        y^{m}-x^{m} \,=\, (y^{m-1}+y^{m-2}x+\,{\ldots}\,+\,{\ldots}\, +yx^{m-2}+x^{m-1})(y-x) \,=\, \left(\sum_{j=0}^{m-1} y^{m-1-j}x^{j}\right)(y-x).
+        \end{equation}
+    Now apply the Extended Triangle Inequality, and the hypotheses on $|x|$ and $|y|$, to obtain
+        \begin{displaymath}
+        |y^{m}-x^{m}|\,\,{\leq}\,\,\left(\sum_{j=0}^{m-1} |y|^{m-1-j}{\cdot}|x|^{j}\right)|y-x|
+    \,\,{\leq}\,\,
+       \end{displaymath}
+        \begin{displaymath}
+    \left(\sum_{j=0}^{m-1} R^{m-1-j}R^{j}\right)|y-x| \,=\, \left(\sum_{j=0}^{m-1} R^{m-1}\right)|y-x| \,=\, mR^{m-1}|y-x|.
+        \end{displaymath}
+    (The final equation reflects the fact that the expression $\sum_{j=0}^{m-1} R^{m-1}$ consists of the sum of $m$ terms, each equal to $R^{m-1}$.)
+    In particular, Inequality~\Ref{IneqD.30A} holds. \Q
+
+\V
+
+            \subsection{\small{\bf Corollary}} 
+            \label{CorD60.35B}
+
+\V
+
+        Let $m$ be a positive integer and let $f:{\RR} \,{\rightarrow}\, {\RR}$ be given by the rule $f(x) \,=\, x^{m}$ for all $x$ in ${\RR}$.
+    Then $f$ is uniformly continuous on every nonempty compact subset $X$ if ${\RR}$.
+
+\V
+
+        \underline{Proof} It clearly suffices to show the result whenever $X$ is of the form $[-R,R]$ for some positive number~$R$.
+    In this situation, if $x$ and $y$ are in $[-R,R]$ then $|x|\,\,{\leq}\,\,R$ and $|y|\,\,{\leq}\,\,R$.
+    Now let ${\varepsilon}\,>\,0$ be given, and let ${\delta} \,=\, {\varepsilon}/(mR^{m-1})$.
+    Then the preceding lemma implies that if $|y-x|\,<\,{\delta}$ then
+        \begin{displaymath}
+        |f(y)-f(x)| \,=\, |y^{m} - x^{m}|\,\,{\leq}\,\,mR^{m-1}{\delta}\,<\,{\varepsilon},
+        \end{displaymath}
+    as required. \Q
+
+
+\V
+\V
+
+        The preceding examples demonstrate uniform continuity by obtaining explicit relations between ${\varepsilon}$ and ${\delta}$.
+    The next result, which is one of the major theorems in analysis, proves uniform continuity `abstractly'.
+
+\V
+
+
+             \subsection{\small{\bf Theorem} (Heine's Theorem on Uniform Continuity in ${\RR}$)}
+            \label{ThmD60.40}
+
+        Suppose that $f:X \,{\rightarrow}\, {\RR}$ is a continuous function whose domain $X$ is a compact nonempty subset of ${\RR}$.
+    Then $f$ is uniformly continuous on $X$.
+
+\V
+
+        \underline{Proof} Suppose that $f$ is {\em not} uniformly continuous on $X$.
+    Then there exists ${\varepsilon}_{0}\,>\,0$ such that for every ${\delta}\,>\,0$ there exist numbers $x$ and $y$ in $X$
+    with $|y-x|\,<\,{\delta}$ but $|f(y)-f(x)|\,\,{\geq}\,\,{\varepsilon}_{0}$.
+    In particular, for each $k$ in ${\NN}$ there exist numbers $x_{k}$ and $y_{k}$ in $X$
+    such that $|y_{k}-x_{k}|\,<\,1/k$ but $|f(y_{k})-f(x_{k})|\,\,{\geq}\,\,{\varepsilon}_{0}$.
+    Note, in particular, that one has $\lim_{k \,{\rightarrow}\, {\infty}} |y_{k}-x_{k}| \,=\, 0$.
+    Let $(y_{k_{1}}, y_{k_{2}},\,{\ldots}\,)$ be a subsequence of the sequence $(y_{1},y_{2},\,{\ldots}\,)$ which is convergent;
+    the existence of such a convergent subsequence follows from the Bolzano-Weierstrass Theorem for Sequences,
+    together with the fact that (by definition of `compactness') $X$ is a bounded subset of ${\RR}$.
+    Let $c \,=\, \lim_{j \,{\rightarrow}\, {\infty}} y_{k_{j}}$. Then, since (by definition of `compactness') the set $X$ is closed in ${\RR}$, it follows that $c{\in}X$.
+    In addition, since $\lim_{k \,{\rightarrow}\, {\infty}} (y_{k}-x_{k}) \,=\, 0$,
+    and thus $\lim_{j \,{\rightarrow}\, {\infty}} (y_{k_{j}}-x_{k_{j}}) \,=\, 0$,
+    it follows easily that the subsequence $(x_{k_{1}},x_{k_{2}},\,{\ldots}\,)$ also converges to~$c$.
+    Since, by hypothesis, $f$ is continuous at $c$, it follows that $\lim_{j \,{\rightarrow}\, {\infty}} f(y_{k_{j}}) \,=\, f(c)$ and $\lim_{j \,{\rightarrow}\, {\infty}} f(x_{k_{j}}) \,=\, f(c)$.
+    Thus, $\lim_{j \,{\rightarrow}\, {\infty}} |f(y_{k_{j}}) - f(x_{k_{j}})| \,=\, 0$.
+    However, this contradicts the hypothesis that $|f(y_{k})-f(x_{k})|\,\,{\geq}\,\,{\varepsilon}_{0}$ for {\em all} $k$; in particular $k \,=\, k_{j}$.
+    Thus, $f$ is uniformally continuous on $X$, as claimed.
+
+\V
+\V
+
+             \subsection{\small{\bf Remarks}}
+            \label{RemrkD60.50}
+
+\V
+
+\hspace*{\parindent}(1) Heine actually stated and proved his `Uniform Continuity' theorem only in the case $X$ is a closed interval $[a,b]$ in ${\RR}$.
+    His proof, which is tailored to that context, is outlined in the exercises.
+
+\V
+
+        (2) Some texts refer to Theorem~\Ref{ThmD60.40} as the {\bf Heine-Cantor Theorem};
+    a few refer to it as the {\bf Cantor Theorem}, leaving poor Heine out in the cold.
+
+\V
+
+        (3) Heine is pronounced as `high nuh', with accent on the first syllabel.
+    His full name was Heinrich Eduard Heine, but he dropped the `Heinrich' in his publications;
+    perhaps he wanted to avoid confusion with the famous German poet Heinrich Heine.
+
+
+\V
+\V
+
+        The next theorem shows that if a function $f:[a,b] \,{\rightarrow}\, {\RR}$ is continuous on a closed interval $[a,b]$,
+    then $f$ can be well approximated throughout $[a,b]$ by a piecewise-linear function.
+    This result is used in the next chapter to prove that every continuous function on an interval has an antiderivative.
+
+
+}%\EndSkip
+%--------------
+
+%% POSSIBLE EXERCISES
+%%
+%% True or False: If f is cont on X, and X=Y {\cup} Z, then unif cont of f|_{Y} %% and f|_{Z} implies unif cont of f on X
+%% Show true if X = [a,b], Y = [a,c], Z = [c,b] with a\,<\,c\,<\,b
+
+%-----------------
+\StartSkip{ % HEINE'S PROOF -- REDO FOR INTERVAL
+
+
+        \underline{Heine's Original Proof (more or less)} For convenience, let $a \,=\, \min\,X$ and $b \,=\, \max\,X$;
+    these numbers exist (and are elements of $X$) because $X$ is compact and nonempty.
+    To avoid trivial cases, assume that $X$ has more than one element, so that $a\,<\,b$.
+
+        Suppose that $g$ is not uniformly continuous on $X$.
+    Then there must exist ${\varepsilon}_{0}\,>\,0$ for which {\em no} ${\delta}\,>\,0$ is small enough to ensure that $|g(x_{2})-g(x_{1})|\,<\,{\varepsilon}_{0}$ whenever $x_{1},x_{2}$ in $X$ satisfy $|x_{2}-x_{1}|\,<\,{\delta}$.
+
+        The continuity hypothesis for $g$, applied at $x \,=\, a$, implies that there exists a number ${\xi}$, with $a\,<\,{\xi}\,\,{\leq}\,\,b$, such that if $a\,\,{\leq}\,\,x\,\,{\leq}\,\,{\xi}$ and $x{\in}X$ then $|g(a)-g(x)|\,\,{\leq}\,\,{\varepsilon}_{0}/3$.
+    Let $x_{1}$ denote the supremum of the set of all such ${\xi}$.
+
+        \underline{Case 1} Suppose that $x_{1} \,=\, b$. It is then clear that $|g(a)-g(x)|\,\,{\leq}\,\,{\varepsilon}_{0}/3$ for all $x$ in $X$.
+    In particular, if $x_{1}$ and $x_{2}$ are any elements of $X$ then one has
+        \begin{displaymath}
+        |g(x_{2})-g(x_{1})|\,\,{\leq}\,\,|g(x_{2})-g(a)| + |g(a)-g(x_{2})|
+\,\,{\leq}\,\, \frac{{\varepsilon}_{0}}{3} + \frac{{\varepsilon}_{0}}{3}\,<\,{\varepsilon}_{0}
+        \end{displaymath}
+    In this case the number ${\delta} \,=\, b-a$ satisfies $|g(x_{2})-g(x_{1})|\,<\,{\varepsilon}_{0}$ for all $x_{1}$, $x_{2}$ in $X$ with $|x_{2}-x_{1}|\,<\,{\delta}$, contrary to the definition of the number ${\varepsilon}_{0}$.
+    Thus $x_{1} \,=\, b$ cannot hold.
+
+        \underline{Case 2} Suppose that $x_{1}\,<\,b$. It is still true that $x_{1}{\in}X$.
+    Indeed, by the definition of `supremum', together with the fact that $b{\in}X$ and the hypothesis in this case that $x_{1}\,<\,b$, it follows that there is a sequence of points $z_{1}$, $z_{2}$,\,{\ldots}\,in $X$ with $x_{1}\,<\,z_{k}\,<\,b$, such that $x_{1} \,=\, \lim_{k \,{\rightarrow}\, {\infty}} z_{k}$ and $|g(z_{k})-g(a)|\,>\,{\varepsilon}_{0}/3$.
+    Since $X$ is closed, it follows from the equation $x_{1} \,=\, \lim_{k \,{\rightarrow}\, {\infty}} (z_{k}$ that $x_{1}{\in}X$.
+    It then follows from the continuity of $g$ on $X$ that $g(x_{1}) \,=\, \lim_{k \,{\rightarrow}\, {\infty}} g(z_{k})$.
+    Thus
+        \begin{displaymath}
+        |g(a)-g(x_{1})| \,=\, \lim_{k \,{\rightarrow}\, {\infty}} |g(a)-g(z_{k})|\,\,{\geq}\,\,\frac{{\varepsilon}}{3}.
+        \end{displaymath}
+    However, it also follows from the definition of $x_{1}$ that $|g(a)-g(x_{1})|\,\,{\leq}\,\,{\varepsilon}/3$.
+    Thus $|g(a)-g(x_{1})| \,=\, {\varepsilon}_{0}/3$, and
+}%\EndSkip
+%---------------------
+
+\newpage
+
+\input{Exercises_M140AB_D_2017} %% NOTE: Automatically starts on a new page
+
+%\newpage
+
